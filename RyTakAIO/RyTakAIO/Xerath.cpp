@@ -116,15 +116,14 @@ public:
 					{
 						Q->StartCharging();
 					}
-					else return;
 				}
 				if (ComboW->Enabled() && W->IsReady())
 				{
-					W->CastOnTarget(target, 5);
+					W->CastOnTarget(target, kHitChanceHigh);
 				}
 				if (ComboE->Enabled() && E->IsReady())
 				{
-					E->CastOnTarget(target, 4);
+					E->CastOnTarget(target, kHitChanceHigh);
 				}
 			}
 		}
@@ -152,15 +151,14 @@ public:
 				{
 					Q->StartCharging();
 				}
-				else return;
 			}
 			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 			{
-				W->CastOnTarget(target);
+				W->CastOnTarget(target, kHitChanceHigh);
 			}
 			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 			{
-				E->CastOnTarget(target);
+				E->CastOnTarget(target, kHitChanceHigh);
 			}
 		}
 	}
@@ -191,7 +189,6 @@ public:
 							{
 								Q->StartCharging();
 							}
-							else return;
 						}
 						if (LaneClearW->Enabled() && W->IsReady() && LaneClearWMinions->GetInteger())
 						{
@@ -225,18 +222,28 @@ public:
 			{
 				if (KSQ->Enabled() && Q->IsReady())
 				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
+					auto dmg = GPluginSDK->GetDamage()->GetSpellDamage(GEntityList->Player(), Enemy, kSlotQ);
 					if (Enemy->GetHealth() <= dmg)
 					{
-						Q->CastOnTarget(Enemy, kHitChanceHigh);
+						if (Q->IsCharging())
 						{
-							Q->CastOnTarget(Enemy);
+							Q->FindTarget(SpellDamage);
+							{
+								if (GetEnemiesInRange(Q->Range()) >= 1)
+								{
+									Q->CastOnTarget(target, kHitChanceCollision);
+								}
+							}
+						}
+						else if (Q->IsReady())
+						{
+							Q->StartCharging();
 						}
 					}
 				}
 				if (KSW->Enabled() && W->IsReady())
 				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), true);
+					auto dmg = GPluginSDK->GetDamage()->GetSpellDamage(GEntityList->Player(), Enemy, kSlotW);
 					if (Enemy->GetHealth() <= dmg)
 					{
 						W->CastOnTarget(Enemy, kHitChanceHigh);
@@ -244,10 +251,10 @@ public:
 				}
 				if (KSE->Enabled() && E->IsReady())
 				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotE, E->GetDelay(), true);
+					auto dmg = GPluginSDK->GetDamage()->GetSpellDamage(GEntityList->Player(), Enemy, kSlotE);
 					if (Enemy->GetHealth() <= dmg)
 					{
-						E->CastOnTarget(Enemy, 5);
+						E->CastOnTarget(Enemy, kHitChanceHigh);
 					}
 				}
 				if (KSR->Enabled() && R->IsReady())
@@ -255,7 +262,7 @@ public:
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
 					if (Enemy->GetHealth() <= dmg)
 					{
-						R->CastOnTarget(Enemy, 5);
+						R->CastOnTarget(Enemy, kHitChanceHigh);
 					}
 				}
 			}
@@ -264,13 +271,16 @@ public:
 	
 	bool InitialR()
 	{
-		if (GEntityList->Player()->HasBuff("XerathLocusOfPower2") || GEntityList->Player()->HasBuff("XerathLocusPulse"))
+		if (GetAsyncKeyState(SemiR->GetInteger()) && R->IsReady())
 		{
-			return  true;
-		}
-		else
-		{
-			return false;
+			if (GEntityList->Player()->HasBuff("XerathLocusOfPower2") || GEntityList->Player()->HasBuff("XerathLocusPulse"))
+			{
+				return  true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 
@@ -285,7 +295,7 @@ public:
 				{
 					if (InitialR() == true)
 					{
-						R->CastOnTarget(enemy, 5);
+						R->CastOnTarget(enemy, kHitChanceHigh);
 					}
 				}
 			}
