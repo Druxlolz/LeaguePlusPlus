@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Champions">
+      <UniqueIdentifier>{83cb5832-a23b-40c3-87be-4e46c86c9b0d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LPPConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginSDK.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IChampion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OnRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lucian.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Aatrox.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Ahri.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Akali.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Alistar.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Zyra.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Zilean.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Ziggs.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Zed.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Zac.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Yorick.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Yasuo.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="XinZhao.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Xerath.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Wukong.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Warwick.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Volibear.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Vladimir.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Viktor.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Vi.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="VelKoz.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Veigar.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Vayne.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Varus.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Urgot.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Udyr.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Twitch.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="TwistedFate.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Tryndamere.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Trundle.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Tristana.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Thresh.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Teemo.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Taric.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Talon.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Taliyah.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="TahmKench.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Syndra.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Swain.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Soraka.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Sona.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Skarner.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Sivir.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Sion.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Singed.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Shyvana.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Shen.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaco.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Sejuani.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Ryze.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Rumble.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Riven.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Rengar.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Renekton.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="RekSai.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Rammus.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Quinn.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Poppy.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Pantheon.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Orianna.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Olaf.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Nunu.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Nocturne.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Nidalee.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Nautilus.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Nasus.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Nami.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Morgana.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Mordekaiser.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="MissFortune.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterYi.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Maokai.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Malzahar.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Malphite.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Lux.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Lulu.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Lissandra.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Leona.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="LeeSin.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="LeBlanc.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="KogMaw.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Kled.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Kindred.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="KhaZix.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Kennen.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Kayle.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Katarina.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Kassadin.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Karthus.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Karma.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Kalista.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Jinx.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Jhin.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Jayce.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Jax.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="JarvanIV.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Janna.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Ivern.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Irelia.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Illaoi.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Heimerdinger.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Hecarim.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Graves.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Gragas.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Gnar.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Garen.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Gangplank.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Galio.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Fizz.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Fiora.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Fiddlesticks.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Ezreal.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Evelynn.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Elise.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Ekko.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="DrMundo.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Draven.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Diana.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Darius.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Corki.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="ChoGath.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Cassiopeia.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Camille.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Caitlyn.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Braum.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Brand.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Blitzcrank.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Bard.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Azir.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="AurelionSol.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Ashe.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Annie.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Anivia.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+    <ClInclude Include="Amumu.cpp">
+      <Filter>Header Files\Champions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginSDK.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
