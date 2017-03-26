@@ -58,9 +58,9 @@ public:
 	{
 		if (GSpellBook->GetLevel(kSlotR) == 0)
 			return;
-		else if (GSpellBook->GetLevel(kSlotR) == 1)
+		if (GSpellBook->GetLevel(kSlotR) == 1)
 			R->SetOverrideRange(1750);
-		else if (GSpellBook->GetLevel(kSlotR) == 2)
+		if (GSpellBook->GetLevel(kSlotR) == 2)
 			R->SetOverrideRange(3000);
 	}
 
@@ -226,7 +226,10 @@ public:
 		{
 			E->CastOnTarget(enemy, 5);
 			{
-				W->CastOnTarget(enemy, 5);
+				if (W->IsReady())
+				{
+					W->CastOnTarget(enemy, 5);
+				}				
 			}
 		}
 	}
@@ -236,11 +239,14 @@ public:
 		enemy = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, Q->Range());
 		for (auto enemy : GEntityList->GetAllHeros(false, true));
 		{
-			W->CastOnTarget(enemy, 5);
+			if (Q->IsReady() && W->IsReady() && E->IsReady())
 			{
-				E->CastOnTarget(enemy, 5);
+				W->CastOnTarget(enemy, 5);
 				{
-					Q->CastOnTarget(enemy, 5);
+					E->CastOnTarget(enemy, 5);
+					{
+						Q->CastOnTarget(enemy, 5);
+					}
 				}
 			}
 		}
