@@ -75,7 +75,7 @@ public:
 class EIISR
 {
 public:
-	void EnemyIsInSpellRange(float range)
+	bool EnemyIsInSpellRange(float range)
 	{
 		auto enemies = GEntityList->GetAllHeros(false, true);
 		auto enemiesInSpellRange = false;
@@ -91,14 +91,14 @@ public:
 				}
 			}
 		}
-		return;
+		return true;
 	}
 };
 
 class AIISR
 {
 public:
-	void AllyIsInSpellRange(float range)
+	bool AllyIsInSpellRange(float range)
 	{
 		auto allies = GEntityList->GetAllHeros(true, false);
 		auto alliesInSpellRange = false;
@@ -114,6 +114,6 @@ public:
 				}
 			}
 		}
-		return;
+		return true;
 	}
 };

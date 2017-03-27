@@ -47,6 +47,7 @@ IMenuOption* HarassMana;
 IMenuOption* HarassQ;
 IMenuOption* HarassW;
 IMenuOption* HarassE;
+IMenuOption* HarassEStacks;
 IMenuOption* HarassQ2;
 IMenuOption* HarassW2;
 IMenuOption* HarassE2;
@@ -156,3 +157,4 @@ IUnit* Enemy;
 IUnit* enemy;
 IUnit* minion;
 IUnit* target;
+

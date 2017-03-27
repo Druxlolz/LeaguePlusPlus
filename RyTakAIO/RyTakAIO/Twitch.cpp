@@ -2,6 +2,7 @@
 #include "BaseOptions.h"
 #include "OnRender.h"
 #include "SpellLib.h"
+#include "CommonLib.h"
 
 class TwitchBase
 {
@@ -17,27 +18,24 @@ public:
 		ComboR = ComboMenu->CheckBox("Use R", true);
 
 		HarassMenu = MainMenu->AddMenu("Harass Settings");
-		HarassQ = HarassMenu->CheckBox("Use Q", true);
 		HarassW = HarassMenu->CheckBox("Use W", true);
 		HarassE = HarassMenu->CheckBox("Use E", true);
+		HarassEStacks = HarassMenu->AddFloat("Stacks to Use E", 1, 6, 6);
 		HarassMana = HarassMenu->AddFloat("Min. Mana", 0, 100, 60);
 
 		LaneClearMenu = MainMenu->AddMenu("Farm Settings");
-		LaneClearQ = LaneClearMenu->CheckBox("Use Q", true);
 		LaneClearW = LaneClearMenu->CheckBox("Use W", true);
+		LaneClearWMinions = LaneClearMenu->AddFloat("Minions to Hit with W", 1, 6, 3);
 		LaneClearE = LaneClearMenu->CheckBox("Use E", true);
+		LaneClearEMinions = LaneClearMenu->AddFloat("Minions to Kill with E", 1, 6, 2);
 		LaneClearMana = LaneClearMenu->AddFloat("Min. Mana", 0, 100, 40);
 
 		KSMenu = MainMenu->AddMenu("Killsteal Settings");
-		KSQ = KSMenu->CheckBox("Killsteal with Q", true);
-		KSW = KSMenu->CheckBox("Killsteal with W", true);
 		KSE = KSMenu->CheckBox("Killsteal with E", true);
-		KSR = KSMenu->CheckBox("Killsteal with R", true);
 
 		DrawMenu = MainMenu->AddMenu("Drawing Settings");
 		DrawReady = DrawMenu->CheckBox("Draw Only Ready Spells", true);
 		DrawOff = DrawMenu->CheckBox("Disable Drawings", false);
-		DrawQ = DrawMenu->CheckBox("Draw Q", true);
 		DrawW = DrawMenu->CheckBox("Draw W", true);
 		DrawE = DrawMenu->CheckBox("Draw E", true);
 		DrawR = DrawMenu->CheckBox("Draw R", true);
@@ -49,24 +47,71 @@ public:
 		SpellLib().Twitch();
 	}
 
+	float ExpungeDamage(IUnit* Target)
+	{
+		float Damage = 0;
+		int StackCount = Target->GetBuffCount("twitchdeadlyvenom");
+
+		if (StackCount == 0) return 0;
+
+		float BonusDamage = ((0.25 * GEntityList->Player()->BonusDamage()) + (0.2 * GEntityList->Player()->TotalMagicDamage())) * StackCount;
+
+		if (GEntityList->Player()->GetSpellLevel(kSlotE) == 1)
+		{
+			Damage += 20 + (15 * StackCount) + BonusDamage;
+		}
+			
+		if (GEntityList->Player()->GetSpellLevel(kSlotE) == 2)
+		{
+			Damage += 35 + (20 * StackCount) + BonusDamage;
+		}
+
+		if (GEntityList->Player()->GetSpellLevel(kSlotE) == 3)
+		{
+			Damage += 50 + (25 * StackCount) + BonusDamage;
+		}
+
+		if (GEntityList->Player()->GetSpellLevel(kSlotE) == 4)
+		{
+			Damage += 65 + (30 * StackCount) + BonusDamage;
+		}			
+
+		if (GEntityList->Player()->GetSpellLevel(kSlotE) == 5)
+		{
+			Damage += 80 + (35 * StackCount) + BonusDamage;
+		}			
+
+		return GDamage->CalcPhysicalDamage(GEntityList->Player(), Target, Damage);
+	}
+
 	void Combo()
 	{
 		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
 		{
-			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-			for (auto target : GEntityList->GetAllHeros(false, true))
+			Enemy = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
+			for (auto Enemy : GEntityList->GetAllHeros(false, true))
 			{
 				if (ComboQ->Enabled() && Q->IsReady())
 				{
-					Q->CastOnTarget(target);
+					Q->CastOnPlayer();
 				}
 				if (ComboW->Enabled() && W->IsReady())
 				{
-					W->CastOnTarget(target);
+					W->CastOnTarget(Enemy, 5);
 				}
-				if (ComboE->Enabled() && E->IsReady())
+				if (ComboE->Enabled() && E->IsReady() && target->HasBuff("twitchdeadlyvenom"))
 				{
-					E->CastOnTarget(target);
+					if (Enemy->GetBuffCount("twitchdeadlyvenom") == 6)
+					{
+						E->CastOnPlayer();
+					}
+				}
+				if (ComboR->Enabled() && R->IsReady())
+				{
+					if (EIISR().EnemyIsInSpellRange(R->Range() * 0.8) == true)
+					{
+						R->CastOnPlayer();
+					}				
 				}
 			}			
 		}
@@ -76,20 +121,19 @@ public:
 	{
 		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 		{
-			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-			for (auto target : GEntityList->GetAllHeros(false, true))
+			Enemy = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, E->Range());
+			for (auto Enemy : GEntityList->GetAllHeros(false, true))
 			{
-				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-				{
-					Q->CastOnTarget(target);
-				}
 				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 				{
-					W->CastOnTarget(target);
+					W->CastOnTarget(Enemy, 5);
 				}
-				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->HasBuff("twitchdeadlyvenom"))
 				{
-					E->CastOnTarget(target);
+					if (HarassEStacks->GetFloat() >= Enemy->GetBuffCount("twitchdeadlyvenom"))
+					{
+						E->CastOnPlayer();
+					}
 				}
 			}			
 		}
@@ -101,22 +145,30 @@ public:
 		{
 			if (GEntityList->Player()->ManaPercent() >= LaneClearMana->GetFloat())
 			{
-				minion = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
+				minion = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, E->Range());
 				for (auto minion : GEntityList->GetAllMinions(false, true, true))
 				{
-					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, Q->Range()))
+					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, E->Range()))
 					{
-						if (LaneClearQ->Enabled() && Q->IsReady())
-						{
-							Q->CastOnTarget(minion);
-						}
 						if (LaneClearW->Enabled() && W->IsReady())
 						{
-							E->CastOnTarget(minion);
+							Vec3 pos;
+							int hit;
+							GPrediction->FindBestCastPosition(W->Range(), W->Radius(), true, true, false, pos, hit);
+							if (LaneClearWMinions->GetFloat() >= hit)
+							{
+								W->CastOnPosition(pos);
+							}
 						}
 						if (LaneClearE->Enabled() && E->IsReady())
 						{
-							E->CastOnTarget(minion);
+							Vec3 pos;
+							int hit;
+							GPrediction->FindBestCastPosition(E->Range(), E->Radius(), true, true, false, pos, hit);
+							if (LaneClearEMinions->GetFloat() >= hit)
+							{
+								E->LastHitMinion();
+							}
 						}
 					}
 				}
@@ -126,47 +178,16 @@ public:
 
 	void KS()
 	{
-		Enemy = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
+		Enemy = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, E->Range());
 		for (auto Enemy : GEntityList->GetAllHeros(false, true))
 		{
-			if (Enemy != nullptr && !Enemy->IsDead())
+			if (KSE->Enabled() && E->IsReady() && Enemy->HasBuff("twitchdeadlyvenom"))
 			{
-				if (KSQ->Enabled() && Q->IsReady())
+				if (Enemy->GetHealth() <= (ExpungeDamage(Enemy) * 0.95))
 				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						Q->CastOnTarget(Enemy, kHitChanceHigh);
-					}
+					E->CastOnPlayer();
 				}
-				if (KSW->Enabled() && W->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						W->CastOnTarget(Enemy, kHitChanceHigh);
-					}
-				}
-				if (KSE->Enabled() && E->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotE, E->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						E->CastOnTarget(Enemy, kHitChanceHigh);
-					}
-				}
-				if (KSR->Enabled() && R->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
-					Vec3 pos;
-					int hit;
-					GPrediction->FindBestCastPosition(R->Range(), R->Radius(), true, true, false, pos, hit);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						R->CastOnPosition(pos);
-					}
-				}
-			}
+			}							
 		}
 	}
 };
