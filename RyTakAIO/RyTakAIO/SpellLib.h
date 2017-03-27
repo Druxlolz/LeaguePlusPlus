@@ -9,6 +9,7 @@ ISpell2* Q2;
 ISpell2* W2;
 ISpell2* E2;
 ISpell2* R2;
+ISpell2* ExtendedQ;
 
 class SpellLib
 {
@@ -1251,8 +1252,18 @@ public:
 	void Lucian()
 	{
 		Q = GPluginSDK->CreateSpell2(kSlotQ, kTargetCast, false, false, kCollidesWithNothing);
-		Q->SetSkillshot(0.4f, 50.f, 1600.f, 900.f);
+		//Q->SetSkillshot(0.4f, 50.f, 1600.f, 900.f);
+		Q->GetDelay();
+		Q->SetOverrideRadius(50.f);
+		Q->SetOverrideSpeed(1600.f);
+		Q->SetOverrideRange(675.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "LucianQ";
+
+		ExtendedQ = GPluginSDK->CreateSpell2(kSlotQ, kTargetCast, false, false, kCollidesWithNothing);
+		ExtendedQ->GetDelay();
+		ExtendedQ->SetOverrideRadius(50.f);
+		ExtendedQ->SetOverrideSpeed(1600.f);
+		ExtendedQ->SetOverrideRange(1000.f);
 
 		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, false, kCollidesWithYasuoWall);
 		W->SetSkillshot(0.25f, 80.f, 1600.f, 900.f);
