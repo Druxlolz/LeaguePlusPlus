@@ -70,24 +70,19 @@ void Combo()
 						{
 							if (target->IsValidTarget(target, Q->Range()) && GEIR().GetEnemiesInRange(Q->Range()) >= 1)
 							{
-								Q->CastOnTarget(target, kHitChanceCollision);
+								Q->CastOnTarget(target, kHitChanceHigh);
 							}
 						}
 					}
-					else if (Q->IsReady() && GEIR().GetEnemiesInRange(Q->Range()) >= 1)
+					if (Q->IsReady() && GEIR().GetEnemiesInRange(Q->Range()) >= 1)
 					{
 						Q->StartCharging();
-					}
-					else
-					{
-						GEntityList->Player()->GetSpellState(kSlotQ);
 					}
 				}
 				if (ComboE->Enabled())
 				{
 					if (E->IsReady())
 					{
-						E->FindTarget(SpellDamage);
 						E->CastOnTarget(target, 5);
 					}
 				}
@@ -110,7 +105,7 @@ void Combo()
 					{
 						Q->FindTarget(PhysicalDamage);
 						{
-							Q->CastOnTarget(target, kHitChanceCollision);
+							Q->CastOnTarget(target, kHitChanceHigh);
 							return;
 						}
 					}
@@ -143,9 +138,12 @@ void Combo()
 						{
 							Q->FindTarget(PhysicalDamage);
 							{
-								if (GMIR().GetMinionsInRange(Q->Range()) >= LaneClearQMinions->GetInteger() && !minion->IsInvulnerable())
+								Vec3 pos;
+								int hit;
+								GPrediction->FindBestCastPosition(Q->Range(), Q->Radius(), true, true, true, pos, hit);
+								if (GMIR().GetMinionsInRange(Q->Range()) >= LaneClearQMinions->GetInteger() <= hit && !minion->IsInvulnerable())
 								{
-									Q->CastOnTarget(minion, kHitChanceCollision);
+									Q->CastOnPosition(pos);
 								}
 							}
 						}
@@ -190,17 +188,15 @@ void Combo()
 				if (KSQ->Enabled() && Q->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
-
 					if (GEIR().GetEnemiesInRange(Q->Range()) >= 1)
 					{
 						Q->StartCharging();
 					}
 
-					else if (Q->IsCharging())
+					if (Q->IsCharging())
 					{
 						if (Enemy->GetHealth() <= dmg)
 						{
-							Q->FindTarget(PhysicalDamage);
 							Q->CastOnTarget(target, 5);
 						}
 					}
@@ -209,20 +205,16 @@ void Combo()
 				if (KSE->Enabled() && E->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotE, E->GetDelay(), true);
-
 					if (Enemy->GetHealth() <= dmg)
 					{
-						E->FindTarget(SpellDamage);
 						E->CastOnTarget(target, 5);
 					}
 				}
 				if (KSR->Enabled() && R->IsReady())
 				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
-					
+					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);					
 					if (Enemy->GetHealth() <= dmg)
 					{
-						R->FindTarget(SpellDamage);
 						R->CastOnTarget(target, 5);
 					}
 				}

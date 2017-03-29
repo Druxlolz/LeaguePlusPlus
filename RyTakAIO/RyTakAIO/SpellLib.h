@@ -1396,7 +1396,7 @@ public:
 	void MissFortune()
 	{
 		Q = GPluginSDK->CreateSpell2(kSlotQ, kTargetCast, true, false, (kCollidesWithYasuoWall));
-		Q->SetSkillshot(0.25f, 250.f, 1000.f, 650.f);
+		Q->SetSkillshot(0.25f, 25.f, 1000.f, 650.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "MissFortuneRicochetShot";
 		
 		W = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, false, false, (kCollidesWithNothing));

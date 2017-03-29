@@ -58,38 +58,39 @@ public:
 			W->CastOnPlayer();
 		}
 	}
-void GoldCard()
-{
-	if (GetAsyncKeyState(PickYellowsOption->GetInteger()) || ComboW->Enabled() || GapCloseW->Enabled())
-	{
-		if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "GoldCardLock")
-		{
-			W->CastOnPlayer();
-		}
-	}
-}
 
-void RedCard()
-{
-	if (GetAsyncKeyState(PickRedsOption->GetInteger()) || HarassW->Enabled() || LaneClearW->Enabled())
+	void GoldCard()
 	{
-		if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "RedCardLock")
+		if (GetAsyncKeyState(PickYellowsOption->GetInteger()) || ComboW->Enabled() || GapCloseW->Enabled())
 		{
-			W->CastOnPlayer();
+			if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "GoldCardLock")
+			{
+				W->CastOnPlayer();
+			}
 		}
 	}
-}
 
-void BlueCard()
-{
-	if (GetAsyncKeyState(PickBluesOption->GetInteger()) || HarassW->Enabled() || LaneClearW->Enabled())
+	void RedCard()
 	{
-		if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "BlueCardLock")
+		if (GetAsyncKeyState(PickRedsOption->GetInteger()) || HarassW->Enabled() || LaneClearW->Enabled())
 		{
-			W->CastOnPlayer();
+			if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "RedCardLock")
+			{
+				W->CastOnPlayer();
+			}
 		}
 	}
-}
+
+	void BlueCard()
+	{
+		if (GetAsyncKeyState(PickBluesOption->GetInteger()) || HarassW->Enabled() || LaneClearW->Enabled())
+		{
+			if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "BlueCardLock")
+			{
+				W->CastOnPlayer();
+			}
+		}
+	}
 
 	void Combo()
 	{
@@ -140,7 +141,7 @@ void BlueCard()
 					{
 						if (LaneClearQ->Enabled() && Q->IsReady())
 						{
-							Q->CastOnTarget(minion, 4);
+							Q->CastOnTarget(minion, 5);
 						}
 						if (LaneClearW->Enabled() && W->IsReady())
 						{

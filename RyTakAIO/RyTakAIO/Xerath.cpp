@@ -143,7 +143,7 @@ public:
 					{
 						if (GetEnemiesInRange(Q->Range()) >= 1)
 						{
-							Q->CastOnTarget(target, kHitChanceCollision);
+							Q->CastOnTarget(target, kHitChanceHigh);
 						}
 					}
 				}
@@ -179,9 +179,12 @@ public:
 							{
 								Q->FindTarget(SpellDamage);
 								{
-									if (GetMinionsInRange(Q->Range()) >= LaneClearQMinions->GetInteger() && !minion->IsInvulnerable())
+									Vec3 pos;
+									int hit;
+									GPrediction->FindBestCastPosition(Q->Range(), Q->Radius(), false, true, false, pos, hit);
+									if (GetMinionsInRange(Q->Range()) >= LaneClearQMinions->GetInteger() <= hit && !minion->IsInvulnerable())
 									{
-										Q->LastHitMinion();
+										Q->CastOnPosition(pos);
 									}
 								}
 							}
@@ -231,7 +234,7 @@ public:
 							{
 								if (GetEnemiesInRange(Q->Range()) >= 1)
 								{
-									Q->CastOnTarget(target, kHitChanceCollision);
+									Q->CastOnTarget(target, kHitChanceHigh);
 								}
 							}
 						}

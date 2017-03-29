@@ -135,7 +135,7 @@ public:
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
 					if (Enemy->GetHealth() <= dmg)
 					{
-						R->CastOnTarget(target, 5);
+						R->CastOnTarget(Enemy, 5);
 					}
 				}
 			}
