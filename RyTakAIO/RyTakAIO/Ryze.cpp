@@ -150,7 +150,7 @@ public:
 							switch (kSlotQ)
 							{
 							case 1: Q->LastHitMinion();
-							default: Q->CastOnTarget(minion, 2);
+							default: Q->CastOnTarget(minion, 5);
 							}
 						}
 						if (LaneClearW->Enabled() && W->IsReady())
@@ -158,7 +158,7 @@ public:
 							switch (kSlotW)
 							{
 							case 1: W->LastHitMinion();
-							default: W->CastOnTarget(minion, 2);
+							default: W->CastOnTarget(minion, 5);
 							}
 						}
 						if (LaneClearE->Enabled() && E->IsReady())
@@ -222,7 +222,7 @@ public:
 	{
 		enemy = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, Q->Range());
 		for (auto enemy : GEntityList->GetAllHeros(false, true))
-		if (E->IsReady() && W->IsReady())
+		if (E->IsReady())
 		{
 			E->CastOnTarget(enemy, 5);
 			{
@@ -239,14 +239,20 @@ public:
 		enemy = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, Q->Range());
 		for (auto enemy : GEntityList->GetAllHeros(false, true));
 		{
-			if (Q->IsReady() && W->IsReady() && E->IsReady())
+			if (W->IsReady())
 			{
 				W->CastOnTarget(enemy, 5);
 				{
-					E->CastOnTarget(enemy, 5);
+					if (E->IsReady())
 					{
-						Q->CastOnTarget(enemy, 5);
-					}
+						E->CastOnTarget(enemy, 5);
+						{
+							if (Q->IsReady())
+							{
+								Q->CastOnTarget(enemy, 5);
+							}
+						}
+					}					
 				}
 			}
 		}
@@ -301,9 +307,9 @@ public:
 
 	void GapCloser()
 	{
-		if (target->IsDashing() && GapCloseW->Enabled())
+		if (Enemy->IsDashing() && GapCloseW->Enabled())
 		{
-			W->CastOnTarget(target, 5);
+			W->CastOnTarget(Enemy, 5);
 		}
 	}
 };

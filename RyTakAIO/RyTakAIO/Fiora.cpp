@@ -53,7 +53,7 @@ public:
 			{
 				if (ComboQ->Enabled() && Q->IsReady())
 				{
-					Q->CastOnTarget(target, 4);
+					Q->CastOnTarget(target, 5);
 				}
 				if (ComboE->Enabled() && E->IsReady())
 				{
@@ -61,7 +61,7 @@ public:
 				}
 				if (ComboR->Enabled() && R->IsReady())
 				{
-					R->CastOnTarget(target);
+					R->CastOnTarget(target, 5);
 				}
 			}				
 		}

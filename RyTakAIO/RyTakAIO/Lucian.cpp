@@ -70,26 +70,27 @@ public:
 
 	void Combo()
 	{
-		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo && HasPassive == false)
 		{
 			target = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
-
-			if (target != nullptr && target->IsValidTarget() && target->IsHero())
 			{
-				if (Q->IsReady() && ComboQ->Enabled() && HasPassive == false)
+				if (target != nullptr && target->IsValidTarget() && target->IsHero())
 				{
-					Q->CastOnTarget(target, 5);
+					if (Q->IsReady() && ComboQ->Enabled())
+					{
+						Q->CastOnTarget(target, 5);
+					}
+					if (W->IsReady() && ComboW->Enabled())
+					{
+						W->CastOnTarget(target, 5);
+					}
+					if (E->IsReady() && ComboE->Enabled())
+					{
+						E->CastOnPosition(GGame->CursorPosition());
+					}
 				}
-				if (W->IsReady() && ComboW->Enabled() && HasPassive == false)
-				{
-					W->CastOnTarget(target, 5);
-				}
-				if (E->IsReady() && ComboE->Enabled() && HasPassive == false)
-				{
-					E->CastOnPosition(GGame->CursorPosition());
-				}
-			}
+			}			
 		}
 	}
 
@@ -99,25 +100,26 @@ public:
 		{
 			target = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
-
-			if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget())
 			{
-				Q->CastOnTarget(target);
-			}
-			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget())
-			{
-				W->CastOnTarget(target);
-			}
-			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget())
-			{
-				E->CastOnPosition(GGame->CursorPosition());
-			}
+				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget())
+				{
+					Q->CastOnTarget(target);
+				}
+				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget())
+				{
+					W->CastOnTarget(target);
+				}
+				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget())
+				{
+					E->CastOnPosition(GGame->CursorPosition());
+				}
+			}			
 		}
 	}
 
 	void LaneClear()
 	{
-		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear || HasPassive == false)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear && HasPassive == false)
 		{
 			if (GEntityList->Player()->ManaPercent() >= LaneClearMana->GetFloat())
 			{

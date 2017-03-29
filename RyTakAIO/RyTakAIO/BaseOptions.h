@@ -112,6 +112,8 @@ IMenuOption* AutoEKillable;
 IMenuOption* AllyUltSave;
 IMenuOption* UseQECombo;
 IMenuOption* BounceHarass;
+IMenuOption* BounceClear;
+IMenuOption* BounceEnemy;
 
 //Drawings Menu
 IMenuOption* DrawQ;
@@ -154,7 +156,11 @@ Vec3 rPosLast;
 //Target Selector Common
 IUnit* rTargetLast;
 IUnit* Enemy;
+IUnit* Enemy1;
+IUnit* Enemy2;
 IUnit* enemy;
 IUnit* minion;
+IUnit* minion1;
+IUnit* minion2;
 IUnit* target;
 

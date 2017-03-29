@@ -196,20 +196,6 @@ public:
 		}
 	}
 
-	void MissileCheck()
-	{
-		if (GMissileData->GetName(Q2) == "JayceShockBlastMis")
-		{
-			Q2->SetOverrideRange(1050);
-			Q2->SetOverrideSpeed(1450);
-		}	
-		if (GMissileData->GetName(Q2) == "JayceShockBlastCharged")
-		{
-			Q2->SetOverrideRange(1470);
-			Q2->SetOverrideSpeed(1890);
-		}
-	}
-
 	void Combo()
 	{
 		target = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, Q->Range());

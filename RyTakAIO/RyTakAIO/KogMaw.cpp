@@ -55,20 +55,25 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
+			{
 				if (ComboQ->Enabled() && Q->IsReady())
 				{
-					Q->CastOnTarget(target);
+					Q->CastOnTarget(target, 5);
 				}
-			if (ComboW->Enabled() && W->IsReady())
-			{
-				W->CastOnTarget(target);
-			}
-			if (ComboE->Enabled() && E->IsReady())
-			{
-				E->CastOnTarget(target);
-			}
+				if (ComboW->Enabled() && W->IsReady())
+				{
+					W->CastOnTarget(target, 5);
+				}
+				if (ComboE->Enabled() && E->IsReady())
+				{
+					E->CastOnTarget(target, 5);
+				}
+				if (ComboR->Enabled() && R->IsReady())
+				{
+					R->CastOnTarget(target, 5);
+				}
+			}				
 		}
-
 	}
 
 	void Harass()
@@ -77,18 +82,20 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
+			{
 				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 				{
 					Q->CastOnTarget(target);
 				}
-			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				W->CastOnTarget(target);
-			}
-			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				E->CastOnTarget(target);
-			}
+				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				{
+					W->CastOnTarget(target);
+				}
+				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				{
+					E->CastOnTarget(target);
+				}
+			}				
 		}
 	}
 
@@ -155,12 +162,9 @@ public:
 				if (KSR->Enabled() && R->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
-					Vec3 pos;
-					int hit;
-					GPrediction->FindBestCastPosition(R->Range(), R->Radius(), true, true, false, pos, hit);
 					if (Enemy->GetHealth() <= dmg)
 					{
-						R->CastOnPosition(pos);
+						R->CastOnTarget(Enemy, 5);
 					}
 				}
 			}
