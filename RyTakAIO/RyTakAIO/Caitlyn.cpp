@@ -91,14 +91,14 @@ public:
 		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat())
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-			for (auto target : GEntityList->GetAllHeros(false, true))
+			for (auto target : GEntityList->GetAllHeros(false, true));
 			if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget())
 			{
-				Q->CastOnTarget(target, 3);
+				Q->CastOnTarget(target, 5);
 			}
 			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget())
 			{
-				E->CastOnTarget(target, 3);
+				E->CastOnTarget(target, 5);
 			}
 		}
 	}
@@ -119,7 +119,7 @@ public:
 							switch (kSlotQ)
 							{
 							case 1: Q->LastHitMinion();
-							default: Q->CastOnTarget(minion, 2);
+							default: Q->CastOnTarget(minion, 5);
 							}
 						}
 					}

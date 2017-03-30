@@ -60,11 +60,11 @@ public:
 				{
 					if (Q->IsReady() && ComboQ->Enabled())
 					{
-						if (BounceEnemy->Enabled())
-						{
-							EnemyBounce();
-						}
-						else Q->CastOnTarget(target, 5);						
+						Q->CastOnTarget(target, 5);						
+					}
+					if (BounceEnemy->Enabled())
+					{
+						EnemyBounce();
 					}
 					if (W->IsReady() && ComboW->Enabled())
 					{
@@ -86,13 +86,13 @@ public:
 			Enemy = GTargetSelector->FindTarget(ClosestToCursorPriority, PhysicalDamage, Q->Range());
 			for (auto Enemy : GEntityList->GetAllHeros(false, true));
 
-			if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget() && !target->IsDead())
+			if (HarassQ->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && Enemy->IsValidTarget() && !Enemy->IsDead())
 			{
 				if (BounceHarass->Enabled() && Q->IsReady())
 				{
 					Bounce();
 				}
-				if (!BounceHarass->Enabled() && Q->IsReady())
+				if (Q->IsReady())
 				{
 					Q->CastOnTarget(Enemy, 5);
 				}
@@ -115,9 +115,9 @@ public:
 				{
 					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, Q->Range()))
 					{
-						if (LaneClearQ->Enabled() && Q->IsReady())
+						if (LaneClearQ->Enabled())
 						{
-							if (BounceClear->Enabled())
+							if (BounceClear->Enabled() && Q->IsReady())
 							{
 								minion1 = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, Q->Range());
 								minion2 = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, Q->Range() + 250);
@@ -130,11 +130,11 @@ public:
 										}
 									}
 							}
-							if (!BounceClear->Enabled())
+							if (Q->IsReady())
 							{
 								Q->CastOnTarget(minion, 5);
 							}
-							if (BounceHarass->Enabled())
+							if (BounceHarass->Enabled() && Q->IsReady())
 							{
 								Bounce();
 							}
