@@ -180,11 +180,11 @@ public:
 		{
 			AatroxBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			AatroxBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			AatroxBase().LaneClear();
 		}
@@ -227,11 +227,11 @@ public:
 		{
 			AhriBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			AhriBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			AhriBase().LaneClear();
 		}
@@ -274,11 +274,11 @@ public:
 		{
 			AkaliBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			AkaliBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			AkaliBase().LaneClear();
 		}
@@ -321,11 +321,11 @@ public:
 		{
 			AlistarBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			AlistarBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			AlistarBase().LaneClear();
 		}
@@ -368,11 +368,11 @@ public:
 		{
 			AmumuBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			AmumuBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			AmumuBase().LaneClear();
 		}
@@ -415,11 +415,11 @@ public:
 		{
 			AniviaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			AniviaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			AniviaBase().LaneClear();
 		}
@@ -462,11 +462,11 @@ public:
 		{
 			AnnieBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			AnnieBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			AnnieBase().LaneClear();
 		}
@@ -503,21 +503,19 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				AsheBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				AsheBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				AsheBase().LaneClear();
-			}
-		//AsheBase().KS();
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			AsheBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			AsheBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			AsheBase().LaneClear();
+		}
+		AsheBase().KS();
 		AsheBase().RDamage();
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
@@ -565,11 +563,11 @@ public:
 		{
 			AurelionSolBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			AurelionSolBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			AurelionSolBase().LaneClear();
 		}
@@ -612,11 +610,11 @@ public:
 		{
 			AzirBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			AzirBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			AzirBase().LaneClear();
 		}
@@ -659,11 +657,11 @@ public:
 		{
 			BardBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			BardBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			BardBase().LaneClear();
 		}
@@ -706,11 +704,11 @@ public:
 		{
 			BlitzcrankBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			BlitzcrankBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			BlitzcrankBase().LaneClear();
 		}
@@ -753,11 +751,11 @@ public:
 		{
 			BrandBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			BrandBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			BrandBase().LaneClear();
 		}
@@ -800,11 +798,11 @@ public:
 		{
 			BraumBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			BraumBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			BraumBase().LaneClear();
 		}
@@ -841,21 +839,19 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				CaitlynBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				CaitlynBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				CaitlynBase().LaneClear();
-			}
-		//CaitlynBase().KS();
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			CaitlynBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			CaitlynBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			CaitlynBase().LaneClear();
+		}
+		CaitlynBase().KS();
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
 	{
@@ -902,11 +898,11 @@ public:
 		{
 			CamilleBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			CamilleBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			CamilleBase().LaneClear();
 		}
@@ -949,11 +945,11 @@ public:
 		{
 			CassiopeiaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			CassiopeiaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			CassiopeiaBase().LaneClear();
 		}
@@ -996,11 +992,11 @@ public:
 		{
 			ChoGathBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ChoGathBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ChoGathBase().LaneClear();
 		}
@@ -1037,21 +1033,19 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				CorkiBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				CorkiBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				CorkiBase().LaneClear();
-			}
-		//CorkiBase().KS();
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			CorkiBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			CorkiBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			CorkiBase().LaneClear();
+		}
+		CorkiBase().KS();
 		CorkiBase().RDamage();
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
@@ -1099,11 +1093,11 @@ public:
 		{
 			DariusBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			DariusBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			DariusBase().LaneClear();
 		}
@@ -1146,11 +1140,11 @@ public:
 		{
 			DianaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			DianaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			DianaBase().LaneClear();
 		}
@@ -1193,11 +1187,11 @@ public:
 		{
 			DrMundoBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			DrMundoBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			DrMundoBase().LaneClear();
 		}
@@ -1240,11 +1234,11 @@ public:
 		{
 			DravenBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			DravenBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			DravenBase().LaneClear();
 		}
@@ -1287,11 +1281,11 @@ public:
 		{
 			EkkoBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			EkkoBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			EkkoBase().LaneClear();
 		}
@@ -1334,11 +1328,11 @@ public:
 		{
 			EliseBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			EliseBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			EliseBase().LaneClear();
 		}
@@ -1381,11 +1375,11 @@ public:
 		{
 			EvelynnBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			EvelynnBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			EvelynnBase().LaneClear();
 		}
@@ -1422,20 +1416,18 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				EzrealBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				EzrealBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				EzrealBase().LaneClear();
-			}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			EzrealBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			EzrealBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			EzrealBase().LaneClear();
+		}
 		EzrealBase().KS();
 		EzrealBase().RDamage();
 	}
@@ -1484,11 +1476,11 @@ public:
 		{
 			FiddlesticksBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			FiddlesticksBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			FiddlesticksBase().LaneClear();
 		}
@@ -1531,11 +1523,11 @@ public:
 		{
 			FioraBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			FioraBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			FioraBase().LaneClear();
 		}
@@ -1578,11 +1570,11 @@ public:
 		{
 			FizzBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			FizzBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			FizzBase().LaneClear();
 		}
@@ -1625,11 +1617,11 @@ public:
 		{
 			GalioBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			GalioBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			GalioBase().LaneClear();
 		}
@@ -1672,11 +1664,11 @@ public:
 		{
 			GangplankBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			GangplankBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			GangplankBase().LaneClear();
 		}
@@ -1719,11 +1711,11 @@ public:
 		{
 			GarenBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			GarenBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			GarenBase().LaneClear();
 		}
@@ -1766,11 +1758,11 @@ public:
 		{
 			GnarBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			GnarBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			GnarBase().LaneClear();
 		}
@@ -1813,11 +1805,11 @@ public:
 		{
 			GragasBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			GragasBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			GragasBase().LaneClear();
 		}
@@ -1860,11 +1852,11 @@ public:
 		{
 			GravesBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			GravesBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			GravesBase().LaneClear();
 		}
@@ -1907,11 +1899,11 @@ public:
 		{
 			HecarimBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			HecarimBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			HecarimBase().LaneClear();
 		}
@@ -1954,11 +1946,11 @@ public:
 		{
 			HeimerdingerBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			HeimerdingerBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			HeimerdingerBase().LaneClear();
 		}
@@ -2001,11 +1993,11 @@ public:
 		{
 			IllaoiBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			IllaoiBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			IllaoiBase().LaneClear();
 		}
@@ -2048,11 +2040,11 @@ public:
 		{
 			IreliaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			IreliaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			IreliaBase().LaneClear();
 		}
@@ -2095,11 +2087,11 @@ public:
 		{
 			IvernBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			IvernBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			IvernBase().LaneClear();
 		}
@@ -2142,11 +2134,11 @@ public:
 		{
 			JannaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			JannaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			JannaBase().LaneClear();
 		}
@@ -2189,11 +2181,11 @@ public:
 		{
 			JarvanIVBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			JarvanIVBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			JarvanIVBase().LaneClear();
 		}
@@ -2236,11 +2228,11 @@ public:
 		{
 			JaxBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			JaxBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			JaxBase().LaneClear();
 		}
@@ -2277,21 +2269,19 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, 1000.f);
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				JayceBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				JayceBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				JayceBase().LaneClear();
-			}
-		//JayceBase().KS();
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			JayceBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			JayceBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			JayceBase().LaneClear();
+		}
+		JayceBase().KS();
 		JayceBase().AutoFormChange();
 		JayceBase().SemiAutoEQ();
 	}
@@ -2340,11 +2330,11 @@ public:
 		{
 			JhinBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			JhinBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			JhinBase().LaneClear();
 		}
@@ -2387,11 +2377,11 @@ public:
 		{
 			JinxBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			JinxBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			JinxBase().LaneClear();
 		}
@@ -2434,11 +2424,11 @@ public:
 		{
 			KalistaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KalistaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KalistaBase().LaneClear();
 		}
@@ -2481,11 +2471,11 @@ public:
 		{
 			KarmaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KarmaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KarmaBase().LaneClear();
 		}
@@ -2528,11 +2518,11 @@ public:
 		{
 			KarthusBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KarthusBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KarthusBase().LaneClear();
 		}
@@ -2575,11 +2565,11 @@ public:
 		{
 			KassadinBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KassadinBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KassadinBase().LaneClear();
 		}
@@ -2622,11 +2612,11 @@ public:
 		{
 			KatarinaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KatarinaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KatarinaBase().LaneClear();
 		}
@@ -2669,11 +2659,11 @@ public:
 		{
 			KayleBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KayleBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KayleBase().LaneClear();
 		}
@@ -2716,11 +2706,11 @@ public:
 		{
 			KennenBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KennenBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KennenBase().LaneClear();
 		}
@@ -2763,11 +2753,11 @@ public:
 		{
 			KhaZixBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KhaZixBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KhaZixBase().LaneClear();
 		}
@@ -2810,11 +2800,11 @@ public:
 		{
 			KindredBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KindredBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KindredBase().LaneClear();
 		}
@@ -2857,11 +2847,11 @@ public:
 		{
 			KledBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KledBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KledBase().LaneClear();
 		}
@@ -2904,11 +2894,11 @@ public:
 		{
 			KogMawBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			KogMawBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			KogMawBase().LaneClear();
 		}
@@ -2951,11 +2941,11 @@ public:
 		{
 			LeBlancBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			LeBlancBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			LeBlancBase().LaneClear();
 		}
@@ -2998,11 +2988,11 @@ public:
 		{
 			LeeSinBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			LeeSinBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			LeeSinBase().LaneClear();
 		}
@@ -3045,11 +3035,11 @@ public:
 		{
 			LeonaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			LeonaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			LeonaBase().LaneClear();
 		}
@@ -3092,11 +3082,11 @@ public:
 		{
 			LissandraBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			LissandraBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			LissandraBase().LaneClear();
 		}
@@ -3133,20 +3123,18 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				LucianBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				LucianBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				LucianBase().LaneClear();
-			}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			LucianBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			LucianBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			LucianBase().LaneClear();
+		}
 		LucianBase().KS();
 		LucianBase().CheckPassive();
 	}
@@ -3195,11 +3183,11 @@ public:
 		{
 			LuluBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			LuluBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			LuluBase().LaneClear();
 		}
@@ -3242,11 +3230,11 @@ public:
 		{
 			LuxBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			LuxBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			LuxBase().LaneClear();
 		}
@@ -3289,11 +3277,11 @@ public:
 		{
 			MalphiteBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			MalphiteBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			MalphiteBase().LaneClear();
 		}
@@ -3336,11 +3324,11 @@ public:
 		{
 			MalzaharBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			MalzaharBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			MalzaharBase().LaneClear();
 		}
@@ -3383,11 +3371,11 @@ public:
 		{
 			MaokaiBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			MaokaiBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			MaokaiBase().LaneClear();
 		}
@@ -3430,11 +3418,11 @@ public:
 		{
 			MasterYiBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			MasterYiBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			MasterYiBase().LaneClear();
 		}
@@ -3471,20 +3459,18 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				MissFortuneBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				MissFortuneBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				MissFortuneBase().LaneClear();
-			}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			MissFortuneBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			MissFortuneBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			MissFortuneBase().LaneClear();
+		}
 		MissFortuneBase().KS();
 		MissFortuneBase().RDamage();
 	}
@@ -3526,11 +3512,11 @@ public:
 		{
 			MordekaiserBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			MordekaiserBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			MordekaiserBase().LaneClear();
 		}
@@ -3567,20 +3553,18 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				MorganaBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				MorganaBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				MorganaBase().LaneClear();
-			}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			MorganaBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			MorganaBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			MorganaBase().LaneClear();
+		}
 		MorganaBase().KS();
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
@@ -3628,11 +3612,11 @@ public:
 		{
 			NamiBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			NamiBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			NamiBase().LaneClear();
 		}
@@ -3675,11 +3659,11 @@ public:
 		{
 			NasusBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			NasusBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			NasusBase().LaneClear();
 		}
@@ -3722,11 +3706,11 @@ public:
 		{
 			NautilusBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			NautilusBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			NautilusBase().LaneClear();
 		}
@@ -3769,11 +3753,11 @@ public:
 		{
 			NidaleeBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			NidaleeBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			NidaleeBase().LaneClear();
 		}
@@ -3816,11 +3800,11 @@ public:
 		{
 			NocturneBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			NocturneBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			NocturneBase().LaneClear();
 		}
@@ -3863,11 +3847,11 @@ public:
 		{
 			NunuBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			NunuBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			NunuBase().LaneClear();
 		}
@@ -3910,11 +3894,11 @@ public:
 		{
 			OlafBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			OlafBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			OlafBase().LaneClear();
 		}
@@ -3957,11 +3941,11 @@ public:
 		{
 			OriannaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			OriannaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			OriannaBase().LaneClear();
 		}
@@ -4004,11 +3988,11 @@ public:
 		{
 			PantheonBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			PantheonBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			PantheonBase().LaneClear();
 		}
@@ -4051,11 +4035,11 @@ public:
 		{
 			PoppyBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			PoppyBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			PoppyBase().LaneClear();
 		}
@@ -4098,11 +4082,11 @@ public:
 		{
 			QuinnBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			QuinnBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			QuinnBase().LaneClear();
 		}
@@ -4145,11 +4129,11 @@ public:
 		{
 			RammusBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			RammusBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			RammusBase().LaneClear();
 		}
@@ -4192,11 +4176,11 @@ public:
 		{
 			RekSaiBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			RekSaiBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			RekSaiBase().LaneClear();
 		}
@@ -4239,11 +4223,11 @@ public:
 		{
 			RenektonBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			RenektonBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			RenektonBase().LaneClear();
 		}
@@ -4286,11 +4270,11 @@ public:
 		{
 			RengarBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			RengarBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			RengarBase().LaneClear();
 		}
@@ -4333,11 +4317,11 @@ public:
 		{
 			RivenBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			RivenBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			RivenBase().LaneClear();
 		}
@@ -4380,11 +4364,11 @@ public:
 		{
 			RumbleBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			RumbleBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			RumbleBase().LaneClear();
 		}
@@ -4421,20 +4405,18 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				RyzeBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				RyzeBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				RyzeBase().LaneClear();
-			}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			RyzeBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			RyzeBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			RyzeBase().LaneClear();
+		}
 		RyzeBase().KS();
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
@@ -4482,11 +4464,11 @@ public:
 		{
 			SejuaniBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			SejuaniBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			SejuaniBase().LaneClear();
 		}
@@ -4529,11 +4511,11 @@ public:
 		{
 			ShacoBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ShacoBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ShacoBase().LaneClear();
 		}
@@ -4576,11 +4558,11 @@ public:
 		{
 			ShenBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ShenBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ShenBase().LaneClear();
 		}
@@ -4623,11 +4605,11 @@ public:
 		{
 			ShyvanaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ShyvanaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ShyvanaBase().LaneClear();
 		}
@@ -4670,11 +4652,11 @@ public:
 		{
 			SingedBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			SingedBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			SingedBase().LaneClear();
 		}
@@ -4717,11 +4699,11 @@ public:
 		{
 			SionBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			SionBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			SionBase().LaneClear();
 		}
@@ -4764,11 +4746,11 @@ public:
 		{
 			SivirBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			SivirBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			SivirBase().LaneClear();
 		}
@@ -4811,11 +4793,11 @@ public:
 		{
 			SkarnerBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			SkarnerBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			SkarnerBase().LaneClear();
 		}
@@ -4858,11 +4840,11 @@ public:
 		{
 			SonaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			SonaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			SonaBase().LaneClear();
 		}
@@ -4905,11 +4887,11 @@ public:
 		{
 			SorakaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			SorakaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			SorakaBase().LaneClear();
 		}
@@ -4952,11 +4934,11 @@ public:
 		{
 			SwainBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			SwainBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			SwainBase().LaneClear();
 		}
@@ -4999,11 +4981,11 @@ public:
 		{
 			SyndraBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			SyndraBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			SyndraBase().LaneClear();
 		}
@@ -5046,11 +5028,11 @@ public:
 		{
 			TahmKenchBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			TahmKenchBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			TahmKenchBase().LaneClear();
 		}
@@ -5093,11 +5075,11 @@ public:
 		{
 			TaliyahBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			TaliyahBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			TaliyahBase().LaneClear();
 		}
@@ -5140,11 +5122,11 @@ public:
 		{
 			TalonBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			TalonBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			TalonBase().LaneClear();
 		}
@@ -5187,11 +5169,11 @@ public:
 		{
 			TaricBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			TaricBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			TaricBase().LaneClear();
 		}
@@ -5228,20 +5210,18 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				TeemoBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				TeemoBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				TeemoBase().LaneClear();
-			}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			TeemoBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			TeemoBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			TeemoBase().LaneClear();
+		}
 		TeemoBase().KS();
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
@@ -5282,11 +5262,11 @@ public:
 		{
 			ThreshBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ThreshBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ThreshBase().LaneClear();
 		}
@@ -5329,11 +5309,11 @@ public:
 		{
 			TristanaBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			TristanaBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			TristanaBase().LaneClear();
 		}
@@ -5376,11 +5356,11 @@ public:
 		{
 			TrundleBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			TrundleBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			TrundleBase().LaneClear();
 		}
@@ -5423,11 +5403,11 @@ public:
 		{
 			TryndamereBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			TryndamereBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			TryndamereBase().LaneClear();
 		}
@@ -5464,20 +5444,18 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				TwistedFateBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				TwistedFateBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				TwistedFateBase().LaneClear();
-			}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			TwistedFateBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			TwistedFateBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			TwistedFateBase().LaneClear();
+		}
 		TwistedFateBase().KS();
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
@@ -5525,11 +5503,11 @@ public:
 		{
 			TwitchBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			TwitchBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			TwitchBase().LaneClear();
 		}
@@ -5572,11 +5550,11 @@ public:
 		{
 			UdyrBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			UdyrBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			UdyrBase().LaneClear();
 		}
@@ -5619,11 +5597,11 @@ public:
 		{
 			UrgotBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			UrgotBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			UrgotBase().LaneClear();
 		}
@@ -5660,20 +5638,18 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				VarusBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				VarusBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				VarusBase().LaneClear();
-			}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			VarusBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			VarusBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			VarusBase().LaneClear();
+		}
 		VarusBase().KS();
 		VarusBase().RDamage();
 	}
@@ -5722,11 +5698,11 @@ public:
 		{
 			VayneBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			VayneBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			VayneBase().LaneClear();
 		}
@@ -5769,11 +5745,11 @@ public:
 		{
 			VeigarBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			VeigarBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			VeigarBase().LaneClear();
 		}
@@ -5816,11 +5792,11 @@ public:
 		{
 			VelKozBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			VelKozBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			VelKozBase().LaneClear();
 		}
@@ -5863,11 +5839,11 @@ public:
 		{
 			ViBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ViBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ViBase().LaneClear();
 		}
@@ -5910,11 +5886,11 @@ public:
 		{
 			ViktorBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ViktorBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ViktorBase().LaneClear();
 		}
@@ -5957,11 +5933,11 @@ public:
 		{
 			VladimirBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			VladimirBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			VladimirBase().LaneClear();
 		}
@@ -6004,11 +5980,11 @@ public:
 		{
 			VolibearBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			VolibearBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			VolibearBase().LaneClear();
 		}
@@ -6051,11 +6027,11 @@ public:
 		{
 			WarwickBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			WarwickBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			WarwickBase().LaneClear();
 		}
@@ -6098,11 +6074,11 @@ public:
 		{
 			WukongBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			WukongBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			WukongBase().LaneClear();
 		}
@@ -6139,20 +6115,18 @@ public:
 	}
 	void OnGameUpdate() override
 	{
-		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto target : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
-			{
-				XerathBase().Combo();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
-			{
-				XerathBase().Harass();
-			}
-			else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
-			{
-				XerathBase().LaneClear();
-			}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
+		{
+			XerathBase().Combo();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		{
+			XerathBase().Harass();
+		}
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		{
+			XerathBase().LaneClear();
+		}
 		XerathBase().KS();
 		XerathBase().InitialR();
 		XerathBase().RDamage();
@@ -6202,11 +6176,11 @@ public:
 		{
 			XinZhaoBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			XinZhaoBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			XinZhaoBase().LaneClear();
 		}
@@ -6295,11 +6269,11 @@ public:
 		{
 			YorickBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			YorickBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			YorickBase().LaneClear();
 		}
@@ -6342,11 +6316,11 @@ public:
 		{
 			ZacBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ZacBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ZacBase().LaneClear();
 		}
@@ -6389,11 +6363,11 @@ public:
 		{
 			ZedBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ZedBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ZedBase().LaneClear();
 		}
@@ -6436,11 +6410,11 @@ public:
 		{
 			ZiggsBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ZiggsBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ZiggsBase().LaneClear();
 		}
@@ -6483,11 +6457,11 @@ public:
 		{
 			ZileanBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ZileanBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ZileanBase().LaneClear();
 		}
@@ -6530,11 +6504,11 @@ public:
 		{
 			ZyraBase().Combo();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
 			ZyraBase().Harass();
 		}
-		else if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
+		if (GOrbwalking->GetOrbwalkingMode() == kModeLaneClear)
 		{
 			ZyraBase().LaneClear();
 		}
