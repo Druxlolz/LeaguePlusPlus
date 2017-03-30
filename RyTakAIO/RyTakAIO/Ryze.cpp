@@ -76,37 +76,22 @@ public:
 			{
 				if (UseCombo->Enabled())
 				{
-					switch (kSlotUnknown)
+					if (ShieldC->Enabled())
 					{
-					default:
+						ShieldCombo();
+					}
+					if (StunC->Enabled())
 					{
-						if (ShieldC->Enabled())
-						{
-							ShieldCombo();
-						}
+						StunCombo();
 					}
-					case 1:
+					if (DelayC->Enabled())
 					{
-						if (StunC->Enabled())
-						{
-							StunCombo();
-						}
+						DelayE();
 					}
-					case 2:
+					if (DelayQC->Enabled())
 					{
-						if (DelayC->Enabled())
-						{
-							DelayE();
-						}
-					}
-					case 3:
-					{
-						if (DelayQC->Enabled())
-						{
-							DelayEQ();
-						}
-					}
-					}
+						DelayEQ();
+					}					
 				}
 			}
 		}
