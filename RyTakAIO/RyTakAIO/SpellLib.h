@@ -17,7 +17,7 @@ public:
 
 	void Aatrox()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kCircleCast, false, true, (kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kCircleCast, false, true, (kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.6f, 250.f, 2000.f, 650.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "AatroxQ";
 
@@ -40,19 +40,19 @@ public:
 
 	void Ahri()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 100.f, 2500.f, 1000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "AhriOrbOfDeception";
 
-		W = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, true, true, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		W = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, true, true, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		W->SetSkillshot(0.f, 0.f, 900.f, 550.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "AhriFoxFire";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		E->SetSkillshot(0.25f, 60.f, 1550.f, 1000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "AhriSeduce";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kCircleCast, false, true, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		R = GPluginSDK->CreateSpell2(kSlotR, kCircleCast, false, true, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		R->SetSkillshot(0.f, 600.f, 2200.f, 450.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "AhriTumble";
 	}
@@ -97,7 +97,7 @@ public:
 
 	void Amumu()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithHeroes, kCollidesWithMinions, kCollidesWithYasuoWall));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithHeroes | kCollidesWithMinions | kCollidesWithYasuoWall));
 		Q->SetSkillshot(0.25f, 90.f, 2000.f, 1100.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "BandageToss";
 
@@ -158,7 +158,7 @@ public:
 		Q->SetSkillshot(0.25f, 0.f, 2500.f, FLT_MAX);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "AsheQ";
 
-		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, true, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, true, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		W->SetSkillshot(0.2f, 57.5f, 2000.f, 1200.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "Volley";
 
@@ -166,7 +166,7 @@ public:
 		E->SetSkillshot(0.25f, 300.f, 1400.f, 25000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "AsheSpiritOfTheHawk";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes));
+		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes));
 		R->SetSkillshot(0.25f, 130.f, 1600.f, FLT_MAX);
 	}
 
@@ -218,7 +218,7 @@ public:
 
 	void Blitzcrank()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions, kCollidesWithHeroes, kCollidesWithYasuoWall));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 		Q->SetSkillshot(0.25f, 70.f, 1800.f, 1050.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "RocketGrab";
 
@@ -237,7 +237,7 @@ public:
 
 	void Brand()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions, kCollidesWithHeroes, kCollidesWithYasuoWall));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 		Q->SetSkillshot(0.25f, 60.f, 1600.f, 1100.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "BrandQ";
 
@@ -249,14 +249,14 @@ public:
 		E->SetSkillshot(0.25f, 0.f, 1000.f, 625.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "BrandE";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kTargetCast, true, true, (kCollidesWithMinions, kCollidesWithHeroes, kCollidesWithYasuoWall));
+		R = GPluginSDK->CreateSpell2(kSlotR, kTargetCast, true, true, (kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 		R->SetSkillshot(0.25f, 600.f, 1000.f, 750.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "BrandR";
 	}
 
 	void Braum()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions, kCollidesWithHeroes, kCollidesWithYasuoWall));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 		Q->SetSkillshot(0.25f, 60.f, 1700.f, 1050.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "BraumQ";
 
@@ -283,11 +283,11 @@ public:
 		W->SetSkillshot(1.1f, 100.f, 3200.f, 800.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "CaitlynYordleTrap";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		E->SetSkillshot(0.25f, 90.f, 1600.f, 950.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "CaitlynEntrapment";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kTargetCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes));
+		R = GPluginSDK->CreateSpell2(kSlotR, kTargetCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes));
 		R->SetOverrideDelay(3.0f);
 		R->SetOverrideSpeed(1000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "CaitlynAceintheHole";
@@ -354,7 +354,7 @@ public:
 		E->SetSkillshot(0.3f, 40.f, 1500.f, 600.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "GGun";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		R->SetSkillshot(0.175f, 40.f, 2000.f, 1300.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "MissileBarrage";
 		//if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "MissileBarrage2")
@@ -403,7 +403,7 @@ public:
 
 	void DrMundo()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions, kCollidesWithHeroes, kCollidesWithYasuoWall));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 		Q->SetSkillshot(0.25f, 60.f, 2000.f, 1050.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "InfectedCleaverMissileCast";
 
@@ -469,7 +469,7 @@ public:
 		W->SetSkillshot(3.0f, 235.f, 1000.f, 975.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "EliseHumanW";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithMinions, kCollidesWithHeroes, kCollidesWithYasuoWall));
+		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 		E->SetSkillshot(0.25f, 55.f, 1600.f, 1100.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "EliseHumanE";
 
@@ -512,7 +512,7 @@ public:
 
 	void Ezreal()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 60.f, 2000.f, 1200.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "EzrealMysticShot";
 
@@ -585,7 +585,7 @@ public:
 		E2->SetSkillshot(0.25f, 270.f, 1000.f, 400.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "FizzJumpTwo";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kCircleCast, true, false, (kCollidesWithHeroes, kCollidesWithYasuoWall));
+		R = GPluginSDK->CreateSpell2(kSlotR, kCircleCast, true, false, (kCollidesWithHeroes | kCollidesWithYasuoWall));
 		R->SetSkillshot(0.25f, 120.f, 1350.f, 1300.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "FizzMarinerDoom";
 	}
@@ -690,7 +690,7 @@ public:
 		W->SetSkillshot(1.25f, 0.f, 1000.f, FLT_MAX);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "GragasW";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, false, false, (kCollidesWithHeroes, kCollidesWithMinions));
+		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, false, false, (kCollidesWithHeroes | kCollidesWithMinions));
 		E->SetSkillshot(0.f, 200.f, 1200.f, 950.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "GragasE";
 
@@ -800,7 +800,7 @@ public:
 
 	void Ivern()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithHeroes, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithHeroes | kCollidesWithHeroes | kCollidesWithMinions));
 		W = GPluginSDK->CreateSpell2(kSlotW, kCircleCast, false, false, (kCollidesWithNothing));
 		E = GPluginSDK->CreateSpell2(kSlotE, kTargetCast, false, true, (kCollidesWithNothing));
 		R = GPluginSDK->CreateSpell2(kSlotR, kCircleCast, false, false, (kCollidesWithNothing));
@@ -882,7 +882,7 @@ public:
 		R = GPluginSDK->CreateSpell2(kSlotR, kTargetCast, false, false, kCollidesWithNothing);
 
 		//Ranged Form
-		Q2 = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q2 = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q2->SetSkillshot(0.25f, 70.f, 1450.f, 1470.f);
 
 		W2 = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, false, false, kCollidesWithYasuoWall);
@@ -900,7 +900,7 @@ public:
 		Q->SetSkillshot(0.25f, 0.f, 1000.f, 550.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "JhinQ";
 
-		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes));
+		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes));
 		W->SetSkillshot(0.75f, 40.f, 5000.f, 2550.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "JhinW";
 
@@ -908,7 +908,7 @@ public:
 		E->SetSkillshot(1.0f, 260.f, 1000.f, 750.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "JhinE";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes));
+		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes));
 		R->SetSkillshot(0.25f, 80.f, 5000.f, 3500.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "JhinRShot";
 	}
@@ -919,22 +919,22 @@ public:
 		Q->SetSkillshot(0.25f, 0.f, 1000.f, 150.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "JinxQ";
 
-		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		W->SetSkillshot(0.6f, 60.f, 3300.f, 1500.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "JinxW";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kCircleCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes));
+		E = GPluginSDK->CreateSpell2(kSlotE, kCircleCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes));
 		E->SetSkillshot(1.5f, 50.f, 1000.f, 900.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "JinxE";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes));
+		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes));
 		R->SetSkillshot(0.6f, 140.f, 1700.f, 20000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "JinxR";
 	}
 
 	void Kalista()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 40.f, 1700.f, 1200.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "KalistaMysticShot";
 
@@ -953,7 +953,7 @@ public:
 
 	void Karma()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 60.f, 1700.f, 1050.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "KarmaQ";
 		//if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "KarmaQMantra")
@@ -1060,7 +1060,7 @@ public:
 
 	void Kennen()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.125f, 50.f, 1700.f, 1050.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "KennenShurikenHurlMissile1";
 
@@ -1083,7 +1083,7 @@ public:
 		Q->SetSkillshot(0.25f, 50.f, 1400.f, 325.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "KhazixQ";
 
-		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		W->SetSkillshot(0.25f, 73.f, 1700.f, 1025.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "KhazixW";
 
@@ -1118,7 +1118,7 @@ public:
 	void Kled()
 	{
 		//Mounted
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithHeroes, kCollidesWithMinions, kCollidesWithYasuoWall));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithHeroes | kCollidesWithMinions | kCollidesWithYasuoWall));
 		W = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, false, false, (kCollidesWithNothing));
 		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, false, false, (kCollidesWithNothing));
 		R = GPluginSDK->CreateSpell2(kSlotR, kCircleCast, false, false, (kCollidesWithNothing));
@@ -1129,7 +1129,7 @@ public:
 
 	void KogMaw()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 70.f, 1650.f, 1200.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "KogMawQ";
 
@@ -1156,7 +1156,7 @@ public:
 		W->SetSkillshot(0.f, 220.f, 1450.f, 600.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "LeblancSlide";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, false, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, false, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		E->SetSkillshot(0.25f, 70.f, 1750.f, 950.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "LeblancSoulShackle";
 
@@ -1178,7 +1178,7 @@ public:
 
 	void LeeSin()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 65.f, 1800.f, 1100.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "BlindMonkQOne";
 		if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "BlindMonkQTwo")
@@ -1300,7 +1300,7 @@ public:
 
 	void Lux()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 70.f, 1200.f, 1300.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "LuxLightBinding";
 
@@ -1433,7 +1433,7 @@ public:
 
 	void Morgana()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 80.f, 1200.f, 1075.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "DarkBindingMissile";
 
@@ -1490,7 +1490,7 @@ public:
 
 	void Nautilus()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 90.f, 2000.f, 1250.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "NautilusAnchorDrag";
 
@@ -1510,7 +1510,7 @@ public:
 	void Nidalee()
 	{
 		//Human Form
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 40.f, 1300.f, 1500.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "JavelinToss";
 
@@ -1656,7 +1656,7 @@ public:
 
 	void Quinn()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.3f, 60.f, 1550.f, 1050.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "QuinnQ";
 
@@ -1675,7 +1675,7 @@ public:
 
 	void Rammus()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kTargetCast, false, false, (kCollidesWithMinions, kCollidesWithHeroes));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kTargetCast, false, false, (kCollidesWithMinions | kCollidesWithHeroes));
 		Q->SetSkillshot(0.25f, 0.f, 1000.f, FLT_MAX);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "PowerBall";
 
@@ -1712,7 +1712,7 @@ public:
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "RekSaiR";
 
 		//Burrowed
-		Q2 = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q2 = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q2->SetSkillshot(0.5f, 60.f, 1950.f, 1625.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "RekSaiQBurrowed";
 
@@ -1754,7 +1754,7 @@ public:
 		W->SetSkillshot(0.25f, 500.f, 1000.f, 500.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "RengarW";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		E->SetSkillshot(0.25f, 70.f, 1500.f, 1000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "RengarE";
 
@@ -1796,7 +1796,7 @@ public:
 		W->SetSkillshot(0.25f, 0.f, 1000.f, FLT_MAX);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "RumbleShield";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		E = GPluginSDK->CreateSpell2(kSlotE, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		E->SetSkillshot(0.25f, 60.f, 2000.f, 950.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "RumbleGrenade";
 
@@ -1807,7 +1807,7 @@ public:
 
 	void Ryze()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions, kCollidesWithHeroes, kCollidesWithYasuoWall));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 		Q->SetSkillshot(0.25f, 50.f, 1700.f, 990.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "RyzeQ";
 
@@ -1815,7 +1815,7 @@ public:
 		W->SetSkillshot(0.25f, 0.f, 1000.f, 600.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "RyzeW";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kTargetCast, true, false, (kCollidesWithMinions, kCollidesWithHeroes, kCollidesWithYasuoWall));
+		E = GPluginSDK->CreateSpell2(kSlotE, kTargetCast, true, false, (kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 		E->SetSkillshot(0.25f, 0.f, 1000.f, 600.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "RyzeE";
 
@@ -1826,7 +1826,7 @@ public:
 
 	void Sejuani()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, false, true, (kCollidesWithHeroes, kCollidesWithMinions, kCollidesWithYasuoWall));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, false, true, (kCollidesWithHeroes | kCollidesWithMinions | kCollidesWithYasuoWall));
 		Q->SetSkillshot(0.f, 70.f, 1600.f, 900.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "SejuaniArcticAssault";
 
@@ -1838,7 +1838,7 @@ public:
 		E->SetSkillshot(0.25f, 0.f, 1000.f, FLT_MAX);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "SejuaniWintersClaw";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes));
+		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes));
 		R->SetSkillshot(0.25f, 110.f, 1600.f, 1100.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "SejuaniGlacialPrisonStart";
 	}
@@ -2056,7 +2056,7 @@ public:
 
 	void TahmKench()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 70.f, 2000.f, 800.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "TahmKenchQ";
 
@@ -2075,7 +2075,7 @@ public:
 
 	void Taliyah()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 100.f, 3600.f, 1000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "TaliyahQ";
 
@@ -2151,7 +2151,7 @@ public:
 
 	void Thresh()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.5f, 70.f, 1900.f, 1100.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "ThreshQ";
 
@@ -2288,7 +2288,7 @@ public:
 
 	void Urgot()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.125f, 60.f, 1600.f, 1000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "UrgotHeatseekingLineMissile";
 
@@ -2307,7 +2307,7 @@ public:
 
 	void Varus()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, false, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, false, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 50.f, 1850.f, 925.f);
 		Q->SetCharged(925.f, 1600.f, 1.5f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "VarusQ";
@@ -2320,7 +2320,7 @@ public:
 		E->SetSkillshot(0.25f, 200.f, 1000.f, 925.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "VarusE";
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, false, true, (kCollidesWithYasuoWall, kCollidesWithHeroes));
+		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, false, true, (kCollidesWithYasuoWall | kCollidesWithHeroes));
 		R->SetSkillshot(0.25f, 50.f, 1850.f, 1075.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "VarusR";
 	}
@@ -2365,7 +2365,7 @@ public:
 
 	void VelKoz()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 50.f, 1300.f, 1100.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "VelkozQ";
 
@@ -2507,7 +2507,7 @@ public:
 		W->SetSkillshot(0.7f, 200.f, 1000.f, 1000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "XerathArcaneBarrage2";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kCircleCast, true, false, (kCollidesWithMinions, kCollidesWithYasuoWall, kCollidesWithHeroes));
+		E = GPluginSDK->CreateSpell2(kSlotE, kCircleCast, true, false, (kCollidesWithMinions | kCollidesWithYasuoWall | kCollidesWithHeroes));
 		E->SetSkillshot(0.2f, 60.f, 1400.f, 1150.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "XerathMageSpear";
 
@@ -2616,7 +2616,7 @@ public:
 
 	void Ziggs()
 	{
-		Q = GPluginSDK->CreateSpell2(kSlotQ, kCircleCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kCircleCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		Q->SetSkillshot(0.25f, 140.f, 1700.f, 850.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "ZiggsQ";
 
@@ -2624,7 +2624,7 @@ public:
 		W->SetSkillshot(0.25f, 275.f, 1750.f, 1000.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotW)) == "ZiggsW";
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kCircleCast, true, false, (kCollidesWithYasuoWall, kCollidesWithHeroes, kCollidesWithMinions));
+		E = GPluginSDK->CreateSpell2(kSlotE, kCircleCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes | kCollidesWithMinions));
 		E->SetSkillshot(0.5f, 235.f, 1750.f, 900.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "ZiggsE";
 
