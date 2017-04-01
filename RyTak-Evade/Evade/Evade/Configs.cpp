@@ -29,7 +29,7 @@ IMenuOption* EvadeMenuOptions::GetOptionForSpellName(std::string const Name)
 
 void EvadeMenuOptions::LoadMenuOptions()
 {
-	EvadeParent		= GPluginSDK->AddMenu("vEvade++");
+	EvadeParent		= GPluginSDK->AddMenu("RyTak's vEvade++");
 	IMenu* pSpells	= EvadeParent->AddMenu("Evade - Spells");
 
 	LoadSpecialSpellPlugins();
@@ -140,14 +140,14 @@ void EvadeMenuOptions::LoadMenuOptions()
 
 	auto pMisc = EvadeParent->AddMenu("Evade - Misc");
 
-	CheckCollision = pMisc->CheckBox("Check Collisions", false);
+	CheckCollision = pMisc->CheckBox("Check Collisions", true);
 	CheckHp = pMisc->CheckBox("Check Player Hp", false);
 	CheckBlock = pMisc->CheckBox("Block Cast While Dodge Dangerous", true);
 	DodgeFoW = pMisc->CheckBox("Dodge FoW Spells", true);
 	DodgeLine = pMisc->CheckBox("Dodge Line Spells", true);
 	DodgeCircle = pMisc->CheckBox("Dodge Circle Spells", true);
 	DodgeCone = pMisc->CheckBox("Dodge Cone Spells", true);
-	DodgeTrap = pMisc->CheckBox("Dodge Traps", false);
+	DodgeTrap = pMisc->CheckBox("Dodge Traps", true);
 
 	auto pDraw = EvadeParent->AddMenu("Evade - Draw");
 
