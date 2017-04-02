@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>util.h</FILENAME>
+      <LINE>147</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>6201</DEFECTCODE>
+    <DESCRIPTION>Index '15' is out of valid index range '0' to '0' for possibly stack allocated buffer 'class IInventoryItem * * `int __cdecl Util::GetWardSlot(void)'::`2'::pWardItems'.</DESCRIPTION>
+    <FUNCTION>Util::GetWardSlot</FUNCTION>
+    <DECORATED>?GetWardSlot@Util@@YAHXZ</DECORATED>
+    <FUNCLINE>135</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>39</LINE>
+      <COLUMN>275</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>40</LINE>
+      <COLUMN>272</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>51</LINE>
+      <COLUMN>310</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>63</LINE>
+      <COLUMN>282</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>78</LINE>
+      <COLUMN>324</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>98</LINE>
+      <COLUMN>330</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>103</LINE>
+      <COLUMN>271</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>108</LINE>
+      <COLUMN>271</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>116</LINE>
+      <COLUMN>287</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>137</LINE>
+      <COLUMN>302</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>138</LINE>
+      <COLUMN>311</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>153</LINE>
+      <COLUMN>280</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>169</LINE>
+      <COLUMN>294</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>177</LINE>
+      <COLUMN>273</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>200</LINE>
+      <COLUMN>316</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>209</LINE>
+      <COLUMN>281</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>228</LINE>
+      <COLUMN>420</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>229</LINE>
+      <COLUMN>392</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>237</LINE>
+      <COLUMN>297</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>246</LINE>
+      <COLUMN>264</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>261</LINE>
+      <COLUMN>318</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>262</LINE>
+      <COLUMN>302</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>272</LINE>
+      <COLUMN>302</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>278</LINE>
+      <COLUMN>277</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>282</LINE>
+      <COLUMN>251</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>283</LINE>
+      <COLUMN>369</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>296</LINE>
+      <COLUMN>299</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>300</LINE>
+      <COLUMN>312</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>312</LINE>
+      <COLUMN>248</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>319</LINE>
+      <COLUMN>311</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>320</LINE>
+      <COLUMN>307</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>324</LINE>
+      <COLUMN>280</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>342</LINE>
+      <COLUMN>282</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>343</LINE>
+      <COLUMN>309</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>374</LINE>
+      <COLUMN>310</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>383</LINE>
+      <COLUMN>308</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>387</LINE>
+      <COLUMN>278</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>415</LINE>
+      <COLUMN>306</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>419</LINE>
+      <COLUMN>280</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>428</LINE>
+      <COLUMN>266</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>429</LINE>
+      <COLUMN>295</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>439</LINE>
+      <COLUMN>312</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>444</LINE>
+      <COLUMN>240</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>499</LINE>
+      <COLUMN>286</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>503</LINE>
+      <COLUMN>326</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>519</LINE>
+      <COLUMN>306</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>545</LINE>
+      <COLUMN>295</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>562</LINE>
+      <COLUMN>255</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>563</LINE>
+      <COLUMN>281</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>579</LINE>
+      <COLUMN>308</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>spelldb.cpp</FILENAME>
+      <LINE>594</LINE>
+      <COLUMN>306</COLUMN>
+    </SFA>
+    <DEFECTCODE>6285</DEFECTCODE>
+    <DESCRIPTION>(&lt;non-zero constant&gt; || &lt;non-zero constant&gt;) is always a non-zero constant.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>SpellDB::{ctor}</FUNCTION>
+    <DECORATED>??0SpellDB@@QAE@XZ</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILENAME>util.h</FILENAME>
+      <LINE>147</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>6201</DEFECTCODE>
+    <DESCRIPTION>Index '15' is out of valid index range '0' to '0' for possibly stack allocated buffer 'class IInventoryItem * * `int __cdecl Util::GetWardSlot(void)'::`2'::pWardItems'.</DESCRIPTION>
+    <FUNCTION>Util::GetWardSlot</FUNCTION>
+    <DECORATED>?GetWardSlot@Util@@YAHXZ</DECORATED>
+    <FUNCLINE>135</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>
