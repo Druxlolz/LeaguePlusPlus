@@ -95,7 +95,7 @@ SpellDB::SpellDB()
 #pragma endregion Bard
 
 #pragma region Blitzcrank
-	Spells.push_back(CreateSpell()->_ChampName("Blitzcrank")->_MenuName("BlitzcrankQ")->_SpellName("RocketGrab")->_DangerValue(4)->_MissileName("RocketGrabMissile")->_Type(ST_MissileLine)->_MissileSpeed(1800)->_Range(1050)->_Radius(85)->_FixedRange(true)->_DontCross(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Blitzcrank")->_MenuName("BlitzcrankQ")->_SpellName("RocketGrab")->_DangerValue(4)->_MissileName("RocketGrabMissile")->_Type(ST_MissileLine)->_MissileSpeed(1800)->_Range(1050)->_Radius(85)->_AddHitbox(true)->_FixedRange(true)->_DontCross(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Blitzcrank")->_DangerValue(2)->_MenuName("BlitzcrankR")->_SpellName("StaticField")->_AddHitbox(false)->_Slot(kSlotR)->_Type(ST_Circle)->_Radius(600));
 #pragma endregion Blitzcrank
 
@@ -185,7 +185,7 @@ SpellDB::SpellDB()
 
 #pragma region Fizz
 	Spells.push_back(CreateSpell()->_ChampName("Fizz")->_DangerValue(2)->_MenuName("FizzQ")->_SpellName("FizzQ")->_Slot(kSlotQ)->_Range(550)->_Delay(250)->_FixedRange(true)->_IsDash(true)->_MissileSpeed(3000)->_Radius(60)->_Type(ST_Line)->_AddHitbox(true)->_IsDangerous(true));
-	Spells.push_back(CreateSpell()->_ChampName("Fizz")->_MenuName("FizzR")->_MissileName("FizzRMissile")->_SpellName("FizzR")->_DangerValue(5)->_Slot(kSlotR)->_Range(1275)->_MissileSpeed(1300)->_Delay(250)->_Radius(110)->_ExtraDuration(2300)->_DontCross(true)->_HasEndExplosion(true)->_IsDangerous(true)->_CanBeRemoved(true)->_RadiusEx(200)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Fizz")->_MenuName("FizzR")->_MissileName("FizzRMissile")->_SpellName("FizzR")->_DangerValue(5)->_Slot(kSlotR)->_Type(ST_Circle)->_Range(1275)->_MissileSpeed(1300)->_Delay(250)->_Radius(110)->_ExtraDuration(2300)->_DontCross(true)->_HasEndExplosion(true)->_IsDangerous(true)->_CanBeRemoved(true)->_RadiusEx(200)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Fizz
 
 #pragma region Galio
@@ -519,7 +519,7 @@ SpellDB::SpellDB()
 #pragma endregion Taric
 
 #pragma region Thresh
-	Spells.push_back(CreateSpell()->_ChampName("Thresh")->_MenuName("ThreshQ")->_MissileName("ThreshQMissile")->_SpellName("ThreshQ")->_DangerValue(3)->_Delay(500)->_MissileSpeed(1900)->_Range(1100)->_Radius(70)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Thresh")->_MenuName("ThreshQ")->_MissileName("ThreshQMissile")->_SpellName("ThreshQ")->_DangerValue(3)->_Delay(500)->_MissileSpeed(1900)->_Slot(kSlotQ)->_Range(1100)->_Radius(70)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Thresh")->_MenuName("ThreshE")->_MissileName("ThreshEMissile1")->_SpellName("ThreshE")->_DangerValue(3)->_Delay(0)->_MissileSpeed(2000)->_Slot(kSlotE)->_Range(1075)->_Radius(110)->_FixedRange(true)->_IsDangerous(true)->_MissileOnly(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Thresh
 

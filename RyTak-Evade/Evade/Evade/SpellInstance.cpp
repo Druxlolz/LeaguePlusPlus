@@ -93,10 +93,14 @@ SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, V
 	switch (Type)
 	{
 	case ST_Line:
+		Line = Polygons::Line(Start, End, GetRadius());
+		break;
 	case ST_MissileLine:
 		Line = Polygons::Line(Start, End, GetRadius());
 		break;
 	case ST_Cone:
+		Cone = Polygons::Cone(Start, Direction, GetRadius(), data.GetRange());
+		break;
 	case ST_MissileCone:
 		Cone = Polygons::Cone(Start, Direction, GetRadius(), data.GetRange());
 		break;
@@ -138,10 +142,14 @@ bool SpellInstance::IsEnabled()
 		switch (Type)
 		{
 		case ST_Line:
+			cachedValue = Configs->DodgeLine->Enabled();
+			break;
 		case ST_MissileLine:
 			cachedValue = Configs->DodgeLine->Enabled();
 			break;
 		case ST_Cone:
+			cachedValue = Configs->DodgeCone->Enabled();
+			break;
 		case ST_MissileCone:
 			cachedValue = Configs->DodgeCone->Enabled();
 			break;
@@ -494,9 +502,7 @@ void SpellInstance::UpdatePolygon()
 		break;
 	case ST_MissileLine:
 		Polygon = Line.ToPolygon(iExtraRadius);
-		DrawPolygon = Line.ToPolygon(
-			0,
-			GetRadius() - (!Data.AddHitbox ? 0 : static_cast<int>(GEntityList->Player()->BoundingRadius())));
+		DrawPolygon = Line.ToPolygon(0,	GetRadius() - (!Data.AddHitbox ? 0 : static_cast<int>(GEntityList->Player()->BoundingRadius())));
 		PathFindingOuterPolygon = Line.ToPolygon(Configs->PathFindingOuterDistance);
 		PathFindingInnerPolygon = Line.ToPolygon(Configs->PathFindingInnerDistance);
 		break;
@@ -516,7 +522,9 @@ void SpellInstance::UpdatePolygon()
 		Polygon = Circle.ToPolygon(iExtraRadius);
 
 		if (Data.HasStartExplosion || Data.HasEndExplosion)
+		{
 			DrawPolygon = Circle.ToPolygon(0, GetRadius() - static_cast<int>(GEntityList->Player()->BoundingRadius()));
+		}
 		else
 			DrawPolygon = Circle.ToPolygon(0, GetRadius() - (!Data.AddHitbox ? 0 : static_cast<int>(GEntityList->Player()->BoundingRadius())));
 

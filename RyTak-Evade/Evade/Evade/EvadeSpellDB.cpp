@@ -12,6 +12,11 @@ EvadeSpellDB::EvadeSpellDB()
 
 	Spells.push_back(new EvadeSpellData("Walking", 1));
 
+#pragma region Fiora
+	if (szChamp == "Fiora")
+		Spells.push_back(new ShieldData("FioraW", kSlotW, 100, 1, false));
+#pragma endregion Fiora
+
 #pragma region Sivir
 	if (szChamp == "Sivir")
 		Spells.push_back(new ShieldData("SivirE", kSlotE, 100, 1, true));

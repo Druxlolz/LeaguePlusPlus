@@ -105,8 +105,7 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 		}
 	}
 
-	if (Type == ST_Cone || Type == ST_MissileCone || Data->FixedRange
-		|| (Data->GetRange() > 0 && endPos.DistanceTo(startPos) > Data->GetRange()))
+	if (Type == ST_Cone || Type == ST_MissileCone || Data->FixedRange || (Data->GetRange() > 0 && endPos.DistanceTo(startPos) > Data->GetRange()))
 	{
 		endPos = startPos.Extend(endPos, Data->GetRange());
 	}
@@ -282,7 +281,7 @@ void CSpellDetector::OnCreateToggle(IUnit* Source)
 	{
 		auto spell = i.second;
 
-		if (spell->Data.ToggleName.size() != 0 && spell->Type == ST_Circle && spell->MissileObject != nullptr && spell->ToggleObject == nullptr)
+		if (spell->Data.ToggleName.size() != 0 && spell->Type == ST_Circle && spell->MissileObject != nullptr && spell->ToggleObject != nullptr)
 		{
 			std::regex rx(spell->Data.ToggleName);
 
