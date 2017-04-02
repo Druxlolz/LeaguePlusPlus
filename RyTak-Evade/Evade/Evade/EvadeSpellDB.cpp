@@ -15,17 +15,17 @@ EvadeSpellDB::EvadeSpellDB()
 #pragma region Sivir
 	if (szChamp == "Sivir")
 		Spells.push_back(new ShieldData("SivirE", kSlotE, 100, 1, true));
-#pragma endregion
+#pragma endregion Sivir
 
 #pragma region Nocturne
 	if (szChamp == "Nocturne")
 		Spells.push_back(new ShieldData("NocturneW", kSlotW, 100, 1, true));
-#pragma endregion
+#pragma endregion Nocturne
 
 #pragma region Bard
 	if (szChamp == "Bard")
 		Spells.push_back(new MoveBuffData("BardW", kSlotW, 150, 3, []() { return GEntityList->Player()->MovementSpeed() * 1.5f; }));
-#pragma endregion
+#pragma endregion Bard
 
 #pragma region Blitzcrank
 	if (szChamp == "Blitzcrank")
@@ -37,7 +37,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotW) - 1]);
 		}));
 	}
-#pragma endregion
+#pragma endregion Blitzcrank
 
 #pragma region Draven
 	if (szChamp == "Draven")
@@ -49,7 +49,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotW) - 1]);
 		}));
 	}
-#pragma endregion
+#pragma endregion Draven
 
 #pragma region Evelynn
 	if (szChamp == "Evelynn")
@@ -61,22 +61,22 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotW) - 1]);
 		}));
 	}
-#pragma endregion
+#pragma endregion Evelynn
 
 #pragma region Garen
 	if (szChamp == "Garen")
 		Spells.push_back(new MoveBuffData("GarenQ", kSlotQ, 0, 3, []() { return GEntityList->Player()->MovementSpeed() * 1.3f; }));
-#pragma endregion
+#pragma endregion Garen
 
 #pragma region Hecarim
 	if (szChamp == "Hecarim")
 		Spells.push_back(new MoveBuffData("HecarimE", kSlotE, 0, 3, []() { return GEntityList->Player()->MovementSpeed() * 1.25f; }));
-#pragma endregion
+#pragma endregion Hecarim
 
 #pragma region Jayce
 	if (szChamp == "Jayce")
 		Spells.push_back(new MoveBuffData("JayceR", kSlotR, 0, 3, [](){ return GEntityList->Player()->MovementSpeed() + 40.f; }));
-#pragma endregion
+#pragma endregion Jayce
 
 #pragma region Karma
 	if (szChamp == "Karma")
@@ -88,7 +88,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotE) - 1]);
 		}));
 	}
-#pragma endregion
+#pragma endregion Karma
 
 #pragma region Katarina
 	if (szChamp == "Katarina")
@@ -100,7 +100,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotW) - 1]);
 		}));
 	}
-#pragma endregion
+#pragma endregion Katarina
 
 #pragma region Kayle
 	if (szChamp == "Kayle")
@@ -112,17 +112,17 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotW) - 1] + GEntityList->Player()->TotalMagicDamage() / 100 * 0.07f);
 		}));
 	}
-#pragma endregion
+#pragma endregion Kayle
 
 #pragma region Kennen
 	if (szChamp == "Kennen")
 		Spells.push_back(new MoveBuffData("KennenE", kSlotE, 0, 3, []() { return GEntityList->Player()->MovementSpeed() + 225.f; }));
-#pragma endregion
+#pragma endregion Kennen
 
 #pragma region Khazix
 	if (szChamp == "Khazix")
 		Spells.push_back(new MoveBuffData("KhazixR", kSlotR, 0, 5, []() { return GEntityList->Player()->MovementSpeed() * 1.4f; }));
-#pragma endregion
+#pragma endregion Khazix
 
 #pragma region Lulu
 	if (szChamp == "Lulu")
@@ -133,7 +133,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + (0.3f + GEntityList->Player()->TotalMagicDamage() / 100 * 0.05f));
 		}));
 	}
-#pragma endregion
+#pragma endregion Lulu
 
 #pragma region Nunu
 	if (szChamp == "Nunu")
@@ -145,7 +145,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotW) - 1]);
 		}));
 	}
-#pragma endregion
+#pragma endregion Nunu
 
 #pragma region Rumble
 	if (szChamp == "Rumble")
@@ -157,7 +157,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotW) - 1] * (GEntityList->Player()->ManaPercent() > 50 ? 1.5f : 1.f));
 		}));
 	}
-#pragma endregion
+#pragma endregion Rumble
 
 #pragma region Shyvana
 	if (szChamp == "Shyvana")
@@ -169,7 +169,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotW) - 1]);
 		}));
 	}
-#pragma endregion
+#pragma endregion Shyvana
 
 #pragma region Sivir
 	if (szChamp == "Sivir")
@@ -181,7 +181,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotR) - 1]);
 		}));
 	}
-#pragma endregion
+#pragma endregion Sivir
 
 #pragma region Sona
 	if (szChamp == "Sona")
@@ -193,7 +193,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotE) - 1] + GEntityList->Player()->TotalMagicDamage() / 100 * 0.06f);
 		}));
 	}
-#pragma endregion
+#pragma endregion Sona
 
 #pragma region Teemo
 	if (szChamp == "Teemo")
@@ -205,7 +205,7 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotW)] - 1);
 		}));
 	}
-#pragma endregion
+#pragma endregion Teemo
 
 #pragma region Udyr
 	if (szChamp == "Udyr")
@@ -217,12 +217,12 @@ EvadeSpellDB::EvadeSpellDB()
 			return GEntityList->Player()->MovementSpeed() * (1 + flArgs[GEntityList->Player()->GetSpellLevel(kSlotE) - 1]);
 		}));
 	}
-#pragma endregion
+#pragma endregion Udyr
 
 #pragma region Zilean
 	if (szChamp == "Zilean")
 		Spells.push_back(new MoveBuffData("ZileanE", kSlotE, 0, 3, []() { return GEntityList->Player()->MovementSpeed() * 1.55f; }));
-#pragma endregion
+#pragma endregion Zilean
 
 #pragma region Aatrox
 	if (szChamp == "Aatrox")
@@ -231,7 +231,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->Invert = true;
 		Spells.push_back(pSpell);
 	}
-	#pragma endregion
+	#pragma endregion Aatrox
 
 #pragma region Akali
 	if (szChamp == "Akali")
@@ -240,7 +240,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSPell->ValidTargets = VT_EnemyChampions | VT_EnemyMinions;
 		Spells.push_back(pSPell);
 	}
-#pragma endregion
+#pragma endregion Akali
 
 #pragma region Alistar
 	if (szChamp == "Alistar")
@@ -249,7 +249,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSPell->ValidTargets = VT_EnemyChampions | VT_EnemyMinions;
 		Spells.push_back(pSPell);
 	}
-#pragma endregion
+#pragma endregion Alistar
 
 #pragma region Caitlyn
 	if (szChamp == "Caitlyn")
@@ -258,12 +258,12 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->Invert = true;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Caitlyn
 
 #pragma region Corki
 	if (szChamp == "Corki")
 		Spells.push_back(new DashData("CorkiW", kSlotW, 600, false, 250, 1044, 3));
-#pragma endregion
+#pragma endregion Corki
 
 #pragma region Fizz
 	if (szChamp == "Fizz")
@@ -272,7 +272,12 @@ EvadeSpellDB::EvadeSpellDB()
 		pSPell->ValidTargets = VT_EnemyChampions | VT_EnemyMinions;
 		Spells.push_back(pSPell);
 	}
-#pragma endregion
+#pragma endregion Fizz
+
+#pragma region Galio
+	if (szChamp == "Galio")
+		Spells.push_back(new DashData("GalioE", kSlotE, 600, false, 250, 2000, 2));
+#pragma endregion Galio
 
 #pragma region Gnar
 	if (szChamp == "Gnar")
@@ -281,17 +286,17 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->CheckSpellName = "GnarE";
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Gnar
 
 #pragma region Gragas
 	if (szChamp == "Gragas")
 		Spells.push_back(new DashData("GragasE", kSlotE, 600, true, 100, 900, 3));
-#pragma endregion
+#pragma endregion Gragas
 
 #pragma region Graves
 	if (szChamp == "Graves")
 		Spells.push_back(new DashData("GravesE", kSlotE, 425, true, 100, 1223, 3));
-#pragma endregion
+#pragma endregion Graves
 
 #pragma region Irelia
 	if (szChamp == "Irelia")
@@ -300,7 +305,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->ValidTargets = VT_EnemyChampions | VT_EnemyMinions;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Irelia
 
 #pragma region Jax
 	if (szChamp == "Jax")
@@ -309,7 +314,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSPell->ValidTargets = VT_AllyChampions | VT_AllyMinions | VT_AllyWards | VT_EnemyChampions | VT_EnemyMinions | VT_EnemyWards;
 		Spells.push_back(pSPell);
 	}
-#pragma endregion
+#pragma endregion Jax
 
 #pragma region Leblanc
 	if (szChamp == "Leblanc")
@@ -318,7 +323,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->CheckSpellName = "LeblancSlide";
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Leblanc
 
 #pragma region LeeSin
 	if (szChamp == "LeeSin")
@@ -329,12 +334,12 @@ EvadeSpellDB::EvadeSpellDB()
 		Spells.push_back(pSPell);
 	}
 
-#pragma endregion
+#pragma endregion LeeSin
 
 #pragma region Lucian
 	if (szChamp == "Lucian")
 		Spells.push_back(new DashData("LucianE", kSlotE, 425, false, 100, 1350, 2));
-#pragma endregion
+#pragma endregion Lucian
 
 #pragma region Nidalee
 	if (szChamp == "Nidalee")
@@ -343,7 +348,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSPell->CheckSpellName = "Pounce";
 		Spells.push_back(pSPell);
 	}
-#pragma endregion
+#pragma endregion Nidalee
 
 #pragma region Pantheon
 	if (szChamp == "Pantheon")
@@ -352,7 +357,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->ValidTargets = VT_EnemyChampions | VT_EnemyMinions;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Pantheon
 
 #pragma region Riven
 	if (szChamp == "Riven")
@@ -363,22 +368,22 @@ EvadeSpellDB::EvadeSpellDB()
 		Spells.push_back(pSpell);
 		Spells.push_back(new DashData("RivenE", kSlotE, 250, false, 100, 1200, 3));
 	}
-#pragma endregion
+#pragma endregion Riven
 
 #pragma region Tristana
 	if (szChamp == "Tristana")
 		Spells.push_back(new DashData("TristanaW", kSlotW, 900, false, 300, 1100, 5));
-#pragma endregion
+#pragma endregion Tristana
 
 #pragma region Tryndamare
 	if (szChamp == "Tryndamere")
 		Spells.push_back(new DashData("TryndamereE", kSlotE, 650, false, 100, 900, 3));
-#pragma endregion
+#pragma endregion Tryndamere
 
 #pragma region Vayne
 	if (szChamp == "Vayne")
 		Spells.push_back(new DashData("VayneQ", kSlotQ, 300, true, 100, 860, 2));
-#pragma endregion
+#pragma endregion Vayne
 
 #pragma region Wukong
 	if (szChamp == "MonkeyKing")
@@ -387,7 +392,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSPell->ValidTargets = VT_EnemyChampions | VT_EnemyMinions;
 		Spells.push_back(pSPell);
 	}
-#pragma endregion
+#pragma endregion Wukong
 
 #pragma region Yasuo
 	if (szChamp == "Yasuo")
@@ -396,17 +401,17 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->ValidTargets = VT_EnemyChampions | VT_EnemyMinions;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Yasuo
 
 #pragma region Ezreal
 	if (szChamp == "Ezreal")
 		Spells.push_back(new BlinkData("EzrealE", kSlotE, 475, 250, 3));
-#pragma endregion
+#pragma endregion Ezreal
 
 #pragma region Kassadin
 	if (szChamp == "Kassadin")
 		Spells.push_back(new BlinkData("KassadinR", kSlotR, 500, 250, 5));
-#pragma endregion
+#pragma endregion Kassadin
 
 #pragma region Katarina
 	if (szChamp == "Katarina")
@@ -415,12 +420,12 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->ValidTargets = VT_AllyChampions | VT_AllyMinions | VT_AllyWards | VT_EnemyChampions | VT_EnemyMinions | VT_EnemyWards;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Katarina
 
 #pragma region Shaco
 	if (szChamp == "Shaco")
 		Spells.push_back(new BlinkData("ShacoQ", kSlotQ, 400, 100, 3));
-#pragma endregion
+#pragma endregion Shaco
 
 #pragma region Elise
 	if (szChamp == "Elise")
@@ -430,12 +435,12 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->SelfCast = true;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Elise
 
 #pragma region Fizz
 	if (szChamp == "Fizz")
 		Spells.push_back(new InvulnerabilityData("FizzE", kSlotE, 100, 3));
-#pragma endregion
+#pragma endregion Fizz
 
 #pragma region Maokai
 	if (szChamp == "Maokai")
@@ -445,7 +450,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->MaxRange = 525;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Maokai
 
 #pragma region MasterYi
 	if (szChamp == "MasterYi")
@@ -455,7 +460,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->MaxRange = 600;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion MasterYi
 
 #pragma region Vladimir
 	if (szChamp == "Vladimir")
@@ -464,7 +469,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->SelfCast = true;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Vladimir
 
 	if (GEntityList->Player()->GetSpellSlot("SummonerFlash") != kSlotUnknown)
 		Spells.push_back(new BlinkData("Flash", GEntityList->Player()->GetSpellSlot("SummonerFlash"), 425, 100, 5));
@@ -481,7 +486,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->MaxRange = 800;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion
+#pragma endregion Janna
 
 #pragma region Karma
 		if (szChamp == "Karma")
@@ -491,7 +496,7 @@ EvadeSpellDB::EvadeSpellDB()
 			pSpell->MaxRange = true;
 			Spells.push_back(pSpell);
 		}
-#pragma endregion
+#pragma endregion Karma
 
 #pragma region Morgana
 		if (szChamp == "Morgana")
@@ -501,5 +506,5 @@ EvadeSpellDB::EvadeSpellDB()
 			pSpell->MaxRange = 800;
 			Spells.push_back(pSpell);
 		}
-#pragma endregion
+#pragma endregion Morgana
 }

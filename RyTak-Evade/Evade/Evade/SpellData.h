@@ -52,6 +52,7 @@ struct SpellData
 		MultipleNumber		= -1;
 		Slot				= kSlotQ;
 		SpellName			= "";
+		TakeClosestPath		= true;
 		ToggleName			= "";
 		Type				= ST_MissileLine;
 		TrapName			= "";

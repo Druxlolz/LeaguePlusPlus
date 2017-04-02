@@ -155,7 +155,7 @@ void EvadeMenuOptions::LoadMenuOptions()
 	DrawStatus = pDraw->CheckBox("Draw Status", true);
 
 	Enabled = EvadeParent->CheckBox("Enabled", true);
-	Enabledkey = EvadeParent->AddKey("Turn ON - OFF", 75);
+	Enabledkey = EvadeParent->AddKey("Toggle Evade", 75);
 	DodgeDangerous = EvadeParent->AddKey("Dodge Only Dangerous Key", VK_MBUTTON);
 }
 

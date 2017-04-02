@@ -109,6 +109,7 @@ SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, V
 	case ST_Arc:
 		Arc = Polygons::Arc(Start, End, GetRadius());
 		break;
+	
 	}
 
 	UpdatePolygon();
@@ -484,6 +485,13 @@ void SpellInstance::UpdatePolygon()
 	switch (Type)
 	{
 	case ST_Line:
+		Polygon = Line.ToPolygon(iExtraRadius);
+		DrawPolygon = Line.ToPolygon(
+			0,
+			GetRadius() - (!Data.AddHitbox ? 0 : static_cast<int>(GEntityList->Player()->BoundingRadius())));
+		PathFindingOuterPolygon = Line.ToPolygon(Configs->PathFindingOuterDistance);
+		PathFindingInnerPolygon = Line.ToPolygon(Configs->PathFindingInnerDistance);
+		break;
 	case ST_MissileLine:
 		Polygon = Line.ToPolygon(iExtraRadius);
 		DrawPolygon = Line.ToPolygon(
@@ -493,6 +501,11 @@ void SpellInstance::UpdatePolygon()
 		PathFindingInnerPolygon = Line.ToPolygon(Configs->PathFindingInnerDistance);
 		break;
 	case ST_Cone:
+		Polygon = Cone.ToPolygon(iExtraRadius);
+		DrawPolygon = Polygon;
+		PathFindingOuterPolygon = Cone.ToPolygon(Configs->PathFindingOuterDistance);
+		PathFindingInnerPolygon = Cone.ToPolygon(Configs->PathFindingInnerDistance);
+		break;
 	case ST_MissileCone:
 		Polygon = Cone.ToPolygon(iExtraRadius);
 		DrawPolygon = Polygon;
