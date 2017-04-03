@@ -12,24 +12,28 @@ public:
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
+		ComboQ2 = ComboMenu->CheckBox("Use Q2", true);
 		ComboW = ComboMenu->CheckBox("Use W", true);
 		ComboE = ComboMenu->CheckBox("Use E", true);
 		ComboR = ComboMenu->CheckBox("Use R", true);
 
 		HarassMenu = MainMenu->AddMenu("Harass Settings");
 		HarassQ = HarassMenu->CheckBox("Use Q", true);
+		HarassQ2 = HarassMenu->CheckBox("Use Q2", true);
 		HarassW = HarassMenu->CheckBox("Use W", true);
 		HarassE = HarassMenu->CheckBox("Use E", true);
 		HarassMana = HarassMenu->AddFloat("Min. Mana", 0, 100, 60);
 
 		LaneClearMenu = MainMenu->AddMenu("Farm Settings");
 		LaneClearQ = LaneClearMenu->CheckBox("Use Q", true);
+		LaneClearQ2 = LaneClearMenu->CheckBox("Use Q2", true);
 		LaneClearW = LaneClearMenu->CheckBox("Use W", true);
 		LaneClearE = LaneClearMenu->CheckBox("Use E", true);
 		LaneClearMana = LaneClearMenu->AddFloat("Min. Mana", 0, 100, 40);
 
 		KSMenu = MainMenu->AddMenu("Killsteal Settings");
 		KSQ = KSMenu->CheckBox("Killsteal with Q", true);
+		KSQ2 = KSMenu->CheckBox("Killsteal with Q2", true);
 		KSW = KSMenu->CheckBox("Killsteal with W", true);
 		KSE = KSMenu->CheckBox("Killsteal with E", true);
 		KSR = KSMenu->CheckBox("Killsteal with R", true);
@@ -48,6 +52,31 @@ public:
 	{
 		SpellLib().VelKoz();
 	}
+	
+	void QLogic()
+	{
+		Enemy = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
+		for (auto Enemy : GEntityList->GetAllHeros(false, true))
+
+		if (Q->IsReady())
+		{
+			Vec3 posQ1;
+			Vec3 posQ2;
+			int hit;
+			GPrediction->FindBestCastPosition(Q->Range(), Q->Radius(), true, true, true, posQ1, hit);
+			GPrediction->FindBestCastPosition(Q2->Range(), Q2->Radius(), true, true, true, posQ2, hit);
+			{
+				if (hit >= 1)
+				{
+					Q->CastOnPosition(posQ2);
+					if (Q2->IsReady())
+					{
+						Q2->CastFrom(posQ2, Enemy->GetPosition());
+					}
+				}
+			}
+		}
+	}
 
 	void Combo()
 	{
@@ -55,20 +84,21 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
+			{
 				if (ComboQ->Enabled() && Q->IsReady())
 				{
-					Q->CastOnTarget(target);
+					QLogic();
 				}
-			if (ComboW->Enabled() && W->IsReady())
-			{
-				W->CastOnTarget(target);
-			}
-			if (ComboE->Enabled() && E->IsReady())
-			{
-				E->CastOnTarget(target);
-			}
+				if (ComboW->Enabled() && W->IsReady())
+				{
+					W->CastOnTarget(target);
+				}
+				if (ComboE->Enabled() && E->IsReady())
+				{
+					E->CastOnTarget(target);
+				}
+			}				
 		}
-
 	}
 
 	void Harass()
@@ -77,18 +107,20 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
+			{
 				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 				{
-					Q->CastOnTarget(target);
+					QLogic();
 				}
-			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				W->CastOnTarget(target);
-			}
-			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				E->CastOnTarget(target);
-			}
+				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				{
+					W->CastOnTarget(target);
+				}
+				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				{
+					E->CastOnTarget(target);
+				}
+			}				
 		}
 	}
 
@@ -105,7 +137,7 @@ public:
 					{
 						if (LaneClearQ->Enabled() && Q->IsReady())
 						{
-							Q->CastOnTarget(minion);
+							QLogic();
 						}
 						if (LaneClearW->Enabled() && W->IsReady())
 						{
@@ -134,6 +166,14 @@ public:
 					if (Enemy->GetHealth() <= dmg)
 					{
 						Q->CastOnTarget(Enemy, kHitChanceHigh);
+					}
+				}
+				if (KSQ2->Enabled() && Q2->IsReady())
+				{
+					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q2->GetDelay(), true);
+					if (Enemy->GetHealth() <= dmg)
+					{
+						Q2->CastOnTarget(Enemy, kHitChanceHigh);
 					}
 				}
 				if (KSW->Enabled() && W->IsReady())
