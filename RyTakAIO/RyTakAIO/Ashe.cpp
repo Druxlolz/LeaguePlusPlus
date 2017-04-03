@@ -31,7 +31,6 @@ public:
 		GapCloseR = GapCloseMenu->CheckBox("Use R on Gap Closer", true);
 
 		KSMenu = MainMenu->AddMenu("Killsteal Settings");
-		KSQ = KSMenu->CheckBox("Killsteal with Q", true);
 		KSW = KSMenu->CheckBox("Killsteal with W", true);
 		KSR = KSMenu->CheckBox("Killsteal with R", false);
 
@@ -102,11 +101,11 @@ public:
 					{
 						if (LaneClearQ->Enabled() && Q->IsReady())
 						{
-							Q->CastOnTarget(minion, 4);
+							Q->CastOnTarget(minion, 5);
 						}
 						if (LaneClearW->Enabled() && W->IsReady() && LaneClearWMinions->GetInteger())
 						{
-							W->CastOnTarget(minion, 4);
+							W->CastOnTarget(minion, 5);
 						}
 					}
 				}
@@ -121,14 +120,6 @@ public:
 		{
 			if (Enemy != nullptr && Enemy->IsValidTarget() && Enemy->IsHero())
 			{
-				if (KSQ->Enabled() && Q->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						Q->CastOnTarget(Enemy, 5);
-					}
-				}
 				if (KSW->Enabled() && W->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), true);
@@ -153,7 +144,7 @@ public:
 	{
 		if (target->IsDashing() && GapCloseR->Enabled())
 		{
-			R->CastOnTarget(target, 4);
+			R->CastOnTarget(target, 5);
 		}
 	}
 
@@ -166,7 +157,7 @@ public:
 			{
 				if (enemy->IsValidTarget() && enemy != nullptr && enemy->IsHero())
 				{
-					R->CastOnTarget(enemy, 4);
+					R->CastOnTarget(enemy, 5);
 				}
 			}
 		}

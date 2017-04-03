@@ -33,13 +33,14 @@ public:
 		KSMenu = MainMenu->AddMenu("Killsteal Settings");
 		KSE = KSMenu->CheckBox("Killsteal with E", true);
 
+		/*
 		DrawMenu = MainMenu->AddMenu("Drawing Settings");
 		DrawReady = DrawMenu->CheckBox("Draw Only Ready Spells", true);
 		DrawOff = DrawMenu->CheckBox("Disable Drawings", false);
 		DrawW = DrawMenu->CheckBox("Draw W", true);
 		DrawE = DrawMenu->CheckBox("Draw E", true);
 		DrawR = DrawMenu->CheckBox("Draw R", true);
-
+		*/
 	}
 
 	void Spells()
@@ -47,10 +48,10 @@ public:
 		SpellLib().Twitch();
 	}
 
-	float ExpungeDamage(IUnit* Target)
+	inline double ExpungeDamage(IUnit* Target)
 	{
 		float Damage = 0;
-		int StackCount = Target->GetBuffCount("twitchdeadlyvenom");
+		int StackCount = Target->GetBuffCount("TwitchDeadlyVenom");
 
 		if (StackCount == 0) return 0;
 
@@ -99,16 +100,16 @@ public:
 				{
 					W->CastOnTarget(Enemy, 5);
 				}
-				if (ComboE->Enabled() && E->IsReady() && target->HasBuff("twitchdeadlyvenom"))
+				if (ComboE->Enabled() && E->IsReady() && Enemy->HasBuff("TwitchDeadlyVenom"))
 				{
-					if (Enemy->GetBuffCount("twitchdeadlyvenom") == 6)
+					if (Enemy->GetBuffCount("TwitchDeadlyVenom") == 6)
 					{
 						E->CastOnPlayer();
 					}
 				}
 				if (ComboR->Enabled() && R->IsReady())
 				{
-					if (EIISR().EnemyIsInSpellRange(R->Range() * 0.8) == true)
+					if (EIISR().EnemyIsInSpellRange(R->Range()) == true)
 					{
 						R->CastOnPlayer();
 					}				
@@ -128,9 +129,9 @@ public:
 				{
 					W->CastOnTarget(Enemy, 5);
 				}
-				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->HasBuff("twitchdeadlyvenom"))
+				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->HasBuff("TwitchDeadlyVenom"))
 				{
-					if (HarassEStacks->GetFloat() >= Enemy->GetBuffCount("twitchdeadlyvenom"))
+					if (HarassEStacks->GetFloat() >= Enemy->GetBuffCount("TwitchDeadlyVenom"))
 					{
 						E->CastOnPlayer();
 					}
@@ -181,9 +182,9 @@ public:
 		Enemy = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, E->Range());
 		for (auto Enemy : GEntityList->GetAllHeros(false, true))
 		{
-			if (KSE->Enabled() && E->IsReady() && Enemy->HasBuff("twitchdeadlyvenom"))
+			if (KSE->Enabled() && E->IsReady() && Enemy->HasBuff("TwitchDeadlyVenom"))
 			{
-				if (Enemy->GetHealth() <= (ExpungeDamage(Enemy) * 0.95))
+				if (Enemy->GetHealth() <= (ExpungeDamage(Enemy)))
 				{
 					E->CastOnPlayer();
 				}

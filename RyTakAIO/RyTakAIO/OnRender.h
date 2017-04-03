@@ -1,6 +1,7 @@
 #pragma once
 #include "PluginSDK.h"
 #include "BaseOptions.h"
+#include "SpellLib.h"
 
 class OnRenderClass
 {
@@ -13,42 +14,31 @@ public:
 		{
 			if (DrawQ->Enabled() && Q->IsReady())
 			{
-				GRender->DrawCircle(GEntityList->Player()->GetPosition(), Q->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
+				if (Q->Range() >= 0)
 				{
-					if (Q->Range() == FLT_MAX)
-					{
-						return;
-					}
+					GRender->DrawCircle(GEntityList->Player()->GetPosition(), Q->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
 				}
 			}
 			if (DrawW->Enabled() && W->IsReady())
 			{
-				GRender->DrawCircle(GEntityList->Player()->GetPosition(), W->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
+				if (W->Range() >= 0)
 				{
-					if (W->Range() == FLT_MAX)
-					{
-						return;
-					}
+					GRender->DrawCircle(GEntityList->Player()->GetPosition(), W->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
 				}
 			}
 			if (DrawE->Enabled() && E->IsReady())
 			{
-				GRender->DrawCircle(GEntityList->Player()->GetPosition(), E->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
+				if (E->Range() >= 0)
 				{
-					if (E->Range() == FLT_MAX)
-					{
-						return;
-					}
+					GRender->DrawCircle(GEntityList->Player()->GetPosition(), E->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
 				}
 			}
 			if (DrawR->Enabled() && R->IsReady())
 			{
-				GRender->DrawCircle(GEntityList->Player()->GetPosition(), R->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
+				if (R->Range() >= 0)
+
 				{
-					if (R->Range() == FLT_MAX)
-					{
-						return;
-					}
+					GRender->DrawCircle(GEntityList->Player()->GetPosition(), R->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
 				}
 			}
 		}
@@ -56,42 +46,30 @@ public:
 		{
 			if (DrawQ->Enabled())
 			{
-				GRender->DrawCircle(GEntityList->Player()->GetPosition(), Q->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
+				if (Q->Range() >= 0)
 				{
-					if (Q->Range() == FLT_MAX)
-					{
-						return;
-					}
+					GRender->DrawCircle(GEntityList->Player()->GetPosition(), Q->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
 				}
 			}
 			if (DrawW->Enabled())
 			{
-				GRender->DrawCircle(GEntityList->Player()->GetPosition(), W->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
+				if (W->Range() >= 0)
 				{
-					if (W->Range() == FLT_MAX)
-					{
-						return;
-					}
+					GRender->DrawCircle(GEntityList->Player()->GetPosition(), W->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
 				}
 			}
 			if (DrawE->Enabled())
 			{
-				GRender->DrawCircle(GEntityList->Player()->GetPosition(), E->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
+				if (E->Range() >= 0)
 				{
-					if (E->Range() == FLT_MAX)
-					{
-						return;
-					}
+					GRender->DrawCircle(GEntityList->Player()->GetPosition(), E->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
 				}
 			}
 			if (DrawR->Enabled())
 			{
-				GRender->DrawCircle(GEntityList->Player()->GetPosition(), R->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
+				if (R->Range() >= 0)
 				{
-					if (R->Range() == FLT_MAX)
-					{
-						return;
-					}
+					GRender->DrawCircle(GEntityList->Player()->GetPosition(), R->Range(), Vec4(255, 255, 0, 255), 5.0f, false, false);
 				}
 			}
 		}

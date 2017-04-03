@@ -5485,7 +5485,7 @@ public:
 	}
 	void OnRender() override
 	{
-		OnRenderClass().Render();
+		//OnRenderClass().Render();
 	}
 	void BeforeAttack(IUnit* Source, IUnit* Target) override
 	{
@@ -5493,7 +5493,7 @@ public:
 	}
 	void AfterAttack(IUnit* Source, IUnit* Target) override
 	{
-
+		
 	}
 	void OnGameUpdate() override
 	{
