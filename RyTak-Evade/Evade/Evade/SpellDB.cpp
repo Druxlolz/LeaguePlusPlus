@@ -261,8 +261,8 @@ SpellDB::SpellDB()
 #pragma endregion JarvanIV
 
 #pragma region Jayce
-	Spells.push_back(CreateSpell()->_ChampName("Jayce")->_MenuName("JayceQ")->_SpellName("JayceShockBlast")->_DangerValue(2)->_Delay(230)->_MissileName("JayceShockBlastMis")->_Range(1050)->_Radius(70)->_MissileSpeed(1450)->_FixedRange(true)->_HasEndExplosion(true)->_RadiusEx(275)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Jayce")->_MenuName("JayceQAccel")->_SpellName("JayceQAccel")->_DangerValue(2)->_Delay(0)->_MissileName("JayceShockBlastWallMis")->_Range(2000)->_Radius(70)->_MissileSpeed(2350)->_HasEndExplosion(true)->_RadiusEx(275)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Jayce")->_MenuName("JayceQ")->_SpellName("JayceShockBlast")->_DangerValue(2)->_Delay(230)->_MissileName("JayceShockBlastMis")->_Range(1050)->_Radius(70)->_MissileSpeed(1450)->_FixedRange(true)->_HasEndExplosion(true)->_DontCross(true)->_RadiusEx(275)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Jayce")->_MenuName("JayceQAccel")->_SpellName("JayceQAccel")->_DangerValue(2)->_Delay(0)->_MissileName("JayceShockBlastWallMis")->_Range(2000)->_Radius(70)->_MissileSpeed(2350)->_HasEndExplosion(true)->_IsDangerous(true)->_DontCross(true)->_RadiusEx(275)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Jayce
 
 #pragma region Jhin
@@ -324,7 +324,7 @@ SpellDB::SpellDB()
 #pragma endregion Leblanc
 
 #pragma region LeeSin
-	Spells.push_back(CreateSpell()->_ChampName("LeeSin")->_MenuName("LeeSinQ")->_SpellName("BlindMonkQOne")->_DangerValue(3)->_MissileName("BlindMonkQOne")->_MissileSpeed(1800)->_Range(1100)->_Radius(60)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("LeeSin")->_MenuName("LeeSinQ")->_SpellName("BlindMonkQOne")->_DangerValue(3)->_MissileName("BlindMonkQOne")->_MissileSpeed(1800)->_Range(1100)->_Radius(60)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("LeeSin")->_DangerValue(2)->_MenuName("LeeSinE")->_SpellName("BlindMonkEOne")->_AddHitbox(false)->_Slot(kSlotE)->_Type(ST_Circle)->_Radius(430));
 #pragma endregion LeeSin
 
@@ -343,7 +343,7 @@ SpellDB::SpellDB()
 #pragma region Lucian
 	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_DangerValue(2)->_MenuName("LucianQ")->_SpellName("LucianQ")->_Range(900)->_Delay(350)->_FixedRange(true)->_Type(ST_Line)->_Radius(65));
 	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_MenuName("LucianW")->_MissileName("LucianWMissile")->_SpellName("LucianW")->_DangerValue(2)->_Delay(325)->_MissileSpeed(1600)->_Slot(kSlotW)->_Range(900)->_Radius(55)->_FixedRange(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_MenuName("LucianR")->_SpellName("LucianR")->_MissileName("LucianRMissileOffhand")->_DangerValue(2)->_Delay(0)->_MissileSpeed(2800)->_Slot(kSlotR)->_Range(1200)->_Radius(110)->_FixedRange(true)->_MissileOnly(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall)->_ExtraMissileNames("LucianRMissile"));
+	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_MenuName("LucianR")->_SpellName("LucianR")->_MissileName("LucianRMissileOffhand")->_DangerValue(2)->_Delay(0)->_MissileSpeed(2800)->_Slot(kSlotR)->_Range(1200)->_Radius(110)->_FixedRange(true)->_Type(ST_MissileLine)->_MissileOnly(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall)->_ExtraMissileNames("LucianRMissile"));
 #pragma endregion Lucian
 
 #pragma region Lulu
