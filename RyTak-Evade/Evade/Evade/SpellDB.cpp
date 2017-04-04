@@ -112,7 +112,7 @@ SpellDB::SpellDB()
 #pragma region Caitlyn
 	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynQ")->_SpellName("CaitlynPiltoverPeacemaker")->_DangerValue(2)->_Delay(625)->_MissileName("CaitlynPiltoverPeacemaker")->_Range(1300)->_Radius(60)->_MissileSpeed(2200)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynQBehind")->_SpellName("CaitlynQBehind")->_DangerValue(2)->_Delay(0)->_MissileName("CaitlynPiltoverPeacemaker2")->_Range(1300)->_Radius(90)->_MissileSpeed(2200)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynW")->_SpellName("CaitlynTrap")->_TrapName("caitlyntrap")->_Delay(0)->_IsDangerous(true)->_Slot(kSlotW)->_Type(ST_Circle)->_Radius(75)->_DontCross(true)->_ExtraDuration(90000));
+	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynW")->_SpellName("CaitlynYordleTrap")->_TrapName("CaitlynTrap")->_Delay(0)->_IsDangerous(true)->_Slot(kSlotW)->_Type(ST_Circle)->_Radius(75)->_DontCross(true)->_ExtraDuration(90000));
 	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynE")->_SpellName("CaitlynEntrapment")->_Delay(160)->_MissileName("CaitlynEntrapmentMissile")->_Slot(kSlotE)->_Range(800)->_MissileSpeed(1600)->_Radius(70)->_FixedRange(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Caitlyn
 
@@ -487,7 +487,8 @@ SpellDB::SpellDB()
 #pragma endregion Soraka
 
 #pragma region Swain
-	Spells.push_back(CreateSpell()->_ChampName("Swain")->_DangerValue(3)->_MenuName("SwainW")->_SpellName("SwainShadowGrasp")->_Delay(1100)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(900)->_Radius(240)->_IsDangerous(true));
+	Spells.push_back(CreateSpell()->_ChampName("Swain")->_DangerValue(2)->_MenuName("SwainQ")->_SpellName("SwainDecrepify")->_Slot(kSlotQ)->_Type(ST_Circle)->_Range(700)->_Radius(325)->_IsDangerous(true)->_DontCross(true));
+	Spells.push_back(CreateSpell()->_ChampName("Swain")->_DangerValue(3)->_MenuName("SwainW")->_SpellName("SwainShadowGrasp")->_Delay(1100)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(900)->_Radius(240)->_IsDangerous(true)->_DontCross(true));
 #pragma endregion Swain
 	
 #pragma region Syndra
@@ -550,7 +551,7 @@ SpellDB::SpellDB()
 #pragma endregion Urgot
 
 #pragma region Varus
-	Spells.push_back(CreateSpell()->_ChampName("Varus")->_MenuName("VarusQ")->_MissileName("VarusQMissile")->_SpellName("VarusQ")->_DangerValue(2)->_Type(ST_Line)->_Delay(250)->_Slot(kSlotQ)->_MissileSpeed(1850)->_Range(1625)->_Radius(70)->_AddHitbox(true)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Varus")->_MenuName("VarusQ")->_MissileName("VarusQMissile")->_SpellName("VarusQ")->_DangerValue(2)->_Type(ST_MissileLine)->_Delay(250)->_Slot(kSlotQ)->_MissileSpeed(1850)->_Range(1625)->_Radius(90)->_AddHitbox(true)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Varus")->_MenuName("VarusE")->_MissileName("VarusEMissile")->_SpellName("VarusE")->_DangerValue(2)->_MissileSpeed(1500)->_Slot(kSlotE)->_Range(925)->_Radius(260)->_Type(ST_Circle)->_DontCross(true)->_ExtraDelay(550)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Varus")->_MenuName("VarusR")->_MissileName("VarusRMissile")->_SpellName("VarusR")->_DangerValue(3)->_MissileSpeed(1950)->_Slot(kSlotR)->_Range(1250)->_Radius(120)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Varus

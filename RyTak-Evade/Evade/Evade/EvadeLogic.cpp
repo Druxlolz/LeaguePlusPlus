@@ -12,7 +12,7 @@ void CEvadeLogic::OnGameUpdate()
 
 	Evade::PlayerPosition = GEntityList->Player()->ServerPosition().To2D();
 
-	if (PrevPos.IsValid() && Evade::PlayerPosition.DistanceTo(PrevPos) > 200.f)
+	if (PrevPos.IsValid() && Evade::PlayerPosition.DistanceTo(PrevPos) > 10.f)
 	{
 		Evade::SetEvading(false);
 		Evade::EvadePoint2 = Vec2(0.f, 0.f);
