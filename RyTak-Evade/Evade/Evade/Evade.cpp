@@ -46,7 +46,7 @@ bool Evade::IsAboutToHit(int time, IUnit* unit /* = nullptr */)
 
 void Evade::OnGameLoad()
 {
-	GRender->Notification(Vec4(0, 255, 255, 255), 10, "RyTak's vEvade++ Loaded!");
+	GRender->Notification(Vec4(0, 255, 255, 255), 10, "RyTak's_vEvade++_Loaded!");
 }
 
 void Evade::BeforeAttack(IUnit* target)

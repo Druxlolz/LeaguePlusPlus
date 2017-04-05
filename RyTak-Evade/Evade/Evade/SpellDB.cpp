@@ -341,9 +341,9 @@ SpellDB::SpellDB()
 #pragma endregion Lissandra
 
 #pragma region Lucian
-	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_DangerValue(2)->_MenuName("LucianQ")->_SpellName("LucianQ")->_Range(900)->_Delay(350)->_FixedRange(true)->_Type(ST_Line)->_Radius(65));
-	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_MenuName("LucianW")->_MissileName("LucianWMissile")->_SpellName("LucianW")->_DangerValue(2)->_Delay(325)->_MissileSpeed(1600)->_Slot(kSlotW)->_Range(900)->_Radius(55)->_FixedRange(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_MenuName("LucianR")->_SpellName("LucianR")->_MissileName("LucianRMissileOffhand")->_DangerValue(2)->_Delay(0)->_MissileSpeed(2800)->_Slot(kSlotR)->_Range(1200)->_Radius(110)->_FixedRange(true)->_Type(ST_MissileLine)->_MissileOnly(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall)->_ExtraMissileNames("LucianRMissile"));
+	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_DangerValue(2)->_MenuName("LucianQ")->_SpellName("LucianQ")->_Range(675)->_ExtraRange(325)->_FixedRange(true)->_DontCross(true)->_Type(ST_Line)->_Radius(65));
+	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_MenuName("LucianW")->_MissileName("LucianWMissile")->_SpellName("LucianW")->_DangerValue(2)->_MissileSpeed(1600)->_Slot(kSlotW)->_Range(1000)->_Radius(55)->_FixedRange(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Lucian")->_MenuName("LucianR")->_SpellName("LucianR")->_MissileName("LucianRMissileOffhand")->_DangerValue(2)->_MissileSpeed(2800)->_Slot(kSlotR)->_Range(1400)->_Radius(150)->_IsDangerous(true)->_DontCross(true)->_AddHitbox(true)->_ExtraDuration(3000)->_MissileFromUnit(true)->_FixedRange(true)->_ExtraMissileNames("LucianRMissile")->_Type(ST_Line)->_MissileOnly(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Lucian
 
 #pragma region Lulu
@@ -352,7 +352,7 @@ SpellDB::SpellDB()
 
 #pragma region Lux
 	Spells.push_back(CreateSpell()->_ChampName("Lux")->_MenuName("LuxQ")->_SpellName("LuxLightBinding")->_DangerValue(3)->_MissileName("LuxLightBindingMis")->_Range(1300)->_Radius(70)->_MissileSpeed(1200)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Lux")->_MenuName("LuxE")->_SpellName("LuxLightStrikeKugel")->_DangerValue(2)->_MissileName("LuxLightStrikeKugel")->_ToggleName("Lux_.+_E_tar_aoe_(green|red)")->_MissileSpeed(1300)->_HasEndExplosion(true)->_Slot(kSlotE)->_Type(ST_Circle)->_Range(1100)->_Radius(330)->_ExtraDuration(5100)->_DontCross(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Lux")->_MenuName("LuxE")->_SpellName("LuxLightStrikeKugel")->_DangerValue(2)->_MissileName("LuxLightStrikeKugel")->_MissileSpeed(1300)->_HasEndExplosion(true)->_Slot(kSlotE)->_Type(ST_Circle)->_Range(1100)->_Radius(330)->_ExtraDuration(5100)->_DontCross(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Lux")->_DangerValue(5)->_MenuName("LuxR")->_SpellName("LuxMaliceCannon")->_Delay(1000)->_Slot(kSlotR)->_Type(ST_Line)->_Range(3300)->_Radius(150)->_FixedRange(true)->_IsDangerous(true));
 #pragma endregion Lux
 

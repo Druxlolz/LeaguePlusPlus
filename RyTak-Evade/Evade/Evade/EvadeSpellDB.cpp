@@ -321,6 +321,11 @@ EvadeSpellDB::EvadeSpellDB()
 	}
 #pragma endregion Jax
 
+#pragma region Kalista
+	if (szChamp == "Kalista")
+		Spells.push_back(new DashData("KalistaPassiveBuff", kSlotUnknown, 250, true, 100, 1223, 1));
+#pragma endregion Kalista
+
 #pragma region Leblanc
 	if (szChamp == "Leblanc")
 	{
