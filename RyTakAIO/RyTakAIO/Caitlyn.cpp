@@ -65,7 +65,7 @@ public:
 		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-			for (auto target : GEntityList->GetAllHeros(false, true))
+			for (auto target : GEntityList->GetAllHeros(false, true));
 			{
 				if (target != nullptr && target->IsValidTarget() && target->IsHero())
 				{
@@ -110,7 +110,7 @@ public:
 			if (GEntityList->Player()->ManaPercent() >= LaneClearMana->GetFloat())
 			{
 				minion = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-				for (auto minion : GEntityList->GetAllMinions(false, true, true))
+				for (auto minion : GEntityList->GetAllMinions(false, true, true));
 				{
 					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, Q->Range()))
 					{
@@ -167,7 +167,7 @@ public:
 	{
 		if (target->IsDashing() && GapCloseE->Enabled())
 		{
-			E->CastOnTarget(target, 4);
+			E->CastOnTarget(target, 5);
 		}
 	}
 
