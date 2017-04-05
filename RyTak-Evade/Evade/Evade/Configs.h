@@ -32,7 +32,8 @@ struct EvadeMenuOptions
 	void UnloadMenu();
 	void LoadSpecialSpellPlugins();
 	void LoadSpecialSpell(SpellData* Args);
-	void KeyTurnOnOff();
+	void KeyTurnOnOffMaster();
+	void KeyTurnOnOffDangerous();
 
 	// Constants
 	int CrossingTime;
@@ -62,6 +63,7 @@ struct EvadeMenuOptions
 	IMenuOption* DangerousDodge;
 	IMenuOption* Enabledkey;
 	short keystate;
+	short keystate2;
 	bool KeyWasDown = false;
 
 	// Custom Spells
