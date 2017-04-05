@@ -2471,6 +2471,27 @@ public:
 };
 
 /// <summary>
+/// Target selector plugins should inherit and define this class to override core target selection.
+/// </summary>
+class IPluginTargetSelectorOverride
+{
+public:
+	/// <summary>
+	/// Runs in replacement of core target selecting when active.
+	/// For now, the "Conditions" argument is not used for anything and can be ignored.
+	/// </summary>
+	/// <param name="Priority">How to prioritize the best target</param>
+	/// <param name="Type">Damage type for calculations</param>
+	/// <param name="Range">Max range</param>
+	/// <param name="RangeCheckFrom">Optional start position for range checks</param>
+	/// <param name="IgnoreSpellShields">If set to <c>true</c> [ignore shields].</param>
+	/// <param name="IgnoredChamps">Champions to ignore</param>
+	/// <param name="Conditions">Currently unused</param>
+	/// <returns>Best target found or nullptr</returns>
+	virtual IUnit* FindTarget(eTargetPriority Priority, eDamageType Type, float Range, Vec3* RangeCheckFrom = nullptr, bool IgnoreSpellShields = true, std::vector<IUnit*>* IgnoredChamps = nullptr, void* Conditions = nullptr) = 0;
+};
+
+/// <summary>
 /// Main SDK interface to access all others.
 /// </summary>
 class IPluginSDK
@@ -2643,9 +2664,9 @@ public:
 	virtual IUtility* GetUtility() = 0;
 
 	/// <summary>
-	/// Registers a new prediction that will override core prediction
+	/// Registers a new prediction that will override core prediction.
 	/// </summary>
-	/// <param name="PredictionTitle">The name as it will appear in the prediction options menu.</param>
+	/// <param name="PredictionTitle">The name as it will appear to users.</param>
 	/// <param name="PluginPred">The plugin prediction interface.</param>
 	virtual bool RegisterPredictionOverride(std::string const& PredictionTitle, IPluginPredictionOverride* PluginPred) = 0;
 
@@ -2654,6 +2675,22 @@ public:
 	/// </summary>
 	/// <param name="PluginPred">The plugin prediction interface.</param>
 	virtual void UnregisterPredictionOverride(IPluginPredictionOverride* PluginPred) = 0;
+
+	/// <summary>
+	/// Registers a new target selector that will override the core TS.
+	/// </summary>
+	/// <param name="TargetSelectorTitle">The name as it will appear to users.</param>
+	/// <param name="PluginTS">The plugin TS interface.</param>
+	/// <returns>
+	///   <c>true</c> if [target selector has changed]; otherwise, <c>false</c>.
+	/// </returns>
+	virtual bool RegisterTargetSelectorOverride(std::string const& TargetSelectorTitle, IPluginTargetSelectorOverride* PluginTS) = 0;
+
+	/// <summary>
+	/// Removes target selector override and reverts back to core target selection.
+	/// </summary>
+	/// <param name="PluginTS">The plugin TS interface.</param>
+	virtual void UnregisterTargetSelectorOverride(IPluginTargetSelectorOverride* PluginTS) = 0;
 };
 
 extern IPluginSDK*			GPluginSDK;

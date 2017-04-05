@@ -1,6 +1,6 @@
 #include "PluginSDK.h"
 
-PluginSetup("RyTak's vEvade++");
+PluginSetup("RyTak's_vEvade++");
 
 #include "ObjManager.h"
 #include "SpellInstance.h"

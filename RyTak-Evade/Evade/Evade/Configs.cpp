@@ -230,8 +230,6 @@ void EvadeMenuOptions::KeyTurnOnOffMaster()
 			{
 				Enabled->UpdateInteger(0);
 			}
-
-			KeyWasDown = true;
 		}
 	}
 	else
@@ -245,9 +243,9 @@ void EvadeMenuOptions::KeyTurnOnOffDangerous()
 	keystate2 = GetAsyncKeyState(DangerousDodge->GetInteger());
 	if (GUtility->IsLeagueWindowFocused() == false || GGame->IsChatOpen() || GGame->IsScoreboardOpen() || GGame->IsShopOpen())
 		return;
-	if (keystate < 0)
+	if (keystate2 < 0)
 	{
-		if (KeyWasDown == false)
+		if (KeyWasDown2 == false)
 		{
 			if (DodgeDangerous->GetInteger() == 0)
 			{
@@ -257,12 +255,10 @@ void EvadeMenuOptions::KeyTurnOnOffDangerous()
 			{
 				DodgeDangerous->UpdateInteger(0);
 			}
-
-			KeyWasDown = true;
 		}
 	}
 	else
 	{
-		KeyWasDown = false;
+		KeyWasDown2 = false;
 	}
 }

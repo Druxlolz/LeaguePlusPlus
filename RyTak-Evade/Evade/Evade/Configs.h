@@ -65,6 +65,7 @@ struct EvadeMenuOptions
 	short keystate;
 	short keystate2;
 	bool KeyWasDown = false;
+	bool KeyWasDown2 = false;
 
 	// Custom Spells
 
