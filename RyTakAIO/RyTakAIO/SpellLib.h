@@ -2018,7 +2018,7 @@ public:
 	void Swain()
 	{
 		Q = GPluginSDK->CreateSpell2(kSlotQ, kCircleCast, true, false, (kCollidesWithNothing));
-		Q->SetSkillshot(1.5f, 900.f, 1000.f, 625.f);
+		Q->SetSkillshot(1.5f, 325.f, 1000.f, 700.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "SwainDecrepify";
 
 		W = GPluginSDK->CreateSpell2(kSlotW, kCircleCast, false, false, (kCollidesWithNothing));
