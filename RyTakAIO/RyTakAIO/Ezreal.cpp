@@ -56,17 +56,17 @@ public:
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
 			{
-				if (target != nullptr && target->IsValidTarget())
+				if (target != nullptr)
 				{
-					if (Q->IsReady() && ComboQ->Enabled())
+					if (Q->IsReady() && ComboQ->Enabled() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
 						Q->CastOnTarget(target, 5);
 					}
-					if (W->IsReady() && ComboW->Enabled())
+					if (W->IsReady() && ComboW->Enabled() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 					{
 						W->CastOnTarget(target, 5);
 					}
-					if (E->IsReady() && ComboE->Enabled())
+					if (E->IsReady() && ComboE->Enabled() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 					{
 						E->CastOnPosition(GGame->CursorPosition());
 					}
@@ -81,13 +81,13 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
-			if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget())
+			if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 			{
-				Q->CastOnTarget(target, 3);
+				Q->CastOnTarget(target, 5);
 			}
-			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget())
+			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 			{
-				W->CastOnTarget(target, 3);
+				W->CastOnTarget(target, 5);
 			}
 		}
 	}
@@ -131,7 +131,7 @@ public:
 				if (KSQ->Enabled() && Q->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
 						Q->CastOnTarget(Enemy, kHitChanceHigh);
 					}
@@ -139,7 +139,7 @@ public:
 				if (KSW->Enabled() && W->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), W->Range()))
 					{
 						W->CastOnTarget(Enemy, kHitChanceHigh);
 					}
@@ -147,7 +147,7 @@ public:
 				if (KSE->Enabled() && E->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotE, E->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 					{
 						E->CastOnPosition(GGame->CursorPosition());
 					}
@@ -155,7 +155,7 @@ public:
 				if (KSR->Enabled() && R->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), R->Range()))
 					{
 						R->CastOnTarget(Enemy, kHitChanceHigh);
 					}
@@ -166,7 +166,7 @@ public:
 
 	void GapCloser()
 	{
-		if (target->IsDashing() && !target->IsCreep() && !target->IsJungleCreep() && GapCloseE->Enabled())
+		if (target->IsDashing() && !target->IsCreep() && !target->IsJungleCreep() && GapCloseE->Enabled() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 		{
 			E->CastOnPosition(GGame->CursorPosition());
 		}
@@ -179,7 +179,7 @@ public:
 			enemy = GTargetSelector->FindTarget(ClosestToCursorPriority, SpellDamage, R->Range());
 			for (auto enemy : GEntityList->GetAllHeros(false, true))
 			{
-				if (enemy->IsEnemy(GEntityList->Player()) && (GEntityList->Player()->GetPosition() - enemy->GetPosition()).Length2D() <= R->Range() && enemy->IsValidTarget())
+				if (enemy->IsEnemy(GEntityList->Player()) && (GEntityList->Player()->GetPosition() - enemy->GetPosition()).Length2D() <= R->Range() && enemy->IsValidTarget(GEntityList->Player(), R->Range()))
 				{
 					R->CastOnTarget(enemy, 5);
 				}

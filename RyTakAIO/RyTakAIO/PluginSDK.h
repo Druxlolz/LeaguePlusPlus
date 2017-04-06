@@ -806,6 +806,14 @@ public:
 	/// <param name="Conditions">Currently unused</param>
 	/// <returns>Best target found or nullptr</returns>
 	virtual IUnit* FindTargetEx(eTargetPriority Priority, eDamageType Type, float Range, Vec3* RangeCheckFrom = nullptr, bool IgnoreSpellShields = true, std::vector<IUnit*>* IgnoredChamps = nullptr, void* Conditions = nullptr) = 0;
+
+	/// <summary>
+	/// Gets the hero priority as chosen by the user in target selector menu.
+	/// Priority range from 1 (low) to 5 (high).
+	/// </summary>
+	/// <param name="Hero">The hero.</param>
+	/// <returns>Hero priority (1-5).</returns>
+	virtual int GetHeroPriority(IUnit* Hero) = 0;
 };
 
 /// <summary>

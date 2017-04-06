@@ -172,7 +172,7 @@ public:
 		for (auto target : GEntityList->GetAllHeros(false, true))
 		if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "JayceAccelerationGate" && std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "JayceShockBlast" && ComboEQ->Enabled())
 		{
-			if ((GEntityList->Player()->GetPosition() - target->GetPosition()).Length2D() <= Q2->Range())
+			if ((GEntityList->Player()->GetPosition() - target->GetPosition()).Length2D() <= Q2->Range() && target->IsValidTarget(GEntityList->Player(), Q2->Range()))
 			{
 				Vec3 posE;
 				Vec3 posQ;
@@ -204,7 +204,7 @@ public:
 		{
 			if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "JayceStanceHtG")
 			{
-				if (Q->IsReady() && ComboQ->Enabled())
+				if (Q->IsReady() && ComboQ->Enabled() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
 					Q->CastOnTarget(target, 5);
 				}
@@ -212,18 +212,18 @@ public:
 				{
 					JayceField();
 				}
-				if (E->IsReady() && ComboE->Enabled())
+				if (E->IsReady() && ComboE->Enabled() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 				{
 					E->CastOnTarget(target, 5);
 				}
 			}
 			if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "JayceStanceGtH")
 			{
-				if (W2->IsReady() && ComboW2->Enabled())
+				if (W2->IsReady() && ComboW2->Enabled() && target->IsValidTarget(GEntityList->Player(), W2->Range()))
 				{
 					JayceHyper();
 				}
-				if (ComboEQ->Enabled())
+				if (ComboEQ->Enabled() && target->IsValidTarget(GEntityList->Player(), Q2->Range()))
 				{
 					EQCombo();
 				}
@@ -241,7 +241,7 @@ public:
 			{
 				if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "JayceStanceHtG")
 				{
-					if (Q->IsReady() && HarassQ->Enabled())
+					if (Q->IsReady() && HarassQ->Enabled() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
 						Q->CastOnTarget(target, 5);
 					}
@@ -249,18 +249,18 @@ public:
 					{
 						JayceField();
 					}
-					if (E->IsReady() && HarassE->Enabled())
+					if (E->IsReady() && HarassE->Enabled() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 					{
 						E->CastOnTarget(target, 5);
 					}
 				}
 				if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "JayceStanceGtH")
 				{
-					if (Q2->IsReady() && HarassQ2->Enabled())
+					if (Q2->IsReady() && HarassQ2->Enabled() && target->IsValidTarget(GEntityList->Player(), Q2->Range()))
 					{
 						JayceShock();
 					}
-					if (W2->IsReady() && HarassW2->Enabled())
+					if (W2->IsReady() && HarassW2->Enabled() && target->IsValidTarget(GEntityList->Player(), W2->Range()))
 					{
 						JayceHyper();
 					}
@@ -284,7 +284,7 @@ public:
 						{
 							if (LaneClearQ->Enabled() && Q->IsReady() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 							{
-								Q->CastOnTarget(minion, 4);
+								Q->CastOnTarget(minion, 5);
 							}
 							if (LaneClearW->Enabled() && W->IsReady() && minion->IsValidTarget(GEntityList->Player(), W->Range()))
 							{
@@ -292,16 +292,16 @@ public:
 							}
 							if (LaneClearE->Enabled() && E->IsReady() && minion->IsValidTarget(GEntityList->Player(), E->Range()))
 							{
-								E->CastOnTarget(minion, 4);
+								E->CastOnTarget(minion, 5);
 							}
 						}
 						if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "JayceStanceGtH")
 						{
-							if (LaneClearQ2->Enabled() && Q2->IsReady())
+							if (LaneClearQ2->Enabled() && Q2->IsReady() && minion->IsValidTarget(GEntityList->Player(), Q2->Range()))
 							{
 								JayceShock();
 							}
-							if (LaneClearW2->Enabled() && W2->IsReady())
+							if (LaneClearW2->Enabled() && W2->IsReady() && minion->IsValidTarget(GEntityList->Player(), W2->Range()))
 							{
 								JayceHyper();
 							}
@@ -322,7 +322,7 @@ public:
 				if (KSQ->Enabled() && Q->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), false);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
 						JayceSkies();
 					}
@@ -330,7 +330,7 @@ public:
 				if (KSW->Enabled() && W->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), false);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), W->Range()))
 					{
 						JayceField();
 					}
@@ -338,7 +338,7 @@ public:
 				if (KSE->Enabled() && E->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotE, E->GetDelay(), false);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 					{
 						JayceThunder();
 					}
@@ -346,7 +346,7 @@ public:
 				if (KSQ2->Enabled() && Q2->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q2->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), Q2->Range()))
 					{
 						JayceShock();
 					}
@@ -354,7 +354,7 @@ public:
 				if (KSW2->Enabled() && W2->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W2->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), W2->Range()))
 					{
 						JayceHyper();
 					}
@@ -362,7 +362,7 @@ public:
 				if (KSQ2->Enabled() && KSE2->Enabled() && Q2->IsReady() && E2->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q2->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), Q2->Range()))
 					{
 						EQCombo();
 					}
@@ -373,7 +373,7 @@ public:
 
 	void GapCloser()
 	{
-		if (target->IsDashing() && GapCloseE->Enabled())
+		if (target->IsDashing() && GapCloseE->Enabled() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 		{
 			if (std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "JayceStanceGtH" && R2->IsReady())
 			{
@@ -394,7 +394,7 @@ public:
 			enemy = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, Q2->Range());
 			for (auto enemy : GEntityList->GetAllHeros(false, true))
 			{
-				if (enemy->IsEnemy(GEntityList->Player()) && (GEntityList->Player()->GetPosition() - enemy->GetPosition()).Length2D() <= Q2->Range() && enemy->IsHero())
+				if (enemy->IsEnemy(GEntityList->Player()) && (GEntityList->Player()->GetPosition() - enemy->GetPosition()).Length2D() <= Q2->Range() && enemy->IsValidTarget(GEntityList->Player(), Q2->Range()))
 				{
 					EQCombo();
 				}

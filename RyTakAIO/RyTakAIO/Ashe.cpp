@@ -58,11 +58,11 @@ public:
 			{
 				if (target != nullptr && target->IsValidTarget() && target->IsHero())
 				{
-					if (Q->IsReady() && ComboQ->Enabled())
+					if (Q->IsReady() && ComboQ->Enabled() && target->IsValidTarget())
 					{
 						Q->CastOnTarget(target, 5);
 					}
-					if (W->IsReady() && ComboW->Enabled())
+					if (W->IsReady() && ComboW->Enabled() && target->IsValidTarget())
 					{
 						W->CastOnTarget(target, 5);
 					}
@@ -79,11 +79,11 @@ public:
 
 			if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget())
 			{
-				Q->CastOnTarget(target, 3);
+				Q->CastOnTarget(target, 5);
 			}
 			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget())
 			{
-				W->CastOnTarget(target, 3);
+				W->CastOnTarget(target, 5);
 			}
 		}
 	}
@@ -99,11 +99,11 @@ public:
 				{
 					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, Q->Range()))
 					{
-						if (LaneClearQ->Enabled() && Q->IsReady())
+						if (LaneClearQ->Enabled() && Q->IsReady() && minion->IsValidTarget())
 						{
 							Q->CastOnTarget(minion, 5);
 						}
-						if (LaneClearW->Enabled() && W->IsReady() && LaneClearWMinions->GetInteger())
+						if (LaneClearW->Enabled() && W->IsReady() && LaneClearWMinions->GetInteger() && minion->IsValidTarget())
 						{
 							W->CastOnTarget(minion, 5);
 						}
@@ -123,7 +123,7 @@ public:
 				if (KSW->Enabled() && W->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget())
 					{
 						W->CastOnTarget(Enemy, 5);
 					}
@@ -131,7 +131,7 @@ public:
 				if (KSR->Enabled() && R->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget())
 					{
 						R->CastOnTarget(Enemy, 5);
 					}
@@ -142,7 +142,7 @@ public:
 
 	void GapCloser()
 	{
-		if (target->IsDashing() && GapCloseR->Enabled())
+		if (target->IsDashing() && GapCloseR->Enabled() && target->IsValidTarget())
 		{
 			R->CastOnTarget(target, 5);
 		}
