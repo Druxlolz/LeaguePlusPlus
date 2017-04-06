@@ -92,22 +92,22 @@ public:
 			Enemy = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto Enemy : GEntityList->GetAllHeros(false, true))
 			{
-				if (ComboQ->Enabled() && Q->IsReady())
+				if (ComboQ->Enabled() && Q->IsReady() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
 					Q->CastOnPlayer();
 				}
-				if (ComboW->Enabled() && W->IsReady())
+				if (ComboW->Enabled() && W->IsReady() && Enemy->IsValidTarget(GEntityList->Player(), W->Range()))
 				{
 					W->CastOnTarget(Enemy, 5);
 				}
-				if (ComboE->Enabled() && E->IsReady() && Enemy->HasBuff("TwitchDeadlyVenom"))
+				if (ComboE->Enabled() && E->IsReady() && Enemy->HasBuff("TwitchDeadlyVenom") && Enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 				{
 					if (Enemy->GetBuffCount("TwitchDeadlyVenom") == 6)
 					{
 						E->CastOnPlayer();
 					}
 				}
-				if (ComboR->Enabled() && R->IsReady())
+				if (ComboR->Enabled() && R->IsReady() && Enemy->IsValidTarget(GEntityList->Player(), R->Range()))
 				{
 					if (EIISR().EnemyIsInSpellRange(R->Range()) == true)
 					{
@@ -125,11 +125,11 @@ public:
 			Enemy = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, E->Range());
 			for (auto Enemy : GEntityList->GetAllHeros(false, true))
 			{
-				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->IsValidTarget(GEntityList->Player(), W->Range()))
 				{
 					W->CastOnTarget(Enemy, 5);
 				}
-				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->HasBuff("TwitchDeadlyVenom"))
+				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->HasBuff("TwitchDeadlyVenom") && Enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 				{
 					if (HarassEStacks->GetFloat() >= Enemy->GetBuffCount("TwitchDeadlyVenom"))
 					{
@@ -151,7 +151,7 @@ public:
 				{
 					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, E->Range()))
 					{
-						if (LaneClearW->Enabled() && W->IsReady())
+						if (LaneClearW->Enabled() && W->IsReady() && minion->IsValidTarget(GEntityList->Player(), W->Range()))
 						{
 							Vec3 pos;
 							int hit;
@@ -161,7 +161,7 @@ public:
 								W->CastOnPosition(pos);
 							}
 						}
-						if (LaneClearE->Enabled() && E->IsReady())
+						if (LaneClearE->Enabled() && E->IsReady() && minion->IsValidTarget(GEntityList->Player(), E->Range()))
 						{
 							Vec3 pos;
 							int hit;
@@ -184,7 +184,7 @@ public:
 		{
 			if (KSE->Enabled() && E->IsReady() && Enemy->HasBuff("TwitchDeadlyVenom"))
 			{
-				if (Enemy->GetHealth() <= (ExpungeDamage(Enemy)))
+				if (Enemy->GetHealth() <= (ExpungeDamage(Enemy)) && Enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 				{
 					E->CastOnPlayer();
 				}

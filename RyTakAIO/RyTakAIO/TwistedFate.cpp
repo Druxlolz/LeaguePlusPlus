@@ -96,11 +96,11 @@ public:
 	{
 		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
 		{
-			if (Q->IsReady() && ComboQ->Enabled())
+			if (Q->IsReady() && ComboQ->Enabled() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 			{
-				Q->CastOnTarget(target, 4);
+				Q->CastOnTarget(target, 5);
 			}
-			if (W->IsReady() && ComboW->Enabled())
+			if (W->IsReady() && ComboW->Enabled() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 			{
 				PickACard();
 				{
@@ -115,11 +115,11 @@ public:
 	{
 		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat())
 		{
-			if (Q->IsReady() && HarassQ->Enabled())
+			if (Q->IsReady() && HarassQ->Enabled() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 			{
-				Q->CastOnTarget(target, 4);
+				Q->CastOnTarget(target, 5);
 			}
-			if (W->IsReady() && HarassW->Enabled())
+			if (W->IsReady() && HarassW->Enabled() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 			{
 				PickACard();
 				{
@@ -139,11 +139,11 @@ public:
 				{
 					if (minion->IsValidTarget() && !minion->IsDead())
 					{
-						if (LaneClearQ->Enabled() && Q->IsReady())
+						if (LaneClearQ->Enabled() && Q->IsReady() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 						{
 							Q->CastOnTarget(minion, 5);
 						}
-						if (LaneClearW->Enabled() && W->IsReady())
+						if (LaneClearW->Enabled() && W->IsReady() && minion->IsValidTarget(GEntityList->Player(), W->Range()))
 						{
 							PickACard();
 							{
@@ -155,7 +155,7 @@ public:
 			}
 			else if (GEntityList->Player()->ManaPercent() <= LaneClearMana->GetFloat())
 			{
-				if (LaneClearW->Enabled() && W->IsReady())
+				if (LaneClearW->Enabled() && W->IsReady() && minion->IsValidTarget(GEntityList->Player(), W->Range()))
 				{
 					PickACard();
 					{
@@ -176,7 +176,7 @@ public:
 				if (KSQ->Enabled() && Q->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
 						Q->CastOnTarget(Enemy, kHitChanceHigh);
 					}
@@ -187,7 +187,7 @@ public:
 
 	void GapCloser()
 	{
-		if (target->IsDashing() && GapCloseW->Enabled() && !target->IsCreep() && !target->IsJungleCreep())
+		if (target->IsDashing() && GapCloseW->Enabled() && !target->IsCreep() && !target->IsJungleCreep() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 		{
 			PickACard();
 			{

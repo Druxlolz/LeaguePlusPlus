@@ -58,11 +58,11 @@ void Combo()
 	{
 		target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, Q->Range());
 		for (auto target : GEntityList->GetAllHeros(false, true));
-		if (target != nullptr && target->IsValidTarget() && target->IsHero() && target->IsValidTarget())
+		if (target != nullptr && target->IsHero())
 		{
 			if (ComboWStacks->GetInteger() >= target->GetBuffCount("varuswdebuff"))
 			{
-				if (Q->IsReady())
+				if (Q->IsReady() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
 					if (Q->IsCharging())
 					{
@@ -79,7 +79,7 @@ void Combo()
 						Q->StartCharging();
 					}
 				}
-				if (ComboE->Enabled())
+				if (ComboE->Enabled() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 				{
 					if (E->IsReady())
 					{
@@ -97,7 +97,7 @@ void Combo()
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true));
-			if (HarassQ->Enabled() && Q->IsReady() && target->IsHero() && target->IsValidTarget())
+			if (HarassQ->Enabled() && Q->IsReady() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 			{
 				if (GEIR().GetEnemiesInRange(Q->Range()) >= 1)
 				{
@@ -115,7 +115,7 @@ void Combo()
 					}
 				}
 			}
-			if (HarassE->Enabled() && E->IsReady() && target->IsHero() && target->IsValidTarget())
+			if (HarassE->Enabled() && E->IsReady() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 			{
 				E->CastOnTarget(target, 5);
 			}
@@ -130,7 +130,7 @@ void Combo()
 			{
 				minion = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 				for (auto minion : GEntityList->GetAllMinions(false, true, true))
-				if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, Q->Range()))
+				if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
 					if (LaneClearQ->Enabled())
 					{
@@ -153,7 +153,7 @@ void Combo()
 						}
 						else return;
 					}
-					if (LaneClearE->Enabled())
+					if (LaneClearE->Enabled() && minion->IsValidTarget(GEntityList->Player(), E->Range()))
 					{
 						if (E->IsReady())
 						{
@@ -185,7 +185,7 @@ void Combo()
 			{
 				auto target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 				
-				if (KSQ->Enabled() && Q->IsReady())
+				if (KSQ->Enabled() && Q->IsReady() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
 					if (GEIR().GetEnemiesInRange(Q->Range()) >= 1)
@@ -205,7 +205,7 @@ void Combo()
 				if (KSE->Enabled() && E->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotE, E->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 					{
 						E->CastOnTarget(target, 5);
 					}
@@ -213,7 +213,7 @@ void Combo()
 				if (KSR->Enabled() && R->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);					
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), R->Range()))
 					{
 						R->CastOnTarget(target, 5);
 					}
@@ -229,7 +229,7 @@ void Combo()
 			enemy = GTargetSelector->FindTarget(ClosestToCursorPriority, SpellDamage, R->Range());
 			for (auto enemy : GEntityList->GetAllHeros(false, true))
 			{
-				if (enemy->IsEnemy(GEntityList->Player()) && (GEntityList->Player()->GetPosition() - enemy->GetPosition()).Length2D() <= R->Range() && enemy->IsValidTarget())
+				if (enemy->IsEnemy(GEntityList->Player()) && (GEntityList->Player()->GetPosition() - enemy->GetPosition()).Length2D() <= R->Range() && enemy->IsValidTarget(GEntityList->Player(), R->Range()))
 				{
 					R->CastOnTarget(enemy, 5);
 				}
@@ -239,7 +239,7 @@ void Combo()
 
 	void GapCloser()
 	{
-		if (target->IsDashing() && GapCloseR->Enabled())
+		if (target->IsDashing() && GapCloseR->Enabled() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), R->Range()))
 		{
 			R->CastOnTarget(target, 5);
 		}
