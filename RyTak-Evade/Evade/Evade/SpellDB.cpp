@@ -559,7 +559,7 @@ SpellDB::SpellDB()
 #pragma region Veigar
 	Spells.push_back(CreateSpell()->_ChampName("Veigar")->_MenuName("VeigarQ")->_SpellName("VeigarBalefulStrike")->_DangerValue(2)->_MissileName("VeigarBalefulStrikeMis")->_Range(950)->_Radius(70)->_MissileSpeed(2200)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Veigar")->_DangerValue(2)->_MenuName("VeigarW")->_SpellName("VeigarDarkMatter")->_Delay(1250)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(900)->_Radius(225));
-	Spells.push_back(CreateSpell()->_ChampName("Veigar")->_DangerValue(3)->_MenuName("VeigarE")->_SpellName("VeigarEventHorizon")->_Delay(800)->_RadiusEx(300)->_Slot(kSlotE)->_Type(ST_Ring)->_Range(700)->_Radius(390)->_DontAddExtraDuration(true)->_DontCross(true)->_ExtraDuration(3000)->_IsDangerous(true));
+	Spells.push_back(CreateSpell()->_ChampName("Veigar")->_DangerValue(3)->_MenuName("VeigarE")->_SpellName("VeigarEventHorizon")->_Delay(800)->_RadiusEx(300)->_Slot(kSlotE)->_Type(ST_Ring)->_Range(700)->_Radius(390)->_DontCross(true)->_ExtraDuration(3000)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithMinions));
 #pragma endregion Veigar
 
 #pragma region Velkoz
