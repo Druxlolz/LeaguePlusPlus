@@ -1,6 +1,7 @@
 #include "EvadeLogic.h"
 #include "Evade.h"
 #include "Evader.h"
+#include "JPS.h"
 #include "Core.h"
 #include "EvadeSpellDB.h"
 

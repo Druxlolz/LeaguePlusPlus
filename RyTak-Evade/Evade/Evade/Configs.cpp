@@ -230,6 +230,9 @@ void EvadeMenuOptions::KeyTurnOnOffMaster()
 			{
 				Enabled->UpdateInteger(0);
 			}
+
+			KeyWasDown = true;
+
 		}
 	}
 	else
@@ -240,21 +243,24 @@ void EvadeMenuOptions::KeyTurnOnOffMaster()
 
 void EvadeMenuOptions::KeyTurnOnOffDangerous()
 {
-	keystate2 = GetAsyncKeyState(DangerousDodge->GetInteger());
+	keystate2 = GetAsyncKeyState(DodgeDangerous->GetInteger());
 	if (GUtility->IsLeagueWindowFocused() == false || GGame->IsChatOpen() || GGame->IsScoreboardOpen() || GGame->IsShopOpen())
 		return;
 	if (keystate2 < 0)
 	{
 		if (KeyWasDown2 == false)
 		{
-			if (DodgeDangerous->GetInteger() == 0)
+			if (DangerousDodge->GetInteger() == 0)
 			{
-				DodgeDangerous->UpdateInteger(1);
+				DangerousDodge->UpdateInteger(1);
 			}
 			else
 			{
-				DodgeDangerous->UpdateInteger(0);
+				DangerousDodge->UpdateInteger(0);
 			}
+
+			KeyWasDown2 = true;
+
 		}
 	}
 	else
