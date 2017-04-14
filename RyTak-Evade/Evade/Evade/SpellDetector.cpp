@@ -313,7 +313,6 @@ void CSpellDetector::OnCreateTrap(IUnit* Source)
 
 void CSpellDetector::OnCreateTrapDelay(IUnit* Source, SpellData* Data)
 {
-	auto pos = Source->GetPosition().To2D();
 
 	IUnit* caster = nullptr;
 
@@ -326,7 +325,10 @@ void CSpellDetector::OnCreateTrapDelay(IUnit* Source, SpellData* Data)
 		}
 	}
 
-	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, 0, pos, pos, caster, Data->Type);
+	auto pos1 = caster->GetPosition().To2D();
+	auto pos2 = Source->GetPosition().To2D();
+
+	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, 0, pos1, pos2, caster, Data->Type);
 
 	spell->SpellId = spellIdCount++;
 	spell->TrapObject = Source;

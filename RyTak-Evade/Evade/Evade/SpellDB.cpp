@@ -112,7 +112,7 @@ SpellDB::SpellDB()
 #pragma region Caitlyn
 	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynQ")->_SpellName("CaitlynPiltoverPeacemaker")->_DangerValue(2)->_Delay(625)->_MissileName("CaitlynPiltoverPeacemaker")->_Range(1300)->_Radius(60)->_MissileSpeed(2200)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynQBehind")->_SpellName("CaitlynQBehind")->_DangerValue(2)->_Delay(0)->_MissileName("CaitlynPiltoverPeacemaker2")->_Range(1300)->_Radius(90)->_MissileSpeed(2200)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynW")->_SpellName("CaitlynYordleTrap")->_TrapName("CaitlynTrap")->_Delay(0)->_IsDangerous(true)->_Slot(kSlotW)->_Type(ST_Circle)->_Radius(75)->_DontCross(true)->_ExtraDuration(90000));
+	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynW")->_SpellName("CaitlynYordleTrap")->_TrapName("CaitlynTrap")->_Delay(0)->_IsDangerous(true)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(800)->_Radius(75)->_DangerValue(3)->_DontCross(true)->_ExtraDuration(90000)->_CollisionObjects(kCollidesWithHeroes));
 	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynE")->_SpellName("CaitlynEntrapment")->_Delay(160)->_MissileName("CaitlynEntrapmentMissile")->_Slot(kSlotE)->_Range(800)->_MissileSpeed(1600)->_Radius(70)->_FixedRange(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Caitlyn
 
@@ -208,7 +208,7 @@ SpellDB::SpellDB()
 #pragma endregion Gnar
 
 #pragma region Gragas
-	Spells.push_back(CreateSpell()->_ChampName("Gragas")->_MenuName("GragasQ")->_MissileName("GragasQMissile")->_SpellName("GragasQ")->_DangerValue(2)->_ToggleName("Gragas_.+_Q_(Enemy|Ally)")->_Range(850)->_Radius(280)->_MissileSpeed(1000)->_DontCross(true)->_ExtraDuration(4300)->_Type(ST_Circle)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Gragas")->_MenuName("GragasQ")->_MissileName("GragasQMissile")->_SpellName("GragasQ")->_DangerValue(2)->_ToggleName("Gragas_.+_Q_(Green|Red)")->_Range(975)->_Radius(270)->_MissileSpeed(1000)->_DontCross(true)->_ExtraDuration(4300)->_Type(ST_Circle)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Gragas")->_DangerValue(2)->_MenuName("GragasE")->_SpellName("GragasE")->_Delay(0)->_MissileSpeed(900)->_Slot(kSlotE)->_Range(600)->_Radius(200)->_ExtraRange(300)->_FixedRange(true)->_IsDash(true)->_CollisionObjects(kCollidesWithMinions || kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Gragas")->_MenuName("GragasR")->_MissileName("GragasRBoom")->_SpellName("GragasR")->_DangerValue(5)->_MissileSpeed(1800)->_Slot(kSlotR)->_Range(1050)->_Radius(350)->_Type(ST_Circle)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Gragas
@@ -216,7 +216,7 @@ SpellDB::SpellDB()
 #pragma region Graves
 	Spells.push_back(CreateSpell()->_ChampName("Graves")->_MenuName("GravesQ")->_SpellName("GravesQLineSpell")->_DangerValue(2)->_MissileName("GravesQLineMis")->_MissileSpeed(3000)->_Range(808)->_Radius(40)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Graves")->_MenuName("GravesQReturn")->_SpellName("GravesQReturn")->_DangerValue(2)->_Delay(0)->_MissileName("GravesQReturn")->_Range(808)->_Radius(100)->_MissileSpeed(1600)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes || kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Graves")->_MenuName("GravesW")->_SpellName("GravesSmokeGrenade")->_MissileName("GravesSmokeGrenadeBoom")->_ToggleName("Graves_SmokeGrenade_.+_Team_(Green|Red)")->_MissileSpeed(1500)->_Slot(kSlotW)->_Range(950)->_Radius(225)->_Type(ST_Circle)->_DontCross(true)->_ExtraDuration(4250)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Graves")->_MenuName("GravesW")->_SpellName("GravesSmokeGrenade")->_MissileName("GravesSmokeGrenadeBoom")->_MissileSpeed(1500)->_Slot(kSlotW)->_Range(950)->_Radius(250)->_Type(ST_Circle)->_DontCross(true)->_ExtraDuration(4250)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Graves")->_MenuName("GravesR")->_SpellName("GravesChargeShot")->_DangerValue(5)->_MissileName("GravesChargeShotShot")->_Slot(kSlotR)->_Range(1000)->_MissileSpeed(2100)->_Radius(100)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Graves")->_MenuName("GravesRExplosion")->_SpellName("GravesRExplosion")->_DangerValue(5)->_MissileName("GravesChargeShotFxMissile2")->_Slot(kSlotR)->_Range(800)->_Delay(10)->_IsDangerous(true)->_MissileDelayed(true)->_Type(ST_Cone)->_Radius(45));
 #pragma endregion Graves
@@ -329,7 +329,7 @@ SpellDB::SpellDB()
 #pragma endregion LeeSin
 
 #pragma region Leona
-	Spells.push_back(CreateSpell()->_ChampName("Leona")->_MenuName("LeonaE")->_SpellName("LeonaZenithBlade")->_DangerValue(3)->_MissileName("LeonaZenithBladeMissile")->_Slot(kSlotE)->_Range(900)->_MissileSpeed(2000)->_Radius(70)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_TakeClosestPath(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Leona")->_MenuName("LeonaE")->_SpellName("LeonaZenithBlade")->_DangerValue(3)->_MissileName("LeonaZenithBladeMissile")->_Slot(kSlotE)->_Range(900)->_MissileSpeed(2000)->_Radius(70)->_MissileFromUnit(true)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_TakeClosestPath(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Leona")->_DangerValue(5)->_MenuName("LeonaR")->_SpellName("LeonaSolarFlare")->_Delay(930)->_Slot(kSlotR)->_Type(ST_Circle)->_Range(1200)->_Radius(300)->_IsDangerous(true)->_DontCross(true));
 #pragma endregion Leona
 
@@ -352,7 +352,7 @@ SpellDB::SpellDB()
 
 #pragma region Lux
 	Spells.push_back(CreateSpell()->_ChampName("Lux")->_MenuName("LuxQ")->_SpellName("LuxLightBinding")->_DangerValue(3)->_MissileName("LuxLightBindingMis")->_Range(1300)->_Radius(70)->_MissileSpeed(1200)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Lux")->_MenuName("LuxE")->_SpellName("LuxLightStrikeKugel")->_DangerValue(2)->_MissileName("LuxLightStrikeKugel")->_MissileSpeed(1300)->_HasEndExplosion(true)->_Slot(kSlotE)->_Type(ST_Circle)->_Range(1100)->_Radius(330)->_ExtraDuration(5100)->_DontCross(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Lux")->_MenuName("LuxE")->_SpellName("LuxLightStrikeKugel")->_DangerValue(2)->_MissileName("LuxLightStrikeKugel")->_ToggleName("Lux_.+_E_LightStrikeKugel(Green|Red)_Team")->_MissileSpeed(1300)->_HasEndExplosion(true)->_Slot(kSlotE)->_Type(ST_Circle)->_Range(1100)->_Radius(330)->_ExtraDuration(5100)->_DontCross(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Lux")->_DangerValue(5)->_MenuName("LuxR")->_SpellName("LuxMaliceCannon")->_Delay(1000)->_Slot(kSlotR)->_Type(ST_Line)->_Range(3300)->_Radius(150)->_FixedRange(true)->_IsDangerous(true));
 #pragma endregion Lux
 
@@ -488,11 +488,11 @@ SpellDB::SpellDB()
 
 #pragma region Swain
 	Spells.push_back(CreateSpell()->_ChampName("Swain")->_DangerValue(2)->_MenuName("SwainQ")->_SpellName("SwainDecrepify")->_Slot(kSlotQ)->_Type(ST_Circle)->_Range(700)->_Radius(325)->_IsDangerous(true)->_DontCross(true));
-	Spells.push_back(CreateSpell()->_ChampName("Swain")->_DangerValue(3)->_MenuName("SwainW")->_SpellName("SwainShadowGrasp")->_Delay(1100)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(900)->_Radius(240)->_IsDangerous(true)->_DontCross(true));
+	Spells.push_back(CreateSpell()->_ChampName("Swain")->_DangerValue(3)->_MenuName("SwainW")->_SpellName("SwainShadowGrasp")->_Delay(1100)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(900)->_Radius(250)->_IsDangerous(true)->_DontCross(true));
 #pragma endregion Swain
 	
 #pragma region Syndra
-	Spells.push_back(CreateSpell()->_ChampName("Syndra")->_MenuName("SyndraQ")->_MissileName("SyndraQSpell")->_SpellName("SyndraQ")->_DangerValue(2)->_Delay(650)->_Type(ST_Circle)->_Range(825)->_Radius(180)->_MissileDelayed(true));
+	Spells.push_back(CreateSpell()->_ChampName("Syndra")->_MenuName("SyndraQ")->_MissileName("SyndraQSpell")->_SpellName("SyndraQ")->_DangerValue(2)->_Delay(600)->_Type(ST_Circle)->_Range(800)->_Radius(210)->_MissileDelayed(true));
 	Spells.push_back(CreateSpell()->_ChampName("Syndra")->_DangerValue(2)->_MenuName("SyndraW")->_SpellName("SyndraWCast")->_MissileSpeed(1450)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(950)->_Radius(210)->_Delay(250));
 	Spells.push_back(CreateSpell()->_ChampName("Syndra")->_DangerValue(2)->_MenuName("SyndraE")->_SpellName("SyndraE")->_MissileSpeed(2000)->_Slot(kSlotE)->_Range(950)->_Radius(100)->_Type(ST_MissileCone)->_DontCross(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Syndra")->_DangerValue(2)->_MenuName("SyndraEMax")->_SpellName("SyndraE5")->_MissileSpeed(2000)->_Slot(kSlotE)->_Range(950)->_Radius(100)->_Type(ST_MissileCone)->_DontCross(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
@@ -541,7 +541,7 @@ SpellDB::SpellDB()
 #pragma endregion TwistedFate
 
 #pragma region Twitch
-	Spells.push_back(CreateSpell()->_ChampName("Twitch")->_MenuName("TwitchW")->_SpellName("TwitchVenomCask")->_MissileName("TwitchVenomCaskMissile")->_ToggleName("twitch_w_indicator_(green|red)_team")->_DangerValue(2)->_MissileSpeed(1400)->_Slot(kSlotW)->_Range(950)->_Radius(285)->_Type(ST_Circle)->_DontCross(true)->_ExtraDuration(2850)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Twitch")->_MenuName("TwitchW")->_SpellName("TwitchVenomCask")->_MissileName("TwitchVenomCaskMissile")->_ToggleName("Twitch_W_Indicator_(Green|Red)_team")->_DangerValue(2)->_MissileSpeed(1400)->_Slot(kSlotW)->_Range(950)->_Radius(285)->_Type(ST_Circle)->_DontCross(true)->_ExtraDuration(2850)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Twitch")->_MenuName("TwitchR")->_SpellName("TwitchSprayAndPrayAttack")->_DangerValue(2)->_MissileName("TwitchSprayAndPrayAttack")->_Slot(kSlotR)->_Range(1100)->_Delay(0)->_MissileSpeed(4000)->_Radius(60)->_FixedRange(true)->_MissileOnly(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Twitch
 
