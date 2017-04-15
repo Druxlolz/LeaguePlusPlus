@@ -5,6 +5,8 @@
 #undef min
 #undef max
 
+#define PI 3.14159265
+
 #include <algorithm>
 #include <regex>
 #include <string>
@@ -152,6 +154,8 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 		}
 		break;
 	case ST_Arc:
+		endTime += static_cast<int>(startPos.DistanceTo(endPos) * 180.f / PI);
+		break;
 	case ST_MissileCone:
 		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
 		break;
