@@ -115,10 +115,17 @@ void Evade::OnDraw()
 			std::string text = std::string("Evade: ") + (Configs->Enabled->Enabled() ? "On" : "Off");
 			Vec4 clr = Vec4(128, 128, 128, 255);
 
+			std::string text2 = std::string("Dangerous Only: ") + (Configs->DodgeDangerous->Enabled() ? "On" : "Off");
+			Vec4 clr2 = Vec4(128, 128, 128, 255);
+
 			if (Configs->Enabled->Enabled())
-				clr = Evading ? Vec4(255, 0, 0, 255) : (GetAsyncKeyState(Configs->DodgeDangerous->Enabled() || Configs->DangerousDodge->Enabled()) ? Vec4(255, 255, 0, 255) : Vec4(255, 255, 255, 255));
+				clr = Evading ? Vec4(255, 255, 0, 255) : Vec4(255, 255, 255, 255);
+
+			if (Configs->DodgeDangerous->Enabled())
+				clr2 = Evading ? Vec4(255, 255, 0, 255) : Vec4(255, 255, 255, 255);
 
 			pFont->SetColor(clr);
+			pFont->SetColor(clr2);
 			pFont->Render(pos.x, pos.y, text.c_str());
 		}
 	}
