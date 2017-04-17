@@ -1,15 +1,14 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
-#include "CommonLib.h"
+#include "CommonLib.cpp"
 
 class TwitchBase
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Twitch");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Twitch");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -55,7 +54,7 @@ public:
 
 		if (StackCount == 0) return 0;
 
-		float BonusDamage = ((0.25 * GEntityList->Player()->BonusDamage()) + (0.2 * GEntityList->Player()->TotalMagicDamage())) * StackCount;
+		double BonusDamage = ((0.25 * GEntityList->Player()->BonusDamage()) + (0.2 * GEntityList->Player()->TotalMagicDamage())) * StackCount;
 
 		if (GEntityList->Player()->GetSpellLevel(kSlotE) == 1)
 		{

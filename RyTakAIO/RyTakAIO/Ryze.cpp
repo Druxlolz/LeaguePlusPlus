@@ -1,5 +1,5 @@
+#pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 #include <stdlib.h>
 
@@ -8,7 +8,7 @@ class RyzeBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Ryze");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Ryze");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		UseCombo = ComboMenu->CheckBox("Use Combo", true);
@@ -59,9 +59,9 @@ public:
 		if (GSpellBook->GetLevel(kSlotR) == 0)
 			return;
 		if (GSpellBook->GetLevel(kSlotR) == 1)
-			R->SetOverrideRange(1750);
+			R->SetOverrideRange(1750.f);
 		if (GSpellBook->GetLevel(kSlotR) == 2)
-			R->SetOverrideRange(3000);
+			R->SetOverrideRange(3000.f);
 	}
 
 	void Combo()

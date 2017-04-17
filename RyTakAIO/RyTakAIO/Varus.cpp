@@ -1,8 +1,7 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
-#include "CommonLib.h"
+#include "CommonLib.cpp"
 
 class VarusBase
 {

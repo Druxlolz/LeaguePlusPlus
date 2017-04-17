@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class VelKozBase
@@ -32,7 +31,6 @@ public:
 
 		KSMenu = MainMenu->AddMenu("Killsteal Settings");
 		KSQ = KSMenu->CheckBox("Killsteal with Q", true);
-		KSQ2 = KSMenu->CheckBox("Killsteal with Q2", true);
 		KSW = KSMenu->CheckBox("Killsteal with W", true);
 		KSE = KSMenu->CheckBox("Killsteal with E", true);
 		KSR = KSMenu->CheckBox("Killsteal with R", true);
@@ -51,30 +49,12 @@ public:
 	{
 		SpellLib().VelKoz();
 	}
-	
+
+
+
 	void QLogic()
 	{
-		Enemy = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-		for (auto Enemy : GEntityList->GetAllHeros(false, true))
 
-		if (Q->IsReady())
-		{
-			Vec3 posQ1;
-			Vec3 posQ2;
-			int hit;
-			GPrediction->FindBestCastPosition(Q->Range(), Q->Radius(), true, true, true, posQ1, hit);
-			GPrediction->FindBestCastPosition(Q2->Range(), Q2->Radius(), true, true, true, posQ2, hit);
-			{
-				if (hit >= 1 && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
-				{
-					Q->CastOnPosition(posQ2);
-					if (Q2->IsReady())
-					{
-						Q2->CastFrom(posQ2, Enemy->GetPosition());
-					}
-				}
-			}
-		}
 	}
 
 	void Combo()
@@ -86,7 +66,7 @@ public:
 			{
 				if (ComboQ->Enabled() && Q->IsReady() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
-					QLogic();
+					Q->CastOnTarget(target, 5);
 				}
 				if (ComboW->Enabled() && W->IsReady() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 				{
@@ -109,7 +89,7 @@ public:
 			{
 				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
-					QLogic();
+					Q->CastOnTarget(target, 5);
 				}
 				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 				{
@@ -136,7 +116,7 @@ public:
 					{
 						if (LaneClearQ->Enabled() && Q->IsReady() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 						{
-							QLogic();
+							Q->CastOnTarget(minion, 5);
 						}
 						if (LaneClearW->Enabled() && W->IsReady() && minion->IsValidTarget(GEntityList->Player(), W->Range()))
 						{
@@ -164,15 +144,7 @@ public:
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
 					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
-						Q->CastOnTarget(Enemy, kHitChanceHigh);
-					}
-				}
-				if (KSQ2->Enabled() && Q2->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q2->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), Q2->Range()))
-					{
-						Q2->CastOnTarget(Enemy, kHitChanceHigh);
+						Q->CastOnTarget(Enemy, 5);
 					}
 				}
 				if (KSW->Enabled() && W->IsReady())
@@ -194,12 +166,9 @@ public:
 				if (KSR->Enabled() && R->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
-					Vec3 pos;
-					int hit;
-					GPrediction->FindBestCastPosition(R->Range(), R->Radius(), true, false, true, pos, hit);
 					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), R->Range()))
 					{
-						R->CastOnPosition(pos);
+						R->CastOnTarget(Enemy, 5);
 					}
 				}
 			}

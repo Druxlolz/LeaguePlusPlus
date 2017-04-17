@@ -192,10 +192,11 @@
     <ClInclude Include="Cassiopeia.cpp">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClInclude Include="ChampionHandler.h" />
     <ClInclude Include="ChoGath.cpp">
       <FileType>CppCode</FileType>
     </ClInclude>
-    <ClInclude Include="CommonLib.h" />
+    <ClInclude Include="CommonLib.cpp" />
     <ClInclude Include="Corki.cpp">
       <FileType>CppCode</FileType>
     </ClInclude>
@@ -256,7 +257,9 @@
     <ClInclude Include="Heimerdinger.cpp">
       <FileType>CppCode</FileType>
     </ClInclude>
-    <ClInclude Include="IChampion.h" />
+    <ClInclude Include="IChampion.cpp">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="Illaoi.cpp">
       <FileType>CppCode</FileType>
     </ClInclude>
@@ -381,7 +384,9 @@
     <ClInclude Include="Olaf.cpp">
       <FileType>CppCode</FileType>
     </ClInclude>
-    <ClInclude Include="OnRender.h" />
+    <ClInclude Include="OnRender.cpp">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="Orianna.cpp">
       <FileType>CppCode</FileType>
     </ClInclude>

@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class SyndraBase
@@ -46,6 +45,34 @@ public:
 	void Spells()
 	{
 		SpellLib().Syndra();
+	}
+
+	bool OrbAlive = false;
+
+	void OnCreate(IUnit* synOrb) 
+	{
+		auto objectName = synOrb->GetObjectName();
+		auto Player = GEntityList->Player();
+
+		std::vector<IUnit*> result;
+		for (auto synQ : GEntityList->GetAllUnits())
+		{
+			if (strcmp(objectName, "SyndraQ") == 0 && synOrb->IsVisible() && synOrb->IsValidObject())
+			{
+				OrbAlive = true;
+				result.push_back(synQ);
+			}
+		}
+	}
+
+	void OnDelete(IUnit* synOrb) 
+	{
+		auto objectName = synOrb->GetObjectName();
+
+		if (strcmp(objectName, "SyndraQ") == 0 && synOrb->IsVisible() && synOrb->IsValidObject())
+		{
+			OrbAlive = false;
+		}
 	}
 
 	void Combo()
