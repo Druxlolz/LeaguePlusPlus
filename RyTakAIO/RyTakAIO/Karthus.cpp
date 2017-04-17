@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class KarthusBase
@@ -8,7 +7,7 @@ class KarthusBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Karthus");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Karthus");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -18,19 +17,17 @@ public:
 
 		HarassMenu = MainMenu->AddMenu("Harass Settings");
 		HarassQ = HarassMenu->CheckBox("Use Q", true);
-		HarassW = HarassMenu->CheckBox("Use W", true);
 		HarassE = HarassMenu->CheckBox("Use E", true);
 		HarassMana = HarassMenu->AddFloat("Min. Mana", 0, 100, 60);
 
 		LaneClearMenu = MainMenu->AddMenu("Farm Settings");
 		LaneClearQ = LaneClearMenu->CheckBox("Use Q", true);
-		LaneClearW = LaneClearMenu->CheckBox("Use W", true);
 		LaneClearE = LaneClearMenu->CheckBox("Use E", true);
+		LaneClearEMinions = LaneClearMenu->AddFloat("Hit Minions with E", 1, 6, 3);
 		LaneClearMana = LaneClearMenu->AddFloat("Min. Mana", 0, 100, 40);
 
 		KSMenu = MainMenu->AddMenu("Killsteal Settings");
 		KSQ = KSMenu->CheckBox("Killsteal with Q", true);
-		KSW = KSMenu->CheckBox("Killsteal with W", true);
 		KSE = KSMenu->CheckBox("Killsteal with E", true);
 		KSR = KSMenu->CheckBox("Killsteal with R", true);
 
@@ -55,20 +52,28 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
-				if (ComboQ->Enabled() && Q->IsReady())
+			{
+				if (ComboQ->Enabled() && Q->IsReady() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
-					Q->CastOnTarget(target);
+					Q->CastOnTarget(target, 6);
 				}
-			if (ComboW->Enabled() && W->IsReady())
-			{
-				W->CastOnTarget(target);
-			}
-			if (ComboE->Enabled() && E->IsReady())
-			{
-				E->CastOnTarget(target);
-			}
+				if (ComboW->Enabled() && W->IsReady() && target->IsValidTarget(GEntityList->Player(), W->Range()))
+				{
+					W->CastOnTarget(target, 5);
+				}
+				if (ComboE->Enabled() && E->IsReady() && target->IsValidTarget(GEntityList->Player(), E->Range()))
+				{
+					if (EIISR().EnemyIsInSpellRange(450) == true && !GEntityList->Player()->HasBuff("KarthusDefile"))
+					{
+						E->CastOnPlayer();
+					}
+					if (EIISR().EnemyIsInSpellRange(450) == false && GEntityList->Player()->HasBuff("KarthusDefile"))
+					{
+						E->CastOnPlayer();
+					}
+				}
+			}				
 		}
-
 	}
 
 	void Harass()
@@ -77,18 +82,16 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
-				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+			{
+				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
-					Q->CastOnTarget(target);
+					Q->CastOnTarget(target, 5);
 				}
-			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				W->CastOnTarget(target);
-			}
-			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				E->CastOnTarget(target);
-			}
+				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget(GEntityList->Player(), E->Range()))
+				{
+					E->CastOnTarget(target, 5);
+				}
+			}				
 		}
 	}
 
@@ -101,19 +104,15 @@ public:
 				minion = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 				for (auto minion : GEntityList->GetAllMinions(false, true, true))
 				{
-					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, Q->Range()))
+					if (minion->IsEnemy(GEntityList->Player()) && minion != nullptr && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, Q->Range()))
 					{
-						if (LaneClearQ->Enabled() && Q->IsReady())
+						if (LaneClearQ->Enabled() && Q->IsReady() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 						{
-							Q->CastOnTarget(minion);
+							Q->LastHitMinion();
 						}
-						if (LaneClearW->Enabled() && W->IsReady())
+						if (LaneClearE->Enabled() && E->IsReady() && minion->IsValidTarget(GEntityList->Player(), E->Range()))
 						{
-							E->CastOnTarget(minion);
-						}
-						if (LaneClearE->Enabled() && E->IsReady())
-						{
-							E->CastOnTarget(minion);
+							E->CastOnTarget(minion, 6);
 						}
 					}
 				}
@@ -131,23 +130,15 @@ public:
 				if (KSQ->Enabled() && Q->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
 						Q->CastOnTarget(Enemy, kHitChanceHigh);
-					}
-				}
-				if (KSW->Enabled() && W->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						W->CastOnTarget(Enemy, kHitChanceHigh);
 					}
 				}
 				if (KSE->Enabled() && E->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotE, E->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 					{
 						E->CastOnTarget(Enemy, kHitChanceHigh);
 					}
@@ -155,12 +146,9 @@ public:
 				if (KSR->Enabled() && R->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
-					Vec3 pos;
-					int hit;
-					GPrediction->FindBestCastPosition(R->Range(), R->Radius(), true, true, false, pos, hit);
-					if (Enemy->GetHealth() <= dmg)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), R->Range()))
 					{
-						R->CastOnPosition(pos);
+						R->CastOnPlayer();
 					}
 				}
 			}

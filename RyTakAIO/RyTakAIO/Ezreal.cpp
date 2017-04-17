@@ -1,5 +1,4 @@
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class EzrealBase

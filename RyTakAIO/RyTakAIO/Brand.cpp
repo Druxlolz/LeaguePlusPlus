@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class BrandBase
@@ -8,7 +7,7 @@ class BrandBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Brand");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Brand");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);

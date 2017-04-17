@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class AlistarBase
@@ -8,7 +7,7 @@ class AlistarBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Alistar");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Alistar");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -86,15 +85,15 @@ public:
 			{
 				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 				{
-					Q->CastOnTarget(target);
+					Q->CastOnTarget(target, 5);
 				}
 				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 				{
-					W->CastOnTarget(target);
+					W->CastOnTarget(target, 5);
 				}
 				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 				{
-					E->CastOnTarget(target);
+					E->CastOnTarget(target, 5);
 				}
 			}			
 		}
@@ -113,15 +112,15 @@ public:
 					{
 						if (LaneClearQ->Enabled() && Q->IsReady())
 						{
-							Q->CastOnTarget(minion);
+							Q->CastOnTarget(minion, 5);
 						}
 						if (LaneClearW->Enabled() && W->IsReady())
 						{
-							E->CastOnTarget(minion);
+							E->CastOnTarget(minion, 5);
 						}
 						if (LaneClearE->Enabled() && E->IsReady())
 						{
-							E->CastOnTarget(minion);
+							E->CastOnTarget(minion, 5);
 						}
 					}
 				}

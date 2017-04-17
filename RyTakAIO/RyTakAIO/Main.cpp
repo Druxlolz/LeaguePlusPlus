@@ -1,7 +1,7 @@
 #include "PluginSDK.h"
 #include "BaseOptions.h"
-#include "OnRender.h"
-#include "IChampion.h"
+#include "OnRender.cpp"
+#include "IChampion.cpp"
 #include "SpellLib.h"
 #include <sstream>
 
@@ -159,7 +159,7 @@ void LoadChampion()
 		return;
 	}
 
-	if (szChampion == "Cho'Gath")
+	if (szChampion == "ChoGath")
 	{
 		pChampion = new ChoGath;
 		return;
@@ -183,7 +183,7 @@ void LoadChampion()
 		return;
 	}
 
-	if (szChampion == "Dr.Mundo")
+	if (szChampion == "DrMundo")
 	{
 		pChampion = new DrMundo;
 		return;
@@ -381,7 +381,7 @@ void LoadChampion()
 		return;
 	}
 
-	if (szChampion == "Kha'Zix")
+	if (szChampion == "KhaZix")
 	{
 		pChampion = new KhaZix;
 		return;
@@ -399,7 +399,7 @@ void LoadChampion()
 		return;
 	}
 
-	if (szChampion == "Kog'Maw")
+	if (szChampion == "KogMaw")
 	{
 		pChampion = new KogMaw;
 		return;
@@ -561,7 +561,7 @@ void LoadChampion()
 		return;
 	}
 
-	if (szChampion == "Rek'Sai")
+	if (szChampion == "RekSai")
 	{
 		pChampion = new RekSai;
 		return;
@@ -765,7 +765,7 @@ void LoadChampion()
 		return;
 	}
 
-	if (szChampion == "Vel'Koz")
+	if (szChampion == "Velkoz")
 	{
 		pChampion = new VelKoz;
 		return;
@@ -801,7 +801,7 @@ void LoadChampion()
 		return;
 	}
 
-	if (szChampion == "Wukong")
+	if (szChampion == "MonkeyKing")
 	{
 		pChampion = new Wukong;
 		return;
@@ -878,6 +878,7 @@ PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
 
 PLUGIN_API void OnUnload()
 {
+	MainMenu->SaveSettings();
 	MainMenu->Remove();
 
 	GEventManager->RemoveEventHandler(kEventOnRender, OnRender);

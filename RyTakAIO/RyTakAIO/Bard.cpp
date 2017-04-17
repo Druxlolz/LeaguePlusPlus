@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class BardBase
@@ -8,7 +7,7 @@ class BardBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Bard");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Bard");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -54,7 +53,9 @@ public:
 		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
-			for (auto target : GEntityList->GetAllHeros(false, true))
+			for (auto target : GEntityList->GetAllHeros(false, true));
+			ally = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
+			for (auto target : GEntityList->GetAllHeros(true, false));
 			{
 				if (target != nullptr && target->IsValidTarget())
 				{
@@ -64,7 +65,7 @@ public:
 					}
 					if (W->IsReady() && ComboW->Enabled())
 					{
-						W->CastOnTarget(target, 5);
+						W->CastOnTarget(ally, 5);
 					}
 					if (E->IsReady() && ComboE->Enabled())
 					{
@@ -85,18 +86,12 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
+			{
 				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 				{
-					Q->CastOnTarget(target);
+					Q->CastOnTarget(target, 5);
 				}
-			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				W->CastOnTarget(target);
-			}
-			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				E->CastOnTarget(target);
-			}
+			}			
 		}
 	}
 
@@ -113,15 +108,7 @@ public:
 					{
 						if (LaneClearQ->Enabled() && Q->IsReady())
 						{
-							Q->CastOnTarget(minion);
-						}
-						if (LaneClearW->Enabled() && W->IsReady())
-						{
-							E->CastOnTarget(minion);
-						}
-						if (LaneClearE->Enabled() && E->IsReady())
-						{
-							E->CastOnTarget(minion);
+							Q->CastOnTarget(minion, 5);
 						}
 					}
 				}
@@ -144,28 +131,12 @@ public:
 						Q->CastOnTarget(Enemy, kHitChanceHigh);
 					}
 				}
-				if (KSW->Enabled() && W->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						W->CastOnTarget(Enemy, kHitChanceHigh);
-					}
-				}
-				if (KSE->Enabled() && E->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotE, E->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						E->CastOnTarget(Enemy, kHitChanceHigh);
-					}
-				}
 				if (KSR->Enabled() && R->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
 					Vec3 pos;
 					int hit;
-					GPrediction->FindBestCastPosition(R->Range(), R->Radius(), true, true, false, pos, hit);
+					GPrediction->FindBestCastPosition(R->Range(), R->Radius(), true, true, true, pos, hit);
 					if (Enemy->GetHealth() <= dmg)
 					{
 						R->CastOnPosition(pos);

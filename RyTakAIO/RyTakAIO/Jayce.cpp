@@ -184,7 +184,7 @@ public:
 					{
 						if (Q2->IsReady())
 						{
-							Q2->CastOnTarget(target, 4);
+							Q2->CastOnTarget(target, 5);
 						}
 					}
 				}

@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class KayleBase
@@ -55,20 +54,24 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
-				if (ComboQ->Enabled() && Q->IsReady())
+			{
+				if (target != nullptr && target->IsHero())
 				{
-					Q->CastOnTarget(target);
+					if (ComboQ->Enabled() && Q->IsReady())
+					{
+						Q->CastOnTarget(target);
+					}
+					if (ComboW->Enabled() && W->IsReady())
+					{
+						W->CastOnTarget(target);
+					}
+					if (ComboE->Enabled() && E->IsReady())
+					{
+						E->CastOnTarget(target);
+					}
 				}
-			if (ComboW->Enabled() && W->IsReady())
-			{
-				W->CastOnTarget(target);
-			}
-			if (ComboE->Enabled() && E->IsReady())
-			{
-				E->CastOnTarget(target);
-			}
+			}				
 		}
-
 	}
 
 	void Harass()
@@ -77,18 +80,23 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
-				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+			{
+				if (target != nullptr && target->IsHero())
 				{
-					Q->CastOnTarget(target);
+					if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+					{
+						Q->CastOnTarget(target);
+					}
+					if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+					{
+						W->CastOnTarget(target);
+					}
+					if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+					{
+						E->CastOnTarget(target);
+					}
 				}
-			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				W->CastOnTarget(target);
-			}
-			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				E->CastOnTarget(target);
-			}
+			}				
 		}
 	}
 
@@ -101,17 +109,13 @@ public:
 				minion = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 				for (auto minion : GEntityList->GetAllMinions(false, true, true))
 				{
-					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, Q->Range()))
+					if (minion->IsEnemy(GEntityList->Player()) && minion != nullptr && !minion->IsDead())
 					{
-						if (LaneClearQ->Enabled() && Q->IsReady())
+						if (LaneClearQ->Enabled() && Q->IsReady() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 						{
 							Q->CastOnTarget(minion);
 						}
-						if (LaneClearW->Enabled() && W->IsReady())
-						{
-							E->CastOnTarget(minion);
-						}
-						if (LaneClearE->Enabled() && E->IsReady())
+						if (LaneClearE->Enabled() && E->IsReady() && minion->IsValidTarget(GEntityList->Player(), E->Range()))
 						{
 							E->CastOnTarget(minion);
 						}
@@ -136,31 +140,12 @@ public:
 						Q->CastOnTarget(Enemy, kHitChanceHigh);
 					}
 				}
-				if (KSW->Enabled() && W->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						W->CastOnTarget(Enemy, kHitChanceHigh);
-					}
-				}
 				if (KSE->Enabled() && E->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotE, E->GetDelay(), true);
 					if (Enemy->GetHealth() <= dmg)
 					{
 						E->CastOnTarget(Enemy, kHitChanceHigh);
-					}
-				}
-				if (KSR->Enabled() && R->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
-					Vec3 pos;
-					int hit;
-					GPrediction->FindBestCastPosition(R->Range(), R->Radius(), true, true, false, pos, hit);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						R->CastOnPosition(pos);
 					}
 				}
 			}

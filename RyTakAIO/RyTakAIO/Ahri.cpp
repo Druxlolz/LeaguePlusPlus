@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class AhriBase
@@ -8,7 +7,7 @@ class AhriBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Ahri");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Ahri");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -86,18 +85,20 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
+			{
 				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 				{
-					Q->CastOnTarget(target);
+					Q->CastOnTarget(target, 5);
 				}
-			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				W->CastOnTarget(target);
-			}
-			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				E->CastOnTarget(target);
-			}
+				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				{
+					W->CastOnTarget(target, 5);
+				}
+				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				{
+					E->CastOnTarget(target, 5);
+				}
+			}				
 		}
 	}
 
@@ -114,15 +115,15 @@ public:
 					{
 						if (LaneClearQ->Enabled() && Q->IsReady())
 						{
-							Q->CastOnTarget(minion);
+							Q->CastOnTarget(minion, 5);
 						}
 						if (LaneClearW->Enabled() && W->IsReady())
 						{
-							E->CastOnTarget(minion);
+							W->CastOnTarget(minion, 5);
 						}
 						if (LaneClearE->Enabled() && E->IsReady())
 						{
-							E->CastOnTarget(minion);
+							E->CastOnTarget(minion, 5);
 						}
 					}
 				}

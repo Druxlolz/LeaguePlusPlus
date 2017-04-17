@@ -1,7 +1,7 @@
 #pragma once
 #include "PluginSDK.h"
 #include "SpellLib.h"
-#include "CommonLib.h"
+#include "CommonLib.cpp"
 
 //Main Menu Screens
 IMenu* MainMenu;
@@ -105,7 +105,6 @@ IMenuOption* PushDistance;
 
 //Misc. MenuOptions
 IMenuOption* QAfterAttack;
-IMenuOption* UseLucianPassive;
 IMenuOption* QMinionHarass;
 IMenuOption* HarassExQ;
 IMenuOption* AutoEKillable;
@@ -163,4 +162,5 @@ IUnit* minion;
 IUnit* minion1;
 IUnit* minion2;
 IUnit* target;
+IUnit* ally;
 

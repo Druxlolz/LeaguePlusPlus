@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class AurelionSolBase
@@ -8,7 +7,7 @@ class AurelionSolBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Aurelion Sol");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Aurelion_Sol");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);

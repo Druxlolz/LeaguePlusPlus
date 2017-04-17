@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseOptions.h"
-#include "OnRender.h"
 #include "SpellLib.h"
 
 class AatroxBase
@@ -8,7 +7,7 @@ class AatroxBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Aatrox");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Aatrox");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -28,7 +27,6 @@ public:
 
 		KSMenu = MainMenu->AddMenu("Killsteal Settings");
 		KSQ = KSMenu->CheckBox("Killsteal with Q", true);
-		KSW = KSMenu->CheckBox("Killsteal with W", false);
 		KSE = KSMenu->CheckBox("Killsteal with E", true);
 		KSR = KSMenu->CheckBox("Killsteal with R", false);
 
@@ -36,7 +34,7 @@ public:
 		DrawReady = DrawMenu->CheckBox("Draw Only Ready Spells", true);
 		DrawOff = DrawMenu->CheckBox("Disable Drawings", false);
 		DrawQ = DrawMenu->CheckBox("Draw Q", true);
-		DrawW = DrawMenu->CheckBox("Draw W", true);
+		DrawW = DrawMenu->CheckBox("Draw W", false);
 		DrawE = DrawMenu->CheckBox("Draw E", true);
 		DrawR = DrawMenu->CheckBox("Draw R", true);
 
@@ -71,7 +69,6 @@ public:
 				}
 			}
 		}
-
 	}
 
 	void Harass()
@@ -80,18 +77,20 @@ public:
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
+			{
 				if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 				{
 					Q->CastOnTarget(target);
 				}
-			if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				W->CastOnTarget(target);
-			}
-			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
-			{
-				E->CastOnTarget(target);
-			}
+				if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				{
+					W->CastOnTarget(target);
+				}
+				if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+				{
+					E->CastOnTarget(target);
+				}
+			}				
 		}
 	}
 
@@ -112,7 +111,7 @@ public:
 						}
 						if (LaneClearW->Enabled() && W->IsReady())
 						{
-							E->CastOnTarget(minion);
+							W->CastOnTarget(minion);
 						}
 						if (LaneClearE->Enabled() && E->IsReady())
 						{
@@ -137,14 +136,6 @@ public:
 					if (Enemy->GetHealth() <= dmg)
 					{
 						Q->CastOnTarget(Enemy, kHitChanceHigh);
-					}
-				}
-				if (KSW->Enabled() && W->IsReady())
-				{
-					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotW, W->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg)
-					{
-						W->CastOnPlayer();
 					}
 				}
 				if (KSE->Enabled() && E->IsReady())
