@@ -11,7 +11,7 @@ void CEvadeLogic::OnGameUpdate()
 {
 	CastDelayedSpells();
 
-	Evade::PlayerPosition = GEntityList->Player()->ServerPosition().To2D();
+	Evade::PlayerPosition = GEntityList->Player()->ServerPosition().To2D();	
 
 	if (PrevPos.IsValid() && Evade::PlayerPosition.DistanceTo(PrevPos) > 10.f)
 	{

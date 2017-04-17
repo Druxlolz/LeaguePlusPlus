@@ -481,6 +481,11 @@ EvadeSpellDB::EvadeSpellDB()
 	}
 #pragma endregion Vladimir
 
+#pragma region Xayah
+	if (szChamp == "Xayah")
+		Spells.push_back(new InvulnerabilityData("XayahR", kSlotR, 100, 3));
+#pragma endregion Xayah
+
 	if (GEntityList->Player()->GetSpellSlot("SummonerFlash") != kSlotUnknown)
 		Spells.push_back(new BlinkData("Flash", GEntityList->Player()->GetSpellSlot("SummonerFlash"), 425, 100, 5));
 

@@ -314,7 +314,7 @@ SpellDB::SpellDB()
 #pragma region KogMaw
 	Spells.push_back(CreateSpell()->_ChampName("KogMaw")->_MenuName("KogMawQ")->_MissileName("KogMawQ")->_SpellName("KogMawQ")->_DangerValue(2)->_MissileSpeed(1650)->_Range(1200)->_Radius(70)->_FixedRange(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("KogMaw")->_MenuName("KogMawE")->_SpellName("KogMawVoidOozeMissile")->_DangerValue(2)->_MissileName("KogMawVoidOozeMissile")->_Slot(kSlotE)->_Range(1300)->_MissileSpeed(1400)->_Radius(120)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("KogMaw")->_DangerValue(2)->_MenuName("KogMawR")->_SpellName("KogMawLivingArtillery")->_Delay(1150)->_Slot(kSlotR)->_Type(ST_Circle)->_Range(1200)->_Radius(240)->_DontCheckForDuplicates(true)->_HasEndExplosion(true));
+	Spells.push_back(CreateSpell()->_ChampName("KogMaw")->_DangerValue(2)->_MenuName("KogMawR")->_SpellName("KogMawLivingArtillery")->_Delay(1150)->_Slot(kSlotR)->_Type(ST_Circle)->_Range(1800)->_MissileSpeed(1000)->_Radius(240)->_DontCheckForDuplicates(true)->_HasEndExplosion(true));
 #pragma endregion KogMaw
 
 #pragma region Leblanc
@@ -324,7 +324,7 @@ SpellDB::SpellDB()
 #pragma endregion Leblanc
 
 #pragma region LeeSin
-	Spells.push_back(CreateSpell()->_ChampName("LeeSin")->_MenuName("LeeSinQ")->_SpellName("BlindMonkQOne")->_DangerValue(3)->_MissileName("BlindMonkQOne")->_MissileSpeed(1800)->_Range(1100)->_Radius(60)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("LeeSin")->_MenuName("LeeSinQ")->_SpellName("BlindMonkQOne")->_DangerValue(3)->_MissileName("BlindMonkQOne")->_MissileSpeed(1800)->_Range(1150)->_Radius(80)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("LeeSin")->_DangerValue(2)->_MenuName("LeeSinE")->_SpellName("BlindMonkEOne")->_AddHitbox(false)->_Slot(kSlotE)->_Type(ST_Circle)->_Radius(430));
 #pragma endregion LeeSin
 
@@ -374,7 +374,7 @@ SpellDB::SpellDB()
 #pragma endregion Mordekaiser
 
 #pragma region Morgana
-	Spells.push_back(CreateSpell()->_ChampName("Morgana")->_MenuName("MorganaQ")->_SpellName("DarkBindingMissile")->_DangerValue(3)->_MissileName("DarkBindingMissile")->_Range(1300)->_Radius(70)->_MissileSpeed(1200)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Morgana")->_MenuName("MorganaQ")->_SpellName("DarkBindingMissile")->_DangerValue(3)->_MissileName("DarkBindingMissile")->_Range(1400)->_Radius(90)->_MissileSpeed(1200)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Morgana
 
 #pragma region Nami
@@ -520,7 +520,7 @@ SpellDB::SpellDB()
 #pragma endregion Taric
 
 #pragma region Thresh
-	Spells.push_back(CreateSpell()->_ChampName("Thresh")->_MenuName("ThreshQ")->_MissileName("ThreshQMissile")->_SpellName("ThreshQ")->_DangerValue(3)->_Delay(500)->_MissileSpeed(1900)->_Slot(kSlotQ)->_Range(1100)->_Radius(70)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Thresh")->_MenuName("ThreshQ")->_MissileName("ThreshQMissile")->_SpellName("ThreshQ")->_DangerValue(3)->_Delay(500)->_MissileSpeed(1900)->_Slot(kSlotQ)->_Range(1150)->_Radius(90)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Thresh")->_MenuName("ThreshE")->_MissileName("ThreshEMissile1")->_SpellName("ThreshE")->_DangerValue(3)->_Delay(0)->_MissileSpeed(2000)->_Slot(kSlotE)->_Range(1075)->_Radius(110)->_FixedRange(true)->_IsDangerous(true)->_MissileOnly(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Thresh
 
@@ -628,7 +628,7 @@ SpellDB::SpellDB()
 #pragma endregion Ziggs
 
 #pragma region Zilean
-	Spells.push_back(CreateSpell()->_ChampName("Zilean")->_MenuName("ZileanQ")->_MissileName("ZileanQMissile")->_SpellName("ZileanQ")->_DangerValue(2)->_ToggleName("Zilean_.+_Q_TimeBombGround(Green|Red)")->_Range(900)->_Radius(150)->_Delay(250)->_MissileSpeed(2000)->_Type(ST_Circle)->_ExtraDuration(3100)->_DontCross(true)->_ExtraDelay(450)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Zilean")->_MenuName("ZileanQ")->_MissileName("ZileanQMissile")->_SpellName("ZileanQ")->_DangerValue(2)->_ToggleName("Zilean_.+_Q_TimeBombGround(Green|Red)")->_Range(900)->_Radius(150)->_Delay(250)->_MissileSpeed(2000)->_Type(ST_Circle)->_ExtraDuration(3100)->_MissileToUnit(true)->_DontCross(true)->_ExtraDelay(450)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Zilean
 
 #pragma region Zyra

@@ -2,8 +2,8 @@
 #include "SpellBlocker.h"
 #include "EvadeSpellDB.h"
 #include "Evader.h"
-#include "PathFollow.h"
-#include "PathFinding.h"
+//#include "PathFollow.h"
+//#include "PathFinding.h"
 #include "EvadeLogic.h"
 
 #include <algorithm>
