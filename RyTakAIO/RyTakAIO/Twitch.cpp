@@ -49,7 +49,7 @@ public:
 
 	inline double ExpungeDamage(IUnit* Target)
 	{
-		float Damage = 0;
+		double Damage = 0;
 		int StackCount = Target->GetBuffCount("TwitchDeadlyVenom");
 
 		if (StackCount == 0) return 0;

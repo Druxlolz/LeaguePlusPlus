@@ -441,14 +441,14 @@
     <ClInclude Include="CommonLib.cpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="IChampion.cpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="OnRender.cpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ChampionHandler.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IChampion.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -457,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="PluginSDK.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Xayah.cpp">
+      <Filter>Champions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

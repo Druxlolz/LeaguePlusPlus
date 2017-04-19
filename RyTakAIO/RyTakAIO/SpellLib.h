@@ -1256,14 +1256,14 @@ public:
 		Q->GetDelay();
 		Q->SetOverrideRadius(50.f);
 		Q->SetOverrideSpeed(1600.f);
-		Q->SetOverrideRange(675.f);
+		Q->SetOverrideRange(500.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotQ)) == "LucianQ";
 
 		ExtendedQ = GPluginSDK->CreateSpell2(kSlotQ, kTargetCast, false, false, kCollidesWithNothing);
 		ExtendedQ->GetDelay();
 		ExtendedQ->SetOverrideRadius(50.f);
 		ExtendedQ->SetOverrideSpeed(1600.f);
-		ExtendedQ->SetOverrideRange(1000.f);
+		ExtendedQ->SetOverrideRange(900.f);
 
 		W = GPluginSDK->CreateSpell2(kSlotW, kLineCast, true, false, kCollidesWithYasuoWall);
 		W->SetSkillshot(0.25f, 80.f, 1600.f, 900.f);
@@ -2497,6 +2497,17 @@ public:
 		R = GPluginSDK->CreateSpell2(kSlotR, kCircleCast, false, true, (kCollidesWithNothing));
 		R->SetSkillshot(0.25f, 450.f, 3200.f, 660.f);
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotR)) == "MonkeyKingSpinToWin";
+	}
+
+	void Xayah()
+	{
+		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, kCollidesWithYasuoWall);
+
+		W = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, false, true, kCollidesWithYasuoWall);
+
+		E = GPluginSDK->CreateSpell2(kSlotE, kTargetCast, true, false, kCollidesWithYasuoWall);
+
+		R = GPluginSDK->CreateSpell2(kSlotR, kConeCast, true, false, kCollidesWithYasuoWall);
 	}
 
 	void Xerath()

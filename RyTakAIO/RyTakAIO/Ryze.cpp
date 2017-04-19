@@ -104,15 +104,15 @@ public:
 			if (GOrbwalking->GetOrbwalkingMode() == kModeMixed && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
 			{
 				GOrbwalking->SetAttacksAllowed(DisableAA->Enabled());
-				if (HarassQ->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
+				if (HarassQ->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
 					Q->CastOnTarget(Enemy, 5);
 				}
-				if (HarassW->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget(GEntityList->Player(), W->Range()))
+				if (HarassW->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->IsValidTarget(GEntityList->Player(), W->Range()))
 				{
 					W->CastOnTarget(Enemy, 5);
 				}
-				if (HarassE->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget(GEntityList->Player(), E->Range()))
+				if (HarassE->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 				{
 					E->CastOnTarget(Enemy, 5);
 				}
@@ -128,9 +128,9 @@ public:
 			{
 				for (auto minion : GEntityList->GetAllMinions(false, true, true))
 				{
-					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && GEntityList->Player()->IsValidTarget(minion, Q->Range()))
+					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() )
 					{
-						if (LaneClearQ->Enabled() && Q->IsReady())
+						if (LaneClearQ->Enabled() && Q->IsReady() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 						{
 							switch (kSlotQ)
 							{
@@ -138,7 +138,7 @@ public:
 							default: Q->CastOnTarget(minion, 5);
 							}
 						}
-						if (LaneClearW->Enabled() && W->IsReady())
+						if (LaneClearW->Enabled() && W->IsReady() && minion->IsValidTarget(GEntityList->Player(), W->Range()))
 						{
 							switch (kSlotW)
 							{
@@ -146,7 +146,7 @@ public:
 							default: W->CastOnTarget(minion, 5);
 							}
 						}
-						if (LaneClearE->Enabled() && E->IsReady())
+						if (LaneClearE->Enabled() && E->IsReady() && minion->IsValidTarget(GEntityList->Player(), E->Range()))
 						{
 							switch (kSlotE)
 							{

@@ -58,32 +58,29 @@ void Combo()
 		target = GTargetSelector->FindTarget(QuickestKill, SpellDamage, Q->Range());
 		for (auto target : GEntityList->GetAllHeros(false, true));
 		if (target != nullptr && target->IsHero())
-		{
-			if (ComboWStacks->GetInteger() >= target->GetBuffCount("varuswdebuff"))
+		{		
+			if (ComboQ->Enabled() && Q->IsReady() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 			{
-				if (Q->IsReady() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
+				if (Q->IsCharging())
 				{
-					if (Q->IsCharging())
+					Q->FindTarget(PhysicalDamage);
 					{
-						Q->FindTarget(PhysicalDamage);
+						if (target->IsValidTarget(GEntityList->Player(), Q->Range()) && GEIR().GetEnemiesInRange(Q->Range()) >= 1 && ComboWStacks->GetInteger() >= target->GetBuffCount("VarusWDebuff"))
 						{
-							if (target->IsValidTarget(target, Q->Range()) && GEIR().GetEnemiesInRange(Q->Range()) >= 1)
-							{
-								Q->CastOnTarget(target, kHitChanceHigh);
-							}
+							Q->CastOnTarget(target, kHitChanceHigh);
 						}
 					}
-					if (Q->IsReady() && GEIR().GetEnemiesInRange(Q->Range()) >= 1)
-					{
-						Q->StartCharging();
-					}
 				}
-				if (ComboE->Enabled() && target->IsValidTarget(GEntityList->Player(), E->Range()))
+				if (Q->IsReady() && GEIR().GetEnemiesInRange(Q->Range()) >= 1)
 				{
-					if (E->IsReady())
-					{
-						E->CastOnTarget(target, 5);
-					}
+					Q->StartCharging();
+				}
+			}
+			if (ComboE->Enabled() && target->IsValidTarget(GEntityList->Player(), E->Range()) && ComboWStacks->GetInteger() >= target->GetBuffCount("VarusWDebuff"))
+			{
+				if (E->IsReady())
+				{
+					E->CastOnTarget(target, 5);
 				}
 			}
 		}
@@ -96,7 +93,7 @@ void Combo()
 		{
 			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true));
-			if (HarassQ->Enabled() && Q->IsReady() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
+			if (HarassQ->Enabled() && Q->IsReady() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), Q->Range()) && target != nullptr)
 			{
 				if (GEIR().GetEnemiesInRange(Q->Range()) >= 1)
 				{
@@ -114,7 +111,7 @@ void Combo()
 					}
 				}
 			}
-			if (HarassE->Enabled() && E->IsReady() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), E->Range()))
+			if (HarassE->Enabled() && E->IsReady() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), E->Range()) && target != nullptr)
 			{
 				E->CastOnTarget(target, 5);
 			}
@@ -129,9 +126,9 @@ void Combo()
 			{
 				minion = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
 				for (auto minion : GEntityList->GetAllMinions(false, true, true))
-				if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
+				if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && minion != nullptr)
 				{
-					if (LaneClearQ->Enabled())
+					if (LaneClearQ->Enabled() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
 						if (Q->IsCharging())
 						{

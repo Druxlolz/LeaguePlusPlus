@@ -7,7 +7,7 @@ class XerathBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Xerath");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Xerath");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
