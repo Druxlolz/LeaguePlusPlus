@@ -78,7 +78,7 @@ public:
 	bool EnemyIsInSpellRange(float range)
 	{
 		auto enemies = GEntityList->GetAllHeros(false, true);
-		auto enemiesInSpellRange = 0;
+		auto enemiesInSpellRange = nullptr;
 
 		for (auto enemy : enemies)
 		{
@@ -87,15 +87,15 @@ public:
 			{
 				if (TargetDistance < range)
 				{
-					enemiesInSpellRange = true;
+					return true;
 				}
 				if (TargetDistance > range)
 				{
-					enemiesInSpellRange = false;
+					return false;
 				}
 			}
 		}
-		return enemiesInSpellRange;
+		return false;
 	}
 };
 
@@ -105,7 +105,7 @@ public:
 	bool AllyIsInSpellRange(float range)
 	{
 		auto allies = GEntityList->GetAllHeros(true, false);
-		auto alliesInSpellRange = 0;
+		auto alliesInSpellRange = false;
 
 		for (auto ally : allies)
 		{
@@ -114,14 +114,14 @@ public:
 			{
 				if (TargetDistance < range)
 				{
-					alliesInSpellRange = true;
+					return true;
 				}
 				if (TargetDistance > range)
 				{
-					alliesInSpellRange = false;
+					return false;
 				}
 			}
 		}
-		return alliesInSpellRange;
+		return false;
 	}
 };

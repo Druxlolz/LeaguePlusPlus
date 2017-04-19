@@ -1,7 +1,8 @@
+#pragma once
 #include "PluginSDK.h"
 #include "BaseOptions.h"
 #include "OnRender.cpp"
-#include "IChampion.cpp"
+#include "IChampion.h"
 #include "SpellLib.h"
 #include <sstream>
 
@@ -806,7 +807,13 @@ void LoadChampion()
 		pChampion = new Wukong;
 		return;
 	}
-
+	
+	if (szChampion == "Xayah")
+	{
+		pChampion = new Xayah;
+		return;
+	}
+	
 	if (szChampion == "Xerath")
 	{
 		pChampion = new Xerath;

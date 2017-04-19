@@ -7,7 +7,7 @@ class MissFortuneBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Miss Fortune");
+		MainMenu = GPluginSDK->AddMenu("RyTak's_Miss_Fortune");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -26,6 +26,7 @@ public:
 		LaneClearQ = LaneClearMenu->CheckBox("Use Q", true);
 		LaneClearE = LaneClearMenu->CheckBox("Use E", true);
 		BounceClear = LaneClearMenu->CheckBox("Use Q Bounce to Clear", true);
+		BounceCrit = LaneClearMenu->CheckBox("Use Crit Q", true);
 		LaneClearMana = LaneClearMenu->AddFloat("Min. Mana", 0, 100, 40);
 
 		KSMenu = MainMenu->AddMenu("Killsteal Settings");
@@ -128,15 +129,16 @@ public:
 											Q->LastHitMinion();
 										}
 									}
-							}
-							if (Q->IsReady())
-							{
-								Q->CastOnTarget(minion, 5);
-							}
-							if (BounceHarass->Enabled() && Q->IsReady())
+							}							
+							else if (BounceHarass->Enabled() && Q->IsReady())
 							{
 								Bounce();
 							}
+							else if (BounceCrit->Enabled() && Q->IsReady())
+							{
+								CritBounce();
+							}
+							else Q->CastOnTarget(minion, 5);
 						}
 						if (LaneClearE->Enabled() && E->IsReady() && minion->IsValidTarget(GEntityList->Player(), E->Range()))
 						{
@@ -205,7 +207,7 @@ public:
 		for (auto Enemy : GEntityList->GetAllHeros(false, true))
 		for (auto minion : GEntityList->GetAllMinions(false, true, true))
 		{
-			if ((GEntityList->Player()->GetPosition() - minion->GetPosition()).Length2D() <= Q->Range() && (minion->GetPosition() - Enemy->GetPosition()).Length2D() <= 250 > (GEntityList->Player()->GetPosition() - Enemy->GetPosition()).Length2D() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
+			if ((GEntityList->Player()->GetPosition() - minion->GetPosition()).Length2D() <= Q->Range() && 250.f >= (minion->GetPosition() - Enemy->GetPosition()).Length2D() <= (GEntityList->Player()->GetPosition() - Enemy->GetPosition()).Length2D() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range() + 250))
 			{
 				Q->CastOnTarget(minion, 5);
 			}
@@ -219,9 +221,23 @@ public:
 		for (auto Enemy1 : GEntityList->GetAllHeros(false, true))
 			for (auto Enemy2 : GEntityList->GetAllHeros(false, true))
 			{
-				if ((GEntityList->Player()->GetPosition() - Enemy1->GetPosition()).Length2D() <= Q->Range() && (Enemy1->GetPosition() - Enemy2->GetPosition()).Length2D() <= 250 > (GEntityList->Player()->GetPosition() - Enemy1->GetPosition()).Length2D() && Enemy1->IsValidTarget(GEntityList->Player(), Q->Range()))
+				if ((GEntityList->Player()->GetPosition() - Enemy1->GetPosition()).Length2D() <= Q->Range() && 250 >= (Enemy1->GetPosition() - Enemy2->GetPosition()).Length2D() <= (GEntityList->Player()->GetPosition() - Enemy1->GetPosition()).Length2D() && Enemy1->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
 					Q->CastOnTarget(minion, 5);
+				}
+			}
+	}
+
+	void CritBounce()
+	{
+		minion = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, Q->Range());
+		Enemy = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, Q->Range() + 250);
+		for (auto Enemy : GEntityList->GetAllHeros(false, true));
+		for (auto minion : GEntityList->GetAllMinions(false, true, true));
+			{
+				if ((GEntityList->Player()->GetPosition() - minion->GetPosition()).Length2D() <= Q->Range() && 250 >= (minion->GetPosition() - Enemy->GetPosition()).Length2D() <= (GEntityList->Player()->GetPosition() - Enemy->GetPosition()).Length2D() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()) && GPluginSDK->GetDamage()->GetSpellDamage(GEntityList->Player(), Enemy, kSlotQ) > minion->GetHealth())
+				{
+					Q->LastHitMinion();
 				}
 			}
 	}

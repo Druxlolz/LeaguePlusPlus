@@ -113,6 +113,7 @@ IMenuOption* UseQECombo;
 IMenuOption* BounceHarass;
 IMenuOption* BounceClear;
 IMenuOption* BounceEnemy;
+IMenuOption* BounceCrit;
 
 //Drawings Menu
 IMenuOption* DrawQ;
