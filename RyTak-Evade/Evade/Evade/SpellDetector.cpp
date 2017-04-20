@@ -327,10 +327,12 @@ void CSpellDetector::OnCreateTrapDelay(IUnit* Source, SpellData* Data)
 		}
 	}
 
+	auto EndTime = GGame->TickCount() - GGame->Latency() / 2 + Data->ExtraDuration;
+
 	auto pos1 = caster->GetPosition().To2D();
 	auto pos2 = Source->GetPosition().To2D();
 
-	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, 0, pos1, pos2, caster, Data->Type);
+	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, EndTime, pos2, pos2, caster, Data->Type);
 
 	spell->SpellId = spellIdCount++;
 	spell->TrapObject = Source;

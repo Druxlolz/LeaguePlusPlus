@@ -29,7 +29,7 @@ IMenuOption* EvadeMenuOptions::GetOptionForSpellName(std::string const Name)
 
 void EvadeMenuOptions::LoadMenuOptions()
 {
-	EvadeParent		= GPluginSDK->AddMenu("RyTak's_vEvade++");
+	EvadeParent		= GPluginSDK->AddMenu("RyTaks_vEvade++");
 	IMenu* pSpells	= EvadeParent->AddMenu("Evade - Spells");
 
 	LoadSpecialSpellPlugins();

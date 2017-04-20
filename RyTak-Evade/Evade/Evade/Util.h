@@ -8,7 +8,7 @@ namespace Util
 	static void CreateConsoleWindow()
 	{
 		AllocConsole();
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED|FOREGROUND_GREEN|FOREGROUND_BLUE|FOREGROUND_INTENSITY);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 		SetConsoleTitleA("Debug Console");
 	}
 
@@ -23,7 +23,7 @@ namespace Util
 		va_end(va);
 
 		strcat_s(szBuffer, "\n");
-		
+
 		WriteConsoleA(GetStdHandle(STD_OUTPUT_HANDLE), szBuffer, strlen(szBuffer), &dwBytes, nullptr);
 	}
 
@@ -49,7 +49,7 @@ namespace Util
 
 	static bool Move(Vec2 Pos)
 	{
-		return GGame->IssueOrderEx(GEntityList->Player(), kMoveTo, Get3DPoint(Pos), false);
+		return GGame->IssueOrder(GEntityList->Player(), kMoveTo, Get3DPoint(Pos));
 	}
 
 	static bool ShieldCheck()
@@ -64,34 +64,28 @@ namespace Util
 			if (GEntityList->Player()->HasBuff("OlafRagnarok"))
 				return true;
 		}
-		else if (szChamp == "Sion")
+		if (szChamp == "Sion")
 		{
 			if (GEntityList->Player()->HasBuff("SionR"))
 				return true;
 		}
+		if (szChamp == "Sivir")
+		{
+			if (GEntityList->Player()->HasBuff("SivirE"))
+				return true;
+		}
+		if (szChamp == "Morgana")
+		{
+			if (GEntityList->Player()->HasBuff("BlackShield"))
+				return true;
+		}
+		if (szChamp == "Nocturne")
+		{
+			if (GEntityList->Player()->HasBuff("NocturneShroudofDarkness"))
+				return true;
+		}
 
 		return false;
-
-// 			if (ObjectManager.Player.LastCastedSpellName() == "SivirE"
-// 				&& Utils.TickCount - ObjectManager.Player.LastCastedSpellT() < 300)
-// 			{
-// 				return true;
-// 			}
-// 
-// 			if (ObjectManager.Player.LastCastedSpellName() == "BlackShield"
-// 				&& Utils.TickCount - ObjectManager.Player.LastCastedSpellT() < 300)
-// 			{
-// 				return true;
-// 			}
-// 
-// 			if (ObjectManager.Player.LastCastedSpellName() == "NocturneShit"
-// 				&& Utils.TickCount - ObjectManager.Player.LastCastedSpellT() < 300)
-// 			{
-// 				return true;
-// 			}
-// 
-// 			return false;
-// 		}
 	}
 
 	static bool ImmobileCheck()
