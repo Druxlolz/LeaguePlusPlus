@@ -2502,12 +2502,16 @@ public:
 	void Xayah()
 	{
 		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, kCollidesWithYasuoWall);
+		Q->SetSkillshot(0.25f, 40.f, 1400.f, 1100.f);
 
 		W = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, false, true, kCollidesWithYasuoWall);
+		W->SetSkillshot(0.25f, 1000.f, 1500.f, 1000.f);
 
 		E = GPluginSDK->CreateSpell2(kSlotE, kTargetCast, true, false, kCollidesWithYasuoWall);
+		E->SetSkillshot(0.25f, 2000.f, 2000.f, 2000.f);
 
 		R = GPluginSDK->CreateSpell2(kSlotR, kConeCast, true, false, kCollidesWithYasuoWall);
+		R->SetSkillshot(0.25f, 200.f, 2000.f, 450.f);
 	}
 
 	void Xerath()
