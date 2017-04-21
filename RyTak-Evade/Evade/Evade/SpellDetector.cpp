@@ -213,8 +213,8 @@ void CSpellDetector::AddSpellV2(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, S
 
 	auto newSpell = new SpellInstance(*Data, startTime, endTime + Data->ExtraDelay, startPos, endPos, Source, Type);
 
-	newSpell->SpellId		= spellIdCount++;
-	newSpell->IsFromFoW		= isFromFoW;
+	newSpell->SpellId = spellIdCount++;
+	newSpell->IsFromFoW = isFromFoW;
 	newSpell->MissileObject = MissileClient;
 
 	Evade::DetectedSpells[newSpell->SpellId] = newSpell;
@@ -247,8 +247,8 @@ void CSpellDetector::OnCreateMissile(IUnit* Source)
 
 void CSpellDetector::OnCreateMissileDelay(IUnit* Missile, IUnit* Caster, SpellData* Data)
 {
-	SpellData* pNewData		= nullptr;
-	bool bShouldProcess		= true;
+	SpellData* pNewData = nullptr;
+	bool bShouldProcess = true;
 
 	for (auto i : Configs->ChampionManagers)
 	{
@@ -368,7 +368,7 @@ void CSpellDetector::OnDeleteMissile(IUnit* Source)
 			{
 				j->Data.CollisionObjects = kCollidesWithNothing;
 				j->PredEnd = Vec2(0.f, 0.f);
-				j->End = missile->GetPosition().To2D(); 
+				j->End = missile->GetPosition().To2D();
 
 				if (j->ToggleObject != nullptr)
 					Evade::EraseDetectedSpellAfter(j, 100);

@@ -3,7 +3,11 @@
 struct SpellDB
 {
 	SpellDB();
-	SpellData* CreateSpell();
+	SpellData* CreateSpell()
+	{
+		auto pData = new SpellData;
+		return pData->InitializeDefaults();
+	}
 
 	std::vector<SpellData*> Spells;
 };

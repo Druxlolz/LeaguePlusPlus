@@ -28,7 +28,7 @@ void Zac::OnDash(UnitDash* Args)
 		return;
 
 	if (GGame->TickCount() - LastETick <= 100)
-		SpellDetector->AddSpell(caster, Args->StartPosition, Args->EndPosition, ZacESpellData, nullptr, ST_None, true, LastETick);
+		SpellDetector->AddSpellV3(caster, Args->StartPosition, Args->EndPosition, ZacESpellData, nullptr, ST_None, true, LastETick);
 }
 
 void Zac::OnPlayAnimation(IUnit* Source, std::string const AnimationName)

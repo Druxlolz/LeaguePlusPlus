@@ -26,7 +26,7 @@ void Ekko::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bool
 			continue;
 
 		if (std::string(i->GetObjectName()) == "Ekko" && i->GetTeam() == Args.Caster_->GetTeam())
-			SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition(), i->ServerPosition(), Data);
+			SpellDetector->AddSpellV3(Args.Caster_, Args.Caster_->ServerPosition(), i->ServerPosition(), Data);
 	}
 
 	*ShouldProcess = false;

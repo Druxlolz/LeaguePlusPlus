@@ -19,8 +19,8 @@ void Malzahar::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, 
 	auto startPos = end - dir;
 	auto endPos = end + dir;
 	
-	SpellDetector->AddSpell(Args.Caster_, startPos, endPos, Data);
-	SpellDetector->AddSpell(Args.Caster_, endPos, startPos, Data);
+	SpellDetector->AddSpellV2(Args.Caster_, startPos, endPos, Data);
+	SpellDetector->AddSpellV2(Args.Caster_, endPos, startPos, Data);
 
 	*ShouldProcess = false;
 }

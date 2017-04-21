@@ -1,6 +1,6 @@
 #include "PluginSDK.h"
 
-PluginSetup("RyTak's_vEvade++");
+PluginSetup("Evade");
 
 #include "ObjManager.h"
 #include "SpellInstance.h"
@@ -33,9 +33,9 @@ PLUGIN_EVENT(void) OnRender()
 	EvadeLogic->OnRender();
 }
 
-PLUGIN_EVENT(bool) OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
+PLUGIN_EVENT(bool) OnIssueOrderEx(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
 {
-	if (!Evade::OnIssueOrder(Source, OrderIdx, Position, Target))
+	if (!Evade::OnIssueOrderEx(Source, OrderIdx, Position, Target))
 		return false;
 
 	return true;
@@ -76,7 +76,7 @@ PLUGIN_EVENT(void) OnPlayAnimation(IUnit* Source, std::string const Args)
 {
 	SpellDetector->OnPlayAnimation(Source, Args);
 }
-#pragma endregion Events
+#pragma endregion
 
 #pragma region Callbacks
 PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
@@ -85,7 +85,7 @@ PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
 
 	GEventManager->AddEventHandler(kEventOnGameUpdate, OnGameUpdate);
 	GEventManager->AddEventHandler(kEventOnRender, OnRender);
-	GEventManager->AddEventHandler(kEventOnIssueOrder, OnIssueOrder);
+	GEventManager->AddEventHandler(kEventOnIssueOrder, OnIssueOrderEx);
 	GEventManager->AddEventHandler(kEventOnPreCast, OnPreCast);
 	GEventManager->AddEventHandler(kEventOnDash, OnDash);
 	GEventManager->AddEventHandler(kEventOrbwalkBeforeAttack, OnOrbwalkBeforeAttack);
@@ -116,7 +116,7 @@ PLUGIN_API void OnUnload()
 {
 	GEventManager->RemoveEventHandler(kEventOnGameUpdate, OnGameUpdate);
 	GEventManager->RemoveEventHandler(kEventOnRender, OnRender);
-	GEventManager->RemoveEventHandler(kEventOnIssueOrder, OnIssueOrder);
+	GEventManager->RemoveEventHandler(kEventOnIssueOrder, OnIssueOrderEx);
 	GEventManager->RemoveEventHandler(kEventOnPreCast, OnPreCast);
 	GEventManager->RemoveEventHandler(kEventOnDash, OnDash);
 	GEventManager->RemoveEventHandler(kEventOrbwalkBeforeAttack, OnOrbwalkBeforeAttack);
@@ -127,4 +127,4 @@ PLUGIN_API void OnUnload()
 
 	Configs->UnloadMenu();
 }
-#pragma endregion Callbacks
+#pragma endregion

@@ -3,8 +3,6 @@
 
 #include "Path.h"
 #include "PathFollow.h"
-#include "PathFinder.h"
-#include "PathAlgorithm.h"
 #include "Polygons.h"
 
 #include <map>
@@ -160,7 +158,7 @@ namespace Core
 		return left.x * right.y - left.y * right.x < 0;
 	}
 
-	static Path<Node> FindPath(Node start, Node goal, std::function<float(Node, Node, double)> dist, std::function<float(double)> eta)
+	static Path<Node> FindPath(Node start, Node dest, std::function<float(Node, Node, double)> dist, std::function<float(double)> eta)
 	{
 // 		std::unordered_set<Vec2> closed;
 // 		auto queue = PriorityQueue<double, Path<Node>>();

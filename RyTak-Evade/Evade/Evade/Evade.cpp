@@ -2,8 +2,8 @@
 #include "SpellBlocker.h"
 #include "EvadeSpellDB.h"
 #include "Evader.h"
-//#include "PathFollow.h"
-//#include "PathFinding.h"
+#include "PathFollow.h"
+#include "PathFinding.h"
 #include "EvadeLogic.h"
 
 #include <algorithm>
@@ -46,7 +46,7 @@ bool Evade::IsAboutToHit(int time, IUnit* unit /* = nullptr */)
 
 void Evade::OnGameLoad()
 {
-	GRender->Notification(Vec4(0, 255, 255, 255), 10, "RyTak's_vEvade++_Loaded!");
+	GRender->Notification(Vec4(0, 255, 255, 255), 10, "vEvade++ Loaded!");
 }
 
 void Evade::BeforeAttack(IUnit* target)
@@ -142,12 +142,12 @@ void Evade::OnDraw()
 	EvadeLogic->OnRender();
 }
 
-bool Evade::OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
+bool Evade::OnIssueOrderEx(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
 {
 	if (Source != GEntityList->Player())
 		return true;
 
-	return EvadeLogic->OnIssueOrder(Source, OrderIdx, Position, Target);
+	return EvadeLogic->OnIssueOrderEx(Source, OrderIdx, Position, Target);
 }
 
 void Evade::OnUpdate()

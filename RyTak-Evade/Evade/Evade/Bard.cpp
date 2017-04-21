@@ -39,5 +39,5 @@ void Bard::OnDetectorCreateSpell(IUnit* Sender, IUnit* Missile, SpellData* Data,
 	}
 
 	Evade::EraseDetectedSpellById(spell->SpellId);
-	SpellDetector->AddSpell(Sender, GMissileData->GetStartPosition(Missile), GMissileData->GetEndPosition(Missile), newData, Missile);
+	SpellDetector->AddSpellV3(Sender, GMissileData->GetStartPosition(Missile), GMissileData->GetEndPosition(Missile), newData, Missile);
 }

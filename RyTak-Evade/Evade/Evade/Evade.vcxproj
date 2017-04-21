@@ -88,13 +88,11 @@
   <ItemGroup>
     <ClCompile Include="Aatrox.cpp" />
     <ClCompile Include="AllChampions.cpp" />
-    <ClCompile Include="AStar.cpp" />
     <ClCompile Include="Azir.cpp" />
     <ClCompile Include="Bard.cpp" />
     <ClCompile Include="Clipper.cpp" />
     <ClCompile Include="Configs.cpp" />
     <ClCompile Include="Diana.cpp" />
-    <ClCompile Include="Dijkstra.cpp" />
     <ClCompile Include="Draven.cpp" />
     <ClCompile Include="Ekko.cpp" />
     <ClCompile Include="Evade.cpp" />
@@ -109,7 +107,6 @@
     <ClCompile Include="Lux.cpp" />
     <ClCompile Include="Malzahar.cpp" />
     <ClCompile Include="Managers.cpp" />
-    <ClCompile Include="Node.cpp" />
     <ClCompile Include="OnLoad.cpp" />
     <ClCompile Include="Orianna.cpp" />
     <ClCompile Include="PathFinding.cpp" />
@@ -132,12 +129,10 @@
     <ClCompile Include="Zilean.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AStar.h" />
     <ClInclude Include="Clipper.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Configs.h" />
     <ClInclude Include="Core.h" />
-    <ClInclude Include="Dijkstra.h" />
     <ClInclude Include="Evade.h" />
     <ClInclude Include="EvadeLogic.h" />
     <ClInclude Include="Evader.h" />
@@ -147,11 +142,8 @@
     <ClInclude Include="IChampionManager.h" />
     <ClInclude Include="JPS.h" />
     <ClInclude Include="LPPConstants.h" />
-    <ClInclude Include="Node.h" />
     <ClInclude Include="ObjManager.h" />
     <ClInclude Include="Path.h" />
-    <ClInclude Include="PathAlgorithm.h" />
-    <ClInclude Include="PathFinder.h" />
     <ClInclude Include="PathFinding.h" />
     <ClInclude Include="PathFollow.h" />
     <ClInclude Include="PluginData.h" />

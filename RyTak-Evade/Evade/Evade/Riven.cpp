@@ -32,7 +32,7 @@ void Riven::OnDash(UnitDash* Args)
 	if (caster->HasBuff("RivenFengShuiEngine"))
 		newData->RawRadius += 75;
 
-	SpellDetector->AddSpell(caster, Args->StartPosition, Args->EndPosition, newData, nullptr, ST_None, true, LastQTick);
+	SpellDetector->AddSpellV3(caster, Args->StartPosition, Args->EndPosition, newData, nullptr, ST_None, true, LastQTick);
 }
 
 void Riven::OnPlayAnimation(IUnit* Source, std::string const AnimationName)

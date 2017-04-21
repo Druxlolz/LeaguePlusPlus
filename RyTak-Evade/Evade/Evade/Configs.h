@@ -17,9 +17,9 @@ struct EvadeMenuOptions
 		EvadingRouteChangeTime = 50;
 		ExtraSpellRadius = 9;
 		ExtraSpellRange = 20;
-		GridSize = 1;
-		PathFindingInnerDistance = 0;
-		PathFindingOuterDistance = 10;
+		GridSize = 10;
+		PathFindingInnerDistance = 35;
+		PathFindingOuterDistance = 60;
 	}
 
 	void Initialize()

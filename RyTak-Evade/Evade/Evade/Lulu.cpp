@@ -23,6 +23,6 @@ void Lulu::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bool
 			continue;
 
 		if (!i->IsDead() || i->IsVisible() && i->GetTeam() == Args.Caster_->GetTeam())
-			SpellDetector->AddSpell(Args.Caster_, i->ServerPosition(), Args.EndPosition_, Data);
+			SpellDetector->AddSpellV3(Args.Caster_, i->ServerPosition(), Args.EndPosition_, Data);
 	}
 }

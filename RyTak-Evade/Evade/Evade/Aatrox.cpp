@@ -17,8 +17,8 @@ void Aatrox::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bo
 	auto startPos = Args.Caster_->ServerPosition().To2D();
 	auto endPos = Args.EndPosition_.To2D();
 	auto dir = (endPos - startPos).VectorNormalize().Perpendicular() * Data->GetRadius();
-	SpellDetector->AddSpell(Args.Caster_, startPos + dir, endPos, Data);
-	SpellDetector->AddSpell(Args.Caster_, startPos - dir, endPos, Data);
+	SpellDetector->AddSpellV2(Args.Caster_, startPos + dir, endPos, Data);
+	SpellDetector->AddSpellV2(Args.Caster_, startPos - dir, endPos, Data);
 
 	*ShouldProcess = false;
 }

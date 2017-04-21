@@ -113,7 +113,6 @@ SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, V
 	case ST_Arc:
 		Arc = Polygons::Arc(Start, End, GetRadius());
 		break;
-	
 	}
 
 	UpdatePolygon();
@@ -502,7 +501,9 @@ void SpellInstance::UpdatePolygon()
 		break;
 	case ST_MissileLine:
 		Polygon = Line.ToPolygon(iExtraRadius);
-		DrawPolygon = Line.ToPolygon(0,	GetRadius() - (!Data.AddHitbox ? 0 : static_cast<int>(GEntityList->Player()->BoundingRadius())));
+		DrawPolygon = Line.ToPolygon(
+			0,
+			GetRadius() - (!Data.AddHitbox ? 0 : static_cast<int>(GEntityList->Player()->BoundingRadius())));
 		PathFindingOuterPolygon = Line.ToPolygon(Configs->PathFindingOuterDistance);
 		PathFindingInnerPolygon = Line.ToPolygon(Configs->PathFindingInnerDistance);
 		break;
@@ -522,9 +523,7 @@ void SpellInstance::UpdatePolygon()
 		Polygon = Circle.ToPolygon(iExtraRadius);
 
 		if (Data.HasStartExplosion || Data.HasEndExplosion)
-		{
 			DrawPolygon = Circle.ToPolygon(0, GetRadius() - static_cast<int>(GEntityList->Player()->BoundingRadius()));
-		}
 		else
 			DrawPolygon = Circle.ToPolygon(0, GetRadius() - (!Data.AddHitbox ? 0 : static_cast<int>(GEntityList->Player()->BoundingRadius())));
 

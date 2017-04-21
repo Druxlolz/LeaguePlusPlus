@@ -27,7 +27,7 @@ public:
 
 	void OnGameUpdate();
 	void OnRender();
-	bool OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target);
+	bool OnIssueOrderEx(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target);
 	bool CastSpell(int SpellSlot, IUnit* Target = nullptr, Vec3 CastPosition = Vec3(0.f, 0.f, 0.f));
 
 private:
