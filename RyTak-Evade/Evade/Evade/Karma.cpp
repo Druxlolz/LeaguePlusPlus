@@ -18,7 +18,7 @@ void Karma::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, boo
 	SpellData* mantraData = Evade::OnProcessSpells["KarmaQMantra"];
 
 	if (mantraData != nullptr)
-		SpellDetector->AddSpellV3(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, mantraData);
+		SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, mantraData);
 
 	*ShouldProcess = false;
 }

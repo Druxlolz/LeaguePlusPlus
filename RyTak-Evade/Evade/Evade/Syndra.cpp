@@ -16,7 +16,7 @@ void Syndra::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bo
 	if (Data->MenuName.substr(0, 7) != "SyndraE")
 		return;
 
-	SpellDetector->AddSpellV3(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, Data);
+	SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, Data);
 
 	SpellInstance* pSpell = nullptr;
 
@@ -70,7 +70,7 @@ void Syndra::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bo
 			auto endPos = pSpell->Start.Extend(i, pSpell->Start.DistanceTo(i) > 200 ? 1300 : 1100);
 			auto startT = pSpell->StartTick + Data->Delay + (int)(pSpell->Start.DistanceTo(i) / Data->MissileSpeed * 1000);
 
-			SpellDetector->AddSpellV2(Args.Caster_, startPos, endPos, eqData, nullptr, ST_None, true, startT);
+			SpellDetector->AddSpell(Args.Caster_, startPos, endPos, eqData, nullptr, ST_None, true, startT);
 		}
 	}
 

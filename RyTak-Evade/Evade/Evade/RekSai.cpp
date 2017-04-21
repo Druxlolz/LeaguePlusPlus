@@ -22,5 +22,5 @@ void RekSai::OnPlayAnimation(IUnit* Source, std::string const AnimationName)
 		return;
 
 	Vec2 vecPosition = Source->ServerPosition().To2D();
-	SpellDetector->AddSpellV2(Source, vecPosition, vecPosition, RekSaiWSpellData);
+	SpellDetector->AddSpell(Source, vecPosition, vecPosition, RekSaiWSpellData);
 }

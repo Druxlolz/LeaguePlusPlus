@@ -10,11 +10,11 @@ struct EvadeMenuOptions
 {
 	EvadeMenuOptions()
 	{
-		CrossingTime = 25;
-		EvadePointChangeTime = 30;
+		CrossingTime = 250;
+		EvadePointChangeTime = 300;
 		EvadingFirstTime = 250;
 		EvadingSecondTime = 80;
-		EvadingRouteChangeTime = 50;
+		EvadingRouteChangeTime = 250;
 		ExtraSpellRadius = 9;
 		ExtraSpellRange = 20;
 		GridSize = 10;
@@ -32,8 +32,6 @@ struct EvadeMenuOptions
 	void UnloadMenu();
 	void LoadSpecialSpellPlugins();
 	void LoadSpecialSpell(SpellData* Args);
-	void KeyTurnOnOffMaster();
-	void KeyTurnOnOffDangerous();
 
 	// Constants
 	int CrossingTime;
@@ -60,12 +58,6 @@ struct EvadeMenuOptions
 	IMenuOption* DrawSpells;
 	IMenuOption* DrawStatus;
 	IMenuOption* Enabled;
-	IMenuOption* DangerousKey;
-	IMenuOption* Enabledkey;
-	short keystate;
-	short keystate2;
-	bool KeyWasDown = false;
-	bool KeyWasDown2 = false;
 
 	// Custom Spells
 

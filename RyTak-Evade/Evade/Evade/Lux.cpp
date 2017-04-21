@@ -63,7 +63,7 @@ void Lux::OnCreateObject(IUnit* CreatedObject)
 		return;
 
 	dir *= LuxRSpellData->GetRange() / 2.f;
-	SpellDetector->AddSpellV2(LuxUnit, pos - dir, pos + dir, LuxRSpellData, nullptr, ST_None, true, startT);
+	SpellDetector->AddSpell(LuxUnit, pos - dir, pos + dir, LuxRSpellData, nullptr, ST_None, true, startT);
 }
 
 void Lux::OnCreateObjectHiu(IUnit* CreatedObject)

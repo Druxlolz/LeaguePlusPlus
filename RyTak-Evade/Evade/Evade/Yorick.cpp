@@ -20,7 +20,7 @@ void Yorick::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bo
 	auto endPos = startPos.Extend(start, -1);
 	auto startT = GGame->TickCount() - GGame->Latency() / 2 + 350 + (int)(start.DistanceTo(startPos) / 1800 * 1000);
 
-	SpellDetector->AddSpellV2(Args.Caster_, startPos, endPos, Data, nullptr, ST_None, true, startT);
+	SpellDetector->AddSpell(Args.Caster_, startPos, endPos, Data, nullptr, ST_None, true, startT);
 
 	*ShouldProcess = false;
 }

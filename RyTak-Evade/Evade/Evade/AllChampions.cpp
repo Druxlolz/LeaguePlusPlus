@@ -26,7 +26,7 @@ void AllChampions::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Da
 	auto dir = (end - start).VectorNormalize();
 
 	for (auto i = -(Data->MultipleNumber - 1) / 2; i <= (Data->MultipleNumber - 1) / 2; i++)
-		SpellDetector->AddSpellV2(Args.Caster_, start, start + Data->GetRange() * dir.Rotated(Data->MultipleAngle * i), Data);
+		SpellDetector->AddSpell(Args.Caster_, start, start + Data->GetRange() * dir.Rotated(Data->MultipleAngle * i), Data);
 
 	*ShouldProcess = false;
 }

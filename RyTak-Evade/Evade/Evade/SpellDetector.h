@@ -12,8 +12,8 @@ public:
 	void OnProcessSpell(CastedSpell const& Args);
 	void OnPlayAnimation(IUnit* Source, std::string const Args);
 
-	void AddSpellV2(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, SpellData* Data, IUnit* MissileClient = nullptr, int Type = ST_None, bool CheckExplosion = true, int StartT = 0);
-	void AddSpellV3(IUnit* Source, Vec3 SpellStart, Vec3 SpellEnd, SpellData* Data, IUnit* MissileClient = nullptr, int Type = ST_None, bool CheckExplosion = true, int StartT = 0);
+	void AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, SpellData* Data, IUnit* MissileClient = nullptr, int Type = ST_None, bool CheckExplosion = true, int StartT = 0);
+	void AddSpell(IUnit* Source, Vec3 SpellStart, Vec3 SpellEnd, SpellData* Data, IUnit* MissileClient = nullptr, int Type = ST_None, bool CheckExplosion = true, int StartT = 0);
 
 private:
 	// Wrappers for various objects being created

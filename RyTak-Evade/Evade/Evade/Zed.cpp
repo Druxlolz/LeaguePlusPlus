@@ -22,6 +22,6 @@ void Zed::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bool*
 		if (std::string(i->GetObjectName()) != "Shadow")
 			continue;
 
-		SpellDetector->AddSpellV3(Args.Caster_, i->ServerPosition(), Args.EndPosition_, Data);
+		SpellDetector->AddSpell(Args.Caster_, i->ServerPosition(), Args.EndPosition_, Data);
 	}
 }

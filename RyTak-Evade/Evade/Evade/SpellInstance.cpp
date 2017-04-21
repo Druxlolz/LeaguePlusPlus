@@ -93,14 +93,10 @@ SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, V
 	switch (Type)
 	{
 	case ST_Line:
-		Line = Polygons::Line(Start, End, GetRadius());
-		break;
 	case ST_MissileLine:
 		Line = Polygons::Line(Start, End, GetRadius());
 		break;
 	case ST_Cone:
-		Cone = Polygons::Cone(Start, Direction, GetRadius(), data.GetRange());
-		break;
 	case ST_MissileCone:
 		Cone = Polygons::Cone(Start, Direction, GetRadius(), data.GetRange());
 		break;
@@ -141,14 +137,10 @@ bool SpellInstance::IsEnabled()
 		switch (Type)
 		{
 		case ST_Line:
-			cachedValue = Configs->DodgeLine->Enabled();
-			break;
 		case ST_MissileLine:
 			cachedValue = Configs->DodgeLine->Enabled();
 			break;
 		case ST_Cone:
-			cachedValue = Configs->DodgeCone->Enabled();
-			break;
 		case ST_MissileCone:
 			cachedValue = Configs->DodgeCone->Enabled();
 			break;
@@ -492,13 +484,6 @@ void SpellInstance::UpdatePolygon()
 	switch (Type)
 	{
 	case ST_Line:
-		Polygon = Line.ToPolygon(iExtraRadius);
-		DrawPolygon = Line.ToPolygon(
-			0,
-			GetRadius() - (!Data.AddHitbox ? 0 : static_cast<int>(GEntityList->Player()->BoundingRadius())));
-		PathFindingOuterPolygon = Line.ToPolygon(Configs->PathFindingOuterDistance);
-		PathFindingInnerPolygon = Line.ToPolygon(Configs->PathFindingInnerDistance);
-		break;
 	case ST_MissileLine:
 		Polygon = Line.ToPolygon(iExtraRadius);
 		DrawPolygon = Line.ToPolygon(
@@ -508,11 +493,6 @@ void SpellInstance::UpdatePolygon()
 		PathFindingInnerPolygon = Line.ToPolygon(Configs->PathFindingInnerDistance);
 		break;
 	case ST_Cone:
-		Polygon = Cone.ToPolygon(iExtraRadius);
-		DrawPolygon = Polygon;
-		PathFindingOuterPolygon = Cone.ToPolygon(Configs->PathFindingOuterDistance);
-		PathFindingInnerPolygon = Cone.ToPolygon(Configs->PathFindingInnerDistance);
-		break;
 	case ST_MissileCone:
 		Polygon = Cone.ToPolygon(iExtraRadius);
 		DrawPolygon = Polygon;

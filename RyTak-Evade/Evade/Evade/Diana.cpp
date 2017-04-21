@@ -18,5 +18,5 @@ void Diana::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, boo
 	SpellData* pData = Evade::OnProcessSpells["DianaQArc"];
 
 	if (pData != nullptr)
-		SpellDetector->AddSpellV3(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, pData);
+		SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, pData);
 }

@@ -26,7 +26,7 @@ void Galio::OnDetectorCreateSpell(IUnit* Sender, IUnit* Missile, SpellData* Data
 	}
 
 	if (pHero != nullptr)
-		SpellDetector->AddSpellV3(pHero, GMissileData->GetStartPosition(Missile), GMissileData->GetEndPosition(Missile), Data, Missile);
+		SpellDetector->AddSpell(pHero, GMissileData->GetStartPosition(Missile), GMissileData->GetEndPosition(Missile), Data, Missile);
 
 	*ShouldProcess = false;
 }

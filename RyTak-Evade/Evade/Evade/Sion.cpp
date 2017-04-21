@@ -55,5 +55,5 @@ void Sion::OnCreateObject(IUnit* CreatedObject)
 	}
 
 	if (pSPell != nullptr)
-		SpellDetector->AddSpellV2(pSPell->Unit, CreatedObject->GetPosition().To2D(), pSPell->Start + pSPell->Direction * SionESpellData->GetRange(), SionESpellData);
+		SpellDetector->AddSpell(pSPell->Unit, CreatedObject->GetPosition().To2D(), pSPell->Start + pSPell->Direction * SionESpellData->GetRange(), SionESpellData);
 }

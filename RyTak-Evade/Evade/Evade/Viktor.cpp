@@ -21,5 +21,5 @@ void Viktor::OnDetectorCreateSpell(IUnit* Sender, IUnit* Missile, SpellData* Dat
 	auto pSPell = Evade::OnProcessSpells["ViktorEExplosion"];
 
 	if (pSPell != nullptr)
-		SpellDetector->AddSpellV3(Sender, GMissileData->GetStartPosition(Missile), GMissileData->GetEndPosition(Missile), pSPell);
+		SpellDetector->AddSpell(Sender, GMissileData->GetStartPosition(Missile), GMissileData->GetEndPosition(Missile), pSPell);
 }

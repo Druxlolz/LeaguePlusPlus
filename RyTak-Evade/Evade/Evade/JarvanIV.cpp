@@ -65,5 +65,5 @@ void JarvanIV::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, 
 		}
 	}
 
-	SpellDetector->AddSpellV2(Args.Caster_, startPos, vecClosestPos, qeData);
+	SpellDetector->AddSpell(Args.Caster_, startPos, vecClosestPos, qeData);
 }
