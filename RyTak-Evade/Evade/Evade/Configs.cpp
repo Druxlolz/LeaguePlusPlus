@@ -8,8 +8,8 @@
 
 std::vector<int> SpellBlocker::Spells;
 
-EvadeMenuOptions* Configs	= nullptr;
-IMenu* EvadeParent			= nullptr;
+EvadeMenuOptions* Configs = nullptr;
+IMenu* EvadeParent = nullptr;
 
 void EvadeMenuOptions::UnloadMenu()
 {
@@ -29,8 +29,8 @@ IMenuOption* EvadeMenuOptions::GetOptionForSpellName(std::string const Name)
 
 void EvadeMenuOptions::LoadMenuOptions()
 {
-	EvadeParent		= GPluginSDK->AddMenu("RyTaks_vEvade++");
-	IMenu* pSpells	= EvadeParent->AddMenu("Evade - Spells");
+	EvadeParent = GPluginSDK->AddMenu("RyTaks_vEvade++");
+	IMenu* pSpells = EvadeParent->AddMenu("Evade - Spells");
 
 	LoadSpecialSpellPlugins();
 
@@ -95,18 +95,18 @@ void EvadeMenuOptions::LoadMenuOptions()
 			if (j->TrapName.size() != 0)
 				Evade::OnTrapSpells[j->TrapName] = j;
 
-			LoadSpecialSpell(j);			
+			LoadSpecialSpell(j);
 
 			std::string szIdentifier = "S_" + j->MenuName;
 
-			auto szSubMenuName	= j->IsSummoner ? j->SpellName : j->ChampName + " (" + SlotToString(j->Slot) + ")";
-			auto pSubMenu		= pSpells->AddMenu(szSubMenuName.c_str());
+			auto szSubMenuName = j->IsSummoner ? j->SpellName : j->ChampName + " (" + SlotToString(j->Slot) + ")";
+			auto pSubMenu = pSpells->AddMenu(szSubMenuName.c_str());
 
-			SpellMenuOptions[szIdentifier + "_DangerLvl"]		= pSubMenu->AddInteger("Danger Level", 1, 5, j->DangerValue);
-			SpellMenuOptions[szIdentifier + "_IsDangerous"]		= pSubMenu->CheckBox("Is Dangerous", j->IsDangerous);
-			SpellMenuOptions[szIdentifier + "_IgnoreHp"]		= pSubMenu->AddInteger("Ignore if HP Greater", 25, 100, !j->IsDangerous ? 65 : 80);
-			SpellMenuOptions[szIdentifier + "_Draw"]			= pSubMenu->CheckBox("Draw", true);
-			SpellMenuOptions[szIdentifier + "_Enabled"]			= pSubMenu->CheckBox("Enabled", !j->DisabledByDefault);
+			SpellMenuOptions[szIdentifier + "_DangerLvl"] = pSubMenu->AddInteger("Danger Level", 1, 5, j->DangerValue);
+			SpellMenuOptions[szIdentifier + "_IsDangerous"] = pSubMenu->CheckBox("Is Dangerous", j->IsDangerous);
+			SpellMenuOptions[szIdentifier + "_IgnoreHp"] = pSubMenu->AddInteger("Ignore if HP Greater", 25, 100, !j->IsDangerous ? 65 : 80);
+			SpellMenuOptions[szIdentifier + "_Draw"] = pSubMenu->CheckBox("Draw", true);
+			SpellMenuOptions[szIdentifier + "_Enabled"] = pSubMenu->CheckBox("Enabled", !j->DisabledByDefault);
 		}
 	}
 
@@ -115,8 +115,8 @@ void EvadeMenuOptions::LoadMenuOptions()
 
 	for (auto i : EvadeSpellsDB->Spells)
 	{
-		std::string szIdentifier	= std::string("ES_") + i->MenuName.c_str();
-		IMenu* pSubMenu				= pEvadeSpells->AddMenu(i->MenuName.c_str());
+		std::string szIdentifier = std::string("ES_") + i->MenuName.c_str();
+		IMenu* pSubMenu = pEvadeSpells->AddMenu(i->MenuName.c_str());
 
 		SpellMenuOptions[szIdentifier + "_DangerLvl"] = pSubMenu->AddInteger("Danger Level", 1, 5, i->dangerLevel);
 
@@ -220,8 +220,8 @@ void EvadeMenuOptions::KeyTurnOnOffMaster()
 		return;
 	if (keystate < 0)
 	{
-		if (KeyWasDown == false )
-		{			
+		if (KeyWasDown == false)
+		{
 			if (Enabled->GetInteger() == 0)
 			{
 				Enabled->UpdateInteger(1);
@@ -253,7 +253,7 @@ void EvadeMenuOptions::KeyTurnOnOffDangerous()
 			if (DodgeDangerous->GetInteger() == 0)
 			{
 				DodgeDangerous->UpdateInteger(1);
-			}			
+			}
 
 			KeyWasDown2 = true;
 		}
@@ -263,6 +263,6 @@ void EvadeMenuOptions::KeyTurnOnOffDangerous()
 		DodgeDangerous->UpdateInteger(0);
 		{
 			KeyWasDown2 = false;
-		}		
+		}
 	}
 }

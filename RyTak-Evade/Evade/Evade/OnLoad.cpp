@@ -1,6 +1,6 @@
 #include "PluginSDK.h"
 
-PluginSetup("RyTak's_vEvade++");
+PluginSetup("Evade");
 
 #include "ObjManager.h"
 #include "SpellInstance.h"
@@ -76,7 +76,7 @@ PLUGIN_EVENT(void) OnPlayAnimation(IUnit* Source, std::string const Args)
 {
 	SpellDetector->OnPlayAnimation(Source, Args);
 }
-#pragma endregion Events
+#pragma endregion
 
 #pragma region Callbacks
 PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
@@ -109,7 +109,7 @@ PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
 
 	Evade::OnGameLoad();
 
-	//GUtility->CreateDebugConsole();
+	GUtility->CreateDebugConsole();
 }
 
 PLUGIN_API void OnUnload()
@@ -127,4 +127,4 @@ PLUGIN_API void OnUnload()
 
 	Configs->UnloadMenu();
 }
-#pragma endregion Callbacks
+#pragma endregion

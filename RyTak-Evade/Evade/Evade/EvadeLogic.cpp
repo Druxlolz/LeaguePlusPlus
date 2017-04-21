@@ -1,7 +1,6 @@
 #include "EvadeLogic.h"
 #include "Evade.h"
 #include "Evader.h"
-#include "JPS.h"
 #include "Core.h"
 #include "EvadeSpellDB.h"
 
@@ -11,9 +10,9 @@ void CEvadeLogic::OnGameUpdate()
 {
 	CastDelayedSpells();
 
-	Evade::PlayerPosition = GEntityList->Player()->ServerPosition().To2D();	
+	Evade::PlayerPosition = GEntityList->Player()->ServerPosition().To2D();
 
-	if (PrevPos.IsValid() && Evade::PlayerPosition.DistanceTo(PrevPos) > 10.f)
+	if (PrevPos.IsValid() && Evade::PlayerPosition.DistanceTo(PrevPos) > 200.f)
 	{
 		Evade::SetEvading(false);
 		Evade::EvadePoint2 = Vec2(0.f, 0.f);

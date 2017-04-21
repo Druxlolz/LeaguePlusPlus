@@ -5,8 +5,6 @@
 #undef min
 #undef max
 
-#define PI 3.14159265
-
 #include <algorithm>
 #include <regex>
 #include <string>
@@ -107,7 +105,8 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 		}
 	}
 
-	if (Type == ST_Cone || Type == ST_MissileCone || Data->FixedRange || (Data->GetRange() > 0 && endPos.DistanceTo(startPos) > Data->GetRange()))
+	if (Type == ST_Cone || Type == ST_MissileCone || Data->FixedRange
+		|| (Data->GetRange() > 0 && endPos.DistanceTo(startPos) > Data->GetRange()))
 	{
 		endPos = startPos.Extend(endPos, Data->GetRange());
 	}
@@ -283,7 +282,7 @@ void CSpellDetector::OnCreateToggle(IUnit* Source)
 	{
 		auto spell = i.second;
 
-		if (spell->Data.ToggleName.size() != 0 && spell->Type == ST_Circle && spell->MissileObject != nullptr && spell->ToggleObject != nullptr)
+		if (spell->Data.ToggleName.size() != 0 && spell->Type == ST_Circle && spell->MissileObject != nullptr && spell->ToggleObject == nullptr)
 		{
 			std::regex rx(spell->Data.ToggleName);
 
@@ -315,6 +314,7 @@ void CSpellDetector::OnCreateTrap(IUnit* Source)
 
 void CSpellDetector::OnCreateTrapDelay(IUnit* Source, SpellData* Data)
 {
+	auto pos = Source->GetPosition().To2D();
 
 	IUnit* caster = nullptr;
 
@@ -327,12 +327,7 @@ void CSpellDetector::OnCreateTrapDelay(IUnit* Source, SpellData* Data)
 		}
 	}
 
-	auto EndTime = GGame->TickCount() - GGame->Latency() / 2 + Data->ExtraDuration;
-
-	auto pos1 = caster->GetPosition().To2D();
-	auto pos2 = Source->GetPosition().To2D();
-
-	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, EndTime, pos2, pos2, caster, Data->Type);
+	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, 0, pos, pos, caster, Data->Type);
 
 	spell->SpellId = spellIdCount++;
 	spell->TrapObject = Source;

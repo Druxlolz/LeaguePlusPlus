@@ -89,7 +89,6 @@ class Galio : public IChampionManager
 public:
 	virtual void LoadSpecialSpells(SpellData* Data) override;
 	virtual void OnDetectorCreateSpell(IUnit* Sender, IUnit* Missile, SpellData* Data, SpellData** NewData, bool* ShouldProcess) override;
-	virtual void OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bool* ShouldProcess, SpellData** NewData) override;
 };
 
 class JarvanIV : public IChampionManager

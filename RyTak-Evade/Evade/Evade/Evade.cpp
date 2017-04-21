@@ -2,8 +2,8 @@
 #include "SpellBlocker.h"
 #include "EvadeSpellDB.h"
 #include "Evader.h"
-//#include "PathFollow.h"
-//#include "PathFinding.h"
+#include "PathFollow.h"
+#include "PathFinding.h"
 #include "EvadeLogic.h"
 
 #include <algorithm>
@@ -46,7 +46,7 @@ bool Evade::IsAboutToHit(int time, IUnit* unit /* = nullptr */)
 
 void Evade::OnGameLoad()
 {
-	GRender->Notification(Vec4(0, 255, 255, 255), 10, "RyTak's_vEvade++_Loaded!");
+	GRender->Notification(Vec4(0, 255, 255, 255), 10, "vEvade++ Loaded!");
 }
 
 void Evade::BeforeAttack(IUnit* target)
@@ -115,17 +115,10 @@ void Evade::OnDraw()
 			std::string text = std::string("Evade: ") + (Configs->Enabled->Enabled() ? "On" : "Off");
 			Vec4 clr = Vec4(128, 128, 128, 255);
 
-			std::string text2 = std::string("Dangerous Only: ") + (Configs->DodgeDangerous->Enabled() ? "On" : "Off");
-			Vec4 clr2 = Vec4(128, 128, 128, 255);
-
 			if (Configs->Enabled->Enabled())
-				clr = Evading ? Vec4(255, 255, 0, 255) : Vec4(255, 255, 255, 255);
-
-			if (Configs->DodgeDangerous->Enabled())
-				clr2 = Evading ? Vec4(255, 255, 0, 255) : Vec4(255, 255, 255, 255);
+				clr = Evading ? Vec4(255, 0, 0, 255) : (GetAsyncKeyState(Configs->DodgeDangerous->Enabled()) ? Vec4(255, 255, 0, 255) : Vec4(255, 255, 255, 255));
 
 			pFont->SetColor(clr);
-			pFont->SetColor(clr2);
 			pFont->Render(pos.x, pos.y, text.c_str());
 		}
 	}
@@ -153,8 +146,6 @@ bool Evade::OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* T
 void Evade::OnUpdate()
 {
 	EvadeLogic->OnGameUpdate();
-	Configs->KeyTurnOnOffDangerous();
-	Configs->KeyTurnOnOffMaster();
 }
 
 void Evade::UpdateSpells()
