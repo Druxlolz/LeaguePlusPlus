@@ -124,7 +124,7 @@ void CEvadeLogic::OnRender()
 	// Should draw path we're taking here...
 }
 
-bool CEvadeLogic::OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
+bool CEvadeLogic::OnIssueOrderEx(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
 {
 	Evade::EvadePoint2 = (OrderIdx == kMoveTo || OrderIdx == kAttackTo) ? Position->To2D() : Vec2(0.f, 0.f);
 

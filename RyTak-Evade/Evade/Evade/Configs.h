@@ -10,11 +10,11 @@ struct EvadeMenuOptions
 {
 	EvadeMenuOptions()
 	{
-		CrossingTime = 250;
-		EvadePointChangeTime = 300;
+		CrossingTime = 25;
+		EvadePointChangeTime = 30;
 		EvadingFirstTime = 250;
 		EvadingSecondTime = 80;
-		EvadingRouteChangeTime = 250;
+		EvadingRouteChangeTime = 50;
 		ExtraSpellRadius = 9;
 		ExtraSpellRange = 20;
 		GridSize = 10;

@@ -77,7 +77,7 @@ namespace Evade
 	bool OnPreCast(int Slot, IUnit* Target, Vec3* StartPosition, Vec3* EndPosition);
 	void OnDash(UnitDash* Args);
 	void OnDraw();
-	bool OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target);
+	bool OnIssueOrderEx(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target);
 	void OnUpdate();
 	void UpdateSpells();
 }

@@ -142,17 +142,19 @@ void Evade::OnDraw()
 	EvadeLogic->OnRender();
 }
 
-bool Evade::OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
+bool Evade::OnIssueOrderEx(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
 {
 	if (Source != GEntityList->Player())
 		return true;
 
-	return EvadeLogic->OnIssueOrder(Source, OrderIdx, Position, Target);
+	return EvadeLogic->OnIssueOrderEx(Source, OrderIdx, Position, Target);
 }
 
 void Evade::OnUpdate()
 {
 	EvadeLogic->OnGameUpdate();
+	Configs->KeyTurnOnOffDangerous();
+	Configs->KeyTurnOnOffMaster();
 }
 
 void Evade::UpdateSpells()
