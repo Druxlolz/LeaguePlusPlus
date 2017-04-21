@@ -5,6 +5,8 @@
 #undef min
 #undef max
 
+#define PI 3.14159265
+
 #include <algorithm>
 #include <regex>
 #include <string>
@@ -59,10 +61,10 @@ void CSpellDetector::OnProcessSpell(CastedSpell const& Args)
 	if (pNewData != nullptr)
 		data = pNewData;
 
-	AddSpell(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, data);
+	AddSpellV3(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, data);
 }
 
-void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, SpellData* Data, IUnit* MissileClient /* = nullptr */, int Type /* = ST_None */, bool CheckExplosion /* = true */, int StartT /* = 0 */)
+void CSpellDetector::AddSpellV2(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, SpellData* Data, IUnit* MissileClient /* = nullptr */, int Type /* = ST_None */, bool CheckExplosion /* = true */, int StartT /* = 0 */)
 {
 	auto isFromFoW = !Source->IsVisible() && MissileClient != nullptr;
 
@@ -105,8 +107,7 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 		}
 	}
 
-	if (Type == ST_Cone || Type == ST_MissileCone || Data->FixedRange
-		|| (Data->GetRange() > 0 && endPos.DistanceTo(startPos) > Data->GetRange()))
+	if (Type == ST_Cone || Type == ST_MissileCone || Data->FixedRange || (Data->GetRange() > 0 && endPos.DistanceTo(startPos) > Data->GetRange()))
 	{
 		endPos = startPos.Extend(endPos, Data->GetRange());
 	}
@@ -207,7 +208,7 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 		if (Data->HasStartExplosion)
 			newData->CollisionObjects = kCollidesWithNothing;
 
-		AddSpell(Source, SpellStart, SpellEnd, newData, MissileClient, ST_Circle, false, StartT);
+		AddSpellV2(Source, SpellStart, SpellEnd, newData, MissileClient, ST_Circle, false, StartT);
 	}
 
 	auto newSpell = new SpellInstance(*Data, startTime, endTime + Data->ExtraDelay, startPos, endPos, Source, Type);
@@ -219,9 +220,9 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 	Evade::DetectedSpells[newSpell->SpellId] = newSpell;
 }
 
-void CSpellDetector::AddSpell(IUnit* Source, Vec3 SpellStart, Vec3 SpellEnd, SpellData* Data, IUnit* MissileClient /* = nullptr */, int Type /* = ST_None */, bool CheckExplosion /* = true */, int StartT /* = 0 */)
+void CSpellDetector::AddSpellV3(IUnit* Source, Vec3 SpellStart, Vec3 SpellEnd, SpellData* Data, IUnit* MissileClient /* = nullptr */, int Type /* = ST_None */, bool CheckExplosion /* = true */, int StartT /* = 0 */)
 {
-	AddSpell(Source, SpellStart.To2D(), SpellEnd.To2D(), Data, MissileClient, Type, CheckExplosion, StartT);
+	AddSpellV3(Source, SpellStart, SpellEnd, Data, MissileClient, Type, CheckExplosion, StartT);
 }
 
 void CSpellDetector::OnCreateMissile(IUnit* Source)
@@ -261,7 +262,7 @@ void CSpellDetector::OnCreateMissileDelay(IUnit* Missile, IUnit* Caster, SpellDa
 	if (pNewData != nullptr)
 		Data = pNewData;
 
-	AddSpell(Caster, GMissileData->GetStartPosition(Missile), GMissileData->GetEndPosition(Missile), Data, Missile);
+	AddSpellV3(Caster, GMissileData->GetStartPosition(Missile), GMissileData->GetEndPosition(Missile), Data, Missile);
 }
 
 void CSpellDetector::OnCreateToggle(IUnit* Source)
@@ -282,7 +283,7 @@ void CSpellDetector::OnCreateToggle(IUnit* Source)
 	{
 		auto spell = i.second;
 
-		if (spell->Data.ToggleName.size() != 0 && spell->Type == ST_Circle && spell->MissileObject != nullptr && spell->ToggleObject == nullptr)
+		if (spell->Data.ToggleName.size() != 0 && spell->Type == ST_Circle && spell->MissileObject != nullptr && spell->ToggleObject != nullptr)
 		{
 			std::regex rx(spell->Data.ToggleName);
 
@@ -314,7 +315,6 @@ void CSpellDetector::OnCreateTrap(IUnit* Source)
 
 void CSpellDetector::OnCreateTrapDelay(IUnit* Source, SpellData* Data)
 {
-	auto pos = Source->GetPosition().To2D();
 
 	IUnit* caster = nullptr;
 
@@ -327,7 +327,12 @@ void CSpellDetector::OnCreateTrapDelay(IUnit* Source, SpellData* Data)
 		}
 	}
 
-	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, 0, pos, pos, caster, Data->Type);
+	auto EndTime = GGame->TickCount() - GGame->Latency() / 2 + Data->ExtraDuration;
+
+	auto pos1 = caster->GetPosition().To2D();
+	auto pos2 = Source->GetPosition().To2D();
+
+	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, EndTime, pos2, pos2, caster, Data->Type);
 
 	spell->SpellId = spellIdCount++;
 	spell->TrapObject = Source;

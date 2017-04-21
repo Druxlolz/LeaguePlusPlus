@@ -80,7 +80,7 @@ EvadeSpellDB::EvadeSpellDB()
 
 #pragma region Jayce
 	if (szChamp == "Jayce")
-		Spells.push_back(new MoveBuffData("JayceR", kSlotR, 0, 3, []() { return GEntityList->Player()->MovementSpeed() + 40.f; }));
+		Spells.push_back(new MoveBuffData("JayceR", kSlotR, 0, 3, [](){ return GEntityList->Player()->MovementSpeed() + 40.f; }));
 #pragma endregion Jayce
 
 #pragma region Karma
@@ -236,7 +236,7 @@ EvadeSpellDB::EvadeSpellDB()
 		pSpell->Invert = true;
 		Spells.push_back(pSpell);
 	}
-#pragma endregion Aatrox
+	#pragma endregion Aatrox
 
 #pragma region Akali
 	if (szChamp == "Akali")
@@ -504,22 +504,22 @@ EvadeSpellDB::EvadeSpellDB()
 #pragma endregion Janna
 
 #pragma region Karma
-	if (szChamp == "Karma")
-	{
-		auto pSpell = new ShieldData("KarmaE", kSlotE, 100, 2);
-		pSpell->CanShieldAllies = true;
-		pSpell->MaxRange = true;
-		Spells.push_back(pSpell);
-	}
+		if (szChamp == "Karma")
+		{
+			auto pSpell = new ShieldData("KarmaE", kSlotE, 100, 2);
+			pSpell->CanShieldAllies = true;
+			pSpell->MaxRange = true;
+			Spells.push_back(pSpell);
+		}
 #pragma endregion Karma
 
 #pragma region Morgana
-	if (szChamp == "Morgana")
-	{
-		auto pSpell = new ShieldData("MorganaE", kSlotE, 100, 3);
-		pSpell->CanShieldAllies = true;
-		pSpell->MaxRange = 800;
-		Spells.push_back(pSpell);
-	}
+		if (szChamp == "Morgana")
+		{
+			auto pSpell = new ShieldData("MorganaE", kSlotE, 100, 3);
+			pSpell->CanShieldAllies = true;
+			pSpell->MaxRange = 800;
+			Spells.push_back(pSpell);
+		}
 #pragma endregion Morgana
 }

@@ -122,6 +122,15 @@
     <ClCompile Include="EvadeLogic.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Pathing</Filter>
+    </ClCompile>
+    <ClCompile Include="AStar.cpp">
+      <Filter>Pathing</Filter>
+    </ClCompile>
+    <ClCompile Include="Dijkstra.cpp">
+      <Filter>Pathing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SDK">
@@ -156,6 +165,9 @@
     </Filter>
     <Filter Include="PathFinding\AStar">
       <UniqueIdentifier>{ecc5cc9b-095e-4fa0-9f22-2076c037db0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pathing">
+      <UniqueIdentifier>{130eaebb-b155-4742-a7d3-66911cbd32ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +251,21 @@
     </ClInclude>
     <ClInclude Include="EvadeLogic.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Pathing</Filter>
+    </ClInclude>
+    <ClInclude Include="PathAlgorithm.h">
+      <Filter>Pathing</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFinder.h">
+      <Filter>Pathing</Filter>
+    </ClInclude>
+    <ClInclude Include="AStar.h">
+      <Filter>Pathing</Filter>
+    </ClInclude>
+    <ClInclude Include="Dijkstra.h">
+      <Filter>Pathing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

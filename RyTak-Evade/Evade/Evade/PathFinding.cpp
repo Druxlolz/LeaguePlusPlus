@@ -1,5 +1,6 @@
 #include "PathFinding.h"
 #include "Evade.h"
+#include "JPS.h"
 #include "Core.h"
 
 CPathFinding* PathFinding = nullptr;
