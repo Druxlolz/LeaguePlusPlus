@@ -155,7 +155,8 @@ void EvadeMenuOptions::LoadMenuOptions()
 	DrawStatus = pDraw->CheckBox("Draw Status", true);
 
 	Enabled = EvadeParent->CheckBox("Enabled", true);
-	DodgeDangerous = EvadeParent->AddKey("Dodge Only Dangerous Key", VK_MBUTTON);
+	Enabledkey = EvadeParent->AddKey("Toggle Evade", 75);
+	DodgeDangerous = EvadeParent->AddKey("Dodge Only Dangerous Key", 32);
 }
 
 #define AddManager(Name) if (szChamp == std::string(#Name)){ ChampionManagers[szChamp] = new Name; }
@@ -200,6 +201,34 @@ void EvadeMenuOptions::LoadSpecialSpellPlugins()
 		AddManager(Zac);
 		AddManager(Zed);
 		AddManager(Zilean);
+	}
+}
+
+void EvadeMenuOptions::KeyTurnOnOffMaster()
+{
+	keystate = GetAsyncKeyState(Enabledkey->GetInteger());
+	if (GUtility->IsLeagueWindowFocused() == false || GGame->IsChatOpen() || GGame->IsScoreboardOpen() || GGame->IsShopOpen())
+		return;
+	if (keystate < 0)
+	{
+		if (KeyWasDown == false)
+		{
+			if (Enabled->GetInteger() == 0)
+			{
+				Enabled->UpdateInteger(1);
+			}
+			else
+			{
+				Enabled->UpdateInteger(0);
+			}
+
+			KeyWasDown = true;
+
+		}
+	}
+	else
+	{
+		KeyWasDown = false;
 	}
 }
 
