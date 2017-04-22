@@ -35,10 +35,12 @@ PLUGIN_EVENT(void) OnRender()
 
 PLUGIN_EVENT(bool) OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
 {
-	if (!Evade::OnIssueOrder(Source, OrderIdx, Position, Target))
-		return false;
+//	if (!Evade::OnIssueOrder(Source, OrderIdx, Position, Target))
+//		return false;
+//
+//	return true;
 
-	return true;
+	return Evade::OnIssueOrder(Source, OrderIdx, Position, Target);
 }
 
 PLUGIN_EVENT(bool) OnPreCast(int Slot, IUnit* Target, Vec3* StartPosition, Vec3* EndPosition)

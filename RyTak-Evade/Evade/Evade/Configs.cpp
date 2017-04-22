@@ -8,8 +8,8 @@
 
 std::vector<int> SpellBlocker::Spells;
 
-EvadeMenuOptions* Configs	= nullptr;
-IMenu* EvadeParent			= nullptr;
+EvadeMenuOptions* Configs = nullptr;
+IMenu* EvadeParent = nullptr;
 
 void EvadeMenuOptions::UnloadMenu()
 {
@@ -29,8 +29,8 @@ IMenuOption* EvadeMenuOptions::GetOptionForSpellName(std::string const Name)
 
 void EvadeMenuOptions::LoadMenuOptions()
 {
-	EvadeParent		= GPluginSDK->AddMenu("vEvade++");
-	IMenu* pSpells	= EvadeParent->AddMenu("Evade - Spells");
+	EvadeParent = GPluginSDK->AddMenu("RyTaks_vEvade++");
+	IMenu* pSpells = EvadeParent->AddMenu("Evade - Spells");
 
 	LoadSpecialSpellPlugins();
 
@@ -99,14 +99,14 @@ void EvadeMenuOptions::LoadMenuOptions()
 
 			std::string szIdentifier = "S_" + j->MenuName;
 
-			auto szSubMenuName	= j->IsSummoner ? j->SpellName : j->ChampName + " (" + SlotToString(j->Slot) + ")";
-			auto pSubMenu		= pSpells->AddMenu(szSubMenuName.c_str());
+			auto szSubMenuName = j->IsSummoner ? j->SpellName : j->ChampName + " (" + SlotToString(j->Slot) + ")";
+			auto pSubMenu = pSpells->AddMenu(szSubMenuName.c_str());
 
-			SpellMenuOptions[szIdentifier + "_DangerLvl"]		= pSubMenu->AddInteger("Danger Level", 1, 5, j->DangerValue);
-			SpellMenuOptions[szIdentifier + "_IsDangerous"]		= pSubMenu->CheckBox("Is Dangerous", j->IsDangerous);
-			SpellMenuOptions[szIdentifier + "_IgnoreHp"]		= pSubMenu->AddInteger("Ignore if HP Greater", 25, 100, !j->IsDangerous ? 65 : 80);
-			SpellMenuOptions[szIdentifier + "_Draw"]			= pSubMenu->CheckBox("Draw", true);
-			SpellMenuOptions[szIdentifier + "_Enabled"]			= pSubMenu->CheckBox("Enabled", !j->DisabledByDefault);
+			SpellMenuOptions[szIdentifier + "_DangerLvl"] = pSubMenu->AddInteger("Danger Level", 1, 5, j->DangerValue);
+			SpellMenuOptions[szIdentifier + "_IsDangerous"] = pSubMenu->CheckBox("Is Dangerous", j->IsDangerous);
+			SpellMenuOptions[szIdentifier + "_IgnoreHp"] = pSubMenu->AddInteger("Ignore if HP Greater", 25, 100, !j->IsDangerous ? 65 : 80);
+			SpellMenuOptions[szIdentifier + "_Draw"] = pSubMenu->CheckBox("Draw", true);
+			SpellMenuOptions[szIdentifier + "_Enabled"] = pSubMenu->CheckBox("Enabled", !j->DisabledByDefault);
 		}
 	}
 
@@ -115,8 +115,8 @@ void EvadeMenuOptions::LoadMenuOptions()
 
 	for (auto i : EvadeSpellsDB->Spells)
 	{
-		std::string szIdentifier	= std::string("ES_") + i->MenuName.c_str();
-		IMenu* pSubMenu				= pEvadeSpells->AddMenu(i->MenuName.c_str());
+		std::string szIdentifier = std::string("ES_") + i->MenuName.c_str();
+		IMenu* pSubMenu = pEvadeSpells->AddMenu(i->MenuName.c_str());
 
 		SpellMenuOptions[szIdentifier + "_DangerLvl"] = pSubMenu->AddInteger("Danger Level", 1, 5, i->dangerLevel);
 
@@ -140,14 +140,14 @@ void EvadeMenuOptions::LoadMenuOptions()
 
 	auto pMisc = EvadeParent->AddMenu("Evade - Misc");
 
-	CheckCollision = pMisc->CheckBox("Check Collisions", false);
+	CheckCollision = pMisc->CheckBox("Check Collisions", true);
 	CheckHp = pMisc->CheckBox("Check Player Hp", false);
 	CheckBlock = pMisc->CheckBox("Block Cast While Dodge Dangerous", true);
 	DodgeFoW = pMisc->CheckBox("Dodge FoW Spells", true);
 	DodgeLine = pMisc->CheckBox("Dodge Line Spells", true);
 	DodgeCircle = pMisc->CheckBox("Dodge Circle Spells", true);
 	DodgeCone = pMisc->CheckBox("Dodge Cone Spells", true);
-	DodgeTrap = pMisc->CheckBox("Dodge Traps", false);
+	DodgeTrap = pMisc->CheckBox("Dodge Traps", true);
 
 	auto pDraw = EvadeParent->AddMenu("Evade - Draw");
 
@@ -156,7 +156,8 @@ void EvadeMenuOptions::LoadMenuOptions()
 
 	Enabled = EvadeParent->CheckBox("Enabled", true);
 	Enabledkey = EvadeParent->AddKey("Toggle Evade", 75);
-	DodgeDangerous = EvadeParent->AddKey("Dodge Only Dangerous Key", 32);
+	DodgeDangerous = EvadeParent->CheckBox("Use Dodge Dangerous Only", false);
+	DangerousKey = EvadeParent->AddKey("Dodge Only Dangerous Key", 32);
 }
 
 #define AddManager(Name) if (szChamp == std::string(#Name)){ ChampionManagers[szChamp] = new Name; }
@@ -204,6 +205,14 @@ void EvadeMenuOptions::LoadSpecialSpellPlugins()
 	}
 }
 
+void EvadeMenuOptions::LoadSpecialSpell(SpellData* Args)
+{
+	if (ChampionManagers[Args->ChampName] != nullptr)
+		ChampionManagers[Args->ChampName]->LoadSpecialSpells(Args);
+
+	ChampionManagers["AllChampions"]->LoadSpecialSpells(Args);
+}
+
 void EvadeMenuOptions::KeyTurnOnOffMaster()
 {
 	keystate = GetAsyncKeyState(Enabledkey->GetInteger());
@@ -232,10 +241,28 @@ void EvadeMenuOptions::KeyTurnOnOffMaster()
 	}
 }
 
-void EvadeMenuOptions::LoadSpecialSpell(SpellData* Args)
+void EvadeMenuOptions::KeyTurnOnOffDangerous()
 {
-	if (ChampionManagers[Args->ChampName] != nullptr)
-		ChampionManagers[Args->ChampName]->LoadSpecialSpells(Args);
+	keystate2 = GetAsyncKeyState(DangerousKey->GetInteger());
+	if (GUtility->IsLeagueWindowFocused() == false || GGame->IsChatOpen() || GGame->IsScoreboardOpen() || GGame->IsShopOpen())
+		return;
+	if (keystate2 < 0)
+	{
+		if (KeyWasDown2 == false)
+		{
+			if (DodgeDangerous->GetInteger() == 0)
+			{
+				DodgeDangerous->UpdateInteger(1);
+			}
 
-	ChampionManagers["AllChampions"]->LoadSpecialSpells(Args);
+			KeyWasDown2 = true;
+		}
+	}
+	else
+	{
+		DodgeDangerous->UpdateInteger(0);
+		{
+			KeyWasDown2 = false;
+		}
+	}
 }

@@ -488,9 +488,51 @@ public:
 		return (vecThis + (Other - vecThis).VectorNormalize() * Len);
 	}
 
+	bool Close(float a, float b, float eps) const
+	{
+		if (fabs(eps) < FLT_EPSILON)
+			eps = (float) 1e-9;
+
+		return fabs(a - b) <= eps;
+	}
+
+	float Polar() const
+	{
+		if (Close(x, 0, 0))
+		{
+			if (y > 0)
+				return 90;
+
+			return y < 0 ? 270.f : 0.f;
+		}
+
+		float flTheta = ToDegree(atanf(y / x));
+
+		if (x < 0)
+			flTheta += 180.f;
+
+		if (flTheta < 0)
+			flTheta += 360.f;
+
+		return flTheta;
+	}
+
 	float DistanceTo(const Vec3 vecOther)
 	{
 		return ((vecOther - *this).Length());
+	}
+
+	float AngleBetween(Vec3 const& Other) const
+	{
+		float flTheta = Polar() - Other.Polar();
+
+		if (flTheta < 0)
+			flTheta += 360.f;
+
+		if (flTheta > 180.f)
+			flTheta = 360.f - flTheta;
+
+		return flTheta;
 	}
 
 	Vec3 Perpendicular()

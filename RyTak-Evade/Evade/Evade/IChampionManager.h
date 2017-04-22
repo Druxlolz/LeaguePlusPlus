@@ -209,6 +209,13 @@ public:
 	virtual void OnDetectorCreateSpell(IUnit* Sender, IUnit* Missile, SpellData* Data, SpellData** NewData, bool* ShouldProcess) override;
 };
 
+class Xayah : public IChampionManager
+{
+public:
+	virtual void LoadSpecialSpells(SpellData* Data) override;
+	virtual void OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bool* ShouldProcess, SpellData** NewData) override;
+};
+
 class Yasuo : public IChampionManager
 {
 public:

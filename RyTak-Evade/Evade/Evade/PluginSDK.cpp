@@ -11,6 +11,7 @@ IHealthPrediction* GHealthPrediction = nullptr;
 ITargetSelector* GTargetSelector = nullptr;
 IOrbwalking* GOrbwalking = nullptr;
 ISpellData* GSpellData = nullptr;
+ISpellBook* GSpellBook = nullptr;
 IBuffData* GBuffData = nullptr;
 IMissileData* GMissileData = nullptr;
 INavMesh* GNavMesh = nullptr;

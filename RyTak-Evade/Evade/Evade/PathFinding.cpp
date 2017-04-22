@@ -133,6 +133,17 @@ bool CPathFinding::IsWithinSkillshot(Vec2 const& EndPosition)
 	return false;
 }
 
+bool CPathFinding::IsWithinSkillshot(Vec3 const& EndPosition)
+{
+	for (auto i : Evade::Spells)
+	{
+		if (i->Polygon.IsInside(EndPosition))
+			return true;
+	}
+
+	return false;
+}
+
 bool CPathFinding::IsWithinSkillshotPathfindingOuter(Vec2 const& EndPosition)
 {
 	auto outerPolys = std::vector<Geometry::IPolygon>();

@@ -15,6 +15,7 @@ private:
 	void UpdateEndPosition(Vec2& EndPosition);
 	void FindNearestNonCollision(Vec2& EndPosition);
 	bool IsWithinSkillshot(Vec2 const& EndPosition);
+	bool IsWithinSkillshot(Vec3 const& EndPosition);
 	bool IsWithinWall(Vec2 const& EndPosition);
 	bool IsWithinSkillshotPathfindingOuter(Vec2 const& EndPosition);
 

@@ -122,6 +122,7 @@
     <ClCompile Include="Taric.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Viktor.cpp" />
+    <ClCompile Include="Xayah.cpp" />
     <ClCompile Include="Yasuo.cpp" />
     <ClCompile Include="Yorick.cpp" />
     <ClCompile Include="Zac.cpp" />

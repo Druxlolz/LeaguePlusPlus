@@ -272,7 +272,8 @@ namespace Core
 							Node node2 = Node(point);
 							nodes.back().Neighbours.push_back(node2);
 							nodes.push_back(node2);
-						}
+						}
+
 					}
 				}
 			}
@@ -300,7 +301,8 @@ namespace Core
 			// 				}
 			// 
 			// 				result.AddRange(path.Select(i = > i.Point));
-			// 				result.Reverse();
+			// 				result.Reverse();
+
 		}
 		// 
 		// 			auto startNode = nodes.FirstOrDefault(i = > i.Point == start);

@@ -122,6 +122,9 @@
     <ClCompile Include="EvadeLogic.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Xayah.cpp">
+      <Filter>Spells\Champions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SDK">

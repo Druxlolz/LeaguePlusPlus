@@ -2,8 +2,8 @@
 #include "Configs.h"
 #include "Util.h"
 
-SpellDB* SpellsDB = nullptr;
-const float M_PI = static_cast<float>(3.141592);
+SpellDB* SpellsDB	= nullptr;
+const float M_PI	= static_cast<float>(3.141592);
 
 int SpellData::GetRadius()
 {
@@ -591,7 +591,7 @@ SpellDB::SpellDB()
 #pragma region Xayah
 	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahQ")->_SpellName("XayahQ")->_DangerValue(2)->_Slot(kSlotQ)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_Type(ST_MissileLine)->_Range(1100)->_MissileSpeed(1400)->_Radius(50)->_CollisionObjects(kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahW")->_SpellName("XayahW")->_DangerValue(1)->_Slot(kSlotW)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_MissileSpeed(1500)->_CollisionObjects(kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahE")->_SpellName("XayahE")->_DangerValue(3)->_Slot(kSlotE)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_Type(ST_Line)->_MissileSpeed(2000)->_CollisionObjects(kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahE")->_SpellName("XayahE")->_DangerValue(3)->_Slot(kSlotE)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_Type(ST_Line)->_Range(1100)->_MissileFromUnit(true)->_MissileSpeed(2000)->_CollisionObjects(kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahR")->_SpellName("XayahR")->_DangerValue(5)->_Slot(kSlotR)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_Type(ST_MissileCone)->_Range(1100)->_MissileSpeed(2000)->_Radius(200)->_CollisionObjects(kCollidesWithYasuoWall));
 #pragma endregion Xayah
 

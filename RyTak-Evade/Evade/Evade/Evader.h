@@ -82,6 +82,12 @@ namespace Evader
 		switch (spell->Type)
 		{
 		case ST_Line:
+			ProjectPointOn(pos, spell->Line.Start, spell->Line.End, piout);
+
+			if (piout.IsOnSegment)
+				return piout.SegmentPoint.Extend(pos, spell->Line.Radius + 10);
+
+			break;
 		case ST_MissileLine:
 			ProjectPointOn(pos, spell->Line.Start, spell->Line.End, piout);
 

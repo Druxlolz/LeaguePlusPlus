@@ -66,6 +66,7 @@ struct SpellInstance
 	Polygons::Cone Cone;
 	SpellData Data;
 	Vec2 Direction;
+	Vec3 DirectionV3;
 	Geometry::IPolygon DrawPolygon;
 	Vec2 End;
 	int EndTick;

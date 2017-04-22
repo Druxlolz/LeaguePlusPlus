@@ -99,7 +99,7 @@ void Evade::OnDraw()
 		return;
 
 	static IFont* pFont = nullptr;
-	
+
 	if (pFont == nullptr)
 	{
 		pFont = GRender->CreateFont("Tahoma", 16.f, kFontWeightNormal);
@@ -112,27 +112,31 @@ void Evade::OnDraw()
 		Vec2 pos;
 		if (GGame->Projection(GEntityList->Player()->GetPosition(), &pos))
 		{
-			std::string text = std::string("Evade: ") + (Configs->Enabled->Enabled() ? "On" : "Off");
-			Vec4 clr = Vec4(128, 128, 128, 255);
+			Vec2 pos;
+			if (GGame->Projection(GEntityList->Player()->GetPosition(), &pos))
+			{
+				std::string text = std::string("Evade: ") + (Configs->Enabled->Enabled() ? "On" : "Off");
+				Vec4 clr = Vec4(128, 128, 128, 255);
 
-			if (Configs->Enabled->Enabled())
-				clr = Evading ? Vec4(255, 0, 0, 255) : (GetAsyncKeyState(Configs->DodgeDangerous->Enabled()) ? Vec4(255, 255, 0, 255) : Vec4(255, 255, 255, 255));
+				if (Configs->Enabled->Enabled())
+					clr = Evading ? Vec4(255, 0, 0, 255) : (GetAsyncKeyState(Configs->DodgeDangerous->Enabled()) ? Vec4(255, 255, 0, 255) : Vec4(255, 255, 255, 255));
 
-			pFont->SetColor(clr);
-			pFont->Render(pos.x, pos.y, text.c_str());
+				pFont->SetColor(clr);
+				pFont->Render(pos.x, pos.y, text.c_str());
+			}
 		}
-	}
 
-	if (Configs->DrawSpells->Enabled())
-	{
-		for (auto i : DetectedSpells)
+		if (Configs->DrawSpells->Enabled())
 		{
-			auto pSpell = i.second;
-			pSpell->Draw(pSpell->IsEnabled() ? Vec4(255, 255, 255, 255) : Vec4(255, 0, 0, 255));
+			for (auto i : DetectedSpells)
+			{
+				auto pSpell = i.second;
+				pSpell->Draw(pSpell->IsEnabled() ? Vec4(255, 255, 255, 255) : Vec4(255, 0, 0, 255));
+			}
 		}
-	}
 
-	EvadeLogic->OnRender();
+		EvadeLogic->OnRender();
+	}
 }
 
 bool Evade::OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* Target)
@@ -143,9 +147,11 @@ bool Evade::OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IUnit* T
 	return EvadeLogic->OnIssueOrder(Source, OrderIdx, Position, Target);
 }
 
+
 void Evade::OnUpdate()
 {
 	EvadeLogic->OnGameUpdate();
+	Configs->KeyTurnOnOffDangerous();
 	Configs->KeyTurnOnOffMaster();
 }
 
