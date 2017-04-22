@@ -44,6 +44,52 @@ public:
 		SpellLib().Thresh();
 	}
 
+	bool AllyIsInSpellRange(float range)
+	{
+		auto allies = GEntityList->GetAllHeros(true, false);
+		auto alliesInSpellRange = false;
+
+		for (auto ally : allies)
+		{
+			auto TargetDistance = (ally->GetPosition() - GEntityList->Player()->GetPosition()).Length2D();
+			if (ally != nullptr && ally->GetTeam() == GEntityList->Player()->GetTeam() && ally->IsHero())
+			{
+				if (TargetDistance < range)
+				{
+					return true;
+				}
+				if (TargetDistance > range)
+				{
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+
+	bool EnemyIsInSpellRange(float range)
+	{
+		auto enemies = GEntityList->GetAllHeros(false, true);
+		auto enemiesInSpellRange = nullptr;
+
+		for (auto enemy : enemies)
+		{
+			auto TargetDistance = (enemy->GetPosition() - GEntityList->Player()->GetPosition()).Length2D();
+			if (enemy != nullptr && enemy->GetTeam() != GEntityList->Player()->GetTeam() && enemy->IsHero())
+			{
+				if (TargetDistance < range)
+				{
+					return true;
+				}
+				if (TargetDistance > range)
+				{
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+
 	void Combo()
 	{
 		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
@@ -56,9 +102,9 @@ public:
 				{
 					if (ComboQ->Enabled() && Q->IsReady() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
-						Q->CastOnTarget(target, 6);
+						Q->CastOnTarget(target, 5);
 					}
-					if (ComboW->Enabled() && W->IsReady() && ally->IsValidTarget(GEntityList->Player(), W->Range()) && ally != nullptr && !ally->IsDead())
+					if (ComboW->Enabled() && W->IsReady() && ally->IsValidTarget(GEntityList->Player(), W->Range()) && ally != nullptr && !ally->IsDead() && AllyIsInSpellRange(W->Range()) == true)
 					{
 						W->CastOnTarget(ally);
 					}
@@ -144,7 +190,7 @@ public:
 				if (KSR->Enabled() && R->IsReady())
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotR, R->GetDelay(), true);
-					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), R->Range()) && EIISR().EnemyIsInSpellRange(R->Range()) == true)
+					if (Enemy->GetHealth() <= dmg && Enemy->IsValidTarget(GEntityList->Player(), R->Range()) && EnemyIsInSpellRange(R->Range()) == true)
 					{
 						R->CastOnPlayer();
 					}

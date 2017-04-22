@@ -1,7 +1,6 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
-#include "CommonLib.cpp"
 
 class VarusBase
 {
@@ -51,6 +50,44 @@ void Spells()
 	SpellLib().Varus();
 }
 
+int GetEnemiesInRange(float range)
+{
+	auto enemies = GEntityList->GetAllHeros(false, true);
+	auto enemiesInRange = 0;
+
+	for (auto enemy : enemies)
+	{
+		auto TargetDistance = (enemy->GetPosition() - GEntityList->Player()->GetPosition()).Length2D();
+		if (enemy != nullptr && enemy->GetTeam() != GEntityList->Player()->GetTeam() && enemy->IsValidTarget() && enemy->IsHero())
+		{
+			if (TargetDistance < range)
+			{
+				enemiesInRange++;
+			}
+		}
+	}
+	return enemiesInRange;
+}
+
+int GetMinionsInRange(float range)
+{
+	auto minions = GEntityList->GetAllMinions(false, true, true);
+	auto minionsInRange = 0;
+
+	for (auto minion : minions)
+	{
+		auto TargetDistance = (minion->GetPosition() - GEntityList->Player()->GetPosition()).Length2D();
+		if (minion != nullptr && minion->GetTeam() != GEntityList->Player()->GetTeam() && (minion->IsCreep() || minion->IsJungleCreep()))
+		{
+			if (TargetDistance < range)
+			{
+				minionsInRange++;
+			}
+		}
+	}
+	return minionsInRange;
+}
+
 void Combo()
 {
 	if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
@@ -65,13 +102,13 @@ void Combo()
 				{
 					Q->FindTarget(PhysicalDamage);
 					{
-						if (target->IsValidTarget(GEntityList->Player(), Q->Range()) && GEIR().GetEnemiesInRange(Q->Range()) >= 1 && ComboWStacks->GetInteger() >= target->GetBuffCount("VarusWDebuff"))
+						if (target->IsValidTarget(GEntityList->Player(), Q->Range()) && GetEnemiesInRange(Q->Range()) >= 1 && ComboWStacks->GetInteger() >= target->GetBuffCount("VarusWDebuff"))
 						{
 							Q->CastOnTarget(target, kHitChanceHigh);
 						}
 					}
 				}
-				if (Q->IsReady() && GEIR().GetEnemiesInRange(Q->Range()) >= 1)
+				if (Q->IsReady() && GetEnemiesInRange(Q->Range()) >= 1)
 				{
 					Q->StartCharging();
 				}
@@ -95,7 +132,7 @@ void Combo()
 			for (auto target : GEntityList->GetAllHeros(false, true));
 			if (HarassQ->Enabled() && Q->IsReady() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), Q->Range()) && target != nullptr)
 			{
-				if (GEIR().GetEnemiesInRange(Q->Range()) >= 1)
+				if (GetEnemiesInRange(Q->Range()) >= 1)
 				{
 					if (Q->IsCharging())
 					{
@@ -137,13 +174,13 @@ void Combo()
 								Vec3 pos;
 								int hit;
 								GPrediction->FindBestCastPosition(Q->Range(), Q->Radius(), true, true, true, pos, hit);
-								if (GMIR().GetMinionsInRange(Q->Range()) >= LaneClearQMinions->GetInteger() <= hit && !minion->IsInvulnerable())
+								if (GetMinionsInRange(Q->Range()) >= LaneClearQMinions->GetInteger() <= hit && !minion->IsInvulnerable())
 								{
 									Q->CastOnPosition(pos);
 								}
 							}
 						}
-						else if (Q->IsReady() && GMIR().GetMinionsInRange(Q->Range()) >= LaneClearQMinions->GetInteger())
+						else if (Q->IsReady() && GetMinionsInRange(Q->Range()) >= LaneClearQMinions->GetInteger())
 						{
 							Q->StartCharging();
 						}
@@ -184,7 +221,7 @@ void Combo()
 				if (KSQ->Enabled() && Q->IsReady() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
 				{
 					auto dmg = GHealthPrediction->GetKSDamage(Enemy, kSlotQ, Q->GetDelay(), true);
-					if (GEIR().GetEnemiesInRange(Q->Range()) >= 1)
+					if (GetEnemiesInRange(Q->Range()) >= 1)
 					{
 						Q->StartCharging();
 					}

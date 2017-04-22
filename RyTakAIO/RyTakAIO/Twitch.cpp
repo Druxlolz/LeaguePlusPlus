@@ -1,7 +1,6 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
-#include "CommonLib.cpp"
 
 class TwitchBase
 {
@@ -45,6 +44,29 @@ public:
 	void Spells()
 	{
 		SpellLib().Twitch();
+	}
+
+	bool EnemyIsInSpellRange(float range)
+	{
+		auto enemies = GEntityList->GetAllHeros(false, true);
+		auto enemiesInSpellRange = nullptr;
+
+		for (auto enemy : enemies)
+		{
+			auto TargetDistance = (enemy->GetPosition() - GEntityList->Player()->GetPosition()).Length2D();
+			if (enemy != nullptr && enemy->GetTeam() != GEntityList->Player()->GetTeam() && enemy->IsHero())
+			{
+				if (TargetDistance < range)
+				{
+					return true;
+				}
+				if (TargetDistance > range)
+				{
+					return false;
+				}
+			}
+		}
+		return false;
 	}
 
 	inline double ExpungeDamage(IUnit* Target)
@@ -108,7 +130,7 @@ public:
 				}
 				if (ComboR->Enabled() && R->IsReady() && Enemy->IsValidTarget(GEntityList->Player(), R->Range()))
 				{
-					if (EIISR().EnemyIsInSpellRange(R->Range()) == true)
+					if (EnemyIsInSpellRange(R->Range()) == true)
 					{
 						R->CastOnPlayer();
 					}				

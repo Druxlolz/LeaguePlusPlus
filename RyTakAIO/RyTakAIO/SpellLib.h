@@ -1,15 +1,15 @@
 #pragma once
 #include "PluginSDK.h"
 
-ISpell2* Q;
-ISpell2* W;
-ISpell2* E;
-ISpell2* R;
-ISpell2* Q2;
-ISpell2* W2;
-ISpell2* E2;
-ISpell2* R2;
-ISpell2* ExtendedQ;
+static ISpell2* Q;
+static ISpell2* W;
+static ISpell2* E;
+static ISpell2* R;
+static ISpell2* Q2;
+static ISpell2* W2;
+static ISpell2* E2;
+static ISpell2* R2;
+static ISpell2* ExtendedQ;
 
 class SpellLib
 {
@@ -2502,16 +2502,16 @@ public:
 	void Xayah()
 	{
 		Q = GPluginSDK->CreateSpell2(kSlotQ, kLineCast, true, false, kCollidesWithYasuoWall);
-		Q->SetSkillshot(0.25f, 40.f, 1400.f, 1100.f);
+		Q->SetSkillshot(0.25f, 60.f, 1400.f, 1100.f);
 
 		W = GPluginSDK->CreateSpell2(kSlotW, kTargetCast, false, true, kCollidesWithYasuoWall);
-		W->SetSkillshot(0.25f, 1000.f, 1500.f, 1000.f);
+		W->SetSkillshot(0.25f, 525.f, 1500.f, 525.f);
 
-		E = GPluginSDK->CreateSpell2(kSlotE, kTargetCast, true, false, kCollidesWithYasuoWall);
-		E->SetSkillshot(0.25f, 2000.f, 2000.f, 2000.f);
+		E = GPluginSDK->CreateSpell2(kSlotE, kTargetCast, true, true, kCollidesWithYasuoWall);
+		E->SetSkillshot(0.25f, 60.f, 2000.f, 20000.f);
 
-		R = GPluginSDK->CreateSpell2(kSlotR, kConeCast, true, false, kCollidesWithYasuoWall);
-		R->SetSkillshot(0.25f, 200.f, 2000.f, 450.f);
+		R = GPluginSDK->CreateSpell2(kSlotR, kConeCast, true, true, kCollidesWithYasuoWall);
+		R->SetSkillshot(0.25f, 250.f, 2000.f, 1100.f);
 	}
 
 	void Xerath()

@@ -278,12 +278,9 @@ public:
 			if (GEntityList->Player()->HasBuff("XerathLocusOfPower2") || GEntityList->Player()->HasBuff("XerathLocusPulse"))
 			{
 				return  true;
-			}
-			else
-			{
-				return false;
-			}
+			}			
 		}
+		return false;
 	}
 
 	void RDamage()
