@@ -46,6 +46,29 @@ public:
 		SpellLib().Karthus();
 	}
 
+	bool EnemyIsInSpellRange(float range)
+	{
+		auto enemies = GEntityList->GetAllHeros(false, true);
+		auto enemiesInSpellRange = nullptr;
+
+		for (auto enemy : enemies)
+		{
+			auto TargetDistance = (enemy->GetPosition() - GEntityList->Player()->GetPosition()).Length2D();
+			if (enemy != nullptr && enemy->GetTeam() != GEntityList->Player()->GetTeam() && enemy->IsHero())
+			{
+				if (TargetDistance < range)
+				{
+					return true;
+				}
+				if (TargetDistance > range)
+				{
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+
 	void Combo()
 	{
 		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
@@ -63,11 +86,11 @@ public:
 				}
 				if (ComboE->Enabled() && E->IsReady() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 				{
-					if (EIISR().EnemyIsInSpellRange(450) == true && !GEntityList->Player()->HasBuff("KarthusDefile"))
+					if (EnemyIsInSpellRange(450) == true && !GEntityList->Player()->HasBuff("KarthusDefile"))
 					{
 						E->CastOnPlayer();
 					}
-					if (EIISR().EnemyIsInSpellRange(450) == false && GEntityList->Player()->HasBuff("KarthusDefile"))
+					if (EnemyIsInSpellRange(450) == false && GEntityList->Player()->HasBuff("KarthusDefile"))
 					{
 						E->CastOnPlayer();
 					}

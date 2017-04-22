@@ -3,7 +3,7 @@
 #include "SpellLib.h"
 #include "BaseOptions.h"
 
-class GEIR	
+class GEIR
 {
 public:
 	int GetEnemiesInRange(float range)

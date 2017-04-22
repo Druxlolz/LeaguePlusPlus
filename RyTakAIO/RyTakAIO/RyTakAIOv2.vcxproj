@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A880359B-9676-4C15-9B06-F9790398531D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>RyTakAIOv2</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>RyTakAIO</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;RYTAKAIOV2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;RYTAKAIOV2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;RYTAKAIOV2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;RYTAKAIOV2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Aatrox.cpp" />
+    <ClCompile Include="Ahri.cpp" />
+    <ClCompile Include="Akali.cpp" />
+    <ClCompile Include="Alistar.cpp" />
+    <ClCompile Include="Amumu.cpp" />
+    <ClCompile Include="Anivia.cpp" />
+    <ClCompile Include="Annie.cpp" />
+    <ClCompile Include="Ashe.cpp" />
+    <ClCompile Include="AurelionSol.cpp" />
+    <ClCompile Include="Azir.cpp" />
+    <ClCompile Include="Bard.cpp" />
+    <ClCompile Include="Blitzcrank.cpp" />
+    <ClCompile Include="Brand.cpp" />
+    <ClCompile Include="Braum.cpp" />
+    <ClCompile Include="Caitlyn.cpp" />
+    <ClCompile Include="Camille.cpp" />
+    <ClCompile Include="Cassiopeia.cpp" />
+    <ClCompile Include="ChoGath.cpp" />
+    <ClCompile Include="CommonLib.cpp" />
+    <ClCompile Include="Corki.cpp" />
+    <ClCompile Include="Darius.cpp" />
+    <ClCompile Include="Diana.cpp" />
+    <ClCompile Include="Draven.cpp" />
+    <ClCompile Include="DrMundo.cpp" />
+    <ClCompile Include="Ekko.cpp" />
+    <ClCompile Include="Elise.cpp" />
+    <ClCompile Include="Evelynn.cpp" />
+    <ClCompile Include="Ezreal.cpp" />
+    <ClCompile Include="FeatherManager.cpp" />
+    <ClCompile Include="Fiddlesticks.cpp" />
+    <ClCompile Include="Fiora.cpp" />
+    <ClCompile Include="Fizz.cpp" />
+    <ClCompile Include="Galio.cpp" />
+    <ClCompile Include="Gangplank.cpp" />
+    <ClCompile Include="Garen.cpp" />
+    <ClCompile Include="Gnar.cpp" />
+    <ClCompile Include="Gragas.cpp" />
+    <ClCompile Include="Graves.cpp" />
+    <ClCompile Include="Hecarim.cpp" />
+    <ClCompile Include="Heimerdinger.cpp" />
+    <ClCompile Include="Illaoi.cpp" />
+    <ClCompile Include="Irelia.cpp" />
+    <ClCompile Include="Ivern.cpp" />
+    <ClCompile Include="Janna.cpp" />
+    <ClCompile Include="JarvanIV.cpp" />
+    <ClCompile Include="Jax.cpp" />
+    <ClCompile Include="Jayce.cpp" />
+    <ClCompile Include="Jhin.cpp" />
+    <ClCompile Include="Jinx.cpp" />
+    <ClCompile Include="Kalista.cpp" />
+    <ClCompile Include="Karma.cpp" />
+    <ClCompile Include="Karthus.cpp" />
+    <ClCompile Include="Kassadin.cpp" />
+    <ClCompile Include="Katarina.cpp" />
+    <ClCompile Include="Kayle.cpp" />
+    <ClCompile Include="Kennen.cpp" />
+    <ClCompile Include="KhaZix.cpp" />
+    <ClCompile Include="Kindred.cpp" />
+    <ClCompile Include="Kled.cpp" />
+    <ClCompile Include="KogMaw.cpp" />
+    <ClCompile Include="LeBlanc.cpp" />
+    <ClCompile Include="LeeSin.cpp" />
+    <ClCompile Include="Leona.cpp" />
+    <ClCompile Include="Lissandra.cpp" />
+    <ClCompile Include="Lucian.cpp" />
+    <ClCompile Include="Lulu.cpp" />
+    <ClCompile Include="Lux.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Malphite.cpp" />
+    <ClCompile Include="Malzahar.cpp" />
+    <ClCompile Include="Maokai.cpp" />
+    <ClCompile Include="MasterYi.cpp" />
+    <ClCompile Include="MissFortune.cpp" />
+    <ClCompile Include="Mordekaiser.cpp" />
+    <ClCompile Include="Morgana.cpp" />
+    <ClCompile Include="Nami.cpp" />
+    <ClCompile Include="Nasus.cpp" />
+    <ClCompile Include="Nautilus.cpp" />
+    <ClCompile Include="Nidalee.cpp" />
+    <ClCompile Include="Nocturne.cpp" />
+    <ClCompile Include="Nunu.cpp" />
+    <ClCompile Include="Olaf.cpp" />
+    <ClCompile Include="OnRender.cpp" />
+    <ClCompile Include="Orianna.cpp" />
+    <ClCompile Include="Pantheon.cpp" />
+    <ClCompile Include="PluginSDK.cpp" />
+    <ClCompile Include="Poppy.cpp" />
+    <ClCompile Include="Quinn.cpp" />
+    <ClCompile Include="Rammus.cpp" />
+    <ClCompile Include="RekSai.cpp" />
+    <ClCompile Include="Renekton.cpp" />
+    <ClCompile Include="Rengar.cpp" />
+    <ClCompile Include="Riven.cpp" />
+    <ClCompile Include="Rumble.cpp" />
+    <ClCompile Include="Ryze.cpp" />
+    <ClCompile Include="Sejuani.cpp" />
+    <ClCompile Include="Shaco.cpp" />
+    <ClCompile Include="Shen.cpp" />
+    <ClCompile Include="Shyvana.cpp" />
+    <ClCompile Include="Singed.cpp" />
+    <ClCompile Include="Sion.cpp" />
+    <ClCompile Include="Sivir.cpp" />
+    <ClCompile Include="Skarner.cpp" />
+    <ClCompile Include="Sona.cpp" />
+    <ClCompile Include="Soraka.cpp" />
+    <ClCompile Include="Swain.cpp" />
+    <ClCompile Include="Syndra.cpp" />
+    <ClCompile Include="TahmKench.cpp" />
+    <ClCompile Include="Taliyah.cpp" />
+    <ClCompile Include="Talon.cpp" />
+    <ClCompile Include="Taric.cpp" />
+    <ClCompile Include="Teemo.cpp" />
+    <ClCompile Include="Thresh.cpp" />
+    <ClCompile Include="Tristana.cpp" />
+    <ClCompile Include="Trundle.cpp" />
+    <ClCompile Include="Tryndamere.cpp" />
+    <ClCompile Include="TwistedFate.cpp" />
+    <ClCompile Include="Twitch.cpp" />
+    <ClCompile Include="Udyr.cpp" />
+    <ClCompile Include="Urgot.cpp" />
+    <ClCompile Include="Varus.cpp" />
+    <ClCompile Include="Vayne.cpp" />
+    <ClCompile Include="Veigar.cpp" />
+    <ClCompile Include="VelKoz.cpp" />
+    <ClCompile Include="Vi.cpp" />
+    <ClCompile Include="Viktor.cpp" />
+    <ClCompile Include="Vladimir.cpp" />
+    <ClCompile Include="Volibear.cpp" />
+    <ClCompile Include="Warwick.cpp" />
+    <ClCompile Include="Wukong.cpp" />
+    <ClCompile Include="Xayah.cpp" />
+    <ClCompile Include="Xerath.cpp" />
+    <ClCompile Include="XinZhao.cpp" />
+    <ClCompile Include="Yasuo.cpp" />
+    <ClCompile Include="Yorick.cpp" />
+    <ClCompile Include="Zac.cpp" />
+    <ClCompile Include="Zed.cpp" />
+    <ClCompile Include="Ziggs.cpp" />
+    <ClCompile Include="Zilean.cpp" />
+    <ClCompile Include="Zyra.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseOptions.h" />
+    <ClInclude Include="ChampionHandler.h" />
+    <ClInclude Include="FeatherManager.h" />
+    <ClInclude Include="IChampion.h" />
+    <ClInclude Include="LPPConstants.h" />
+    <ClInclude Include="PluginData.h" />
+    <ClInclude Include="PluginSDK.h" />
+    <ClInclude Include="SpellLib.h" />
+    <ClInclude Include="Vector3.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -23,7 +23,7 @@ PLUGIN_EVENT(void) OnOrbwalkAttack(IUnit* Source, IUnit* Target)
 IChampion* pChampion = nullptr;
 
 PLUGIN_EVENT(void) OnGameUpdate()
-{
+{	
 	pChampion->OnGameUpdate();
 }
 

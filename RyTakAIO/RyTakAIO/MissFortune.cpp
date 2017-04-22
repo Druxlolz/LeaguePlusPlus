@@ -7,7 +7,7 @@ class MissFortuneBase
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's_Miss_Fortune");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Miss_Fortune");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);

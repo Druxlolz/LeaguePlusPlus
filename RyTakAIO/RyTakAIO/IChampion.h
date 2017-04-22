@@ -6123,9 +6123,7 @@ public:
 
 	}
 	void OnGameUpdate() override
-	{
-		XayahBase().KS();
-
+	{		
 		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
 		{
 			XayahBase().Combo();
@@ -6138,14 +6136,23 @@ public:
 		{
 			XayahBase().LaneClear();
 		}
+		XayahBase().KS();
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
 	{
-
+		
 	}
 	void OnProcessSpell(CastedSpell const& Args) override
 	{
-
+		XayahBase().OnProcessSpellCast(Args);
+	}
+	bool OnPreCast(int Slot, IUnit* Target, Vec3* StartPosition, Vec3* EndPosition)
+	{
+		return true;
+	}
+	void OnPauseAnimation(IUnit* Source) 
+	{
+		XayahBase().PauseAnimation(Source);
 	}
 };
 

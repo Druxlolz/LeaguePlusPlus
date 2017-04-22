@@ -1,167 +1,177 @@
+#ifndef BASEOPTIONS_H__
+#define BASEOPTIONS_H__
+
 #pragma once
+
 #include "PluginSDK.h"
 #include "SpellLib.h"
-#include "CommonLib.cpp"
 
 //Main Menu Screens
-IMenu* MainMenu;
-IMenu* ComboMenu;
-IMenu* RyzeCombos;
-IMenu* MeleeOptionsC;
-IMenu* RangedOptionsC;
-IMenu* MeleeOptionsH;
-IMenu* RangedOptionsH;
-IMenu* MeleeOptionsL;
-IMenu* RangedOptionsL;
-IMenu* MeleeOptionsK;
-IMenu* RangedOptionsK;
-IMenu* PickACardMenu;
-IMenu* ComboMode;
-IMenu* HarassMenu;
-IMenu* LaneClearMenu;
-IMenu* JungleClearMenu;
-IMenu* GapCloseMenu;
-IMenu* KSMenu;
-IMenu* DrawMenu;
+static IMenu* MainMenu;
+static IMenu* ComboMenu;
+static IMenu* RyzeCombos;
+static IMenu* MeleeOptionsC;
+static IMenu* RangedOptionsC;
+static IMenu* MeleeOptionsH;
+static IMenu* RangedOptionsH;
+static IMenu* MeleeOptionsL;
+static IMenu* RangedOptionsL;
+static IMenu* MeleeOptionsK;
+static IMenu* RangedOptionsK;
+static IMenu* PickACardMenu;
+static IMenu* ComboMode;
+static IMenu* HarassMenu;
+static IMenu* LaneClearMenu;
+static IMenu* JungleClearMenu;
+static IMenu* GapCloseMenu;
+static IMenu* KSMenu;
+static IMenu* DrawMenu;
 
 //Combo Menu
-IMenuOption* UseCombo;
-IMenuOption* ComboQ;
-IMenuOption* ComboW;
-IMenuOption* ComboWStacks;
-IMenuOption* ComboE;
-IMenuOption* ComboR;
-IMenuOption* SemiR;
-IMenuOption* UseBasicCombo;
-IMenuOption* UseAdvCombo;
-IMenuOption* RSafeRange;
-IMenuOption* HitRChampions;
-IMenuOption* DisableAA;
-IMenuOption* ComboQ2;
-IMenuOption* ComboW2;
-IMenuOption* ComboE2;
-IMenuOption* SemiEQ;
+static IMenuOption* UseCombo;
+static IMenuOption* ComboQ;
+static IMenuOption* ComboW;
+static IMenuOption* ComboWStacks;
+static IMenuOption* ComboE;
+static IMenuOption* ComboEFeathers;
+static IMenuOption* ComboR;
+static IMenuOption* SemiR;
+static IMenuOption* UseBasicCombo;
+static IMenuOption* UseAdvCombo;
+static IMenuOption* RSafeRange;
+static IMenuOption* HitRChampions;
+static IMenuOption* DisableAA;
+static IMenuOption* ComboQ2;
+static IMenuOption* ComboW2;
+static IMenuOption* ComboE2;
+static IMenuOption* SemiEQ;
 
 //Harass Menu
-IMenuOption* HarassMana;
-IMenuOption* HarassQ;
-IMenuOption* HarassW;
-IMenuOption* HarassE;
-IMenuOption* HarassEStacks;
-IMenuOption* HarassQ2;
-IMenuOption* HarassW2;
-IMenuOption* HarassE2;
+static IMenuOption* HarassMana;
+static IMenuOption* HarassQ;
+static IMenuOption* HarassW;
+static IMenuOption* HarassE;
+static IMenuOption* HarassEStacks;
+static IMenuOption* HarassQ2;
+static IMenuOption* HarassW2;
+static IMenuOption* HarassE2;
 
 //Jungle Clear
-IMenuOption* JungleClearMana;
-IMenuOption* JungleClearQ;
-IMenuOption* JungleClearW;
-IMenuOption* JungleClearE;
-IMenuOption* JungleClearQ2;
-IMenuOption* JungleClearW2;
-IMenuOption* JungleClearE2;
-IMenuOption* JungleClearR;
-IMenuOption* JungleClearKey;
+static IMenuOption* JungleClearMana;
+static IMenuOption* JungleClearQ;
+static IMenuOption* JungleClearW;
+static IMenuOption* JungleClearE;
+static IMenuOption* JungleClearQ2;
+static IMenuOption* JungleClearW2;
+static IMenuOption* JungleClearE2;
+static IMenuOption* JungleClearR;
+static IMenuOption* JungleClearKey;
 
 //Lane Clear Menu
-IMenuOption* LaneClearMana;
-IMenuOption* LaneClearQ;
-IMenuOption* LaneClearW;
-IMenuOption* LaneClearE;
-IMenuOption* LaneClearQ2;
-IMenuOption* LaneClearW2;
-IMenuOption* LaneClearE2;
-IMenuOption* LaneClearR;
-IMenuOption* LaneClearQMinions;
-IMenuOption* LaneClearWMinions;
-IMenuOption* LaneClearEMinions;
-IMenuOption* LaneClearRMinions;
+static IMenuOption* LaneClearMana;
+static IMenuOption* LaneClearQ;
+static IMenuOption* LaneClearW;
+static IMenuOption* LaneClearE;
+static IMenuOption* LaneClearQ2;
+static IMenuOption* LaneClearW2;
+static IMenuOption* LaneClearE2;
+static IMenuOption* LaneClearR;
+static IMenuOption* LaneClearQMinions;
+static IMenuOption* LaneClearWMinions;
+static IMenuOption* LaneClearEMinions;
+static IMenuOption* LaneClearRMinions;
 
 //KillSteal Menu
-IMenuOption* KSQ;
-IMenuOption* KSW;
-IMenuOption* KSE;
-IMenuOption* KSR;
-IMenuOption* KSQ2;
-IMenuOption* KSW2;
-IMenuOption* KSE2;
+static IMenuOption* KSQ;
+static IMenuOption* KSW;
+static IMenuOption* KSE;
+static IMenuOption* KSR;
+static IMenuOption* KSQ2;
+static IMenuOption* KSW2;
+static IMenuOption* KSE2;
 
 //Gap Close Menu
-IMenuOption* GapCloseQ;
-IMenuOption* GapCloseW;
-IMenuOption* GapCloseE;
-IMenuOption* GapCloseR;
-IMenuOption* GapCloseQ2;
-IMenuOption* GapCloseW2;
-IMenuOption* GapCloseE2;
-IMenuOption* PushWithQ;
-IMenuOption* PushWithW;
-IMenuOption* PushWithE;
-IMenuOption* PushWithR;
-IMenuOption* PushWithQ2;
-IMenuOption* PushWithW2;
-IMenuOption* PushWithE2;
-IMenuOption* PushDistance;
+static IMenuOption* GapCloseQ;
+static IMenuOption* GapCloseW;
+static IMenuOption* GapCloseE;
+static IMenuOption* GapCloseR;
+static IMenuOption* GapCloseQ2;
+static IMenuOption* GapCloseW2;
+static IMenuOption* GapCloseE2;
+static IMenuOption* PushWithQ;
+static IMenuOption* PushWithW;
+static IMenuOption* PushWithE;
+static IMenuOption* PushWithR;
+static IMenuOption* PushWithQ2;
+static IMenuOption* PushWithW2;
+static IMenuOption* PushWithE2;
+static IMenuOption* PushDistance;
 
 //Misc. MenuOptions
-IMenuOption* QAfterAttack;
-IMenuOption* QMinionHarass;
-IMenuOption* HarassExQ;
-IMenuOption* AutoEKillable;
-IMenuOption* AllyUltSave;
-IMenuOption* UseQECombo;
-IMenuOption* BounceHarass;
-IMenuOption* BounceClear;
-IMenuOption* BounceEnemy;
-IMenuOption* BounceCrit;
+static IMenuOption* QAfterAttack;
+static IMenuOption* QMinionHarass;
+static IMenuOption* HarassExQ;
+static IMenuOption* AutoEKillable;
+static IMenuOption* AllyUltSave;
+static IMenuOption* UseQECombo;
+static IMenuOption* BounceHarass;
+static IMenuOption* BounceClear;
+static IMenuOption* BounceEnemy;
+static IMenuOption* BounceCrit;
 
 //Drawings Menu
-IMenuOption* DrawQ;
-IMenuOption* DrawW;
-IMenuOption* DrawE;
-IMenuOption* DrawQ2;
-IMenuOption* DrawW2;
-IMenuOption* DrawE2;
-IMenuOption* DrawR;
-IMenuOption* DrawReady;
-IMenuOption* DrawOff;
+static IMenuOption* DrawQ;
+static IMenuOption* DrawW;
+static IMenuOption* DrawE;
+static IMenuOption* DrawQ2;
+static IMenuOption* DrawW2;
+static IMenuOption* DrawE2;
+static IMenuOption* DrawR;
+static IMenuOption* DrawReady;
+static IMenuOption* DrawOff;
 
 //Spells Data Loader
-ISpell2* QCharged;
-ISpell2* QHop;
+static ISpell2* QCharged;
+static ISpell2* QHop;
 
 //Summoner Spell Stuff
-ISpell* Flash;
-ISpell* Ignite;
+static ISpell* Flash;
+static ISpell* Ignite;
 
 //TF Stuff
-IMenuOption* PickBluesOption;
-IMenuOption* PickYellowsOption;
-IMenuOption* PickRedsOption;
+static IMenuOption* PickBluesOption;
+static IMenuOption* PickYellowsOption;
+static IMenuOption* PickRedsOption;
 
 //Jayce Stuff
-IMenuOption* ComboEQ;
-IMenuOption* ChangeForm;
+static IMenuOption* ComboEQ;
+static IMenuOption* ChangeForm;
 
 //Ryze Stuff
-IMenuOption* ShieldC;
-IMenuOption* StunC;
-IMenuOption* DelayC;
-IMenuOption* DelayQC;
+static IMenuOption* ShieldC;
+static IMenuOption* StunC;
+static IMenuOption* DelayC;
+static IMenuOption* DelayQC;
 
 //Vector3 Positions Common Calls
-Vec3 rPosCast;
-Vec3 rPosLast;
+static Vec3 rPosCast;
+static Vec3 rPosLast;
+static Vec2 FeatherV2;
+static Vec3 FeatherV3;
 
 //Target Selector Common
-IUnit* rTargetLast;
-IUnit* Enemy;
-IUnit* Enemy1;
-IUnit* Enemy2;
-IUnit* enemy;
-IUnit* minion;
-IUnit* minion1;
-IUnit* minion2;
-IUnit* target;
-IUnit* ally;
+static IUnit* rTargetLast;
+static IUnit* Enemy;
+static IUnit* Enemy1;
+static IUnit* Enemy2;
+static IUnit* enemy;
+static IUnit* minion;
+static IUnit* minion1;
+static IUnit* minion2;
+static IUnit* target;
+static IUnit* ally;
 
+//Tick Stuff
+static int FeatherTickCount;
+
+#endif // !BASEOPTIONS_H__
