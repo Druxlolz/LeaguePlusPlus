@@ -14,7 +14,11 @@ EvadeSpellDB::EvadeSpellDB()
 
 #pragma region Fiora
 	if (szChamp == "Fiora")
-		Spells.push_back(new ShieldData("FioraW", kSlotW, 100, 1, false));
+	{
+		auto pSpell = new ShieldData("FioraW", kSlotW, 100, 1, false);
+		pSpell->ValidTargets = VT_EnemyChampions;
+		Spells.push_back(pSpell);
+	}	
 #pragma endregion Fiora
 
 #pragma region Sivir
@@ -484,7 +488,9 @@ EvadeSpellDB::EvadeSpellDB()
 #pragma region Xayah
 	if (szChamp == "Xayah")
 	{
-		Spells.push_back(new InvulnerabilityData("XayahR", kSlotR, 100, 3));
+		auto pSpell = new InvulnerabilityData("XayahR", kSlotR, 100, 3);
+		pSpell->ValidTargets = VT_EnemyChampions;
+		Spells.push_back(pSpell);
 	}
 			
 #pragma endregion Xayah
