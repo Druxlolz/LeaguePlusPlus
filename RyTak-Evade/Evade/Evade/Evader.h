@@ -322,13 +322,13 @@ namespace Evader
 		return false;
 	}
 
-	static IUnit* GetBestTarget(Vec2 pos, EvadeSpellData* evadeSpell)
+	static IUnit* GetBestTarget(Vec2 pos, EvadeSpellData* EvadeSpell)
 	{
 		auto myPos = Util::Get3DPoint(Evade::PlayerPosition);
 		auto targets = std::vector<IUnit*>();
 		auto result = std::vector<std::pair<IUnit*, Vec2>>();
-		auto delay = evadeSpell->IsInvulnerability ? 0 : evadeSpell->Delay;
-		auto type = evadeSpell->ValidTargets;
+		auto delay = EvadeSpell->IsInvulnerability ? 0 : EvadeSpell->Delay;
+		auto type = EvadeSpell->ValidTargets;
 
 		if (type & VT_AllyChampions)
 		{
@@ -337,7 +337,7 @@ namespace Evader
 				if (i == GEntityList->Player() || !GEntityList->Player()->IsValidTarget(i, FLT_MAX))
 					continue;
 
-				if (myPos.DistanceTo(i->GetPosition()) < evadeSpell->MaxRange)
+				if (myPos.DistanceTo(i->GetPosition()) < EvadeSpell->MaxRange)
 					targets.push_back(i);
 			}
 		}
@@ -349,7 +349,7 @@ namespace Evader
 				if (!GEntityList->Player()->IsValidTarget(i, FLT_MAX) || i->IsWard())
 					continue;
 
-				if (myPos.DistanceTo(i->GetPosition()) < evadeSpell->MaxRange)
+				if (myPos.DistanceTo(i->GetPosition()) < EvadeSpell->MaxRange)
 					targets.push_back(i);
 			}
 		}
@@ -361,7 +361,7 @@ namespace Evader
 				if (!GEntityList->Player()->IsValidTarget(i, FLT_MAX) || !i->IsWard())
 					continue;
 
-				if (myPos.DistanceTo(i->GetPosition()) < evadeSpell->MaxRange)
+				if (myPos.DistanceTo(i->GetPosition()) < EvadeSpell->MaxRange)
 					targets.push_back(i);
 			}
 		}
@@ -370,7 +370,7 @@ namespace Evader
 		{
 			for (auto i : GEntityList->GetAllHeros(false, true))
 			{
-				if (GEntityList->Player()->IsValidTarget(i, FLT_MAX) && myPos.DistanceTo(i->GetPosition()) < evadeSpell->MaxRange)
+				if (GEntityList->Player()->IsValidTarget(i, FLT_MAX) && myPos.DistanceTo(i->GetPosition()) < EvadeSpell->MaxRange)
 					targets.push_back(i);
 			}
 		}
@@ -379,7 +379,7 @@ namespace Evader
 		{
 			for (auto i : GEntityList->GetAllMinions(false, true, true))
 			{
-				if (GEntityList->Player()->IsValidTarget(i, FLT_MAX) && !i->IsWard() && myPos.DistanceTo(i->GetPosition()) < evadeSpell->MaxRange)
+				if (GEntityList->Player()->IsValidTarget(i, FLT_MAX) && !i->IsWard() && myPos.DistanceTo(i->GetPosition()) < EvadeSpell->MaxRange)
 					targets.push_back(i);
 			}
 		}
@@ -391,7 +391,7 @@ namespace Evader
 				if (!GEntityList->Player()->IsValidTarget(i, FLT_MAX) || !i->IsWard())
 					continue;
 
-				if (myPos.DistanceTo(i->GetPosition()) < evadeSpell->MaxRange)
+				if (myPos.DistanceTo(i->GetPosition()) < EvadeSpell->MaxRange)
 					targets.push_back(i);
 			}
 		}
@@ -400,19 +400,19 @@ namespace Evader
 		{
 			auto end = target->ServerPosition().To2D();
 
-			if (evadeSpell->MenuName == "YasuoE" && target->HasBuff("YasuoDashWrapper"))
+			if (EvadeSpell->MenuName == "YasuoE" && target->HasBuff("YasuoDashWrapper"))
 				continue;
 
-			if (evadeSpell->FixedRange)
-				end = myPos.To2D().Extend(end, evadeSpell->MaxRange);
+			if (EvadeSpell->FixedRange)
+				end = myPos.To2D().Extend(end, EvadeSpell->MaxRange);
 
-			if (!evadeSpell->IsInvulnerability && !IsPointSafe(end).IsSafe)
+			if (!EvadeSpell->IsInvulnerability && !IsPointSafe(end).IsSafe)
 				continue;
 			
 			auto canAdd = GGame->TickCount() - Evade::LastWardJumpTick < 250
-				|| (evadeSpell->IsDash
-				? IsPathSafe(end, Configs->EvadingFirstTime, evadeSpell->Speed, delay).IsSafe
-				|| IsPathSafe(end, Configs->EvadingSecondTime, evadeSpell->Speed, delay).IsSafe
+				|| (EvadeSpell->IsDash
+				? IsPathSafe(end, Configs->EvadingFirstTime, EvadeSpell->Speed, delay).IsSafe
+				|| IsPathSafe(end, Configs->EvadingSecondTime, EvadeSpell->Speed, delay).IsSafe
 				: IsPointBlinkSafe(end, Configs->EvadingFirstTime, delay)
 				|| IsPointBlinkSafe(end, Configs->EvadingSecondTime, delay));
 
