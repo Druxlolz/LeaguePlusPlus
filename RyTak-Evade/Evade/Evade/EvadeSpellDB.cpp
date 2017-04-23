@@ -512,6 +512,17 @@ EvadeSpellDB::EvadeSpellDB()
 	}
 #pragma endregion Janna
 
+#pragma region Yasuo
+	if (szChamp == "Yasuo")
+	{
+		auto pSpell = new ShieldData("YasuoW", kSlotW, 100, 1);
+		pSpell->ValidTargets = VT_EnemyChampions;
+		pSpell->CanShieldAllies = true;
+		pSpell->MaxRange = 400;
+		Spells.push_back(pSpell);
+	}
+#pragma endregion Yasuo
+
 #pragma region Karma
 	if (szChamp == "Karma")
 	{
