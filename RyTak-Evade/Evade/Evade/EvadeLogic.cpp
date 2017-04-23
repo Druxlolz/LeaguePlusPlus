@@ -103,20 +103,20 @@ void CEvadeLogic::OnGameUpdate()
 		return;
 	}
 
-	// if (newPaths.size() == 0)
-// 	{
-// 		if (!checkPath.Intersect.Valid && curPaths.size() == 0)
-// 			checkPath = Evader::IsPathSafe(paths, 100);
-// 
-// 		if (checkPath.Intersect.Valid && checkPath.Intersect.Point.DistanceTo(Evade::PlayerPosition) > 75)
-// 		{
-// 			Util::Move(checkPath.Intersect.Point);
-// 			return;
-// 		}
-//	}
+	 if (paths.size() == 0)
+ 	{
+ 		if (!checkPath.Intersect.Valid && curPaths.size() == 0)
+ 			checkPath = Evader::IsPathSafe(paths, 100);
+ 
+ 		if (checkPath.Intersect.Valid && checkPath.Intersect.Point.DistanceTo(Evade::PlayerPosition) > 75)
+ 		{
+ 			Util::Move(checkPath.Intersect.Point);
+ 			return;
+ 		}
+	}
 	
-	// PathFollow->Start(newPaths);
-	// PathFollow->KeepFollowPath();
+	 PathFollow->Start(paths);
+	 PathFollow->KeepFollowPath();
 }
 
 void CEvadeLogic::OnRender()
