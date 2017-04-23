@@ -187,6 +187,7 @@ namespace Geometry
 	struct Circle : public IPolygon
 	{
 		Vec2 Center;
+		Vec3 CenterV3;
 		float Radius;
 		int _quality;
 
@@ -195,6 +196,15 @@ namespace Geometry
 		Circle(Vec2 center, float radius, int quality = 20)
 		{
 			Center = center;
+			Radius = radius;
+			_quality = quality;
+
+			UpdatePolygon();
+		}
+		
+		Circle(Vec3 centerV3, float radius, int quality = 20)
+		{
+			CenterV3 = centerV3;
 			Radius = radius;
 			_quality = quality;
 
@@ -221,6 +231,8 @@ namespace Geometry
 	{
 		Vec2 LineEnd;
 		Vec2 LineStart;
+		Vec3 LineEndV3;
+		Vec3 LineStartV3;
 
 		Line() { }
 
@@ -228,6 +240,17 @@ namespace Geometry
 		{
 			LineStart = start;
 			LineEnd = end;
+
+			if (length > 0)
+				SetLength(length);
+
+			UpdatePolygon();
+		}
+
+		Line(Vec3 startV3, Vec3 endV3, float length = -1)
+		{
+			LineStartV3 = startV3;
+			LineEndV3 = endV3;
 
 			if (length > 0)
 				SetLength(length);
@@ -257,6 +280,8 @@ namespace Geometry
 	{
 		Vec2 End;
 		Vec2 Start;
+		Vec3 EndV3;
+		Vec3 StartV3;
 		float Width;
 
 		Rectangle() { }
@@ -265,6 +290,15 @@ namespace Geometry
 		{
 			Start = start;
 			End = end;
+			Width = width;
+
+			UpdatePolygon();
+		}
+
+		Rectangle(Vec3 startV3, Vec3 endV3, float width)
+		{
+			StartV3 = startV3;
+			EndV3 = endV3;
 			Width = width;
 
 			UpdatePolygon();

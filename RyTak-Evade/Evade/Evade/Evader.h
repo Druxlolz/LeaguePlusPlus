@@ -548,6 +548,100 @@ namespace Evader
 
 		return vecFinalPoints.front();
 	}
+	
+	static Vec2 GetClosestOutsidePoint(Vec2 from, std::vector<Geometry::IPolygon> polys)
+	{
+		auto result = std::vector<Vec2>();
+
+		for (auto i : polys)
+		{
+			for (size_t j = 0; j <= i.Points.size() - 1; j++)
+			{
+				ProjectionInfo piout;
+				ProjectPointOn(from, i.Points[j], i.Points[j == i.Points.size() - 1 ? 0 : j + 1], piout);
+
+				result.push_back(piout.SegmentPoint);
+			}
+		}
+
+		if (result.size() > 0)
+		{
+			float flClosestDistance = result.front().DistanceTo(from);
+			Vec2 vecClosest = result.front();
+
+			for (auto i : result)
+			{
+				float flDistance = i.DistanceTo(from);
+
+				if (flDistance < flClosestDistance)
+				{
+					flDistance = flClosestDistance;
+					vecClosest = i;
+				}
+			}
+
+			return vecClosest;
+		}
+
+		return Vec2(0.f, 0.f);
+	}
+
+	static bool IsCross(Vec2 a, Vec2 b, Vec2 c, Vec2 d)
+	{
+		auto f = (b.x - a.x) * (d.y - c.y) - (b.y - a.y) * (d.x - c.x);
+
+		if (f == 0.f)
+			return false;
+
+		auto num1 = (a.y - c.y) * (d.x - c.x) - (a.x - c.x) * (d.y - c.y);
+		auto num2 = (a.y - c.y) * (b.x - a.x) - (a.x - c.x) * (b.y - a.y);
+
+		if (num1 == 0.f || num2 == 0.f)
+			return false;
+
+		auto r = num1 / f;
+		auto s = num2 / f;
+
+		return r > 0 && r < 1 && s > 0 && s < 1;
+	}
+
+	static bool CanReach(Vec2 start, Vec2 end, std::vector<Geometry::IPolygon> polys)
+	{
+		if (start == end)
+			return false;
+
+		auto step = start.DistanceTo(end) / 2 * (end - start).VectorNormalize();
+
+		for (auto i = 0; i <= 2; i++)
+		{
+			auto tmp = (start + i * step);
+
+			if (GPrediction->IsPointWall(Vec3(tmp.x, GEntityList->Player()->GetPosition().y, tmp.y)))
+				return false;
+		}
+
+		for (auto poly : polys)
+		{
+			for (size_t i = 0; i < poly.Points.size(); i++)
+			{
+				if (IsCross(start, end, poly.Points[i], poly.Points[i == poly.Points.size() - 1 ? 0 : i + 1]))
+					return false;
+			}
+		}
+
+		return true;
+	}
+
+	static bool IsConcave(std::vector<Vec2> v, int id)
+	{
+		auto cur = v[id];
+		auto next = v[(id + 1) % v.size()];
+		auto prev = v[id == 0 ? v.size() - 1 : id - 1];
+		auto left = Vec2(cur.x - prev.x, cur.y - prev.y);
+		auto right = Vec2(next.x - cur.x, next.y - cur.y);
+
+		return left.x * right.y - left.y * right.x < 0;
+	}
 }
 
 #endif // Evader_h__

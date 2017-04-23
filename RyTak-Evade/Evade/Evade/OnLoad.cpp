@@ -8,11 +8,10 @@ PluginSetup("Evade");
 #include "Collision.h"
 #include "SpellBlocker.h"
 #include "Evade.h"
-
+#include "AStar.h"
 #include "Path.h"
 #include "PathFinding.h"
 #include "PathFollow.h"
-#include "Core.h"
 #include "Evader.h"
 #include "EvadeLogic.h"
 #include "SpellDB.h"

@@ -75,7 +75,7 @@ SpellDB::SpellDB()
 #pragma endregion Annie
 
 #pragma region Ashe
-	Spells.push_back(CreateSpell()->_ChampName("Ashe")->_MenuName("AsheW")->_MissileName("VolleyAttack")->_SpellName("Volley")->_DangerValue(2)->_MissileSpeed(1500)->_Slot(kSlotW)->_Range(1150)->_Radius(20)->_FixedRange(true)->_MultipleNumber(9)->_InfrontStart(75)->_MultipleAngle(M_PI)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Ashe")->_MenuName("AsheW")->_MissileName("VolleyAttack")->_SpellName("Volley")->_DangerValue(2)->_MissileSpeed(1500)->_Type(ST_MissileLine && ST_Cone)->_Slot(kSlotW)->_Range(1150)->_Radius(20)->_FixedRange(true)->_MultipleNumber(9)->_InfrontStart(75)->_MultipleAngle(M_PI)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Ashe")->_MenuName("AsheR")->_SpellName("EnchantedCrystalArrow")->_DangerValue(5)->_MissileName("EnchantedCrystalArrow")->_Slot(kSlotR)->_Range(25000)->_MissileSpeed(1600)->_Radius(130)->_FixedRange(true)->_DontCross(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Ashe
 

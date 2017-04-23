@@ -1,7 +1,8 @@
 #include "EvadeLogic.h"
 #include "Evade.h"
 #include "Evader.h"
-#include "Core.h"
+#include "AStar.h"
+#include "PathFollow.h"
 #include "EvadeSpellDB.h"
 
 CEvadeLogic* EvadeLogic = nullptr;
@@ -240,7 +241,7 @@ bool CEvadeLogic::IsInsideSkillshot(Vec2& ClosestOutsidePoint)
 		if (i.IsInside(ClosestOutsidePoint))
 		{
 			bInside = true;
-			ClosestOutsidePoint = Core::GetClosestOutsidePoint(ClosestOutsidePoint, outerPolygons);
+			ClosestOutsidePoint = Evader::GetClosestOutsidePoint(ClosestOutsidePoint, outerPolygons);
 		}
 	}
 

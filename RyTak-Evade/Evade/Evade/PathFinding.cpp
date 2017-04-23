@@ -1,6 +1,7 @@
 #include "PathFinding.h"
 #include "Evade.h"
-#include "Core.h"
+#include "AStar.h"
+#include "Evader.h"
 
 CPathFinding* PathFinding = nullptr;
 
@@ -34,16 +35,16 @@ bool CPathFinding::FindPath(Vec2 const& StartPosition, Vec2 const& EndPosition, 
 	for (auto i : outerPolygons)
 	{
 		if (i.IsInside(vecEnd))
-			vecEnd = Core::GetClosestOutsidePoint(vecEnd, outerPolygons);
+			vecEnd = Evader::GetClosestOutsidePoint(vecEnd, outerPolygons);
 	}
 
 	for (auto i : outerPolygons)
 	{
 		if (i.IsInside(vecStart))
-			vecStart = Core::GetClosestOutsidePoint(vecStart, outerPolygons);
+			vecStart = Evader::GetClosestOutsidePoint(vecStart, outerPolygons);
 	}
 
-	if (Core::CanReach(vecStart, vecEnd, innerPolygons))
+	if (Evader::CanReach(vecStart, vecEnd, innerPolygons))
 	{
 		Out.push_back(vecStart);
 		Out.push_back(vecEnd);
@@ -95,7 +96,7 @@ void CPathFinding::UpdateEndPosition(Vec2& EndPosition)
 	{
 		if (i.IsInside(EndPosition))
 		{
-			Vec2 vecNewEndPosition = Core::GetClosestOutsidePoint(EndPosition, outerPolygons);
+			Vec2 vecNewEndPosition = Evader::GetClosestOutsidePoint(EndPosition, outerPolygons);
 
 			if (!IsWithinSkillshot(vecNewEndPosition) && !IsWithinWall(vecNewEndPosition))
 				EndPosition = vecNewEndPosition;
