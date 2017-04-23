@@ -383,7 +383,7 @@ SpellDB::SpellDB()
 #pragma endregion Nami
 
 #pragma region Nautilus
-	Spells.push_back(CreateSpell()->_ChampName("Nautilus")->_MenuName("NautilusQ")->_SpellName("NautilusAnchorDragMissile")->_DangerValue(3)->_MissileName("NautilusAnchorDragMissile")->_Range(1150)->_Radius(90)->_MissileSpeed(2000)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Nautilus")->_MenuName("NautilusQ")->_SpellName("NautilusAnchorDragMissile")->_DangerValue(3)->_MissileName("NautilusAnchorDragMissile")->_Range(1150)->_Radius(130)->_MissileSpeed(2000)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Nautilus
 
 #pragma region Nidalee
