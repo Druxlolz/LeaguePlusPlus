@@ -2,65 +2,9 @@
 <DEFECTS>
   <DEFECT>
     <SFA>
-      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
       <FILENAME>clipper.cpp</FILENAME>
-      <LINE>2590</LINE>
-      <COLUMN>8</COLUMN>
-    </SFA>
-    <DEFECTCODE>6011</DEFECTCODE>
-    <DESCRIPTION>Dereferencing NULL pointer 'Edge2'. See line 2586 for an earlier location where this can occur</DESCRIPTION>
-    <FUNCTION>ClipperLib::Clipper::SwapPositionsInSEL</FUNCTION>
-    <DECORATED>?SwapPositionsInSEL@Clipper@ClipperLib@@AAEXPAUTEdge@2@0@Z</DECORATED>
-    <FUNCLINE>2583</FUNCLINE>
-    <PROBABILITY>1</PROBABILITY>
-    <RANK>4</RANK>
-    <CATEGORY>
-      <RULECATEGORY>mspft</RULECATEGORY>
-    </CATEGORY>
-    <PATH>
-      <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
-        <FILENAME>clipper.cpp</FILENAME>
-        <LINE>2585</LINE>
-        <COLUMN>26</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
-        <FILENAME>clipper.cpp</FILENAME>
-        <LINE>2586</LINE>
-        <COLUMN>26</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
-        <FILENAME>clipper.cpp</FILENAME>
-        <LINE>2588</LINE>
-        <COLUMN>23</COLUMN>
-        <KEYEVENT>
-          <ID>1</ID>
-          <KIND>branch</KIND>
-          <IMPORTANCE>Full</IMPORTANCE>
-          <MESSAGE>'Edge2' may be NULL (Enter this branch)</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-      <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
-        <FILENAME>clipper.cpp</FILENAME>
-        <LINE>2590</LINE>
-        <COLUMN>8</COLUMN>
-        <KEYEVENT>
-          <ID>2</ID>
-          <KIND>usage</KIND>
-          <IMPORTANCE>Essential</IMPORTANCE>
-          <MESSAGE>'Edge2' is dereferenced, but may still be NULL</MESSAGE>
-        </KEYEVENT>
-      </SFA>
-    </PATH>
-  </DEFECT>
-  <DEFECT>
-    <SFA>
-      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
-      <FILENAME>clipper.cpp</FILENAME>
-      <LINE>2601</LINE>
+      <LINE>2612</LINE>
       <COLUMN>8</COLUMN>
     </SFA>
     <DEFECTCODE>6011</DEFECTCODE>
@@ -75,42 +19,48 @@
     </CATEGORY>
     <PATH>
       <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
         <FILENAME>clipper.cpp</FILENAME>
         <LINE>2585</LINE>
         <COLUMN>26</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
         <FILENAME>clipper.cpp</FILENAME>
         <LINE>2586</LINE>
         <COLUMN>26</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
         <FILENAME>clipper.cpp</FILENAME>
         <LINE>2588</LINE>
-        <COLUMN>23</COLUMN>
-      </SFA>
-      <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
-        <FILENAME>clipper.cpp</FILENAME>
-        <LINE>2599</LINE>
-        <COLUMN>28</COLUMN>
+        <COLUMN>52</COLUMN>
         <KEYEVENT>
           <ID>1</ID>
           <KIND>branch</KIND>
           <IMPORTANCE>Full</IMPORTANCE>
-          <MESSAGE>'Edge1' may be NULL (Enter this branch)</MESSAGE>
+          <MESSAGE>'Edge1' may be NULL (Skip this branch)</MESSAGE>
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
         <FILENAME>clipper.cpp</FILENAME>
-        <LINE>2601</LINE>
-        <COLUMN>8</COLUMN>
+        <LINE>2599</LINE>
+        <COLUMN>57</COLUMN>
         <KEYEVENT>
           <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '&lt;branch condition&gt;' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
+        <FILENAME>clipper.cpp</FILENAME>
+        <LINE>2612</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
           <KIND>usage</KIND>
           <IMPORTANCE>Essential</IMPORTANCE>
           <MESSAGE>'Edge1' is dereferenced, but may still be NULL</MESSAGE>
@@ -120,19 +70,93 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+      <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
+      <FILENAME>clipper.cpp</FILENAME>
+      <LINE>2614</LINE>
+      <COLUMN>20</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'Edge2'. See line 2586 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ClipperLib::Clipper::SwapPositionsInSEL</FUNCTION>
+    <DECORATED>?SwapPositionsInSEL@Clipper@ClipperLib@@AAEXPAUTEdge@2@0@Z</DECORATED>
+    <FUNCLINE>2583</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
+        <FILENAME>clipper.cpp</FILENAME>
+        <LINE>2585</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
+        <FILENAME>clipper.cpp</FILENAME>
+        <LINE>2586</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
+        <FILENAME>clipper.cpp</FILENAME>
+        <LINE>2588</LINE>
+        <COLUMN>52</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
+        <FILENAME>clipper.cpp</FILENAME>
+        <LINE>2599</LINE>
+        <COLUMN>57</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'Edge2' may be NULL (Skip this branch)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
+        <FILENAME>clipper.cpp</FILENAME>
+        <LINE>2612</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
+        <FILENAME>clipper.cpp</FILENAME>
+        <LINE>2613</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
+        <FILENAME>clipper.cpp</FILENAME>
+        <LINE>2614</LINE>
+        <COLUMN>20</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'Edge2' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
       <FILENAME>clipper.cpp</FILENAME>
       <LINE>3227</LINE>
       <COLUMN>12</COLUMN>
     </SFA>
     <DEFECTCODE>6246</DEFECTCODE>
-    <DESCRIPTION>Local declaration of 'i' hides declaration of the same name in outer scope. For additional information, see previous declaration at line '3219' of 'd:\visual studio 2015\projects\rytak-evade\evade\evade\clipper.cpp'.</DESCRIPTION>
+    <DESCRIPTION>Local declaration of 'i' hides declaration of the same name in outer scope. For additional information, see previous declaration at line '3219' of 'd:\visual studio 2015\projects\evade\evade\clipper.cpp'.</DESCRIPTION>
     <FUNCTION>ClipperLib::Clipper::BuildResult</FUNCTION>
     <DECORATED>?BuildResult@Clipper@ClipperLib@@AAEXAAV?$vector@V?$vector@UIntPoint@ClipperLib@@V?$allocator@UIntPoint@ClipperLib@@@std@@@std@@V?$allocator@V?$vector@UIntPoint@ClipperLib@@V?$allocator@UIntPoint@ClipperLib@@@std@@@std@@@2@@std@@@Z</DECORATED>
     <FUNCLINE>3216</FUNCLINE>
     <PATH>
       <SFA>
-        <FILEPATH>d:\visual studio 2015\projects\rytak-evade\evade\evade\</FILEPATH>
+        <FILEPATH>d:\visual studio 2015\projects\evade\evade\</FILEPATH>
         <FILENAME>clipper.cpp</FILENAME>
         <LINE>3219</LINE>
         <COLUMN>35</COLUMN>
