@@ -154,6 +154,8 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 		}
 		break;
 	case ST_Arc:
+		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f / 2 * M_PI);
+		break;
 	case ST_MissileCone:
 		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
 		break;
@@ -310,6 +312,8 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec3 SpellStart, Vec3 SpellEnd, Spe
 		}
 		break;
 	case ST_Arc:
+		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f / 2 * M_PI);
+		break;
 	case ST_MissileCone:
 		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
 		break;

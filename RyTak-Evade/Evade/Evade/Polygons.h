@@ -151,11 +151,13 @@ namespace Geometry
 	struct Arc : public IPolygon
 	{
 		float Angle;
-		Vec2 EndPos;
+		int _quality;
 		float Radius;
 		Vec2 StartPos;
-		int _quality;
-
+		Vec2 EndPos;
+		Vec3 StartPosV3;
+		Vec3 EndPosV3;
+		
 		Arc() { }
 
 		Arc(Vec2 start, Vec2 direction, float angle, float radius, int quality = 20)
@@ -169,17 +171,31 @@ namespace Geometry
 			UpdatePolygon();
 		}
 
+		Arc(Vec3 startV3, Vec3 directionV3, float angle, float radius, int quality = 20)
+		{
+			StartPosV3 = startV3;
+			EndPosV3 = (directionV3 - startV3).VectorNormalize();
+			Angle = angle;
+			Radius = radius;
+			_quality = quality;
+
+			UpdatePolygon();
+		}
+
 		void UpdatePolygon(int offset = 0)
 		{
 			Clear();
 
 			auto outRadius = (Radius + offset) / cosf(2 * M_PI / _quality);
 			auto side1 = EndPos.Rotated(-Angle * 0.5f);
+			auto side2 = EndPosV3.Rotated(Angle * 0.5f);
 
 			for (auto i = 0; i <= _quality; i++)
 			{
 				auto cDirection = side1.Rotated(i * Angle / _quality).VectorNormalize();
+				auto cDirection2 = side2.Rotated(i * Angle / _quality).VectorNormalize();
 				Add(Vec2(StartPos.x + outRadius * cDirection.x, StartPos.y + outRadius * cDirection.y));
+				Add(Vec2(StartPosV3.x + outRadius * cDirection2.x, StartPosV3.y + outRadius * cDirection2.y));
 			}
 		}
 	};

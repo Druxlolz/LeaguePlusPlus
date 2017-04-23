@@ -144,8 +144,8 @@ SpellDB::SpellDB()
 #pragma endregion Darius
 
 #pragma region Diana
-	Spells.push_back(CreateSpell()->_ChampName("Diana")->_DangerValue(3)->_MenuName("DianaQCircle")->_SpellName("DianaArc")->_MissileSpeed(1400)->_Type(ST_Circle)->_Range(850)->_Radius(195)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Diana")->_DangerValue(3)->_MenuName("DianaQArc")->_SpellName("DianaQArc")->_Range(850)->_MissileSpeed(1400)->_Type(ST_Arc)->_Radius(70)->_DontCross(true)->_MissileFromUnit(true)->_IsDangerous(true)->_TakeClosestPath(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Diana")->_DangerValue(3)->_MenuName("DianaQCircle")->_SpellName("DianaArc")->_ExtraMissileNames("DianaQMissile")->_MissileSpeed(1400)->_Type(ST_Circle)->_Range(850)->_Radius(195)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Diana")->_DangerValue(3)->_MenuName("DianaQArc")->_SpellName("DianaQArc")->_ExtraMissileNames("DianaQMissile")->_DontCheckForDuplicates(true)->_MultipleAngle(M_PI)->_MultipleNumber(2)->_Range(850)->_MissileSpeed(1400)->_Type(ST_Arc)->_Radius(70)->_DontCross(true)->_IsDangerous(true)->_TakeClosestPath(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Diana")->_DangerValue(2)->_MenuName("DianaE")->_SpellName("DianaVortex")->_Radius(450)->_Type(ST_Circle));
 #pragma endregion Diana
 
@@ -189,11 +189,11 @@ SpellDB::SpellDB()
 #pragma endregion Fizz
 
 #pragma region Galio
-	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioQCircle")->_SpellName("GalioQ")->_DangerValue(2)->_Slot(kSlotQ)->_Range(825)->_Radius(200)->_MissileSpeed(1600)->_Type(ST_Circle)->_DontCross(true)->_ExtraDuration(1500)->_CollisionObjects(kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioQArc")->_SpellName("GalioQArc")->_DangerValue(2)->_Slot(kSlotQ)->_Range(825)->_Radius(80)->_MissileSpeed(1600)->_Type(ST_Arc)->_DontCross(true)->_MultipleAngle(M_PI)->_MultipleNumber(2)->_CollisionObjects(kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioQCircle")->_SpellName("GalioQ")->_DangerValue(2)->_Range(825)->_Radius(200)->_MissileSpeed(1600)->_Type(ST_Circle)->_DontCross(true)->_ExtraDuration(1500)->_CollisionObjects(kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioQArc")->_SpellName("GalioQMissile")->_DontCheckForDuplicates(true)->_DangerValue(2)->_Range(825)->_Radius(80)->_MissileSpeed(1600)->_Type(ST_Arc)->_DontCross(true)->_MultipleAngle(M_PI)->_MultipleNumber(2)->_CollisionObjects(kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioW")->_SpellName("GalioW")->_DangerValue(2)->_Slot(kSlotW)->_Radius(500)->_Range(500)->_IsDangerous(true)->_Type(ST_Circle)->_MissileToUnit(true)->_TakeClosestPath(true)->_ExtraDuration(2500)->_CollisionObjects(kCollidesWithHeroes));
-	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioE")->_SpellName("GalioE")->_DangerValue(2)->_Slot(kSlotE)->_MissileSpeed(2000)->_Range(600)->_Radius(150)->_FixedRange(true)->_IsDangerous(true)->_MissileToUnit(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithWalls));
-	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioE2")->_SpellName("GalioE2")->_DangerValue(2)->_Slot(kSlotE)->_MissileSpeed(2000)->_Range(600)->_Radius(150)->_IsDangerous(true)->_MissileToUnit(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithWalls));
+	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioE")->_SpellName("GalioE")->_ExtraSpellNames("GalioEMove")->_DangerValue(2)->_MissileSpeed(2000)->_Range(600)->_Radius(150)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithWalls));
+	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioE2")->_SpellName("GalioE2")->_ExtraSpellNames("GalioEMove")->_DangerValue(2)->_MissileSpeed(2000)->_Range(600)->_Radius(150)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithWalls));
 	Spells.push_back(CreateSpell()->_ChampName("Galio")->_MenuName("GalioR")->_SpellName("GalioR")->_DangerValue(5)->_Slot(kSlotR)->_AddHitbox(true)->_IsDangerous(true)->_Type(ST_Circle)->_Radius(600)->_DontCross(true)->_CollisionObjects(kCollidesWithHeroes));
 #pragma endregion Galio
 
