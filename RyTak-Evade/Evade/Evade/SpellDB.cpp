@@ -176,7 +176,7 @@ SpellDB::SpellDB()
 #pragma region Ezreal
 	Spells.push_back(CreateSpell()->_ChampName("Ezreal")->_MenuName("EzrealQ")->_SpellName("EzrealMysticShot")->_DangerValue(2)->_MissileName("EzrealMysticShotMissile")->_Range(1200)->_Radius(60)->_MissileSpeed(2000)->_FixedRange(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Ezreal")->_MenuName("EzrealW")->_SpellName("EzrealEssenceFlux")->_DangerValue(2)->_MissileName("EzrealEssenceFluxMissile")->_Slot(kSlotW)->_Range(1050)->_MissileSpeed(1600)->_Radius(80)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Ezreal")->_MenuName("EzrealR")->_SpellName("EzrealTrueshotBarrage")->_DangerValue(3)->_MissileName("EzrealTrueshotBarrage")->_Slot(kSlotR)->_Range(25000)->_Delay(1500)->_MissileSpeed(2000)->_Radius(160)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Ezreal")->_MenuName("EzrealR")->_SpellName("EzrealTrueshotBarrage")->_DangerValue(3)->_MissileName("EzrealTrueshotBarrage")->_Slot(kSlotR)->_Range(25000)->_Delay(1500)->_MissileSpeed(2000)->_Radius(160)->_DontCross(true)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Ezreal
 
 #pragma region Fiora
@@ -288,6 +288,7 @@ SpellDB::SpellDB()
 
 #pragma region Karthus
 	Spells.push_back(CreateSpell()->_ChampName("Karthus")->_MenuName("KarthusQ")->_SpellName("KarthusLayWasteA1")->_DangerValue(2)->_Range(875)->_Delay(950)->_DontCheckForDuplicates(true)->_Type(ST_Circle)->_Radius(160)->_ExtraSpellNames("KarthusLayWasteA2")->_ExtraSpellNames("KarthusLayWasteA3")->_ExtraSpellNames("KarthusLayWasteDeadA1")->_ExtraSpellNames("KarthusLayWasteDeadA2")->_ExtraSpellNames("KarthusLayWasteDeadA3"));
+	Spells.push_back(CreateSpell()->_ChampName("Karthus")->_MenuName("KarthusE")->_SpellName("KarthusDefile")->_DisabledByDefault(true)->_DangerValue(2)->_Range(425)->_Type(ST_Circle)->_Radius(425)->_DontCross(true)->_MissileToUnit(true));
 #pragma endregion Karthus
 
 #pragma region Kassadin
