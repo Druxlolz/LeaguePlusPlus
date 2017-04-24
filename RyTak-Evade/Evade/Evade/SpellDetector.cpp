@@ -558,3 +558,56 @@ void CSpellDetector::OnDeleteToggle(IUnit* Source)
 			Evade::EraseDetectedSpellAfter(spell, 5);
 	}
 }
+
+void CSpellDetector::OnDeleteTrap(IUnit* Source)
+{	
+	auto trap = Source;
+
+	if (trap == nullptr || !trap->IsValidObject() || trap->GetType() != FL_CREEP || !trap->IsEnemy(GEntityList->Player()))
+		return;
+
+	auto caster = GMissileData->GetCaster(trap);
+
+	if (caster == nullptr || !caster->IsValidObject() || !caster->IsEnemy(GEntityList->Player()))
+		return;
+
+	for (auto spell : Evade::DetectedSpells)
+	{
+		auto j = spell.second;
+
+		int iSpellId = j->SpellId;
+
+		if (j->Data.CanBeRemoved && j->TrapObject != nullptr && j->TrapObject->IsValidObject() && j->TrapObject == trap)
+		{
+			if (j->Data.TrapName.size() == 0 || j->Type != ST_Circle)
+			{
+				Evade::EraseDetectedSpellAfter(j, 1);
+			}
+			else
+			{
+				j->Data.CollisionObjects = kCollidesWithNothing;
+				j->PredEnd = Vec2(0.f, 0.f);
+				j->End = trap->GetPosition().To2D();
+
+				if (j->TrapObject != nullptr)
+					Evade::EraseDetectedSpellAfter(j, 100);
+			}
+		}
+	}
+	/*auto trap = Source;
+
+	if (trap == nullptr || !trap->IsValidObject() || trap->GetType() != FL_CREEP || !trap->IsEnemy(GEntityList->Player()))
+		return;
+
+	data = Evade::OnTrapSpells[trap->SkinName()];
+
+	for (auto data : Evade::DetectedSpells)
+	{
+		auto spell = data.second;
+
+		int iSpellId = spell->SpellId;
+
+		if (spell->Data.TrapName.size() != 0 && spell->TrapObject != nullptr && spell->TrapObject == trap)
+			Evade::EraseDetectedSpellAfter(spell, 5);
+	}*/
+}

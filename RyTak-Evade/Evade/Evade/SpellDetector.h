@@ -26,6 +26,7 @@ private:
 	// Wrappers for various objects being deleted 
 	void OnDeleteMissile(IUnit* Source);
 	void OnDeleteToggle(IUnit* Source);
+	void OnDeleteTrap(IUnit* Source);
 
 private:
 	static int spellIdCount;
