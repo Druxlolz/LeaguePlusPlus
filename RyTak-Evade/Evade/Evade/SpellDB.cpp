@@ -354,7 +354,7 @@ SpellDB::SpellDB()
 #pragma region Lux
 	Spells.push_back(CreateSpell()->_ChampName("Lux")->_MenuName("LuxQ")->_SpellName("LuxLightBinding")->_DangerValue(3)->_MissileName("LuxLightBindingMis")->_Range(1300)->_Radius(70)->_MissileSpeed(1200)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Lux")->_MenuName("LuxE")->_SpellName("LuxLightStrikeKugel")->_DangerValue(2)->_MissileName("LuxLightStrikeKugel")->_ToggleName("Lux_.+_E_tar_aoe_(green|red)")->_MissileSpeed(1300)->_Slot(kSlotE)->_Type(ST_Circle)->_Range(1100)->_Radius(330)->_ExtraDuration(5100)->_DontAddExtraDuration(true)->_CanBeRemoved(true)->_DisabledByDefault(true)->_DontCross(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Lux")->_DangerValue(5)->_MenuName("LuxR")->_SpellName("LuxMaliceCannon")->_Delay(1000)->_Slot(kSlotR)->_Type(ST_Line)->_Range(3300)->_Radius(150)->_FixedRange(true)->_IsDangerous(true));
+	Spells.push_back(CreateSpell()->_ChampName("Lux")->_DangerValue(5)->_MenuName("LuxR")->_SpellName("LuxMaliceCannon")->_MissileName("LuxMaliceCannon")->_Delay(1000)->_Slot(kSlotR)->_Type(ST_Line)->_Range(3300)->_Radius(150)->_FixedRange(true)->_IsDangerous(true)->_DontCross(true)->_TakeClosestPath(true));
 #pragma endregion Lux
 
 #pragma region Malphite
@@ -597,7 +597,7 @@ SpellDB::SpellDB()
 #pragma region Xayah
 	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahQ")->_SpellName("XayahQ")->_DangerValue(2)->_Slot(kSlotQ)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_Type(ST_MissileLine)->_Range(1100)->_MissileSpeed(1400)->_Radius(50)->_CollisionObjects(kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahW")->_SpellName("XayahW")->_DangerValue(1)->_Slot(kSlotW)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_MissileSpeed(1500)->_CollisionObjects(kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahE")->_SpellName("XayahE")->_DangerValue(3)->_Slot(kSlotE)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_Type(ST_Line)->_Range(1100)->_MissileFromUnit(true)->_MissileSpeed(2000)->_CollisionObjects(kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahE")->_SpellName("XayahE")->_DangerValue(3)->_Slot(kSlotE)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_Type(ST_Line)->_Range(1100)->_Invert(true)->_MissileFromUnit(true)->_MissileSpeed(2000)->_CollisionObjects(kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Xayah")->_MenuName("XayahR")->_SpellName("XayahR")->_DangerValue(5)->_Slot(kSlotR)->_ToggleName("Xayah_.+_Passive_Dagger_(Enemy|Ally)")->_Type(ST_MissileCone)->_Range(1100)->_MissileSpeed(2000)->_Radius(200)->_CollisionObjects(kCollidesWithYasuoWall));
 #pragma endregion Xayah
 
