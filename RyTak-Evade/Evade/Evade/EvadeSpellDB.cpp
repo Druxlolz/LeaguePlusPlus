@@ -15,7 +15,7 @@ EvadeSpellDB::EvadeSpellDB()
 #pragma region Fiora
 	if (szChamp == "Fiora")
 	{
-		auto pSpell = new ShieldData("FioraW", kSlotW, 100, 1, false);
+		auto pSpell = new ShieldData("FioraW", kSlotW, 100, 2, false);
 		pSpell->ValidTargets = VT_EnemyChampions;
 		Spells.push_back(pSpell);
 	}	
@@ -23,12 +23,12 @@ EvadeSpellDB::EvadeSpellDB()
 
 #pragma region Sivir
 	if (szChamp == "Sivir")
-		Spells.push_back(new ShieldData("SivirE", kSlotE, 100, 1, true));
+		Spells.push_back(new ShieldData("SivirE", kSlotE, 100, 2, true));
 #pragma endregion Sivir
 
 #pragma region Nocturne
 	if (szChamp == "Nocturne")
-		Spells.push_back(new ShieldData("NocturneW", kSlotW, 100, 1, true));
+		Spells.push_back(new ShieldData("NocturneW", kSlotW, 100, 2, true));
 #pragma endregion Nocturne
 
 #pragma region Bard
@@ -515,7 +515,7 @@ EvadeSpellDB::EvadeSpellDB()
 #pragma region Yasuo
 	if (szChamp == "Yasuo")
 	{
-		auto pSpell = new ShieldData("YasuoW", kSlotW, 100, 1);
+		auto pSpell = new ShieldData("YasuoW", kSlotW, 100, 2);
 		pSpell->ValidTargets = VT_EnemyChampions;
 		pSpell->CanShieldAllies = true;
 		pSpell->MaxRange = 400;

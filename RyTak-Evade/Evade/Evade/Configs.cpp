@@ -156,7 +156,7 @@ void EvadeMenuOptions::LoadMenuOptions()
 
 	Enabled = EvadeParent->CheckBox("Enabled", true);
 	Enabledkey = EvadeParent->AddKey("Toggle Evade", 75);
-	DodgeDangerous = EvadeParent->AddKey("Dodge Only Dangerous Key", 32);
+	DodgeDangerous = EvadeParent->AddKey("Dodge Only Dangerous Key", 43);
 }
 
 #define AddManager(Name) if (szChamp == std::string(#Name)){ ChampionManagers[szChamp] = new Name; }
