@@ -484,8 +484,8 @@ SpellDB::SpellDB()
 #pragma endregion Sona
 
 #pragma region Soraka
-	Spells.push_back(CreateSpell()->_ChampName("Soraka")->_MenuName("SorakaQ")->_MissileName("SorakaQMissile")->_SpellName("SorakaQ")->_DangerValue(2)->_MissileSpeed(1100)->_Type(ST_Circle)->_Range(800)->_Radius(230)->_CollisionObjects(kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Soraka")->_DangerValue(3)->_MenuName("SorakaE")->_SpellName("SorakaE")->_Delay(1770)->_Slot(kSlotE)->_Type(ST_Circle)->_Range(920)->_DontCross(true)->_HasEndExplosion(true)->_Radius(250));
+	Spells.push_back(CreateSpell()->_ChampName("Soraka")->_MenuName("SorakaQ")->_SpellName("SorakaQ")->_DangerValue(2)->_MissileSpeed(1100)->_ToggleName("soraka_.+_q_indicator_(green|red")->_Type(ST_Circle)->_Range(800)->_Radius(300)->_CollisionObjects(kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Soraka")->_DangerValue(3)->_MenuName("SorakaE")->_SpellName("SorakaE")->_Delay(1770)->_Slot(kSlotE)->_Type(ST_Circle)->_Range(920)->_DontCross(true)->_HasEndExplosion(true)->_Radius(300));
 #pragma endregion Soraka
 
 #pragma region Swain
