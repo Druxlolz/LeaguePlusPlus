@@ -6126,7 +6126,7 @@ public:
 	{		
 		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
 		{
-			XayahBase().Combo();
+			XayahBase().Combo();			
 		}
 		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
@@ -6137,6 +6137,7 @@ public:
 			XayahBase().LaneClear();
 		}
 		XayahBase().KS();
+		XayahBase().CastELogic(target);
 	}
 	void OnGapCloser(GapCloserSpell const& Args) override
 	{

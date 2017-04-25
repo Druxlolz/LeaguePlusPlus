@@ -56,7 +56,7 @@ public:
 			target = GTargetSelector->FindTarget(ClosestToCursorPriority, PhysicalDamage, Q->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
 			{
-				if (target != nullptr && target->IsHero() && !target->IsDead() && target->IsEnemy(GEntityList->Player()))
+				if (target != nullptr && minion != nullptr && target->IsHero() && !target->IsDead() && target->IsEnemy(GEntityList->Player()))
 				{
 					if (Q->IsReady() && ComboQ->Enabled() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
@@ -86,9 +86,9 @@ public:
 			Enemy = GTargetSelector->FindTarget(ClosestToCursorPriority, PhysicalDamage, Q->Range());
 			for (auto Enemy : GEntityList->GetAllHeros(false, true));
 
-			if (HarassQ->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && !Enemy->IsDead() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
+			if (HarassQ->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && !Enemy->IsDead() && target->IsValidTarget(GEntityList->Player(), Q->Range()) && Enemy != nullptr)
 			{
-				if (BounceHarass->Enabled() && Q->IsReady())
+				if (BounceHarass->Enabled() && Q->IsReady() && minion != nullptr)
 				{
 					Bounce();
 				}
@@ -97,7 +97,7 @@ public:
 					Q->CastOnTarget(Enemy, 5);
 				}
 			}			
-			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && !target->IsDead() && Enemy->IsValidTarget(GEntityList->Player(), E->Range()))
+			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && !target->IsDead() && Enemy->IsValidTarget(GEntityList->Player(), E->Range()) && Enemy != nullptr)
 			{
 				E->CastOnTarget(Enemy, 5);
 			}
@@ -115,7 +115,7 @@ public:
 				{
 					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead())
 					{
-						if (LaneClearQ->Enabled() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
+						if (LaneClearQ->Enabled() && minion->IsValidTarget(GEntityList->Player(), Q->Range()) && minion != nullptr)
 						{
 							if (BounceClear->Enabled() && Q->IsReady())
 							{
@@ -124,7 +124,7 @@ public:
 								for (auto minion1 : GEntityList->GetAllMinions(false, true, true))
 								for (auto minion2 : GEntityList->GetAllMinions(false, true, true))
 									{
-									if ((GEntityList->Player()->GetPosition() - minion1->GetPosition()).Length2D() <= Q->Range() && (minion->GetPosition() - minion2->GetPosition()).Length2D() <= 250)
+									if ((GEntityList->Player()->GetPosition() - minion1->GetPosition()).Length2D() <= Q->Range() && (minion->GetPosition() - minion2->GetPosition()).Length2D() <= 250 && minion1 != nullptr&& minion2 != nullptr)
 										{
 											Q->LastHitMinion();
 										}
@@ -207,7 +207,7 @@ public:
 		for (auto Enemy : GEntityList->GetAllHeros(false, true))
 		for (auto minion : GEntityList->GetAllMinions(false, true, true))
 		{
-			if ((GEntityList->Player()->GetPosition() - minion->GetPosition()).Length2D() <= Q->Range() && 250.f >= (minion->GetPosition() - Enemy->GetPosition()).Length2D() <= (GEntityList->Player()->GetPosition() - Enemy->GetPosition()).Length2D() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range() + 250))
+			if ((GEntityList->Player()->GetPosition() - minion->GetPosition()).Length2D() <= Q->Range() && 250.f >= (minion->GetPosition() - Enemy->GetPosition()).Length2D() <= (GEntityList->Player()->GetPosition() - Enemy->GetPosition()).Length2D() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range() + 250) && minion != nullptr && Enemy != nullptr)
 			{
 				Q->CastOnTarget(minion, 5);
 			}
@@ -221,7 +221,7 @@ public:
 		for (auto Enemy1 : GEntityList->GetAllHeros(false, true))
 			for (auto Enemy2 : GEntityList->GetAllHeros(false, true))
 			{
-				if ((GEntityList->Player()->GetPosition() - Enemy1->GetPosition()).Length2D() <= Q->Range() && 250 >= (Enemy1->GetPosition() - Enemy2->GetPosition()).Length2D() <= (GEntityList->Player()->GetPosition() - Enemy1->GetPosition()).Length2D() && Enemy1->IsValidTarget(GEntityList->Player(), Q->Range()))
+				if ((GEntityList->Player()->GetPosition() - Enemy1->GetPosition()).Length2D() <= Q->Range() && 250 >= (Enemy1->GetPosition() - Enemy2->GetPosition()).Length2D() <= (GEntityList->Player()->GetPosition() - Enemy1->GetPosition()).Length2D() && Enemy1->IsValidTarget(GEntityList->Player(), Q->Range()) && Enemy1 != nullptr && Enemy2 != nullptr)
 				{
 					Q->CastOnTarget(minion, 5);
 				}
@@ -235,7 +235,7 @@ public:
 		for (auto Enemy : GEntityList->GetAllHeros(false, true));
 		for (auto minion : GEntityList->GetAllMinions(false, true, true));
 			{
-				if ((GEntityList->Player()->GetPosition() - minion->GetPosition()).Length2D() <= Q->Range() && 250 >= (minion->GetPosition() - Enemy->GetPosition()).Length2D() <= (GEntityList->Player()->GetPosition() - Enemy->GetPosition()).Length2D() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()) && GPluginSDK->GetDamage()->GetSpellDamage(GEntityList->Player(), Enemy, kSlotQ) > minion->GetHealth())
+				if ((GEntityList->Player()->GetPosition() - minion->GetPosition()).Length2D() <= Q->Range() && 250 >= (minion->GetPosition() - Enemy->GetPosition()).Length2D() <= (GEntityList->Player()->GetPosition() - Enemy->GetPosition()).Length2D() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()) && GPluginSDK->GetDamage()->GetSpellDamage(GEntityList->Player(), Enemy, kSlotQ) > minion->GetHealth() && minion != nullptr && Enemy != nullptr)
 				{
 					Q->LastHitMinion();
 				}
