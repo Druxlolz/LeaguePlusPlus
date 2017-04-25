@@ -167,7 +167,7 @@ public:
 		//std::string(GEntityList->Player()->GetSpellBook()->GetName(kSlotE)) == "AsheSpiritOfTheHawk";
 
 		R = GPluginSDK->CreateSpell2(kSlotR, kLineCast, true, false, (kCollidesWithYasuoWall | kCollidesWithHeroes));
-		R->SetSkillshot(0.25f, 130.f, 1600.f, 0.f);
+		R->SetSkillshot(0.25f, 130.f, 1600.f, 25000.f);
 	}
 
 	void AurelionSol()

@@ -122,7 +122,7 @@ public:
 				AdvPredictionOutput prediction_output;
 				E->RunPrediction(target, true, kCollidesWithYasuoWall, &prediction_output);
 
-				if (prediction_output.HitChance >= kHitChanceHigh && GEntityList->Player()->GetSpellBook()->GetAmmo(kSlotE) >= ComboEFeathers->GetInteger() && FeatherManager::Distance(prediction_output.TargetPosition.To2D(), start_point, end_point, true) < E->Radius() + target->BoundingRadius())
+				if (prediction_output.HitChance >= kHitChanceHigh && GEntityList->Player()->GetSpellBook()->GetAmmo(kSlotE) >= ComboEFeathers->GetInteger() && FeatherManager::Distance(prediction_output.TargetPosition.To2D(), start_point, end_point, true) < E->Radius() + target->BoundingRadius() && target != nullptr)
 				{
 					E->CastOnPlayer();
 					E->SetFrom(Vec3(0, 0, 0));
