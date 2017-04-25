@@ -75,7 +75,7 @@ SpellDB::SpellDB()
 #pragma endregion Annie
 
 #pragma region Ashe
-	Spells.push_back(CreateSpell()->_ChampName("Ashe")->_MenuName("AsheW")->_MissileName("VolleyAttack")->_SpellName("Volley")->_DangerValue(2)->_MissileSpeed(1500)->_Type(ST_MissileLine && ST_Cone)->_Slot(kSlotW)->_Range(1150)->_Radius(20)->_FixedRange(true)->_MultipleNumber(9)->_InfrontStart(75)->_MultipleAngle(M_PI)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
+	Spells.push_back(CreateSpell()->_ChampName("Ashe")->_MenuName("AsheW")->_MissileName("VolleyAttack")->_SpellName("Volley")->_DangerValue(2)->_MissileSpeed(1500)->_Type(ST_MissileCone)->_Slot(kSlotW)->_Range(1150)->_Radius(20)->_FixedRange(true)->_MultipleNumber(9)->_InfrontStart(75)->_MultipleAngle(M_PI)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Ashe")->_MenuName("AsheR")->_SpellName("EnchantedCrystalArrow")->_DangerValue(5)->_MissileName("EnchantedCrystalArrow")->_Slot(kSlotR)->_Range(25000)->_MissileSpeed(1600)->_Radius(130)->_FixedRange(true)->_DontCross(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Ashe
 
@@ -112,7 +112,7 @@ SpellDB::SpellDB()
 #pragma region Caitlyn
 	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynQ")->_SpellName("CaitlynPiltoverPeacemaker")->_DangerValue(2)->_Delay(625)->_MissileName("CaitlynPiltoverPeacemaker")->_Range(1300)->_Radius(60)->_MissileSpeed(2200)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
 	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynQBehind")->_SpellName("CaitlynQBehind")->_DangerValue(2)->_Delay(0)->_MissileName("CaitlynPiltoverPeacemaker2")->_Range(1300)->_Radius(90)->_MissileSpeed(2200)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynW")->_SpellName("CaitlynYordleTrap")->_ToggleName("Caitlyn_.+_yordleTrap_(green|red)")->_Delay(0)->_IsDangerous(true)->_CanBeRemoved(true)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(800)->_Radius(75)->_DangerValue(3)->_DontCross(true)->_DontAddExtraDuration(true)->_ExtraDuration(90000)->_CollisionObjects(kCollidesWithHeroes));
+	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynW")->_SpellName("CaitlynYordleTrap")->_TrapName("CaitlynTrap")->_ToggleName("Caitlyn_.+_yordleTrap_(green|red)")->_Delay(0)->_IsDangerous(true)->_CanBeRemoved(true)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(800)->_Radius(75)->_DangerValue(3)->_DontCross(true)->_DontAddExtraDuration(true)->_ExtraDuration(90000)->_CollisionObjects(kCollidesWithHeroes));
 	Spells.push_back(CreateSpell()->_ChampName("Caitlyn")->_MenuName("CaitlynE")->_SpellName("CaitlynEntrapment")->_Delay(160)->_MissileName("CaitlynEntrapmentMissile")->_Slot(kSlotE)->_Range(800)->_MissileSpeed(1600)->_Radius(70)->_FixedRange(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
 #pragma endregion Caitlyn
 
@@ -267,7 +267,7 @@ SpellDB::SpellDB()
 
 #pragma region Jhin
 	Spells.push_back(CreateSpell()->_ChampName("Jhin")->_DangerValue(3)->_MenuName("JhinW")->_Slot(kSlotW)->_SpellName("JhinW")->_Delay(750)->_Type(ST_Line)->_Range(2550)->_Radius(40)->_FixedRange(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Jhin")->_MenuName("JhinE")->_SpellName("JhinTrap")->_TrapName("jhintrap")->_Delay(0)->_ExtraDuration(120000)->_Slot(kSlotE)->_Type(ST_Circle)->_Radius(135));
+	Spells.push_back(CreateSpell()->_ChampName("Jhin")->_MenuName("JhinE")->_SpellName("JhinTrap")->_TrapName("JhinTrap")->_Delay(0)->_ExtraDuration(120000)->_Slot(kSlotE)->_Type(ST_Circle)->_Radius(135));
 	Spells.push_back(CreateSpell()->_ChampName("Jhin")->_MenuName("JhinR")->_MissileName("JhinRShotMis")->_SpellName("JhinRShot")->_DangerValue(3)->_Slot(kSlotR)->_Range(3500)->_Delay(190)->_MissileSpeed(5000)->_Radius(80)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithHeroes | kCollidesWithYasuoWall)->_ExtraMissileNames("JhinRShotMis4"));
 #pragma endregion Jhin
 

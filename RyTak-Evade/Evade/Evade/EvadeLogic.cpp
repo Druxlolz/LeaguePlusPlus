@@ -96,7 +96,7 @@ void CEvadeLogic::OnGameUpdate()
 	std::vector<Vec2> paths;
 	GEntityList->Player()->CreatePath2D(Evade::EvadePoint2, paths);
 
-	if (Evader::IsPathSafe(paths, 100).IsSafe)
+	if (Evader::IsPathSafe(paths, 250).IsSafe)
 	{
 		if (Evade::EvadePoint2.DistanceTo(Evade::PlayerPosition) > 75)
 			Util::Move(Evade::EvadePoint2);
@@ -107,7 +107,7 @@ void CEvadeLogic::OnGameUpdate()
 	 if (paths.size() == 0)
  	{
  		if (!checkPath.Intersect.Valid && curPaths.size() == 0)
- 			checkPath = Evader::IsPathSafe(paths, 100);
+ 			checkPath = Evader::IsPathSafe(paths, 250);
  
  		if (checkPath.Intersect.Valid && checkPath.Intersect.Point.DistanceTo(Evade::PlayerPosition) > 75)
  		{

@@ -72,7 +72,7 @@ bool CPathFinding::IsPointWalkable(int X, int Y)
 	if (GPrediction->IsPointWall(Util::Get3DPoint(vecPoint)))
 		return false;
 
-	if (IsWithinSkillshot(vecPoint))
+	if (IsInsideSkillshot(vecPoint))
 	{
 		SkillshotDetected = true;
 		return false;
@@ -98,7 +98,7 @@ void CPathFinding::UpdateEndPosition(Vec2& EndPosition)
 		{
 			Vec2 vecNewEndPosition = Evader::GetClosestOutsidePoint(EndPosition, outerPolygons);
 
-			if (!IsWithinSkillshot(vecNewEndPosition) && !IsWithinWall(vecNewEndPosition))
+			if (!IsInsideSkillshot(vecNewEndPosition) && !IsWithinWall(vecNewEndPosition))
 				EndPosition = vecNewEndPosition;
 		}
 	}
@@ -123,7 +123,7 @@ void CPathFinding::FindNearestNonCollision(Vec2& EndPosition)
 	}
 }
 
-bool CPathFinding::IsWithinSkillshot(Vec2 const& EndPosition)
+bool CPathFinding::IsInsideSkillshot(Vec2 const& EndPosition)
 {
 	for (auto i : Evade::Spells)
 	{
@@ -134,7 +134,7 @@ bool CPathFinding::IsWithinSkillshot(Vec2 const& EndPosition)
 	return false;
 }
 
-bool CPathFinding::IsWithinSkillshot(Vec3 const& EndPosition)
+bool CPathFinding::IsInsideSkillshot(Vec3 const& EndPosition)
 {
 	for (auto i : Evade::Spells)
 	{

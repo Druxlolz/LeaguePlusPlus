@@ -31,7 +31,7 @@ public:
 	bool CastSpell(int SpellSlot, IUnit* Target = nullptr, Vec3 CastPosition = Vec3(0.f, 0.f, 0.f));
 
 private:
-	bool IsWithinSkillshot();
+	//bool IsWithinSkillshot();
 	bool HasWalkingSpell();
 	bool IsInsideSkillshot(Vec2& ClosestOutsidePoint);
 	int GetMaxDangerLevel(std::vector<SpellInstance*> SpellsList);

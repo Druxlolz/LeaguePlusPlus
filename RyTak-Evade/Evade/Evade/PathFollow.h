@@ -22,7 +22,7 @@ public:
 		if (paths.size() == 0)
 			return;
 
-		while (paths.size() > 0 && Evade::PlayerPosition.DistanceTo(paths[0]) < 80)
+		while (paths.size() > 0 && Evade::PlayerPosition.DistanceTo(paths[0]) < 125)
 			paths.erase(paths.begin());
 
 		if (paths.size() > 0)
