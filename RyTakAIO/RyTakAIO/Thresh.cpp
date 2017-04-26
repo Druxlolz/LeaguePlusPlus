@@ -13,6 +13,7 @@ public:
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
 		ComboW = ComboMenu->CheckBox("Use W", true);
 		ComboE = ComboMenu->CheckBox("Use E", true);
+		PullDefault = ComboMenu->CheckBox("Pull E by Default", true);
 
 		HarassMenu = MainMenu->AddMenu("Harass Settings");
 		HarassQ = HarassMenu->CheckBox("Use Q", true);
@@ -110,7 +111,11 @@ public:
 					}
 					if (ComboE->Enabled() && E->IsReady() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 					{
-						E->CastOnTarget(target);
+						if (PullDefault->Enabled())
+						{
+							EPull();
+						}
+						else E->CastOnTarget(target, 5);
 					}
 				}
 			}				
@@ -132,7 +137,11 @@ public:
 					}
 					if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 					{
-						E->CastOnTarget(target, 5);
+						if (PullDefault->Enabled())
+						{
+							EPull();
+						}
+						else E->CastOnTarget(target, 5);
 					}
 				}				
 			}				
@@ -196,6 +205,16 @@ public:
 					}
 				}
 			}
+		}
+	}
+
+	void EPull()
+	{
+		target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, E->Range());
+		for (auto target : GEntityList->GetAllHeros(false, true));
+		if (ComboE->Enabled() && E->IsReady() && target->IsValidTarget(GEntityList->Player(), E->Range()) && PullDefault->Enabled())
+		{
+			E->CastFrom(target->GetPosition(), GEntityList->Player()->GetPosition());
 		}
 	}
 };
