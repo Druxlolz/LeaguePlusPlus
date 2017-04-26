@@ -142,7 +142,7 @@ void EvadeMenuOptions::LoadMenuOptions()
 
 	CheckCollision = pMisc->CheckBox("Check Collisions", true);
 	CheckHp = pMisc->CheckBox("Check Player Hp", false);
-	CheckBlock = pMisc->CheckBox("Block Cast While Dodge Dangerous", true);
+	CheckBlock = pMisc->CheckBox("Block Cast While Dodge Dangerous", false);
 	DodgeFoW = pMisc->CheckBox("Dodge FoW Spells", true);
 	DodgeLine = pMisc->CheckBox("Dodge Line Spells", true);
 	DodgeCircle = pMisc->CheckBox("Dodge Circle Spells", true);

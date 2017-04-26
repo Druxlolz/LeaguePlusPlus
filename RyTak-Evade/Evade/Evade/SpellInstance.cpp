@@ -326,7 +326,7 @@ SafePath SpellInstance::IsSafePath(std::vector<Vec2> paths, int time, int speed,
 		}
 	}
 
-	if (Type == ST_MissileLine || Type == ST_MissileCone || Type == ST_Arc)
+	if (Type == ST_MissileLine || Type == ST_MissileCone || Type == ST_Arc || Type == ST_Circle)
 	{
 		if (IsSafePoint(Evade::PlayerPosition))
 		{
@@ -423,6 +423,12 @@ void SpellInstance::OnUpdate()
 	}
 
 	if (Type == ST_Circle && Data.TrapName.size() == 0)
+	{
+		Circle = Polygons::Circle(GetPredictEnd(), GetRadius());
+		UpdatePolygon();
+	}
+
+	if (Type == ST_Circle && Data.TrapName.size() != 0)
 	{
 		Circle = Polygons::Circle(GetPredictEnd(), GetRadius());
 		UpdatePolygon();
