@@ -140,6 +140,7 @@ void EvadeMenuOptions::LoadMenuOptions()
 
 	auto pMisc = EvadeParent->AddMenu("Evade - Misc");
 
+	EvadeMode = pMisc->AddSelection("Evade Mode:", 1, { "Smooth", "Normal", "Inhuman" });
 	CheckCollision = pMisc->CheckBox("Check Collisions", true);
 	CheckHp = pMisc->CheckBox("Check Player Hp", false);
 	CheckBlock = pMisc->CheckBox("Block Cast While Dodge Dangerous", false);

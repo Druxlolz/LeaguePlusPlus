@@ -10,16 +10,45 @@ struct EvadeMenuOptions
 {
 	EvadeMenuOptions()
 	{
-		CrossingTime = 25;
-		EvadePointChangeTime = 30;
-		EvadingFirstTime = 250;
-		EvadingSecondTime = 80;
-		EvadingRouteChangeTime = 50;
-		ExtraSpellRadius = 9;
-		ExtraSpellRange = 20;
-		GridSize = 10;
-		PathFindingInnerDistance = 35;
-		PathFindingOuterDistance = 60;
+		if (EvadeMode->GetInteger() == 0)
+		{
+			CrossingTime = 550;
+			EvadePointChangeTime = 400;
+			EvadingFirstTime = 350;
+			EvadingSecondTime = 160;
+			EvadingRouteChangeTime = 350;
+			ExtraSpellRadius = 9;
+			ExtraSpellRange = 20;
+			GridSize = 10;
+			PathFindingInnerDistance = 50;
+			PathFindingOuterDistance = 100;
+		}
+		if (EvadeMode->GetInteger() == 1)
+		{
+			CrossingTime = 250;
+			EvadePointChangeTime = 300;
+			EvadingFirstTime = 250;
+			EvadingSecondTime = 80;
+			EvadingRouteChangeTime = 250;
+			ExtraSpellRadius = 9;
+			ExtraSpellRange = 20;
+			GridSize = 10;
+			PathFindingInnerDistance = 35;
+			PathFindingOuterDistance = 60;
+		}
+		if (EvadeMode->GetInteger() == 2)
+		{
+			CrossingTime = 50;
+			EvadePointChangeTime = 0;
+			EvadingFirstTime = 0;
+			EvadingSecondTime = 0;
+			EvadingRouteChangeTime = 0;
+			ExtraSpellRadius = 9;
+			ExtraSpellRange = 20;
+			GridSize = 10;
+			PathFindingInnerDistance = 35;
+			PathFindingOuterDistance = 60;
+		}
 	}
 
 	void Initialize()
@@ -60,6 +89,7 @@ struct EvadeMenuOptions
 	IMenuOption* DrawStatus;
 	IMenuOption* Enabled;
 	IMenuOption* Enabledkey;
+	IMenuOption* EvadeMode;
 	short keystate;
 	bool KeyWasDown = false;
 
