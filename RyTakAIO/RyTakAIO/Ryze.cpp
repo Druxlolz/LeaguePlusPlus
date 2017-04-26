@@ -101,7 +101,7 @@ public:
 	{
 		Enemy = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, Q->Range());
 		for (auto Enemy : GEntityList->GetAllHeros(false, true))
-			if (GOrbwalking->GetOrbwalkingMode() == kModeMixed && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger())
+			if (GOrbwalking->GetOrbwalkingMode() == kModeMixed && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy != nullptr)
 			{
 				GOrbwalking->SetAttacksAllowed(DisableAA->Enabled());
 				if (HarassQ->Enabled() && GEntityList->Player()->ManaPercent() >= HarassMana->GetInteger() && Enemy->IsValidTarget(GEntityList->Player(), Q->Range()))
@@ -128,7 +128,7 @@ public:
 			{
 				for (auto minion : GEntityList->GetAllMinions(false, true, true))
 				{
-					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() )
+					if (minion->IsEnemy(GEntityList->Player()) && !minion->IsDead() && minion != nullptr)
 					{
 						if (LaneClearQ->Enabled() && Q->IsReady() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 						{
@@ -207,7 +207,7 @@ public:
 	{
 		enemy = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, Q->Range());
 		for (auto enemy : GEntityList->GetAllHeros(false, true))
-		if (E->IsReady() && enemy->IsValidTarget(GEntityList->Player(), E->Range()))
+		if (E->IsReady() && enemy != nullptr && enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 		{
 			E->CastOnTarget(enemy, 5);
 			{
@@ -224,7 +224,7 @@ public:
 		enemy = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, Q->Range());
 		for (auto enemy : GEntityList->GetAllHeros(false, true));
 		{
-			if (W->IsReady() && enemy->IsValidTarget(GEntityList->Player(), W->Range()))
+			if (W->IsReady() && enemy != nullptr && enemy->IsValidTarget(GEntityList->Player(), W->Range()))
 			{
 				W->CastOnTarget(enemy, 5);
 				{
@@ -247,7 +247,7 @@ public:
 	{
 		enemy = GTargetSelector->FindTarget(ClosestPriority, SpellDamage, E->Range());
 		for (auto enemy : GEntityList->GetAllHeros(false, true))
-		if (E->IsReady() && enemy->IsValidTarget(GEntityList->Player(), E->Range()))
+		if (E->IsReady() && enemy != nullptr && enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 		{
 			E->CastOnTarget(enemy, 5);
 			{
@@ -268,7 +268,7 @@ public:
 		for (auto enemy : GEntityList->GetAllHeros(false, true))
 		if (DelayQC->Enabled())
 		{
-			if (E->IsReady() && enemy->IsValidTarget(GEntityList->Player(), E->Range()))
+			if (E->IsReady() && enemy != nullptr && enemy->IsValidTarget(GEntityList->Player(), E->Range()))
 			{
 				E->CastOnTarget(enemy, 5);
 				{
@@ -292,7 +292,7 @@ public:
 
 	void GapCloser()
 	{
-		if (Enemy->IsDashing() && Enemy->IsHero() && GapCloseW->Enabled() && Enemy->IsValidTarget(GEntityList->Player(), W->Range()))
+		if (Enemy->IsDashing() && Enemy != nullptr && Enemy->IsHero() && GapCloseW->Enabled() && Enemy->IsValidTarget(GEntityList->Player(), W->Range()))
 		{
 			W->CastOnTarget(Enemy, 5);
 		}
