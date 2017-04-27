@@ -25,6 +25,7 @@ void CSpellDetector::OnDestroyObject(IUnit* Source)
 {
 	OnDeleteToggle(Source);
 	OnDeleteMissile(Source);
+	OnDeleteTrap(Source);
 }
 
 void CSpellDetector::OnPlayAnimation(IUnit* Source, std::string const Args)
@@ -61,7 +62,7 @@ void CSpellDetector::OnProcessSpell(CastedSpell const& Args)
 	if (pNewData != nullptr)
 		data = pNewData;
 
-	AddSpell(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, data);
+	AddSpell(Args.Caster_, Args.Caster_->ServerPosition().To2D(), Args.EndPosition_.To2D(), data);
 }
 
 void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, SpellData* Data, IUnit* MissileClient /* = nullptr */, int Type /* = ST_None */, bool CheckExplosion /* = true */, int StartT /* = 0 */)
@@ -134,6 +135,9 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 
 	switch (Type)
 	{
+	case ST_Line:
+		endTime += Data->MissileAccel != 0 ? 5000 : static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
+		break;
 	case ST_MissileLine:
 		endTime += Data->MissileAccel != 0 ? 5000 : static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
 		break;
@@ -155,6 +159,9 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 		break;
 	case ST_Arc:
 		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f / 2 * M_PI);
+		break;
+	case ST_Cone:
+		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
 		break;
 	case ST_MissileCone:
 		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
@@ -213,176 +220,21 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 		AddSpell(Source, SpellStart, SpellEnd, newData, MissileClient, ST_Circle, false, StartT);
 	}
 
-	auto newSpell = new SpellInstance(*Data, startTime, endTime + Data->ExtraDelay, startPos, endPos, Source, Type);
+	auto newSpell = new SpellInstance(*Data, startTime, endTime + Data->ExtraDelay, startPos, endPos, Source, Type, Data->Radius);
 
 	newSpell->SpellId = spellIdCount++;
 	newSpell->IsFromFoW = isFromFoW;
 	newSpell->MissileObject = MissileClient;
 
 	Evade::DetectedSpells[newSpell->SpellId] = newSpell;
+	{
+		AddSpell(Source, SpellStart, SpellEnd, Data, MissileClient, Type, CheckExplosion, StartT);
+	}
 }
 
-void CSpellDetector::AddSpell(IUnit* Source, Vec3 SpellStart, Vec3 SpellEnd, SpellData* Data, IUnit* MissileClient /* = nullptr */, int Type /* = ST_None */, bool CheckExplosion /* = true */, int StartT /* = 0 */)
-{
-	auto isFromFoW = !Source->IsVisible() && MissileClient != nullptr;
 
-	if (isFromFoW && !Configs->DodgeFoW->Enabled())
-		return;
 
-	if (Evade::PlayerPosition.DistanceTo(SpellStart.To2D()) > static_cast<float>((Data->GetRange() + Data->GetRadius() + 1000)) * 1.5)
-		return;
 
-	if (Type == ST_None)
-		Type = Data->Type;
-
-	auto startPos = SpellStart;
-	auto endPos = SpellEnd;
-	auto startTime = StartT > 0 ? StartT : GGame->TickCount() - GGame->Latency() / 2;
-	auto endTime = Data->Delay;
-
-	if (MissileClient == nullptr)
-	{
-		if (Data->BehindStart > 0)
-		{
-			startPos = startPos.Extend(endPos, static_cast<float>(-Data->BehindStart));
-		}
-
-		if (Data->InfrontStart > 0)
-		{
-			startPos = startPos.Extend(endPos, static_cast<float>(Data->InfrontStart));
-		}
-	}
-	else
-	{
-		if (!Data->MissileDelayed)
-		{
-			startTime -= Data->Delay;
-		}
-
-		if (Data->MissileSpeed != 0)
-		{
-			startTime -= static_cast<int>(startPos.DistanceTo(MissileClient->GetPosition())) / static_cast<float>(Data->MissileSpeed) * 1000.f;
-		}
-	}
-
-	if (Type == ST_Cone || Type == ST_MissileCone || Data->FixedRange || (Data->GetRange() > 0 && endPos.DistanceTo(startPos) > Data->GetRange()))
-	{
-		endPos = startPos.Extend(endPos, Data->GetRange());
-	}
-
-	if (MissileClient == nullptr)
-	{
-		if (Data->ExtraRange > 0)
-		{
-			endPos = endPos.Extend(startPos, static_cast<float>(-std::min(Data->ExtraRange, Data->GetRange() - static_cast<int>(endPos.DistanceTo(startPos)))));
-		}
-
-		if (Data->Invert)
-		{
-			endPos = startPos.Extend(endPos, static_cast<float>(-startPos.DistanceTo(endPos)));
-		}
-
-		if (Data->Perpendicular)
-		{
-			auto pDir = (endPos - startPos).VectorNormalize().Perpendicular();
-			startPos = SpellEnd - pDir * Data->RadiusEx;
-			endPos = SpellEnd + pDir * Data->RadiusEx;
-		}
-	}
-
-	switch (Type)
-	{
-	case ST_MissileLine:
-		endTime += Data->MissileAccel != 0 ? 5000 : static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
-		break;
-	case ST_Circle:
-		if (Data->MissileSpeed != 0)
-		{
-			endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
-
-			if (Data->Type == ST_MissileLine && Data->HasStartExplosion)
-			{
-				endPos = startPos;
-				endTime = Data->Delay;
-			}
-		}
-		else if (Data->GetRange() == 0 && Data->GetRadius() > 0)
-		{
-			endPos = startPos;
-		}
-		break;
-	case ST_Arc:
-		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f / 2 * M_PI);
-		break;
-	case ST_MissileCone:
-		endTime += static_cast<int>(startPos.DistanceTo(endPos) / static_cast<float>(Data->MissileSpeed) * 1000.f);
-		break;
-	}
-
-	auto dir = (endPos - startPos).VectorNormalize();
-	auto alreadyAdded = false;
-
-	if (MissileClient == nullptr)
-	{
-		if (!Data->DontCheckForDuplicates)
-		{
-			for (auto spell : Evade::DetectedSpells)
-			{
-				auto i = spell.second;
-
-				if (i->Data.MenuName == Data->MenuName && i->Unit == Source && dir.AngleBetween(i->DirectionV3) < 3 && i->Start.DistanceTo(startPos.To2D()) < 100)
-				{
-					alreadyAdded = i->MissileObject != nullptr && i->MissileObject->IsValidObject();
-
-					if (alreadyAdded)
-						break;
-				}
-			}
-		}
-	}
-	else if (!Data->MissileOnly)
-	{
-		for (auto spell : Evade::DetectedSpells)
-		{
-			auto i = spell.second;
-
-			if (i->Data.MenuName == Data->MenuName && i->Unit == Source && dir.AngleBetween(i->DirectionV3) < 3 && i->Start.DistanceTo(startPos.To2D()) < 100 && i->MissileObject == nullptr)
-			{
-				i->MissileObject = MissileClient;
-				i->Start = GMissileData->GetStartPosition(i->MissileObject).To2D();
-				alreadyAdded = true;
-
-				if (i->Data.ToggleName.size() == 0 || i->Type == ST_Circle)
-					break;
-			}
-		}
-	}
-
-	if (alreadyAdded)
-		return;
-
-	if (CheckExplosion && (Data->HasStartExplosion || Data->HasEndExplosion))
-	{
-		auto newData = Data->Clone();
-
-		if (Data->HasStartExplosion)
-			newData->CollisionObjects = kCollidesWithNothing;
-
-		AddSpell(Source, SpellStart, SpellEnd, newData, MissileClient, ST_Circle, false, StartT);
-	}
-
-	auto newSpell = new SpellInstance(*Data, startTime, endTime + Data->ExtraDelay, startPos.To2D(), endPos.To2D(), Source, Type);
-
-	newSpell->SpellId = spellIdCount++;
-	newSpell->IsFromFoW = isFromFoW;
-	newSpell->MissileObject = MissileClient;
-
-	Evade::DetectedSpells[newSpell->SpellId] = newSpell;
-}
-
-//{
-//	AddSpell(Source, SpellStart, SpellEnd, Data, MissileClient, Type, CheckExplosion, StartT);
-//}
 
 void CSpellDetector::OnCreateMissile(IUnit* Source)
 {
@@ -421,7 +273,7 @@ void CSpellDetector::OnCreateMissileDelay(IUnit* Missile, IUnit* Caster, SpellDa
 	if (pNewData != nullptr)
 		Data = pNewData;
 
-	AddSpell(Caster, GMissileData->GetStartPosition(Missile), GMissileData->GetEndPosition(Missile), Data, Missile);
+	AddSpell(Caster, GMissileData->GetStartPosition(Missile).To2D(), GMissileData->GetEndPosition(Missile).To2D(), Data, Missile);
 }
 
 void CSpellDetector::OnCreateToggle(IUnit* Source)
@@ -491,7 +343,7 @@ void CSpellDetector::OnCreateTrapDelay(IUnit* Source, SpellData* Data)
 	auto pos1 = caster->GetPosition().To2D();
 	auto pos2 = Source->GetPosition().To2D();
 
-	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, EndTime, pos2, pos2, caster, Data->Type);
+	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, EndTime, pos2, pos2, caster, Data->Type, Data->Radius);
 
 	spell->SpellId = spellIdCount++;
 	spell->TrapObject = Source;
@@ -594,20 +446,4 @@ void CSpellDetector::OnDeleteTrap(IUnit* Source)
 			}
 		}
 	}
-	/*auto trap = Source;
-
-	if (trap == nullptr || !trap->IsValidObject() || trap->GetType() != FL_CREEP || !trap->IsEnemy(GEntityList->Player()))
-		return;
-
-	data = Evade::OnTrapSpells[trap->SkinName()];
-
-	for (auto data : Evade::DetectedSpells)
-	{
-		auto spell = data.second;
-
-		int iSpellId = spell->SpellId;
-
-		if (spell->Data.TrapName.size() != 0 && spell->TrapObject != nullptr && spell->TrapObject == trap)
-			Evade::EraseDetectedSpellAfter(spell, 5);
-	}*/
 }

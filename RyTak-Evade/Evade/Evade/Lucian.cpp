@@ -17,8 +17,8 @@ void Lucian::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bo
 	if (Args.Target_ != GEntityList->Player())
 		return;
 
-	SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition(), 
-		Args.Target_->GetPosition() + (Args.Target_->ServerPosition() - Args.Target_->GetPosition()).VectorNormalize() * Args.Target_->MovementSpeed() * ((Data->Delay - GGame->Latency()) / 1000.f), 
+	SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition().To2D(),
+		Args.Target_->GetPosition().To2D() + (Args.Target_->ServerPosition().To2D() - Args.Target_->GetPosition().To2D()).VectorNormalize() * Args.Target_->MovementSpeed() * ((Data->Delay - GGame->Latency()) / 1000.f),
 		Data);
 
 	*ShouldProcess = false;

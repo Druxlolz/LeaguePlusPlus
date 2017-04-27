@@ -141,13 +141,13 @@ bool CEvadeLogic::OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IU
 	std::vector<Vec2> paths;
 	GEntityList->Player()->CreatePath2D(Position->To2D(), paths);
 
-	if (Evade::Evading || !Evader::IsPointSafe(Evade::PlayerPosition).IsSafe)
+	if (Evade::Evading || !Evader::IsPointSafe(Evade::PlayerPosition).IsSafe && DistanceCheck() == false)
 	{
 		if (OrderIdx == kMoveTo)
 		{
 			auto willMove = false;
 
-			if (Evade::Evading && GGame->TickCount() - Evade::LastEvadePointChangeTick > Configs->EvadePointChangeTime)
+			if (Evade::Evading && GGame->TickCount() - Evade::LastEvadePointChangeTick > Configs->EvadePointChangeTime && DistanceCheck() == false)
 			{
 				auto point = Evader::GetBestPointBlock(Position->To2D());
 
@@ -160,7 +160,7 @@ bool CEvadeLogic::OnIssueOrder(IUnit* Source, DWORD OrderIdx, Vec3* Position, IU
 				}
 			}
 
-			if (Evader::IsPathSafe(paths, Configs->EvadingRouteChangeTime).IsSafe && Evader::IsPointSafe(paths.back()).IsSafe)
+			if (Evader::IsPathSafe(paths, Configs->EvadingRouteChangeTime).IsSafe && Evader::IsPointSafe(paths.back()).IsSafe && DistanceCheck() == false)
 			{
 				Evade::EvadePoint1 = paths.back();
 				Evade::SetEvading(true);
@@ -220,7 +220,7 @@ void CEvadeLogic::CastDelayedSpells()
 
 bool CEvadeLogic::IsInsideSkillshot(Vec2& ClosestOutsidePoint)
 {
-	if (Evader::IsPathSafe(GEntityList->Player()->GetWaypointList(), 100).IsSafe && Evader::IsPointSafe(Evade::PlayerPosition).IsSafe)
+	if (Evader::IsPathSafe(GEntityList->Player()->GetWaypointList(), 100).IsSafe && Evader::IsPointSafe(Evade::PlayerPosition).IsSafe && DistanceCheck() == false)
 		return false;
 
 	return true;
@@ -329,6 +329,19 @@ void CEvadeLogic::RunEvasionSpells(SafePoint Point)
 				return;
 		}
 	}
+}
+
+bool CEvadeLogic::DistanceCheck()
+{
+	for (auto Enemy : GEntityList->GetAllHeros(false, true));
+
+	if (Evade::EvadePoint1.DistanceTo(Enemy) < Evade::PlayerPosition.DistanceTo(Enemy))
+		Evade::HaveSolution = false;
+	
+	if (Evade::EvadePoint2.DistanceTo(Enemy) < Evade::PlayerPosition.DistanceTo(Enemy))
+		Evade::HaveSolution = false;
+
+	return false;
 }
 
 bool CEvadeLogic::WalkEvade()

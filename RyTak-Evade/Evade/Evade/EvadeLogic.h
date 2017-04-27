@@ -40,6 +40,7 @@ private:
 private:
 	void AttemptToShieldAlly();
 	void RunEvasionSpells(SafePoint Point);
+	bool DistanceCheck();
 	bool WalkEvade();
 	bool SpellShieldEvade();
 	bool MovementSpeedEvade();
@@ -53,6 +54,7 @@ private:
 	Vec2 EvasionPoint;
 	Vec2 PrevPos;
 	Vec2 EvadeToPoint;
+	Vec2 Enemy;
 	int ExpectedArrivalTime;
 	EvadeSpellData* EvadeSpell;
 	ISpell* SpellCaster;

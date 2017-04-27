@@ -602,10 +602,10 @@ SpellDB::SpellDB()
 #pragma endregion Xayah
 
 #pragma region Xerath
-	Spells.push_back(CreateSpell()->_ChampName("Xerath")->_DangerValue(2)->_MenuName("XerathQ")->_SpellName("XerathArcanopulse2")->_Delay(530)->_Type(ST_Line)->_Range(20000)->_Radius(100));
-	Spells.push_back(CreateSpell()->_ChampName("Xerath")->_DangerValue(2)->_MenuName("XerathW")->_SpellName("XerathArcaneBarrage2")->_Delay(780)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(1100)->_Radius(260));
+	Spells.push_back(CreateSpell()->_ChampName("Xerath")->_DangerValue(2)->_MenuName("XerathQ")->_SpellName("XerathArcanopulse2")->_ExtraSpellNames("XerathArcanopulseChargeUp")->_Delay(600)->_Type(ST_Line)->_Range(1600)->_Radius(100)->_IsDangerous(true)->_DontCross(true));
+	Spells.push_back(CreateSpell()->_ChampName("Xerath")->_DangerValue(2)->_MenuName("XerathW")->_SpellName("XerathArcaneBarrage2")->_Delay(780)->_Slot(kSlotW)->_Type(ST_Circle)->_Range(1100)->_Radius(260)->_IsDangerous(true));
 	Spells.push_back(CreateSpell()->_ChampName("Xerath")->_MenuName("XerathE")->_SpellName("XerathMageSpear")->_DangerValue(2)->_MissileName("XerathMageSpearMissile")->_Slot(kSlotE)->_Range(1100)->_MissileSpeed(1400)->_Radius(60)->_FixedRange(true)->_IsDangerous(true)->_CollisionObjects(kCollidesWithMinions | kCollidesWithHeroes | kCollidesWithYasuoWall));
-	Spells.push_back(CreateSpell()->_ChampName("Xerath")->_MenuName("XerathR")->_SpellName("XerathRMissileWrapper")->_DangerValue(3)->_Delay(650)->_MissileName("XerathLocusPulse")->_Slot(kSlotR)->_Range(20000)->_IsDangerous(true)->_MissileDelayed(true)->_Type(ST_Circle)->_Radius(200)->_CanBeRemoved(false));
+	Spells.push_back(CreateSpell()->_ChampName("Xerath")->_MenuName("XerathR")->_SpellName("XerathRMissileWrapper")->_DangerValue(3)->_Delay(650)->_MissileName("XerathLocusPulse")->_Slot(kSlotR)->_Range(5600)->_IsDangerous(true)->_MissileDelayed(true)->_Type(ST_Circle)->_Radius(200)->_CanBeRemoved(false));
 #pragma endregion Xerath
 
 #pragma region Yasuo

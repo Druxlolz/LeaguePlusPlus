@@ -93,7 +93,7 @@ struct SpellInstance
 
 	int WaitingToRemoveTime;
 
-	SpellInstance(SpellData data, int startT, int endT, Vec2 start, Vec2 end, IUnit* unit, int type);
+	SpellInstance(SpellData data, int startT, int endT, Vec2 start, Vec2 end, IUnit* unit, int type, int radius);
 	bool IsEnabled();
 	IMenuOption* GetValue(std::string Name);
 	int GetRadius();

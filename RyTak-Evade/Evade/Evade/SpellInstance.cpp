@@ -76,7 +76,7 @@ IntersectionResult Intersection(
 		Vec2((float)(lineSegment1Start.x + r * deltaBAx), (float)(lineSegment1Start.y + r * deltaBAy)));
 }
 
-SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, Vec2 end, IUnit* unit, int type)
+SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, Vec2 end, IUnit* unit, int type, int radius)
 {
 	InitializeDefaults();
 
@@ -88,7 +88,7 @@ SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, V
 	Direction = (end - start).VectorNormalize();
 	Unit = unit;
 	Type = type;
-	radius = GetRawRadius();
+	radius = GetRadius();
 
 	switch (Type)
 	{
@@ -393,7 +393,7 @@ bool SpellInstance::IsSafeToBlink(Vec2 point, int time, int delay)
 	if (IsSafePoint(point))
 		return true;
 
-	if (Type == ST_MissileLine)
+	if (Type == ST_MissileLine || Type == ST_Circle)
 	{
 		return point.Distance(GetMissilePosition(0), GetMissilePosition(delay + time), true) < GetRadius();
 	}
@@ -410,10 +410,10 @@ void SpellInstance::OnUpdate()
 			lastCalcColTick = GGame->TickCount();
 			PredEnd = Collisions::GetCollision(this);
 		}
-	}
-	else if (PredEnd.IsValid())
-	{
-		PredEnd = Vec2(0.f, 0.f);
+		else if (PredEnd.IsValid())
+		{
+			PredEnd = Vec2(0.f, 0.f);
+		}
 	}
 
 	if (Type == ST_Line || Type == ST_MissileLine)

@@ -22,6 +22,6 @@ void Xayah::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, boo
 		if (std::string(i->GetObjectName()) != "Feather")
 			continue;
 
-		SpellDetector->AddSpell(Args.Caster_, i->ServerPosition(), Args.EndPosition_, Data);
+		SpellDetector->AddSpell(Args.Caster_, i->ServerPosition().To2D(), Args.EndPosition_.To2D(), Data);
 	}
 }

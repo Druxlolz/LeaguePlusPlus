@@ -22,6 +22,6 @@ void Taric::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, boo
 		if (!i->HasBuff("taricwleashactive"))
 			continue;
 
-		SpellDetector->AddSpell(i, i->ServerPosition(), Args.EndPosition_, Data);
+		SpellDetector->AddSpell(i, i->ServerPosition().To2D(), Args.EndPosition_.To2D(), Data);
 	}
 }

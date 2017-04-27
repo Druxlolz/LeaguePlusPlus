@@ -16,7 +16,7 @@ void Syndra::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bo
 	if (Data->MenuName.substr(0, 7) != "SyndraE")
 		return;
 
-	SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition(), Args.EndPosition_, Data);
+	SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition().To2D(), Args.EndPosition_.To2D(), Data);
 
 	SpellInstance* pSpell = nullptr;
 

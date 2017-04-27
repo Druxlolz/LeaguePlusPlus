@@ -18,7 +18,7 @@ void Fizz::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, bool
 	auto pTarget = Args.Target_;
 
 	if (pTarget == GEntityList->Player())
-		SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition(), pTarget->ServerPosition(), Data);
+		SpellDetector->AddSpell(Args.Caster_, Args.Caster_->ServerPosition().To2D(), pTarget->ServerPosition().To2D(), Data);
 
 	*ShouldProcess = false;
 }

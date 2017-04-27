@@ -54,7 +54,7 @@ void Orianna::OnDetectorProcessSpell(CastedSpell const& Args, SpellData* Data, b
 	}
 
 	if (startPos.Length() != 0.f)
-		SpellDetector->AddSpell(Args.Caster_, startPos, Args.EndPosition_, Data);
+		SpellDetector->AddSpell(Args.Caster_, startPos.To2D(), Args.EndPosition_.To2D(), Data);
 
 	*ShouldProcess = false;
 }
