@@ -10,7 +10,7 @@ struct EvadeMenuOptions
 {
 	EvadeMenuOptions()
 	{
-		if (EvadeMode->GetInteger() == 0)
+		if (EvadeMode1->Enabled())
 		{
 			CrossingTime = 550;
 			EvadePointChangeTime = 400;
@@ -23,7 +23,7 @@ struct EvadeMenuOptions
 			PathFindingInnerDistance = 50;
 			PathFindingOuterDistance = 100;
 		}
-		if (EvadeMode->GetInteger() == 1)
+		if (EvadeMode2->Enabled())
 		{
 			CrossingTime = 250;
 			EvadePointChangeTime = 300;
@@ -36,7 +36,7 @@ struct EvadeMenuOptions
 			PathFindingInnerDistance = 35;
 			PathFindingOuterDistance = 60;
 		}
-		if (EvadeMode->GetInteger() == 2)
+		if (EvadeMode3->Enabled())
 		{
 			CrossingTime = 50;
 			EvadePointChangeTime = 0;
@@ -90,6 +90,9 @@ struct EvadeMenuOptions
 	IMenuOption* Enabled;
 	IMenuOption* Enabledkey;
 	IMenuOption* EvadeMode;
+	IMenuOption* EvadeMode1;
+	IMenuOption* EvadeMode2;
+	IMenuOption* EvadeMode3;
 	short keystate;
 	bool KeyWasDown = false;
 
