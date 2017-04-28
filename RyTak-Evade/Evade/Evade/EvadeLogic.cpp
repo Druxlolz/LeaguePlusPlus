@@ -307,26 +307,26 @@ void CEvadeLogic::RunEvasionSpells(SafePoint Point)
 			if (i->IsReady())
 			{
 				if (i->IsSpellShield && SpellShieldEvade())
-					return;
+					ShieldData;
 
 				if (i->IsMovementSpeedBuff && MovementSpeedEvade())
-					return;
+					MoveBuffData;
 
 				if (i->IsDash && DashEvade())
-					return;
+					DashData;
 
 				if (i->IsBlink && BlinkEvade())
-					return;
+					BlinkData;
 
 				if (i->IsInvulnerability && InvulnerableEvade())
-					return;
+					InvulnerabilityData;
 			}
 
 			if (ItemEvade())
-				return;
+				ItemData;
 
 			if (i->IsReady() && i->IsShield && ShieldEvade())
-				return;
+				ShieldData;
 		}
 	}
 }

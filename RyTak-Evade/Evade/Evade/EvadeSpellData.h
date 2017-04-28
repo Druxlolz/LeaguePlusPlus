@@ -46,7 +46,7 @@ struct EvadeSpellData
 
 	EvadeSpellData()
 	{
-		Initialize();
+		
 	}
 
 	EvadeSpellData(std::string menuName, int _dangerLevel)

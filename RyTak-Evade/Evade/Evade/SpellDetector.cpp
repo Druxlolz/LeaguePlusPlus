@@ -227,13 +227,12 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 	newSpell->MissileObject = MissileClient;
 
 	Evade::DetectedSpells[newSpell->SpellId] = newSpell;
-//	{
-//		AddSpell(Source, SpellStart, SpellEnd, Data, MissileClient, Type, CheckExplosion, StartT);
-//	}
 }
 
 
-
+//	{
+//		AddSpell(Source, SpellStart, SpellEnd, Data, MissileClient, Type, CheckExplosion, StartT);
+//	}
 
 
 void CSpellDetector::OnCreateMissile(IUnit* Source)
