@@ -220,16 +220,16 @@ void CSpellDetector::AddSpell(IUnit* Source, Vec2 SpellStart, Vec2 SpellEnd, Spe
 		AddSpell(Source, SpellStart, SpellEnd, newData, MissileClient, ST_Circle, false, StartT);
 	}
 
-	auto newSpell = new SpellInstance(*Data, startTime, endTime + Data->ExtraDelay, startPos, endPos, Source, Type, Data->Radius);
+	auto newSpell = new SpellInstance(*Data, startTime, endTime + Data->ExtraDelay, startPos, endPos, Source, Type);
 
 	newSpell->SpellId = spellIdCount++;
 	newSpell->IsFromFoW = isFromFoW;
 	newSpell->MissileObject = MissileClient;
 
 	Evade::DetectedSpells[newSpell->SpellId] = newSpell;
-	{
-		AddSpell(Source, SpellStart, SpellEnd, Data, MissileClient, Type, CheckExplosion, StartT);
-	}
+//	{
+//		AddSpell(Source, SpellStart, SpellEnd, Data, MissileClient, Type, CheckExplosion, StartT);
+//	}
 }
 
 
@@ -343,7 +343,7 @@ void CSpellDetector::OnCreateTrapDelay(IUnit* Source, SpellData* Data)
 	auto pos1 = caster->GetPosition().To2D();
 	auto pos2 = Source->GetPosition().To2D();
 
-	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, EndTime, pos2, pos2, caster, Data->Type, Data->Radius);
+	auto spell = new SpellInstance(*Data, GGame->TickCount() - GGame->Latency() / 2, EndTime, pos2, pos2, caster, Data->Type);
 
 	spell->SpellId = spellIdCount++;
 	spell->TrapObject = Source;

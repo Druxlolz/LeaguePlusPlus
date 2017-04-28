@@ -76,7 +76,7 @@ IntersectionResult Intersection(
 		Vec2((float)(lineSegment1Start.x + r * deltaBAx), (float)(lineSegment1Start.y + r * deltaBAy)));
 }
 
-SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, Vec2 end, IUnit* unit, int type, int radius)
+SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, Vec2 end, IUnit* unit, int type)
 {
 	InitializeDefaults();
 
@@ -88,30 +88,21 @@ SpellInstance::SpellInstance(SpellData data, int startT, int endT, Vec2 start, V
 	Direction = (end - start).VectorNormalize();
 	Unit = unit;
 	Type = type;
-	radius = GetRadius();
+	radius = GetRawRadius();
 
 	switch (Type)
 	{
-	case ST_Line:
-		Line = Polygons::Line(Start, End, GetRadius());
-		break;
 	case ST_MissileLine:
-		Line = Polygons::Line(Start, End, GetRadius());
-		break;
-	case ST_Cone:
-		Cone = Polygons::Cone(Start, Direction, GetRadius(), data.GetRange());
+		Line = Polygons::Line(Start, End, data.GetRadius());
 		break;
 	case ST_MissileCone:
-		Cone = Polygons::Cone(Start, Direction, GetRadius(), data.GetRange());
+		Cone = Polygons::Cone(Start, Direction, data.GetRadius(), data.GetRange());
 		break;
 	case ST_Circle:
-		Circle = Polygons::Circle(End, GetRadius());
-		break;
-	case ST_Ring:
-		Ring = Polygons::Ring(End, data.RadiusEx, GetRadius());
+		Circle = Polygons::Circle(End, data.GetRadius());
 		break;
 	case ST_Arc:
-		Arc = Polygons::Arc(Start, End, GetRadius());
+		Arc = Polygons::Arc(Start, End, data.GetRadius());
 		break;
 	}
 
