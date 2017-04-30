@@ -307,6 +307,8 @@ void CSpellDetector::OnCreateToggle(IUnit* Source)
 				}
 			}
 		}
+		if (spell != nullptr)
+			Evade::DetectedSpells[spell->SpellId] = spell;
 	}
 }
 
