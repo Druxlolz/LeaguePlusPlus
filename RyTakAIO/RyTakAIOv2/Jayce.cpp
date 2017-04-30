@@ -2,14 +2,15 @@
 #include "PluginSDK.h"
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "IChampion.h"
 
-class JayceBase
+class Jayce : public IChampion
 {
 
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Jayce");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Jayce");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		MeleeOptionsC = ComboMenu->AddMenu("Melee Combo");
@@ -406,7 +407,7 @@ public:
 		}
 	}
 
-	void Render()
+	void OnRender()
 	{
 		if (DrawOff->Enabled()) return;
 
@@ -476,6 +477,26 @@ public:
 				}
 			}
 		}
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnGapCloser(GapCloserSpell const& Args)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };
 

@@ -1,13 +1,15 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "IChampion.h"
+#include "OnRender.cpp"
 
-class FioraBase
+class Fiora : public IChampion
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Fiora");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Fiora");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -135,5 +137,30 @@ public:
 				}
 			}
 		}
+	}
+
+	void OnRender() override
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+
+	void OnGapCloser(GapCloserSpell const& Args) override
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args) override
+	{
+
 	}
 };

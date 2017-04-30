@@ -1,10 +1,147 @@
 #pragma once
 #include "PluginSDK.h"
 #include "BaseOptions.h"
-#include "OnRender.cpp"
-#include "IChampion.h"
 #include "SpellLib.h"
 #include <sstream>
+
+#pragma region Champions
+#include "Aatrox.cpp"
+#include "Ahri.cpp"
+#include "Akali.cpp"
+#include "Alistar.cpp"
+#include "Amumu.cpp"
+#include "Anivia.cpp"
+#include "Annie.cpp"
+#include "Ashe.cpp"
+#include "AurelionSol.cpp"
+#include "Azir.cpp"
+#include "Bard.cpp"
+#include "Blitzcrank.cpp"
+#include "Brand.cpp"
+#include "Braum.cpp"
+#include "Caitlyn.cpp"
+#include "Camille.cpp"
+#include "Cassiopeia.cpp"
+#include "ChoGath.cpp"
+#include "Corki.cpp"
+#include "Darius.cpp"
+#include "Diana.cpp"
+#include "DrMundo.cpp"
+#include "Draven.cpp"
+#include "Ekko.cpp"
+#include "Elise.cpp"
+#include "Evelynn.cpp"
+#include "Ezreal.cpp"
+#include "Fiddlesticks.cpp"
+#include "Fiora.cpp"
+#include "Fizz.cpp"
+#include "Galio.cpp"
+#include "Gangplank.cpp"
+#include "Garen.cpp"
+#include "Gnar.cpp"
+#include "Gragas.cpp"
+#include "Graves.cpp"
+#include "Hecarim.cpp"
+#include "Heimerdinger.cpp"
+#include "Illaoi.cpp"
+#include "Irelia.cpp"
+#include "Ivern.cpp"
+#include "Janna.cpp"
+#include "JarvanIV.cpp"
+#include "Jax.cpp"
+#include "Jayce.cpp"
+#include "Jhin.cpp"
+#include "Jinx.cpp"
+#include "Kalista.cpp"
+#include "Karma.cpp"
+#include "Karthus.cpp"
+#include "Kassadin.cpp"
+#include "Katarina.cpp"
+#include "Kayle.cpp"
+#include "Kennen.cpp"
+#include "KhaZix.cpp"
+#include "Kindred.cpp"
+#include "Kled.cpp"
+#include "KogMaw.cpp"
+#include "LeBlanc.cpp"
+#include "LeeSin.cpp"
+#include "Leona.cpp"
+#include "Lissandra.cpp"
+#include "Lucian.cpp"
+#include "Lulu.cpp"
+#include "Lux.cpp"
+#include "Malphite.cpp"
+#include "Malzahar.cpp"
+#include "Maokai.cpp"
+#include "MasterYi.cpp"
+#include "MissFortune.cpp"
+#include "Mordekaiser.cpp"
+#include "Morgana.cpp"
+#include "Nami.cpp"
+#include "Nasus.cpp"
+#include "Nautilus.cpp"
+#include "Nidalee.cpp"
+#include "Nocturne.cpp"
+#include "Nunu.cpp"
+#include "Olaf.cpp"
+#include "Orianna.cpp"
+#include "Pantheon.cpp"
+#include "Poppy.cpp"
+#include "Quinn.cpp"
+#include "Rammus.cpp"
+#include "RekSai.cpp"
+#include "Renekton.cpp"
+#include "Rengar.cpp"
+#include "Riven.cpp"
+#include "Rumble.cpp"
+#include "Ryze.cpp"
+#include "Sejuani.cpp"
+#include "Shaco.cpp"
+#include "Shen.cpp"
+#include "Shyvana.cpp"
+#include "Singed.cpp"
+#include "Sion.cpp"
+#include "Sivir.cpp"
+#include "Skarner.cpp"
+#include "Sona.cpp"
+#include "Soraka.cpp"
+#include "Swain.cpp"
+#include "Syndra.cpp"
+#include "TahmKench.cpp"
+#include "Taliyah.cpp"
+#include "Talon.cpp"
+#include "Taric.cpp"
+#include "Teemo.cpp"
+#include "Thresh.cpp"
+#include "Tristana.cpp"
+#include "Trundle.cpp"
+#include "Tryndamere.cpp"
+#include "TwistedFate.cpp"
+#include "Twitch.cpp"
+#include "Udyr.cpp"
+#include "Urgot.cpp"
+#include "Varus.cpp"
+#include "Vayne.cpp"
+#include "Veigar.cpp"
+#include "VelKoz.cpp"
+#include "Vi.cpp"
+#include "Viktor.cpp"
+#include "Vladimir.cpp"
+#include "Volibear.cpp"
+#include "Warwick.cpp"
+#include "Wukong.cpp"
+#include "Xayah.cpp"
+#include "Xerath.cpp"
+#include "XinZhao.cpp"
+#include "Yasuo.cpp"
+#include "Yorick.cpp"
+#include "Zac.cpp"
+#include "Zed.cpp"
+#include "Ziggs.cpp"
+#include "Zilean.cpp"
+#include "Zyra.cpp"
+#pragma endregion Champions
+
 
 PluginSetup("RyTak-AIO");
 
@@ -22,9 +159,49 @@ PLUGIN_EVENT(void) OnOrbwalkAttack(IUnit* Source, IUnit* Target)
 
 IChampion* pChampion = nullptr;
 
+#pragma region ChampEvents
+PLUGIN_EVENT(void) OnLoad()
+{
+	pChampion->Menu();
+	pChampion->Spells();
+}
+
 PLUGIN_EVENT(void) OnGameUpdate()
 {	
-	pChampion->OnGameUpdate();
+	pChampion->Combo();
+	pChampion->Harass();
+	pChampion->LaneClear();
+	pChampion->KS();
+}
+
+PLUGIN_EVENT(void) Menu()
+{
+	pChampion->Menu();
+}
+
+PLUGIN_EVENT(void) Spells()
+{
+	pChampion->Spells();
+}
+
+PLUGIN_EVENT(void) Combo()
+{
+	pChampion->Combo();
+}
+
+PLUGIN_EVENT(void) Harass()
+{
+	pChampion->Harass();
+}
+
+PLUGIN_EVENT(void) LaneClear()
+{
+	pChampion->LaneClear();
+}
+
+PLUGIN_EVENT(void) KS()
+{
+	pChampion->KS();
 }
 
 PLUGIN_EVENT(void) OnRender()
@@ -51,7 +228,7 @@ PLUGIN_EVENT(void) OnProcessSpell(CastedSpell const& Args)
 {
 	pChampion->OnProcessSpell(Args);
 }
-
+#pragma endregion ChampEvents
 
 
 void LoadChampion()
@@ -873,7 +1050,8 @@ PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
 {
 	PluginSDKSetup(PluginSDK);
 	LoadChampion();
-	pChampion->OnLoad();
+	pChampion->Menu();
+	pChampion->Spells();
 
 	GEventManager->AddEventHandler(kEventOnRender, OnRender);
 	GEventManager->AddEventHandler(kEventOnGameUpdate, OnGameUpdate);
@@ -881,11 +1059,14 @@ PLUGIN_API void OnLoad(IPluginSDK* PluginSDK)
 	GEventManager->AddEventHandler(kEventOnSpellCast, OnProcessSpell);
 	GEventManager->AddEventHandler(kEventOrbwalkBeforeAttack, BeforeAttack);
 	GEventManager->AddEventHandler(kEventOrbwalkAfterAttack, AfterAttack);
+	GEventManager->AddEventHandler(kEventCombo, Combo);
+	GEventManager->AddEventHandler(kEventHarass, Harass);
+	GEventManager->AddEventHandler(kEventLaneClear, LaneClear);
+	GEventManager->AddEventHandler(kEventKS, KS);
 }
 
 PLUGIN_API void OnUnload()
 {
-	MainMenu->SaveSettings();
 	MainMenu->Remove();
 
 	GEventManager->RemoveEventHandler(kEventOnRender, OnRender);
@@ -894,4 +1075,8 @@ PLUGIN_API void OnUnload()
 	GEventManager->RemoveEventHandler(kEventOnSpellCast, OnProcessSpell);
 	GEventManager->RemoveEventHandler(kEventOrbwalkBeforeAttack, BeforeAttack);
 	GEventManager->RemoveEventHandler(kEventOrbwalkAfterAttack, AfterAttack);
+	GEventManager->RemoveEventHandler(kEventCombo, Combo);
+	GEventManager->RemoveEventHandler(kEventHarass, Harass);
+	GEventManager->RemoveEventHandler(kEventLaneClear, LaneClear);
+	GEventManager->RemoveEventHandler(kEventKS, KS);
 }

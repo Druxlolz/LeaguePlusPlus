@@ -1,8 +1,10 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "IChampion.h"
+#include "OnRender.cpp"
 
-class MissFortuneBase
+class MissFortune : public IChampion
 {
 public:
 	void Menu()
@@ -60,11 +62,11 @@ public:
 				{
 					if (Q->IsReady() && ComboQ->Enabled() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
-						Q->CastOnTarget(target, 5);						
-					}
-					if (BounceEnemy->Enabled())
-					{
-						EnemyBounce();
+						if (BounceEnemy->Enabled())
+						{
+							EnemyBounce();
+						}
+						else Q->CastOnTarget(target, 5);						
 					}
 					if (W->IsReady() && ComboW->Enabled() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 					{
@@ -92,10 +94,7 @@ public:
 				{
 					Bounce();
 				}
-				if (Q->IsReady())
-				{
-					Q->CastOnTarget(Enemy, 5);
-				}
+				else Q->CastOnTarget(Enemy, 5);
 			}			
 			if (HarassE->Enabled() && E->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && !target->IsDead() && Enemy->IsValidTarget(GEntityList->Player(), E->Range()) && Enemy != nullptr)
 			{
@@ -124,7 +123,7 @@ public:
 								for (auto minion1 : GEntityList->GetAllMinions(false, true, true))
 								for (auto minion2 : GEntityList->GetAllMinions(false, true, true))
 									{
-									if ((GEntityList->Player()->GetPosition() - minion1->GetPosition()).Length2D() <= Q->Range() && (minion->GetPosition() - minion2->GetPosition()).Length2D() <= 250 && minion1 != nullptr&& minion2 != nullptr)
+									if ((GEntityList->Player()->GetPosition() - minion1->GetPosition()).Length2D() <= Q->Range() && (minion->GetPosition() - minion2->GetPosition()).Length2D() <= 250 && minion1 != nullptr && minion2 != nullptr)
 										{
 											Q->LastHitMinion();
 										}
@@ -140,7 +139,7 @@ public:
 							}
 							else Q->CastOnTarget(minion, 5);
 						}
-						if (LaneClearE->Enabled() && E->IsReady() && minion->IsValidTarget(GEntityList->Player(), E->Range()))
+						if (LaneClearE->Enabled() && E->IsReady() && minion->IsValidTarget(GEntityList->Player(), E->Range()) && minion != nullptr)
 						{
 							E->CastOnTarget(minion, 5);
 						}
@@ -240,5 +239,30 @@ public:
 					Q->LastHitMinion();
 				}
 			}
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnGapCloser(GapCloserSpell const& Args)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };

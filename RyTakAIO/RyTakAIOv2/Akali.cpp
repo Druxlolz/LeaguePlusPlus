@@ -1,13 +1,15 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "IChampion.h"
+#include "OnRender.cpp"
 
-class AkaliBase
+class Akali : public IChampion
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's_Akali");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Akali");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -149,5 +151,30 @@ public:
 				}
 			}
 		}
+	}
+
+	void OnRender() 
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnGapCloser(GapCloserSpell const& Args)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };

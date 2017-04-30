@@ -1,13 +1,15 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "IChampion.h"
+#include "OnRender.cpp"
 
-class CaitlynBase
+class Caitlyn : public IChampion
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Caitlyn");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Caitlyn");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -162,7 +164,7 @@ public:
 		}
 	}
 
-	void GapCloser()
+	void OnGapCloser(GapCloserSpell const& Args) override
 	{
 		if (target->IsDashing() && GapCloseE->Enabled())
 		{
@@ -183,5 +185,25 @@ public:
 				}
 			}
 		}
+	}
+
+	void OnRender() override
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args) override
+	{
+
 	}
 };

@@ -1,13 +1,15 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "IChampion.h"
+#include "OnRender.cpp"
 
-class MorganaBase
+class Morgana : public IChampion
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Morgana");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Morgana");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -179,11 +181,31 @@ public:
 		}
 	}
 
-	void GapCloser()
+	void OnGapCloser(GapCloserSpell const& Args)
 	{
 		if (target->IsDashing() && GapCloseQ->Enabled())
 		{
 			Q->CastOnTarget(target, 5);
 		}
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };

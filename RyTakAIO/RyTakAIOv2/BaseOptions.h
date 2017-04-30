@@ -114,6 +114,7 @@ static IMenuOption* QMinionHarass;
 static IMenuOption* HarassExQ;
 static IMenuOption* AutoEKillable;
 static IMenuOption* AllyUltSave;
+static IMenuOption* AllySaveHP;
 static IMenuOption* UseQECombo;
 static IMenuOption* BounceHarass;
 static IMenuOption* BounceClear;

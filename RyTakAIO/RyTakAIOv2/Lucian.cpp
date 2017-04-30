@@ -1,13 +1,15 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "IChampion.h"
+#include "OnRender.cpp"
 
-class LucianBase
+class Lucian : public IChampion
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's_Lucian");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Lucian");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -211,11 +213,31 @@ public:
 		}
 	}
 
-	void GapCloser()
+	void OnGapCloser(GapCloserSpell const& Args)
 	{
 		if (target->IsDashing() && target != nullptr && GapCloseE->Enabled() && target->IsValidTarget(GEntityList->Player(), E->Range()) && HasPassive == false)
 		{
 			E->CastOnPosition(GGame->CursorPosition());
 		}
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };

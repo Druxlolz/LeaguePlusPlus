@@ -245,7 +245,11 @@ enum eLeagueEvents
 	kEventOnPauseAnimation,
 	kEventOnJungleNotification,
 	kEventOnNewPath,
-	kEventOnTeleport
+	kEventOnTeleport,
+	kEventCombo,
+	kEventHarass,
+	kEventLaneClear,
+	kEventKS
 };
 
 enum eTargetPriority

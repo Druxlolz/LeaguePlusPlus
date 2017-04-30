@@ -1,13 +1,15 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "IChampion.h"
+#include "OnRender.cpp"
 
-class AniviaBase
+class Anivia : public IChampion
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's_Anivia");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Anivia");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -156,5 +158,30 @@ public:
 				}
 			}
 		}
+	}
+
+	void OnRender() override
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target) override
+	{
+
+	}
+
+	void OnGapCloser(GapCloserSpell const& Args) override
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args) override
+	{
+
 	}
 };
