@@ -1,8 +1,10 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "OnRender.cpp"
+#include "IChampion.h"
 
-class ThreshBase
+class Thresh : public IChampion
 {
 public:
 	void Menu()
@@ -216,5 +218,30 @@ public:
 		{
 			E->CastFrom(target->GetPosition(), GEntityList->Player()->GetPosition());
 		}
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnGapCloser(GapCloserSpell const& Args)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };

@@ -1,13 +1,15 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "OnRender.cpp"
+#include "IChampion.h"
 
-class VarusBase
+class Varus : public IChampion
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Varus");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Varus");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -270,11 +272,31 @@ void Combo()
 		}
 	}
 
-	void GapCloser()
+	void OnGapCloser(GapCloserSpell const& Args)
 	{
 		if (target->IsDashing() && GapCloseR->Enabled() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), R->Range()))
 		{
 			R->CastOnTarget(target, 5);
 		}
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };

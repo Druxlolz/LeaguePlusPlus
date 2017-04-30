@@ -1,8 +1,10 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "OnRender.cpp"
+#include "IChampion.h"
 
-class XerathBase
+class Xerath : public IChampion
 {
 public:
 	void Menu()
@@ -301,7 +303,7 @@ public:
 		}
 	}
 
-	void GapCloser()
+	void OnGapCloser(GapCloserSpell const& Args)
 	{
 		if (target->IsDashing() && GapCloseE->Enabled() && target->IsHero() && target->IsValidTarget(GEntityList->Player(), E->Range()))
 		{
@@ -319,5 +321,25 @@ public:
 			R->SetOverrideRange(4840);
 		else if (GSpellBook->GetLevel(kSlotR) == 3)
 			R->SetOverrideRange(6160);
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };

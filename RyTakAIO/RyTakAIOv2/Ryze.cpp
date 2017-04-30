@@ -1,14 +1,16 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "IChampion.h"
+#include "OnRender.cpp"
 #include <stdlib.h>
 
-class RyzeBase
+class Ryze : public IChampion
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's_Ryze");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Ryze");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		UseCombo = ComboMenu->CheckBox("Use Combo", true);
@@ -290,11 +292,31 @@ public:
 		}
 	}
 
-	void GapCloser()
+	void OnGapCloser(GapCloserSpell const& Args)
 	{
 		if (Enemy->IsDashing() && Enemy != nullptr && Enemy->IsHero() && GapCloseW->Enabled() && Enemy->IsValidTarget(GEntityList->Player(), W->Range()))
 		{
 			W->CastOnTarget(Enemy, 5);
 		}
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };

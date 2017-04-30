@@ -2,9 +2,11 @@
 #include "BaseOptions.h"
 #include "SpellLib.h"
 #include "FeatherManager.h"
+#include "OnRender.cpp"
+#include "IChampion.h"
 #include <string>
 
-class XayahBase
+class Xayah : public IChampion
 {
 public:
 	void Menu()
@@ -278,5 +280,30 @@ public:
 				}
 			}
 		}
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnGapCloser(GapCloserSpell const& Args)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };

@@ -2,14 +2,16 @@
 #include "PluginSDK.h"
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "OnRender.cpp"
+#include "IChampion.h"
 
-class TwistedFateBase
+class TwistedFate : public IChampion
 {
 
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Twisted Fate");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Twisted_Fate");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -194,6 +196,31 @@ public:
 				GoldCard();
 			}
 		}
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnGapCloser(GapCloserSpell const& Args)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };
 

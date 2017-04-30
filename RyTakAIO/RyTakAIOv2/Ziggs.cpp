@@ -1,13 +1,15 @@
 #pragma once
 #include "BaseOptions.h"
 #include "SpellLib.h"
+#include "OnRender.cpp"
+#include "IChampion.h"
 
-class ZiggsBase
+class Ziggs : public IChampion
 {
 public:
 	void Menu()
 	{
-		MainMenu = GPluginSDK->AddMenu("RyTak's Ziggs");
+		MainMenu = GPluginSDK->AddMenu("RyTaks_Ziggs");
 
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
@@ -166,5 +168,30 @@ public:
 				}
 			}
 		}
+	}
+
+	void OnRender()
+	{
+		OnRenderClass().Render();
+	}
+
+	void BeforeAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void AfterAttack(IUnit* Source, IUnit* Target)
+	{
+
+	}
+
+	void OnGapCloser(GapCloserSpell const& Args)
+	{
+
+	}
+
+	void OnProcessSpell(CastedSpell const& Args)
+	{
+
 	}
 };
