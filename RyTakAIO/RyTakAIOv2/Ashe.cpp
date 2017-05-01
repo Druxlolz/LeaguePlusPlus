@@ -14,7 +14,6 @@ public:
 		ComboMenu = MainMenu->AddMenu("Combo Settings");
 		ComboQ = ComboMenu->CheckBox("Use Q", true);
 		ComboW = ComboMenu->CheckBox("Use W", true);
-		ComboE = ComboMenu->CheckBox("Use E", true);
 		SemiR = ComboMenu->AddKey("Semi-Auto R", 84);
 
 		HarassMenu = MainMenu->AddMenu("Harass Settings");
@@ -54,14 +53,14 @@ public:
 	{
 		if (GOrbwalking->GetOrbwalkingMode() == kModeCombo)
 		{
-			target = target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
+			target = target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, W->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
 			{
 				if (target != nullptr && target->IsHero())
 				{
 					if (Q->IsReady() && ComboQ->Enabled() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
-						Q->CastOnTarget(target, 5);
+						Q->CastOnPlayer();
 					}
 					if (W->IsReady() && ComboW->Enabled() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 					{
@@ -76,14 +75,14 @@ public:
 	{
 		if (GOrbwalking->GetOrbwalkingMode() == kModeMixed)
 		{
-			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, Q->Range());
+			target = GTargetSelector->FindTarget(QuickestKill, PhysicalDamage, W->Range());
 			for (auto target : GEntityList->GetAllHeros(false, true))
 			{
 				if (target != nullptr && target->IsHero())
 				{
 					if (HarassQ->Enabled() && Q->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget(GEntityList->Player(), Q->Range()))
 					{
-						Q->CastOnTarget(target, 5);
+						Q->CastOnPlayer();
 					}
 					if (HarassW->Enabled() && W->IsReady() && GEntityList->Player()->ManaPercent() >= HarassMana->GetFloat() && target->IsValidTarget(GEntityList->Player(), W->Range()))
 					{
@@ -107,7 +106,7 @@ public:
 					{
 						if (LaneClearQ->Enabled() && Q->IsReady() && minion->IsValidTarget(GEntityList->Player(), Q->Range()))
 						{
-							Q->CastOnTarget(minion, 5);
+							Q->CastOnPlayer();
 						}
 						if (LaneClearW->Enabled() && W->IsReady() && LaneClearWMinions->GetInteger() && minion->IsValidTarget(GEntityList->Player(), W->Range()))
 						{
@@ -121,10 +120,10 @@ public:
 
 	void KS()
 	{
-		Enemy = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, Q->Range());
+		Enemy = GTargetSelector->FindTarget(ClosestPriority, PhysicalDamage, W->Range());
 		for (auto Enemy : GEntityList->GetAllHeros(false, true))
 		{
-			if (Enemy != nullptr && Enemy->IsHero())
+			if (Enemy != nullptr && Enemy->IsHero() && !Enemy->IsDead())
 			{
 				if (KSW->Enabled() && W->IsReady())
 				{
@@ -146,9 +145,9 @@ public:
 		}
 	}
 
-	void GapCloser()
+	void OnGapCloser(GapCloserSpell const& Args)
 	{
-		if (target->IsDashing() && GapCloseR->Enabled() && target->IsValidTarget())
+		if (target->IsDashing() && GapCloseR->Enabled() && target->IsValidTarget(GEntityList->Player(), R->Range()))
 		{
 			R->CastOnTarget(target, 5);
 		}
@@ -161,7 +160,7 @@ public:
 			enemy = GTargetSelector->FindTarget(QuickestKill, SpellDamage, R->Range());
 			for (auto enemy : GEntityList->GetAllHeros(false, true))
 			{
-				if (enemy->IsValidTarget() && enemy != nullptr && enemy->IsHero())
+				if (enemy->IsValidTarget(GEntityList->Player(), R->Range()) && enemy != nullptr && enemy->IsHero())
 				{
 					R->CastOnTarget(enemy, 5);
 				}
@@ -169,27 +168,22 @@ public:
 		}
 	}
 
-	void OnRender() override
+	void OnRender()
 	{
 		OnRenderClass().Render();
 	}
 
-	void BeforeAttack(IUnit* Source, IUnit* Target) override
+	void BeforeAttack(IUnit* Source, IUnit* Target)
 	{
 
 	}
 
-	void AfterAttack(IUnit* Source, IUnit* Target) override
+	void AfterAttack(IUnit* Source, IUnit* Target)
 	{
 
 	}
 
-	void OnGapCloser(GapCloserSpell const& Args) override
-	{
-
-	}
-
-	void OnProcessSpell(CastedSpell const& Args) override
+	void OnProcessSpell(CastedSpell const& Args)
 	{
 
 	}
